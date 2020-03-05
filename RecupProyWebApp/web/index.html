@@ -6,11 +6,57 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Recuperacion</title>
+        <title>Nombre Página</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div>Recuperacion</div>
+        <section class="section">
+            <div class="container">
+                <h1 class="title">
+                    Name Website
+                </h1>
+                <h2 class="title-2">
+                    Iniciar Sesión
+                </h2>
+                
+            </div>
+            <form action="ComServlet" method="get">
+                <div class="field">
+                    <label class="label">Nombre</label>
+                    <div class="control">
+                        <input class="input" type="text" name="name" id="name"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Contraseña</label>
+                    <div class="control">
+                        <input class="input" type="password" name="password" id="password"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="button is-link" type="submit" value="send"/>
+                    </div>
+                </div>
+            </form>
+            <div class="container">
+                <h2 class="title-2">
+                    <strong>¿No tienes cuenta? </strong>
+                </h2>
+            </div>
+            <div class="link1">
+                <h2 class="title-2">
+                    <a href="CuentaUsuario.jsp">Crea una cuenta de usuario</a>
+                </h2>
+            </div>
+            <div class="link2">
+                <h2 class="title-2">
+                    <a href="CuentaEmpresa.jsp">Crea una cuenta de empresa</a>
+                </h2>
+            </div>
+        </section>
+        
     </body>
 </html>
