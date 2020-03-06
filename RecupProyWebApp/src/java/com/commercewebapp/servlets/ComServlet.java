@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ *Este servlet está destinado a la recepción de datos provenientes del index. Es decir, los datos de inicio de sesión
  * @author Joanna Rivas
  */
 @WebServlet(name = "ComServlet", urlPatterns = {"/ComServlet"})
@@ -33,16 +33,17 @@ public class ComServlet extends HttpServlet {
             throws ServletException, IOException {
         
         //Recuperando datos de Inicio de sesiòn
-        String strNombreIs= request.getParameter("nombreis");
-        String strPassIs= request.getParameter("passis");
+        String strNombreIs = request.getParameter("nombreis");
+        String strPassIs = request.getParameter("passis");
         
+        /*
         //Recuperando datos de Registro cuentas microempresario
-        String strNombreEmp= request.getParameter("nombreEmp");
-        String strUserEmp= request.getParameter("userEmp");
-        String strnit= request.getParameter("nit");
-        String strpassEmp= request.getParameter("passEmp");
-        String strdescEmp= request.getParameter("descEmp");
-        
+        String strNombreEmp = request.getParameter("nombreEmp");
+        String strUserEmp = request.getParameter("userEmp");
+        String strnit = request.getParameter("nit");
+        String strpassEmp = request.getParameter("passEmp");
+        String strdescEmp = request.getParameter("descEmp");
+        */
         
         response.sendRedirect("InicioEmpresa.jsp");
     }

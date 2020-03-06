@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package com.commercewebapp.objects;
-
+/*
 import static org.apache.coyote.http11.Constants.a;
-
+*/
 /**
  *
  * @author Joanna Rivas
