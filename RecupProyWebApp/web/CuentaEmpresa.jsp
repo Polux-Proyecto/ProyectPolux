@@ -25,14 +25,14 @@
         <div class="field">
             <label class="label">Nombre</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
+                    <input class="input" type="text" name="nombreEmp" id="nombreEmp" placeholder="Text input">
                 </div>
         </div>
 
         <div class="field">
             <label class="label">Username</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" placeholder="Text input" value="bulma">
+                    <input class="input is-success" type="text" name="userEmp" id="userEmp" idplaceholder="Text input" value="bulma">
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                     </span>
@@ -43,9 +43,9 @@
         </div>
 
         <div class="field">
-          <label class="label">Email</label>
+          <label class="label">NIT</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+            <input class="input is-danger" type="text" name="nit" id="nit" placeholder="Text input" value="9 digitos">
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -58,7 +58,13 @@
         <div class="field">
             <label class="label">Contraseña</label>
                 <div class="control">
-                    <input class="input" type="password" placeholder="Text input">
+                    <input class="input" type="password" name="passEmp" id="passEmp" placeholder="Text input">
+                </div>
+        </div>
+        <div class="field">
+            <label class="label">Descripcion</label>
+                <div class="control">
+                    <textarea class="textarea" type="text" name="descEmp" id="descEmp" placeholder="200 words or less"></textarea>
                 </div>
         </div>
 
@@ -71,5 +77,6 @@
           </div>
         </div>
        </section>
+        <input type="hidden" name="formid" value="2" /> 
     </body>
 </html>

@@ -72,6 +72,7 @@
             <button class="button is-link is-light">Cancel</button>
           </div>
         </div>
-    </section>            
+    </section>
+    <input type="hidden" name="formid" value="1" />
     </body>
 </html>

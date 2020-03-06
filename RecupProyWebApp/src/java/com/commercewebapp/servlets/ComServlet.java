@@ -32,6 +32,18 @@ public class ComServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        //Recuperando datos de Inicio de sesiòn
+        String strNombreIs= request.getParameter("nombreis");
+        String strPassIs= request.getParameter("passis");
+        
+        //Recuperando datos de Registro cuentas microempresario
+        String strNombreEmp= request.getParameter("nombreEmp");
+        String strUserEmp= request.getParameter("userEmp");
+        String strnit= request.getParameter("nit");
+        String strpassEmp= request.getParameter("passEmp");
+        String strdescEmp= request.getParameter("descEmp");
+        
+        
         response.sendRedirect("InicioEmpresa.jsp");
     }
 
