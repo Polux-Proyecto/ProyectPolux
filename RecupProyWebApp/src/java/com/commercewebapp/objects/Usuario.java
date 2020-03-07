@@ -8,49 +8,50 @@ package com.commercewebapp.objects;
 /** ESte sí es un POJO
  * @author Mauricio Aguilar
  */
+
 public class Usuario {
     private boolean microEmpresario;
     private boolean usuario;
     private String nombre;
     private int idUsuario;
 
-    public Usuario(boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC) {
-        this.microEmpresario = microEmpresarioC;
-        this.usuario = usuarioC;
-        this.nombre = nombreC;
-        this.idUsuario = idUsuarioC; //Este es el id de la base de datos del usuario (Se supone que es la PK)
+    public Usuario (boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC) {
+        this.setMicroEmpresario(microEmpresarioC);
+        this.setIdUsuario(idUsuarioC);
+        this.setNombre(nombreC);
+        this.setIdUsuario(idUsuarioC);//Este es el id de la base de datos del usuario (Se supone que es la PK)
     }
-    
+
     public boolean isMicroEmpresario() {
         return microEmpresario;
     }
 
-    private void setMicroEmpresario(boolean microEmpresario) {
-        this.microEmpresario = microEmpresario;
+    private void setMicroEmpresario(boolean microEmpresariop) {
+        this.microEmpresario = microEmpresariop;
     }
 
     public boolean isUsuario() {
         return usuario;
     }
 
-    private void setUsuario(boolean usuario) {
-        this.usuario = usuario;
+    private void setUsuario(boolean usuariop) {
+        this.usuario = usuariop;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    private void setNombre(String nombre) {
-        this.nombre = nombre;
+    private void setNombre(String nombrep) {
+        this.nombre = nombrep;
     }
 
     public int getIdUsuario() {
         return idUsuario;
     }
 
-    private void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    private void setIdUsuario(int idUsuariop) {
+        this.idUsuario = idUsuariop;
     }
     
     

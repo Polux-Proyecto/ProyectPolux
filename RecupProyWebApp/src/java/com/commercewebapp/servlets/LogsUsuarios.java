@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.commercewebapp.logics.BuscarUsuario;
+import com.commercewebapp.objects.Usuario;
 
 /*
  * @author Mauricio Aguilar
@@ -25,13 +26,14 @@ public class LogsUsuarios extends HttpServlet {
         String strClave = request.getParameter("passis");
         
         BuscarUsuario buscar = new BuscarUsuario(strNombre, strClave);
+        Usuario usuario;
         
-        buscar.buscar(); //Este método busca si el usuario existe o no
+        usuario = buscar.buscar(); //Este método busca si el usuario existe o no
         
         if(buscar.isAutorizado()){
             
         } else {
-            
+            response.sendRedirect("index.html"); //En el caso que no se haya encontrado
         }
         
         
