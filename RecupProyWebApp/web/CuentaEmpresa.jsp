@@ -13,6 +13,7 @@
         <title>Crea una cuenta empresarial</title>
     </head>
     <body>
+       <form id="Nuevamicroempresaform" name="Nuevamicroempresaform" action="LogicRegistroNuevoUsuarioServlet" method="post">
         <section class="section">
             <div class="container">
                 <h1 class="title">
@@ -78,5 +79,6 @@
         </div>
        </section>
         <input type="hidden" name="formid" value="2" /> 
+       </form>
     </body>
 </html>

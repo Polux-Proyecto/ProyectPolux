@@ -12,6 +12,7 @@
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>Crea una cuenta empresarial</title>
     </head>
+    <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post">
     <body>
         <section class="section">
             <div class="container">
@@ -26,14 +27,14 @@
         <div class="field">
             <label class="label">Nombre</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
+                    <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input">
                 </div>
         </div>
 
         <div class="field">
             <label class="label">Username</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" placeholder="Text input" value="bulma">
+                    <input id="strNewUsername" name="strNewUsername" class="input is-success" type="text" placeholder="Text input" value="bulma">
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                     </span>
@@ -47,7 +48,7 @@
         <div class="field">
           <label class="label">Email</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+            <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value="hello@">
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -60,7 +61,7 @@
         <div class="field">
             <label class="label">Contraseña</label>
                 <div class="control">
-                    <input class="input" type="password" placeholder="Text input">
+                    <input name="newpassword" id="newpassword" class="input" type="password" placeholder="Text input">
                 </div>
         </div>
 
@@ -74,5 +75,6 @@
         </div>
     </section>
     <input type="hidden" name="formid" value="1" />
+    </form>
     </body>
 </html>
