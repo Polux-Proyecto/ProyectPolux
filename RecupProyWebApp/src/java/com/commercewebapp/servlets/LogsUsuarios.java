@@ -1,5 +1,6 @@
 /*
- *ESte servlet ha sido desabilitado
+    Este servlet envía los datos de registro de los usuarios al objeto BuscarUsuario. 
+    Es necesario que estes los jar de Sql y BalCorpFWJavaLibrary y StudentJars
  */
 package com.commercewebapp.servlets;
 
@@ -10,31 +11,28 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.commercewebapp.logics.BuscarUsuario;
 
-/**
- *
- * @author 78GDO
+/*
+ * @author Mauricio Aguilar
  */
-@WebServlet(name = "RegistroUsuarios", urlPatterns = {"/RegistroUsuarios"})
-public class RegistroUsuarios extends HttpServlet {
+@WebServlet(name = "LogsUsuarios", urlPatterns = {"/LogsUsuarios"})
+public class LogsUsuarios extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         String strNombre = request.getParameter("nombreis");
         String strClave = request.getParameter("passis");
         
+        BuscarUsuario buscar = new BuscarUsuario(strNombre, strClave);
         
+        buscar.buscar(); //Este método busca si el usuario existe o no
         
+        if(buscar.isAutorizado()){
+            
+        } else {
+            
+        }
         
         
         
