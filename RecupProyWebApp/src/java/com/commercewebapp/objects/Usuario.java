@@ -8,6 +8,7 @@ package com.commercewebapp.objects;
 /** ESte sí es un POJO
  * @author Mauricio Aguilar
  */
+
 public class Usuario {
     private boolean microEmpresario;
     private boolean usuario;
@@ -41,37 +42,37 @@ public class Usuario {
     private void setContra(String contra) {
         this.contra = contra;
     }
-    
+
     public boolean isMicroEmpresario() {
         return microEmpresario;
     }
 
-    private void setMicroEmpresario(boolean microEmpresario) {
-        this.microEmpresario = microEmpresario;
+    private void setMicroEmpresario(boolean microEmpresariop) {
+        this.microEmpresario = microEmpresariop;
     }
 
     public boolean isUsuario() {
         return usuario;
     }
 
-    private void setUsuario(boolean usuario) {
-        this.usuario = usuario;
+    private void setUsuario(boolean usuariop) {
+        this.usuario = usuariop;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    private void setNombre(String nombre) {
-        this.nombre = nombre;
+    private void setNombre(String nombrep) {
+        this.nombre = nombrep;
     }
 
     public int getIdUsuario() {
         return idUsuario;
     }
 
-    private void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    private void setIdUsuario(int idUsuariop) {
+        this.idUsuario = idUsuariop;
     }
     
     

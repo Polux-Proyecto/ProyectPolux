@@ -1,9 +1,3 @@
-<%-- 
-    Document   : CuentaEmpresa
-    Created on : 03-05-2020, 10:59:49 AM
-    Author     : Joanna Rivas
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +13,7 @@
                 <h1 class="title">
                     Crea una cuenta empresarial
                 </h1>
-                <h2 class="title-2">
+                <h2 class="title is-2">
                     Es fácil y rápido
                 </h2>
             </div>
