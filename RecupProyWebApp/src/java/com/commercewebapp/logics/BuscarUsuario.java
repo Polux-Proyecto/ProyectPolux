@@ -1,61 +1,88 @@
 package com.commercewebapp.logics;
 
-/*
-    Este objeto tiene el propósito de buscar el usuario y confirmar si la contraseña es correcta
-    !!--Este objeto no es un POJO
-*/
+import com.commercewebapp.database.DatabaseX;
+import com.commercewebapp.objects.Usuario;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class BuscarUsuario {
-    private String nombre;
-    private String clave;
-    private boolean autorizado;
+/**
+ * @version 1.0
+ * @author Mauricio Aguilar
+ */
 
-//Constructor
-    public BuscarUsuario (String nombreC, String claveC) {
-        this.setClave(claveC);
-        this.setNombre(nombreC);
-        this.setAutorizado(false); //El usuario no está autorizado en un principio
-    }
-
-//Métodos
-    public void buscar(){
-        //Acá se acudirá a la base de datos y se revisará si el usuario existe
+public class BuscarUsuario extends Logic {
+    
+    
+//Debuelve todos los usuario con el nombre que se le pase
+    public List<Usuario> getAllUsers (String username) throws SQLException {
+        List<Usuario> list = null;
+        DatabaseX localDatabase = getDatabase();
+        Usuario usuario;
+        ResultSet result = localDatabase.executeQuery("Select * from comercebd.clientetb where Username = '"+username+"';"); 
         
-        //Si el usuario se encontró se efectuará el siguiente proceso
-        /*if (usuarioencontrado()) then{
-            */
-            this.setAutorizado(true);
-            /*
-        }
-        */
-    } 
-    
-    
-//getters y setters 
-    public String getNombre() {
-        return nombre;
-    }
+        result.next();
+        
+        if (!result.wasNull()){ 
+        //Este se ejecuta si el usuario es cliente
+        result.last();
+            try {
+                int id;
+                String nombre;
+                String contra;
+                String username2;
+                list = new ArrayList<>();
+                
+                
+                while(result.next()){
+                    id = result.getInt("idCliente");
+                    nombre = result.getString("Nombre");
+                    contra = result.getString("Password");
+                    username2 = result.getString("Username");
+                    
+                    usuario = new Usuario (false, true, nombre, id, contra, username2);
+                    list.add(usuario);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+        //Este se ejecuta si el usuario no es cliente
+            result = localDatabase.executeQuery("select * from comercebd.empresatb where username = '"+username+"';");
+            
+            result.next();
+            
+            if (!result.wasNull()){ 
+        //Este se ejecuta si el usuario es cliente
+            result.last();
+                try {
+                    int id;
+                    String nombre;
+                    String contra;
+                    String username2;
+                    list = new ArrayList<>();
 
-    private void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+                    while(result.next()){
+                        id = result.getInt("idCliente");
+                        nombre = result.getString("Nombre");
+                        contra = result.getString("Password");
+                        username2 = result.getString("Username");
 
-    public String getClave() {
-        return clave;
+                        usuario = new Usuario (true, false, nombre, id, contra, username2);
+                        list.add(usuario);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }    
+        
+        return list;
+        
     }
-
-    private void setClave(String clave) {
-        this.clave = clave;
-    }
-
-    public boolean isAutorizado() {
-        return autorizado;
-    }
-
-    private void setAutorizado(boolean autorizado) {
-        this.autorizado = autorizado;
-    }
-
-    
     
 }

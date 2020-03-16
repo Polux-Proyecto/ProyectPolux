@@ -13,12 +13,33 @@ public class Usuario {
     private boolean usuario;
     private String nombre;
     private int idUsuario;
+    private String contra;
+    private String username;
 
-    public Usuario(boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC) {
-        this.microEmpresario = microEmpresarioC;
-        this.usuario = usuarioC;
-        this.nombre = nombreC;
-        this.idUsuario = idUsuarioC; //Este es el id de la base de datos del usuario (Se supone que es la PK)
+    public Usuario(boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC, String contraC, String usernameC) {
+        this.setMicroEmpresario(microEmpresarioC);
+        this.setUsuario(usuarioC);
+        this.setNombre(nombreC);
+        this.setIdUsuario(idUsuarioC); //Este es el id de la base de datos del usuario (Se supone que es la PK)
+        this.setContra(contraC);
+        this.setUsername(usernameC);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    private void setUsername(String username) {
+        this.username = username;
+    }
+    
+
+    public String getContra() {
+        return contra;
+    }
+
+    private void setContra(String contra) {
+        this.contra = contra;
     }
     
     public boolean isMicroEmpresario() {
