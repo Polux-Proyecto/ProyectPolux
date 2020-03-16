@@ -30,12 +30,14 @@
                         <tr>
                           <th><abbr title="Cliente">Nombre de cliente</abbr></th>
                           <th><abbr title="Direccion">Dirección</abbr></th>
+                          <th><abbr title="Mensaje"> </abbr></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Nombre cliente</td>
                             <td><a href="DetalleCompra.jsp">Direccion de Cliente</a></td>
+                            <td><a href="https://api.whatsapp.com/send?phone=503+phone+&text=Hola,%20tu%20pedido%20se%20encuentra%20en%20tu%20oficina%20de%20correos%20más%20cercana.">Enviar Mensaje</a></td>
                         </tr>
                     </tbody>
                 </table>
