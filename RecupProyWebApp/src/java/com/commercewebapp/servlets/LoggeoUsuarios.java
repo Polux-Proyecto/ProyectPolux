@@ -3,7 +3,6 @@ package com.commercewebapp.servlets;
 import com.commercewebapp.logics.BuscarUsuario;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,9 +22,29 @@ public class LoggeoUsuarios extends HttpServlet {
         BuscarUsuario buscador = new BuscarUsuario();
         String nombre = request.getParameter("nameis");
         String clave = request.getParameter("passis");
-        Usuario usuario = buscador.getAllUsers("nombre");
+        Usuario usuario = buscador.getAllUsers(nombre);
         
-        System.out.println("HolaMundo");
+        if (!usuario.isMicroEmpresario()==usuario.isUsuario()){
+            String claveIngresada = usuario.getContra();
+            if (claveIngresada.equals(clave)){
+                System.out.println("Las claves coinciden");
+                request.getSession().setAttribute("usuario", usuario);
+                if (usuario.isMicroEmpresario()){
+                    request.getRequestDispatcher("InicioEmpresa.jsp").forward(request, response);
+                } else if (usuario.isUsuario()){
+                    request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
+            }
+                
+            } else {
+                System.out.println("Las contraseñas no coinciden");
+                response.sendRedirect("ErrorEnInicioSesion.jsp?formid=1"); //! significa que las contraseñas no coincidieron
+            }
+        } else {
+            System.out.println("El usuario no se encontró"); //2 significa que el usuario no existe
+            response.sendRedirect("ErrorEnInicioSesion.jsp?formid=2");
+            
+        }
+        
         
     }
 

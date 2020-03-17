@@ -20,39 +20,50 @@ public class BuscarUsuario extends Logic {
         
         DatabaseX localDatabase = getDatabase();
         Usuario usuario = null;
+        System.out.println("Select * from comercebd.clientetb where Username = '"+username+"';");
         ResultSet result = localDatabase.executeQuery("Select * from comercebd.clientetb where Username = '"+username+"';"); 
         String pass, nombre;
         int id;
-        
+        int i = 0;
         
         try {
-                pass = result.getString("Password");
-                nombre = result.getString("Nombre");
-                id = result.getInt("idCliente");
-            
-            if (result.isFirst()){
-            //Es porque el usuario existe y está en la tabla de clientes
-                
-                pass = result.getString("Password");
-                nombre = result.getString("Nombre");
-                id = result.getInt("idCliente");
-                
-                usuario = new Usuario(false, true, nombre, id, pass, username);
-                
-            } else {
-            //Es porque no se encontro en la tabla de clientes   
-                //result = localDatabase.executeQuery("Select * from comercebd.empresatb where Username = '"+username+"';");
-                
-                
-                if (result.isFirst()){
-                pass = result.getString("Password");
-                nombre = result.getString("Nombre");
-                id = result.getInt("idempresatb");
-                
-                usuario = new Usuario(false, true, nombre, id, pass, username);
-                }
-                
-            }
+             if (result != null){
+                 while (result.next()){
+                     System.out.println("Hay algo en la tabla de clientes");
+                     nombre = result.getString("Nombre");
+                     pass = result.getString("Password");
+                     id = result.getInt("idCliente");
+                     i++;
+                     usuario = new Usuario (false, true, nombre, id, pass, username);
+                     System.out.println(nombre+" "+pass+" "+id);
+                 }
+                 System.out.println("Ya terminó la tabla de clientes");
+                 if (i==0){
+                     System.out.println("No se encontró nada en la tabla de clientes");
+                     System.out.println("SELECT * FROM comercebd.empresatb where Username = '"+username+"';");
+                     result = null;
+                     result = localDatabase.executeQuery("SELECT * FROM comercebd.empresatb where Username = '"+username+"';");
+                     
+                     if (result != null){
+                         i = 0;
+                         while (result.next()){
+                            System.out.println("Hay algo en la tabla de empresarios");
+                            nombre = result.getString("Nombre");
+                            pass = result.getString("Password");
+                            id = result.getInt("idempresatb");
+                            usuario = new Usuario (true, false, nombre, id, pass, username );
+                            System.out.println(nombre+" "+pass+" "+id);
+                            i++;
+                        }
+                        
+                    }
+                    System.out.println("Llego");
+                    if (i==0){
+                    System.out.println("El usuario no existe");
+                    usuario = new Usuario (false, false, "", 0, "", "");
+                     }
+                 }
+             }
             
         } catch (SQLException ex) {
             Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
