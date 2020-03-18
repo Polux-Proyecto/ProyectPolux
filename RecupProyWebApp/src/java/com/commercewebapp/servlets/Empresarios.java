@@ -1,7 +1,9 @@
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.AdminProductos;
+import com.commercewebapp.objects.Producto;
+import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,27 +15,49 @@ import javax.servlet.http.HttpServletResponse;
  * Este servidor administra todo lo qe hagan los empresarios
  * @author Mauricio Aguilar
  */
+
 @WebServlet(name = "Empresarios", urlPatterns = {"/Empresarios"})
 public class Empresarios extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    //Pedir el formid y el empresario
         response.setContentType("text/html;charset=UTF-8");
         String  formid = request.getParameter("formid");
+        Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
         
-        if (formid.equals("11")){
-        //Acá está el código si el empresario quiere insertar un nuevo producto
-        //Obtenet parámetros
-            String  nombre = request.getParameter("nameProd"), 
-                    cantidadS = request.getParameter("cantProd"), 
-                    costoS = request.getParameter("costoProd"), 
-                    descripciónS  = request.getParameter("descProd");
-        //Convertir
-            int     cantidad = Integer.parseInt(cantidadS);
-            double  costo = Double.parseDouble(costoS);
+        if (usuario == null){
+            response.sendRedirect("PaginaDeErrores.jsp");
+            //Este código se supone que no debe de ocurrir jamás
+        } else {
             
-        //Ejecutar
+            if (formid.equals("11")){
+            //Acá está el código si el empresario quiere insertar un nuevo producto
+            //Obtenet parámetros
+                String  nombre = request.getParameter("nameProd"), 
+                        cantidadS = request.getParameter("cantProd"), 
+                        costoS = request.getParameter("costoProd"), 
+                        descripciónS  = request.getParameter("descProd");
+            //Convertir
+                int     cantidad = Integer.parseInt(cantidadS);
+                double  costo = Double.parseDouble(costoS);
+                AdminProductos adminProd = new AdminProductos();
+                boolean hasFailed;
+
+            //Crear pojo del nuevo producto
+                Producto producto = new Producto(0, usuario.getIdUsuario(), nombre, descripciónS, costo, 1, cantidad);
             
-            
-            
+            //Insertar en la bd
+                hasFailed = adminProd.crearProducto(producto);
+                
+            //Avisar al usuario 
+                if(hasFailed){
+                //Falló
+                    response.sendRedirect("InicioEmpresa.jsp?Error=1");
+                } else {
+                //Éxito
+                    response.sendRedirect("InicioEmpresa.jsp?Mensaje=1");
+                }
+            }    
         }
         
         

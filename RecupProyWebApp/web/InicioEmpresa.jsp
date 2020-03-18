@@ -2,12 +2,35 @@
     Document   : InicioEmpresa
     Created on : 03-05-2020, 11:31:15 AM
     Author     : Joanna Rivas
+    Errores    : 
+        1 - No se pudo insertar el producto ingresado
+    Mensajes   :
+        1 - El producto se ingresó con éxito
 --%>
 
 <%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%  Usuario usuario = (Usuario) request.getSession().getAttribute("usuario"); %>
 <!DOCTYPE html>
+<% 
+    String error = request.getParameter("Error"), mensaje = request.getParameter("Mensaje"), avisoE = "", avisoM = "";
+    
+    if(error!= null){
+        if (error.equals("1")){
+            avisoE = "El producto no pudo ser ingresado, inténtelo de nuevo";
+        }
+    } else {
+        error = "";
+    }
+    if(mensaje!=null){
+        if (mensaje.equals("1")){
+            avisoM = "El producto fue ingresado correctamente";
+        }
+    } else {
+        mensaje = "";
+    }
+    
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,6 +53,8 @@
                     <article class="tile is-child box">
                         <form name="FrmNuevoProd" action="Empresarios" method="get" id="FrmNuevoProd">
                             <p class="title">Añadir Producto</p>
+                            <p class="subtitle has-text-danger"><%= avisoE %></p>
+                            <p class="subtitle has-text-success"><%= avisoM %></p>
                             <p class="subtitle">Agrega nuevos productos a tu inventario</p>
                             <div class="field">
                                 <label>Nombre del producto:</label>

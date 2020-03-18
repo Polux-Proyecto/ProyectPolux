@@ -12,11 +12,9 @@ package com.commercewebapp.objects;
 public class Usuario {
     private boolean microEmpresario;
     private boolean usuario;
-    private String nombre;
     private int idUsuario;
-    private String contra;
-    private String username;
-
+    private String nombre, contra, username;
+    
     public Usuario(boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC, String contraC, String usernameC) {
         this.setMicroEmpresario(microEmpresarioC);
         this.setUsuario(usuarioC);
