@@ -1,6 +1,8 @@
 package com.commercewebapp.logics;
 
 import com.commercewebapp.database.DatabaseZ;
+import com.commercewebapp.objects.NuevoMicroEmpresario;
+import com.commercewebapp.objects.NuevoUsuarioParticular;
 import com.commercewebapp.objects.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -70,5 +72,44 @@ public class BuscarUsuario extends Logic {
         }
         
         return usuario;
+    }
+
+    public boolean createnewuser(NuevoUsuarioParticular nuevouser, NuevoMicroEmpresario nuevoempresario) 
+    {
+       DatabaseZ localDatabase = getDatabase();
+       boolean hasfailed = true;
+       String pSQL;
+
+       if(nuevouser!=null){
+           String bdnombre = nuevouser.getName();
+           String bduser = nuevouser.getUsername();
+           String bdemail = nuevouser.getEmail();
+           String bdpassword = nuevouser.getPassword();
+           String bdpais = nuevouser.getPais();
+           String bdciudad = nuevouser.getCiudad();
+           String bddireccion = nuevouser.getDireccion();
+           
+           pSQL = "INSERT INTO comercebd.clientetb(Nombre,Correo,Username,Password,Pais,Ciudad,Dirección)"
+                   + "VALUES('"+bdnombre+"','"+bdemail+"','"+bduser+"','"+bdpassword+"','"+bdpais+"','"+bdciudad+"','"+bddireccion+"')";
+           hasfailed = localDatabase.executeNonQueryBool(pSQL);
+           System.out.println("Se insertaron los datos de usuario particular correctamente");
+           
+       } 
+       else if(nuevoempresario!=null)
+       {
+            String bdname = nuevoempresario.getName();
+            String bduser = nuevoempresario.getUser(); 
+            String bdnit = nuevoempresario.getNit();
+            String bdpassword = nuevoempresario.getPassword();
+            String bddescripcion = nuevoempresario.getDescripcion();
+            
+            pSQL = "INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion)"
+                    + "VALUES('"+bdname+"','"+bdnit+"','"+bdpassword+"','"+bduser+"','"+bddescripcion+"')";
+            hasfailed = localDatabase.executeNonQueryBool(pSQL);
+            System.out.println("Se insertaron los datos de microempresario correctamente");
+                 
+       }
+       
+        return hasfailed;
     }
 }

@@ -1,5 +1,9 @@
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.BuscarUsuario;
+import com.commercewebapp.objects.NuevoMicroEmpresario;
+import com.commercewebapp.objects.NuevoUsuarioParticular;
+import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,6 +24,9 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String strForm = request.getParameter("formid");
+            BuscarUsuario buscador = new BuscarUsuario();
+            int itype =0;
+            boolean hasfailed;
             
             if(strForm.equals("1")){
                 String strname = request.getParameter("strnewNombreUsuario");
@@ -30,8 +37,20 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 String strciudad = request.getParameter("strciudad");
                 String strdireccion = request.getParameter("strdireccion");
                 
+                Usuario usuario = buscador.getAllUsers(struser);
+                itype=1;
                 
-                
+                if (usuario.isMicroEmpresario()==usuario.isUsuario())
+                {
+                    //el usuario no existe
+                    NuevoUsuarioParticular nuevouser = new NuevoUsuarioParticular(strname, struser, stremail, strpassword, strpais, strciudad, strdireccion);
+                    hasfailed = buscador.createnewuser(nuevouser,null);
+                }
+                else
+                {
+                    //usuario ya existente
+                    response.sendRedirect("CuentaUsuario.jsp?error=1");
+                }
                         
             }
             
@@ -42,6 +61,20 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 String strpassword = request.getParameter("passEmp");
                 String strdescripcion = request.getParameter("descEmp");
                 
+                Usuario usuario = buscador.getAllUsers(struser);
+                itype=2;
+                
+                if (usuario.isMicroEmpresario()==usuario.isUsuario())
+                {
+                    //usuario no existe
+                    NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion);
+                    hasfailed = buscador.createnewuser(null, nuevoempresario);
+                }
+                else
+                {
+                    //usuario existe
+                    response.sendRedirect("CuentaEmpresa.jsp?error=1");
+                }
             }
         }
     }
