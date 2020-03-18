@@ -10,18 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Este es el servidor 0
+ * Este servidor solamente sirve para el loggeo de los usuarios
  * @author Mauricio Aguilar
  */
-@WebServlet(name = "LoggeoUsuarios", urlPatterns = {"/LoggeoUsuarios"})
-public class LoggeoUsuarios extends HttpServlet {
-
-    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        BuscarUsuario buscador = new BuscarUsuario();
-        String nombre = request.getParameter("nameis");
-        String clave = request.getParameter("passis");
+@WebServlet(name = "LoggeoUsuarios", urlPatterns = {"/LoggeoUsuarios"}) public class LoggeoUsuarios extends HttpServlet {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        BuscarUsuario   buscador = new BuscarUsuario();
+        String  nombre = request.getParameter("nameis");
+        String  clave = request.getParameter("passis");
         Usuario usuario = buscador.getAllUsers(nombre);
         
         if (!usuario.isMicroEmpresario()==usuario.isUsuario()){
@@ -30,22 +28,25 @@ public class LoggeoUsuarios extends HttpServlet {
                 System.out.println("Las claves coinciden");
                 request.getSession().setAttribute("usuario", usuario);
                 if (usuario.isMicroEmpresario()){
+                    request.getSession().setAttribute("usuario", usuario);
                     request.getRequestDispatcher("InicioEmpresa.jsp").forward(request, response);
                 } else if (usuario.isUsuario()){
+                    request.getSession().setAttribute("usuario", usuario);
                     request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
             }
                 
             } else {
                 System.out.println("Las contraseñas no coinciden");
-                response.sendRedirect("index.jsp?error=1"); //! significa que las contraseñas no coincidieron
+                String  error = "1";
+                request.getSession().setAttribute("error",error );
+                response.sendRedirect("index.jsp"); //1 significa que las contraseñas no coincidieron
             }
         } else {
+            String  error = "2";
             System.out.println("El usuario no se encontró"); //2 significa que el usuario no existe
-            response.sendRedirect("index.jsp?error=2");
-            
+            request.getSession().setAttribute("error",error );
+            response.sendRedirect("index.jsp?");
         }
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

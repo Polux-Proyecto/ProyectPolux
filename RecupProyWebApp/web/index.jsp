@@ -6,6 +6,17 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% 
+    String error = (String)session.getAttribute("error");
+    String message = "";
+    if (error != null){
+        if (error.equals("1")){
+            message = "Error en inicio de sesión: la contraseña o el username no coincide";
+        } else {
+            message = "Error en inicio de sesión: el usuario ingresado no existe";
+        }
+    }
+%>
 <html>
     <head>
         <title>Brocolin: Iniciar sesión</title>
@@ -25,13 +36,15 @@
             </div><br><br>
             <form action="LoggeoUsuarios" method="post">
 				<div class="field">
-					<label class="label">Usuario</label>
+                                    
+                                    <label class="title">Usuario</label><br>
+                                        <div class="subtitle has-text-danger" ><%= message%></div>
 					<p class="control">
 						<input class="input" type="text" name="nameis" placeholder="Usuario">
 					</p>
 				</div>
                 <div class="field">
-                    <label class="label">Contraseña</label>
+                    <label class="title">Contraseña</label><br><br>
                     <div class="control">
                         <input class="input" type="password" name="passis" id="passis"/>
                     </div>
@@ -39,6 +52,7 @@
                 <div class="field">
                     <div class="control">
                         <input class="button is-link" type="submit" value="send"/>
+                        
                     </div>
                 </div>
             </form>

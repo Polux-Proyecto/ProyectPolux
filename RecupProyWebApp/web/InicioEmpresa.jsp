@@ -4,7 +4,9 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%  Usuario usuario = (Usuario) request.getSession().getAttribute("usuario"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,11 +14,11 @@
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>InicioEmpresa</title>
     </head>
-    <body>
+    <body><br>
         <section class="section">
             <div class="container">
                 <h1 class="title">
-                    ¡Bienvenido de nuevo!
+                    ¡Bienvenido, <%=usuario.getNombre() %>!
                 </h1>
             </div>
         </section>
@@ -26,37 +28,46 @@
                 <div class="tile">
                   <div class="tile is-parent is-vertical">
                     <article class="tile is-child box">
-                      <p class="title">Añadir Producto</p>
-                      <p class="subtitle">Agrega nuevos productos a tu inventario</p>
-                      <div class="field">
-                          <label>Nombre del producto:</label>
-                          <div class="control">
-                            <input class="input" type="text" name="nameProd" id="nameProd"/>
-                          </div>
-                      </div>
-                      <div class="field">
-                          <label>Cantidad:</label>
-                          <div class="control">
-                            <input class="input" type="number" name="cantProd" id="cantProd"/>
-                          </div>
-                      </div>
-                      <div class="field">
-                          <label>Costo Unitario:</label>
-                          <div class="control">
-                            <input class="input" type="double" name="costoProd" id="costoProd"/>
-                          </div>
-                      </div>
-                      <div class="field">
-                          <label>Descripción:</label>
-                          <div class="control">
-                            <input class="input" type="text" name="descProd" id="descProd"/>
-                          </div>
-                      </div>
+                        <form name="FrmNuevoProd" action="Empresarios" method="get" id="FrmNuevoProd">
+                            <p class="title">Añadir Producto</p>
+                            <p class="subtitle">Agrega nuevos productos a tu inventario</p>
+                            <div class="field">
+                                <label>Nombre del producto:</label>
+                                <div class="control">
+                                  <input class="input" type="text" name="nameProd" id="nameProd"/>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Cantidad:</label>
+                                <div class="control">
+                                  <input class="input" type="number" name="cantProd" id="cantProd" min="1"/>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Costo Unitario:</label>
+                                <div class="control">
+                                  <input class="input" type="double" name="costoProd" id="costoProd" min="0.01"/>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Descripción:</label>
+                                <div class="control">
+                                  <input class="input" type="text" name="descProd" id="descProd"/>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input type="hidden" name="formid" value="11" /><!--El 11 significa que va al servidor 1 y que es el form 1 -->
+                                    <input class="button is-link" type="submit" value="send"/>
+                                </div>
+                            </div>
+                        </form>
+
                     </article>
-                    <article class="tile is-child box">
-                        <a href="EnviosPend.jsp"><h1 class="title">Envíos</h1>></a>
-                      <p class="subtitle">Revisa tus envíos pendientes</p>
-                    </article>
+                            <article class="tile is-child box">
+                                <a href="EnviosPend.jsp"><h1 class="title">Envíos</h1>></a>
+                              <p class="subtitle">Revisa tus envíos pendientes</p>
+                            </article>
                   </div>
                   <div class="tile is-parent">
                     <article class="tile is-child box">

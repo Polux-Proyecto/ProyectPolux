@@ -16,7 +16,7 @@
         <section class="section">
             <div class="container">
                 <h1 class="title">
-                    ¡Bienvenido de nuevo! No maldito
+                    ¡Bienvenido de nuevo! 
                 </h1>
             </div>
             
