@@ -1,6 +1,6 @@
 package com.commercewebapp.logics;
 
-import com.commercewebapp.database.DatabaseX;
+import com.commercewebapp.database.DatabaseZ;
 import com.commercewebapp.objects.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ public class BuscarUsuario extends Logic {
 //Debuelve todos los usuario con el nombre que se le pase
     public Usuario getAllUsers (String username)  {
         
-        DatabaseX localDatabase = getDatabase();
+        DatabaseZ localDatabase = getDatabase();
         Usuario usuario = null;
         System.out.println("Select * from comercebd.clientetb where Username = '"+username+"';");
         ResultSet result = localDatabase.executeQuery("Select * from comercebd.clientetb where Username = '"+username+"';"); 

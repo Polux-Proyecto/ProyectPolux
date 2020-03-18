@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : 03-18-2020, 09:30:14 AM
+    Author     : 78GDO
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +23,7 @@
                     Iniciar Sesión:
                 </h2>
             </div><br><br>
-            <form action="LoggeoUsuarios" method="get">
+            <form action="LoggeoUsuarios" method="post">
 				<div class="field">
 					<label class="label">Usuario</label>
 					<p class="control">

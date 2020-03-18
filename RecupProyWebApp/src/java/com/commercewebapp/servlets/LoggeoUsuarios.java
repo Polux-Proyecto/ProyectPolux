@@ -37,11 +37,11 @@ public class LoggeoUsuarios extends HttpServlet {
                 
             } else {
                 System.out.println("Las contraseñas no coinciden");
-                response.sendRedirect("ErrorEnInicioSesion.jsp?formid=1"); //! significa que las contraseñas no coincidieron
+                response.sendRedirect("index.jsp?error=1"); //! significa que las contraseñas no coincidieron
             }
         } else {
             System.out.println("El usuario no se encontró"); //2 significa que el usuario no existe
-            response.sendRedirect("ErrorEnInicioSesion.jsp?formid=2");
+            response.sendRedirect("index.jsp?error=2");
             
         }
         

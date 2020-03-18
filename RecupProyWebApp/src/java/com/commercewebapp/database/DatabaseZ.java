@@ -16,14 +16,14 @@ import java.util.logging.Logger;
  *
  * @author Mauricio Aguilar
  */
-public class DatabaseX {
+public class DatabaseZ {
 //Variables de instancia
     private Connection connection;
     private Statement statement;
     
 //Constructor
 
-    public DatabaseX() {
+    public DatabaseZ() {
     //Conección a la BD
         this.setConnection(createConnection());
     //Creación del Statement
@@ -60,7 +60,7 @@ public class DatabaseX {
                     + "&useLegacyDateTimeCode=false&serverTimezone=UTC"
                     + "&autoReconnect=true&useSSL=false");
             } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(DatabaseX.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DatabaseZ.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
@@ -78,7 +78,7 @@ public class DatabaseX {
                     localStatement = localConnection.createStatement();
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(DatabaseX.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DatabaseZ.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
@@ -94,7 +94,7 @@ public class DatabaseX {
             try {
                 hasFailed = localStatement.execute(pSql);
             } catch (SQLException ex) {
-                Logger.getLogger(DatabaseX.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DatabaseZ.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
@@ -108,7 +108,7 @@ public class DatabaseX {
             try {
                 result = localStatement.executeQuery(pSql);
             } catch (SQLException ex) {
-                Logger.getLogger(DatabaseX.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DatabaseZ.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return result;

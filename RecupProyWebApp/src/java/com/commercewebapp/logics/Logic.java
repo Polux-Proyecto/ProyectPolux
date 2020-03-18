@@ -1,32 +1,32 @@
 package com.commercewebapp.logics;
 
-import com.commercewebapp.database.DatabaseX;
+import com.commercewebapp.database.DatabaseZ;
 
 /**
  *
  * @author Mauricio Aguilar
  */
 public abstract class  Logic {
-    private DatabaseX database;
+    private DatabaseZ database;
 
     public Logic() {
         this.setDatabase(createDatabase());
     }
 
     
-    public DatabaseX getDatabase() {
+    public DatabaseZ getDatabase() {
         return database;
     }
 
-    private void setDatabase(DatabaseX database) {
+    private void setDatabase(DatabaseZ database) {
         this.database = database;
     }
 
-    private DatabaseX createDatabase() {
-        DatabaseX localDatabase = getDatabase();
+    private DatabaseZ createDatabase() {
+        DatabaseZ localDatabase = getDatabase();
         
         if(localDatabase==null){
-            localDatabase = new DatabaseX();
+            localDatabase = new DatabaseZ();
         }
         
         return localDatabase;
