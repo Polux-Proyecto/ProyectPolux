@@ -17,61 +17,94 @@
         <title>InicioCliente</title>
     </head>
     <body>
-        <section class="section">
-            <div class="container">
-                <h1 class="title">
-                    ¡Bienvenido de nuevo! 
-                </h1>
-            </div>    
-        </section>
-        <section class="hero is-light">
-            <div class="hero-body">
-              <div class="container">
-                <nav class="level" >
-                    <p class="level-item has-text-centered">
-                      <a class="link is-info">Necesidades básicas</a>
-                    </p>
-                    <p class="level-item has-text-centered">
-                      <a class="link is-info">Hogar</a>
-                    </p>
-                    <p class="level-item has-text-centered">
-                      <img src="https://bulma.io/images/bulma-type.png" alt="" style="height: 30px;">
-                    </p>
-                    <p class="level-item has-text-centered">
-                      <a class="link is-info">Tecnología</a>
-                    </p>
-                    <p class="level-item has-text-centered">
-                      <a class="link is-info">Repuestos</a>
-                    </p>
+       <section>
+        <div>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+              </a>
+
+              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item" href="InicioCliente">
+                  Inicio
+                </a>
+                 <a class="navbar-item" href="CategoriaEmpresas.jsp">
+                  Hogar
+                </a>
+                <a class="navbar-item" href="CategoriaEmpresas.jsp">
+                  Tecnología
+                </a>
+                <a class="navbar-item" href="CategoriaEmpresas.jsp">
+                  Conveniencia
+                </a>
+                <a class="navbar-item" href="CategoriaEmpresas.jsp">
+                  Otro
+                </a>
+              </div>
+            </div>
+
+              <div class="navbar-end">
+                <div class="navbar-item">
                     <p class="control">
                       <input class="input" type="text" placeholder="Find a post">
                     </p>
                     <p class="control">
-                      <button class="button">
+                      <button class="button is-primary">
                         Buscar
                       </button>
                     </p>
-                  </nav>
+                    <div class="buttons">
+                    <a class="button is-light">
+                      Cerrar sesión
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
+          </nav>
+         </div>
         </section>
         <section class="hero is-medium has-carousel">
-			<div id="carousel-demo" class="hero-carousel">
-				<div class="item-1">
-                                    <image src="https://wikiki.github.io/images/merry-christmas.jpg" />
-                                
-				</div>
-				<div class="item-2">
-                                    <image src="https://wikiki.github.io/images/singer.jpg" />
-				</div>
-				<div class="item-3">
-                                    <image src="https://wikiki.github.io/images/sushi.jpg" />
-				</div>
-			</div>
-			<div class="hero-head"></div>
-			<div class="hero-body"></div>
-			<div class="hero-foot"></div>
-		</section>
+                    <div class="hero-head"></div>
+                    <div class="hero-body">
+                        <div id="carousel-demo" class="hero-carousel" data-autoplay="true" data-navigation-keys="false" data-autoplay-speed="5000" data-effect="fade" data-duration="1000">
+                            <div class="carousel-item has-text-centered has-background">
+                                <img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/merry-christmas.jpg">
+                                <div class="box" >
+                                    <div class="EnlaceCarousel">
+                                        <a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item has-text-centered has-background">
+                                <img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/singer.jpg">
+                                <div class="box" >
+                                    <div class="EnlaceCarousel">
+                                        <a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>
+                                     </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item has-text-centered has-background">
+                                <img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/sushi.jpg">
+                                <div class="box" >
+                                    <div class="EnlaceCarousel">
+                                        <a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-foot"></div>
+                </section>
 		<!-- End Hero Carousel -->
 
 		<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
@@ -82,6 +115,7 @@
                                 
 			});
 		</script>
+    <container>
                 <section>
                     <div class="tile is-ancestor">
                     <div class="tile is-parent">
@@ -125,6 +159,7 @@
                     </div>
                   </div>
                 </section>
+    </container>
                 
     </body>
 </html>

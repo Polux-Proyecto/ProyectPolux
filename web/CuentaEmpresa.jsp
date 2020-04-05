@@ -21,39 +21,60 @@
                     </h2>
                 </div>
                 <div class="field">
-                    <label class="label">Nombre</label>
+                    <label>Logo Empresarial</label>
+                    <div class="control">
+                        <div class="file has-name is-right">
+                            <label class="file-label">
+                              <input class="file-input" type="file" name="resume">
+                              <span class="file-cta">
+                                <span class="file-icon">
+                                  <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                  Choose a file…
+                                </span>
+                              </span>
+                              <span class="file-name">
+                                Screen Shot 2017-07-29 at 15.54.25.png
+                              </span>
+                            </label>
+                          </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Nombre</label>
                     <div class="control">
                         <input class="input" type="text" name="nombreEmp" id="nombreEmp" placeholder="Text input">
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Username</label>
+                    <label>Username</label>
                     <div class="control">
                         <input class="input" type="text" name="userEmp" id="userEmp" idplaceholder="Text input">
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Email</label>
+                    <label>Email</label>
                     <div class="control">
                         <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value="me@example.com">
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">NIT</label>
+                    <label>NIT</label>
                     <div class="control">
                         <input class="input" type="text" name="nit" id="nit" placeholder="Text input" value="9 digitos">
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Contraseña</label>
+                    <label>Contraseña</label>
                     <div class="control">
                         <input class="input" type="password" name="passEmp" id="passEmp" placeholder="Text input">
                     </div>
                 </div>    
                 <div class="field">
-                    <label class="label">País</label>
+                    <label>País</label>
                     <div class="control">
                         <div class="select is-info">
                             <select  id="StringNewCountryEmp" name="StringNewCountryEmp">
@@ -69,13 +90,14 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Ciudad</label>
+                    <label>Ciudad</label>
                     <div class="control">
                         <input id="strnewCiudadEmp" name="strnewCiudadEmp" class="input" type="text" placeholder="Text input">
                     </div>
                 </div>
                  <div class="field">
-                    <label class="label">Categoría</label>
+                    <label>Categoría</label>
+                    <br>
                     <input class="is-checkradio" id="NecBasicas" type="radio" name="NecBasicas" checked="checked">
                     <label for="NecBasicas">Necesidades Básicas</label>
                     
@@ -90,7 +112,7 @@
                 </div>
                     
                 <div class="field">
-                <label class="label">Descripcion</label>
+                <label>Descripcion</label>
                     <div class="control">
                         <textarea class="textarea" type="text" name="descEmp" id="descEmp" placeholder="200 words or less"></textarea>
                     </div>

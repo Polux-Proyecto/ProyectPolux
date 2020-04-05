@@ -6,52 +6,51 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+public class MessageObj {
+    public boolean enviarCorreo(String mensaje, String asunto) throws AddressException, MessagingException{
+    boolean enviado = false;
+        
+            String de = "pruebapolux@gmail.com"; 
+            String clave = "mbbvr9788";
+            String para="jaky47@gmail.com";  
+            String host = "smtp.gmail.com";
 
-public class MessageObj 
+            Properties prop = System.getProperties();
 
-{
+            prop.put("mail.smtp.starttls.enable","true");
+            prop.put("mail.smtp.host", host);
+            prop.put("mail.smtp.user",de);
+            prop.put("mail.smtp.password", clave);
+            prop.put("mail.smtp.port",587);
+            prop.put("mail.smtp.auth","true");
 
-    
-   private final Properties properties = new Properties();
-	
-	private String password;
- 
-	private Session session;
- 
-	private void init() {
- 
-		properties.put("mail.smtp.host", "mail.gmail.com");
-		properties.put("mail.smtp.starttls.enable", "true");
-		properties.put("mail.smtp.port",25);
-		properties.put("mail.smtp.mail.sender","emisor@gmail.com");
-		properties.put("mail.smtp.user", "usuario");
-		properties.put("mail.smtp.auth", "true");
- 
-		session = Session.getDefaultInstance(properties);
-	}
- 
-	public void sendEmail()
-        {
- 
-		init();
-		try{
-			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress((String)properties.get("mail.smtp.mail.sender")));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress("receptor@gmail.com"));
-			message.setSubject("Prueba");
-			message.setText("Texto");
-			Transport t = session.getTransport("smtp");
-			t.connect((String)properties.get("mail.smtp.user"), "password");
-			t.sendMessage(message, message.getAllRecipients());
-			t.close();
-		}catch (MessagingException me){
-                        
-			return;
-		}
-		
-	}
+            Session sesion = Session.getDefaultInstance(prop,null);
 
+            MimeMessage message = new MimeMessage(sesion);
+
+            message.setFrom(new InternetAddress(de));
+            
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
+
+            message.setSubject(asunto);
+            message.setText(mensaje);
+
+            Transport transport = sesion.getTransport("smtp");
+
+            transport.connect(host,de,clave);
+
+            transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+
+            transport.close();
+
+            enviado = true;
+
+        
+
+    return enviado;
+    }
 }

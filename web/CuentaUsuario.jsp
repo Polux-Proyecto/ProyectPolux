@@ -25,33 +25,53 @@
                     </h2>
                 </div>
                 <div class="field">
-                    <label class="label">Nombre</label>
+                    <label >Nombre</label>
                     <div class="control">
                         <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input">
                     </div>
                 </div>
-
                 <div class="field">
-                    <label class="label">Username</label>
+                    <label>Imagen de Perfil</label>
+                    <div class="control">
+                        <div class="file has-name is-right">
+                            <label class="file-label">
+                              <input class="file-input" type="file" name="resume">
+                              <span class="file-cta">
+                                <span class="file-icon">
+                                  <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                  Choose a file…
+                                </span>
+                              </span>
+                              <span class="file-name">
+                                Screen Shot 2017-07-29 at 15.54.25.png
+                              </span>
+                            </label>
+                          </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Username</label>
                     <div class="control">
                         <input id="strNewUsername" name="strNewUsername" class="input" type="text" placeholder="Text input" >
                     </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">Email</label>
+                  <label>Email</label>
                   <div class="control">
                     <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value="me@example.com">
                   </div>
                 </div>
                 <div class="field">
-                    <label class="label">Contraseña</label>
+                    <label>Contraseña</label>
                     <div class="control">
                         <input name="newpassword" id="newpassword" class="input is-danger" type="password" placeholder="Text input">
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Sexo</label>
+                    <label>Sexo</label>
                     <div class="control">
                         <div class="select is-info">
                             <select  id="StringNewSexo" name="StringNewSexo">
@@ -63,7 +83,7 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Fecha de Nacimiento</label>
+                    <label>Fecha de Nacimiento</label>
                     <div class="control">
                         <div class="select is-info">
                             <label class="label" style="font-weight: 100;">Día</label>
@@ -102,7 +122,7 @@
                             </select>
                         </div>
                         <div class="select is-info">
-                            <label class="label"style="font-weight: 100;">Mes</label>
+                            <label class="label" style="font-weight: 100;">Mes</label>
                             <select  id="StringNewBornMonth " name="StringNewBornMonth">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -134,7 +154,7 @@
                 </div>
                 <div class="field">
                     <br>
-                    <label class="label">País</label>
+                    <label>País</label>
                     <div class="control">
                         <div class="select is-info">
                             <select  id="StringNewCountry" name="StringNewCountry">
@@ -150,13 +170,13 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Ciudad</label>
+                    <label>Ciudad</label>
                     <div class="control">
                         <input id="strnewCiudadUsuario" name="strnewCiudadUsuario" class="input" type="text" placeholder="Text input">
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Dirección</label>
+                    <label>Dirección</label>
                     <div class="control">
                         <input id="strnewDireccionUsuario" name="strnewDireccionUsuario" class="input" type="text" placeholder="Text input">
                     </div>
