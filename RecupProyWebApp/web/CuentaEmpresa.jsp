@@ -1,5 +1,22 @@
+<%@page import="com.commercewebapp.objects.NuevoMicroEmpresario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    NuevoMicroEmpresario usuarioexistente = (NuevoMicroEmpresario)session.getAttribute("nuevoempresario");
+    String bdname ="";
+    String bdnit = "";
+    String bddescripcion="";
+    String message = "";
+    
+    if(usuarioexistente!=null)
+    {
+         bdname = usuarioexistente.getName(); 
+         bdnit = usuarioexistente.getNit();
+         bddescripcion = usuarioexistente.getDescripcion();
+         
+         message = "El usuario ya existe, por favor intente con otro";
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,14 +37,15 @@
         <div class="field">
             <label class="label">Nombre</label>
                 <div class="control">
-                    <input class="input" type="text" name="nombreEmp" id="nombreEmp" placeholder="Text input">
+                    <input class="input" type="text" name="nombreEmp" id="nombreEmp" placeholder="Text input" value=<%=bdname%>>
                 </div>
         </div>
 
         <div class="field">
             <label class="label">Username</label>
+            <div class="subtitle has-text-danger" ><%= message %></div>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" name="userEmp" id="userEmp" idplaceholder="Text input" value="bulma">
+                    <input class="input is-success" type="text" name="userEmp" id="userEmp" idplaceholder="Text input" value="">
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                     </span>
@@ -40,7 +58,7 @@
         <div class="field">
           <label class="label">NIT</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input is-danger" type="text" name="nit" id="nit" placeholder="Text input" value="9 digitos">
+            <input class="input is-danger" type="text" name="nit" id="nit" placeholder="Text input" value=<%=bdnit%> >
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -59,7 +77,7 @@
         <div class="field">
             <label class="label">Descripcion</label>
                 <div class="control">
-                    <textarea class="textarea" type="text" name="descEmp" id="descEmp" placeholder="200 words or less"></textarea>
+                    <textarea class="textarea" type="text" name="descEmp" id="descEmp" placeholder="200 words or less" ></textarea>
                 </div>
         </div>
 

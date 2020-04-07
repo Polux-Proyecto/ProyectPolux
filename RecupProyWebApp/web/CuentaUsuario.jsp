@@ -4,8 +4,35 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.NuevoUsuarioParticular"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    NuevoUsuarioParticular usuarioexistente = (NuevoUsuarioParticular)session.getAttribute("nuevouser");
+    String bdnombre="";
+    String bdemail="brocolin@brocomail.com";
+    String bdpassword="";
+    String bdpais ="";
+    String bdciudad ="";
+    String bddireccion ="";
+    String message= "";
+         
+    
+    if (usuarioexistente!=null)
+    {
+           bdnombre = usuarioexistente.getName();
+           bdemail = usuarioexistente.getEmail();
+           bdpassword = usuarioexistente.getPassword();
+           bdpais = usuarioexistente.getPais();
+           bdciudad = usuarioexistente.getCiudad();
+           bddireccion = usuarioexistente.getDireccion();
+           
+            message = "El usuario ya existe, por favor intente con otro";
+           
+    }
+    
+    
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,12 +54,13 @@
         <div class="field">
             <label class="label">Nombre</label>
                 <div class="control">
-                    <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input">
+                    <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input" value=<%=bdnombre%>>
                 </div>
         </div>
 
         <div class="field">
-            <label class="label">Username</label>
+            <label class="label">Username</label>                
+            <div class="subtitle has-text-danger" ><%= message %></div>
                 <div class="control has-icons-left has-icons-right">
                     <input id="strNewUsername" name="strNewUsername" class="input is-success" type="text" placeholder="Text input" value="bulma">
                     <span class="icon is-small is-left">
@@ -48,7 +76,7 @@
         <div class="field">
           <label class="label">Email</label>
           <div class="control has-icons-left has-icons-right">
-            <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value="hello@">
+            <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value=<%=bdemail%>>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
