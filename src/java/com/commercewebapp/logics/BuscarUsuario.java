@@ -24,7 +24,7 @@ public class BuscarUsuario extends Logic {
         Usuario usuario = null;
         System.out.println("Select * from comercebd.clientetb where Username = '"+username+"';");
         ResultSet result = localDatabase.executeQuery("Select * from comercebd.clientetb where Username = '"+username+"';"); 
-        String pass, nombre;
+        String pass, nombre, correo ="", genero = "", fechaN = "", direccion = "";
         int id;
         int i = 0;
         
@@ -35,8 +35,12 @@ public class BuscarUsuario extends Logic {
                      nombre = result.getString("Nombre");
                      pass = result.getString("Password");
                      id = result.getInt("idCliente");
+                     correo = result.getString("Correo");
+                     genero = result.getString("Sexo");
+                     fechaN = result.getString("FechaNacimiento");
+                     direccion = result.getString("Dirección");
                      i++;
-                     usuario = new Usuario (false, true, nombre, id, pass, username);
+                     usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion);
                      System.out.println(nombre+" "+pass+" "+id);
                  }
                  System.out.println("Ya terminó la tabla de clientes");
@@ -53,7 +57,8 @@ public class BuscarUsuario extends Logic {
                             nombre = result.getString("Nombre");
                             pass = result.getString("Password");
                             id = result.getInt("idempresatb");
-                            usuario = new Usuario (true, false, nombre, id, pass, username );
+                            correo = result.getString("Email");
+                            usuario = new Usuario (true, false, nombre, id, pass, username, correo, genero, fechaN, direccion);
                             System.out.println(nombre+" "+pass+" "+id);
                             i++;
                         }
@@ -62,7 +67,7 @@ public class BuscarUsuario extends Logic {
                     System.out.println("Llego");
                     if (i==0){
                     System.out.println("El usuario no existe");
-                    usuario = new Usuario (false, false, "", 0, "", "");
+                    usuario = new Usuario (false, false, "", 0, "", "", "", "", "", "");
                      }
                  }
              }

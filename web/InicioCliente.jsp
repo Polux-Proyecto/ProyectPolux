@@ -4,12 +4,28 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="com.commercewebapp.objects.Producto"%>
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% 
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    List<Producto>  deseos  = (List<Producto>)  request.getSession().getAttribute("deseos");
+    List<Producto>  pedidos = (List<Producto>)  request.getSession().getAttribute("pedidos");
+    int cantDeseos = 0, cantPedidos = 0;
+    
+    if(deseos!=null){
+        cantDeseos = deseos.size();  
+    }
+    if(pedidos!=null){
+        cantPedidos = pedidos.size();
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
         
@@ -33,21 +49,25 @@
             </div>
 
             <div id="navbarBasicExample" class="navbar-menu">
+                <!--  
+                Los Ids de las categorías más importantes son:
+                Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
+                -->
               <div class="navbar-start">
-                <a class="navbar-item" href="InicioCliente">
+                <a class="navbar-item" href="InicioCliente.jsp">
                   Inicio
                 </a>
-                 <a class="navbar-item" href="CategoriaEmpresas.jsp">
+                 <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=3">
                   Hogar
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp">
+                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=5">
                   Tecnología
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp">
-                  Conveniencia
+                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=1">
+                  Música
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp">
-                  Otro
+                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=*">
+                  Todas las categorías
                 </a>
               </div>
             </div>
@@ -121,14 +141,21 @@
                     <div class="tile is-parent">
                       <article class="tile is-child box">
                         <p class="title">Lista de deseos</p>
+                        <% if (cantDeseos == 0){ %>
                         <p class="subtitle">Tu lista de deseos está vacía</p>
-                        <a href="">Seguro que te gusta</a>
+                        <% } else  {%>
+                        <p class="subtitle">Tu lista de deseos tiene <%= cantDeseos %> pedidos</p>
+                        <% } %>
                       </article>
                     </div>
                     <div class="tile is-parent">
                       <article class="tile is-child box">
                         <p class="title">Pedidos pendientes</p>
+                        <% if(cantPedidos == 0){ %>
                         <p class="subtitle">No tienes pedidos pendientes</p>
+                        <% } else {%>
+                        <p class="subtitle">Tienes <%= cantPedidos %> pedidos pendientes</p>
+                        <% } %>
                       </article>
                     </div>
                     <div class="tile is-parent" text-align="center">
@@ -137,23 +164,23 @@
                         
                         <p class="subtitle"><strong>Nombre de Contacto</strong></p>
                         <div class="content">
-                            Maria Flores
+                            <%= usuario.getNombre() %>
                         </div>
                         <p class="subtitle"><strong>Correo Electrónico</strong></p>
                         <div class="content">
-                          m@gmail.com
+                          <%= usuario.getCorreo() %>
                         </div>
-                        <p class="subtitle"><strong>Sexo</strong></p>
+                        <p class="subtitle"><strong>Género</strong></p>
                         <div class="content">
-                          Mujer
+                          <%= usuario.getGenero() %>
                         </div>
-                        <p class="subtitle"><strong>Año de Nacimiento</strong></p>
+                        <p class="subtitle"><strong>Fecha de Nacimiento</strong></p>
                         <div class="content">
-                          1999
+                          <%= usuario.getFechaN() %>
                         </div>
                         <p class="subtitle"><strong>Dirección de Entrega</strong></p>
                         <div class="content">
-                          Calle Las Flores, edificio 124
+                          <%= usuario.getDireccion() %>
                         </div>
                       </article>
                     </div>

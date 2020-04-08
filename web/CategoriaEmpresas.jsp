@@ -30,21 +30,21 @@
             </div>
 
             <div id="navbarBasicExample" class="navbar-menu">
-              <div class="navbar-start">
-                <a href="InicioCliente" class="navbar-item">
+              <<div class="navbar-start">
+                <a class="navbar-item" href="InicioCliente.jsp">
                   Inicio
                 </a>
-                 <a class="navbar-item" href="CategoriaEmpresas.jsp">
+                 <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=3">
                   Hogar
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp">
+                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=5">
                   Tecnología
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp">
-                  Conveniencia
+                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=1">
+                  Música
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp">
-                  Otro
+                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=*">
+                  Todas las categorías
                 </a>
               </div>
             </div>
