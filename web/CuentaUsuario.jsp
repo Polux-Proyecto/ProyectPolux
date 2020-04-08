@@ -10,28 +10,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
-        <title>Crea una cuenta empresarial</title>
+        <title>Crea una cuenta </title>
     </head>
     
     <body>
-        <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post">
-            <section class="section">
+      <form id="Nuevamicroempresaform" name="Nuevamicroempresaform" action="LogicRegistroNuevoUsuarioServlet" method="post">
+            <section class="section has-background-light ">
                 <div class="container">
-                    <h1 class="title">
-                        Crea una cuenta
+                    <h1 class="title  is-size-1 has-text-primary ">
+                        Bienvenido a BrocOnline 
                     </h1>
-                    <h2 class="title is-2">
-                        Es fácil y rápido
+                    <h2 class="subtitle is-size-4 is-italic  ">
+                        Crea una cuenta de comprador  
                     </h2>
                 </div>
+              
                 <div class="field">
-                    <label >Nombre</label>
-                    <div class="control">
-                        <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input">
-                    </div>
-                </div>
-                <div class="field">
-                    <label>Imagen de Perfil</label>
+                    
                     <div class="control">
                         <div class="file has-name is-right">
                             <label class="file-label">
@@ -41,7 +36,7 @@
                                   <i class="fas fa-upload"></i>
                                 </span>
                                 <span class="file-label">
-                                  Choose a file…
+                                  Agrega una foto de perfil... 
                                 </span>
                               </span>
                               <span class="file-name">
@@ -49,6 +44,12 @@
                               </span>
                             </label>
                           </div>
+                    </div>
+                </div>
+                  <div class="field">
+                    <label >Nombre</label>
+                    <div class="control">
+                        <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input">
                     </div>
                 </div>
                 <div class="field">
