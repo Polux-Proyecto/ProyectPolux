@@ -4,6 +4,7 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.Producto"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
@@ -13,10 +14,12 @@
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
     List<Producto>  deseos  = (List<Producto>)  request.getSession().getAttribute("deseos");
     List<Producto>  pedidos = (List<Producto>)  request.getSession().getAttribute("pedidos");
+    Iterator<Producto> iteDeseos    = deseos.iterator();
+    Iterator<Producto> itePedidos   = pedidos.iterator();
     int cantDeseos = 0, cantPedidos = 0;
     
     if(deseos!=null){
-        cantDeseos = deseos.size();  
+        cantDeseos = deseos.size();
     }
     if(pedidos!=null){
         cantPedidos = pedidos.size();
@@ -30,7 +33,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
         
         
-        <title>InicioCliente</title>
+        <title>BrocOnline</title>
     </head>
     <body>
        <section>
@@ -143,9 +146,32 @@
                         <p class="title">Lista de deseos</p>
                         <% if (cantDeseos == 0){ %>
                         <p class="subtitle">Tu lista de deseos está vacía</p>
-                        <% } else  {%>
-                        <p class="subtitle">Tu lista de deseos tiene <%= cantDeseos %> pedidos</p>
-                        <% } %>
+                        <% } else {
+                                Producto deseoActual;
+                                while(iteDeseos.hasNext()){
+                                    deseoActual = iteDeseos.next();
+                        %>
+                        <p class="subtitle">Tienes <%= cantDeseos %> deseo/s</p>
+                        <div class="box">
+                            <article class="media">
+                                <div class="media-left">
+                                  <figure class="image is-128x128">
+                                      <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                  </figure>
+                                </div>
+                                <div class="media-content">
+                                  <div class="content">
+                                    <p><strong><%= deseoActual.getNombre() %></strong> 
+                                        <br><%= deseoActual.getDescripcion() %>
+                                    </p><br>
+                                  </div>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <%      }    
+                            }
+                        %>
                       </article>
                     </div>
                     <div class="tile is-parent">
@@ -153,9 +179,32 @@
                         <p class="title">Pedidos pendientes</p>
                         <% if(cantPedidos == 0){ %>
                         <p class="subtitle">No tienes pedidos pendientes</p>
-                        <% } else {%>
-                        <p class="subtitle">Tienes <%= cantPedidos %> pedidos pendientes</p>
-                        <% } %>
+                        <% } else {
+                                Producto pedidoActual;
+                                while(itePedidos.hasNext()){
+                                    pedidoActual = itePedidos.next();
+                        %>
+                        <p class="subtitle">Tienes <%= cantPedidos %> pedido/s pendiente/s</p>
+                        <div class="box">
+                            <article class="media">
+                                <div class="media-left">
+                                  <figure class="image is-128x128">
+                                      <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                  </figure>
+                                </div>
+                                <div class="media-content">
+                                  <div class="content">
+                                    <p><strong><%= pedidoActual.getNombre() %></strong> 
+                                        <br><%= pedidoActual.getDescripcion() %>
+                                    </p><br>
+                                  </div>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <%      }    
+                            }
+                        %>
                       </article>
                     </div>
                     <div class="tile is-parent" text-align="center">
