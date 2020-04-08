@@ -89,6 +89,21 @@
                                   <input class="input" type="number" name="cantProd" id="cantProd" min="1"/>
                                 </div>
                             </div>
+                             <div class="field">
+                                <label>Categoría</label>
+                                <br>
+                                <input class="is-checkradio" id="NecBasicas" type="radio" name="NecBasicas" checked="checked">
+                                <label for="NecBasicas">Necesidades Básicas</label>
+
+                                <input class="is-checkradio" id="Hogar" type="radio" name="Hogar" checked="checked">
+                                <label for="Hogar">Hogar</label>
+
+                                <input class="is-checkradio" id="Tec" type="radio" name="Tec" checked="checked">
+                                <label for="Tec">Tecnología</label>
+
+                                <input class="is-checkradio" id="Repuestos" type="radio" name="Repuestos" checked="checked">
+                                <label for="Repuestos">Repuestos</label>
+                            </div>
                             <div class="field">
                                 <label>Precio Unitario:</label>
                                 <div class="control">
