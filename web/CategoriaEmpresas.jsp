@@ -13,7 +13,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
         <title>JSP Page</title>
     </head>
-    <body>
+
+        
+      
                 <section>
             <div>
         <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -127,5 +129,5 @@
                 </div>
             </div>
         </section>    
-    </body>
+    
 </html>

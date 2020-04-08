@@ -19,51 +19,61 @@
 %>
 <html>
     <head>
-        <title>Brocolin: Iniciar sesión</title>
+        <title>Brocoline: Iniciar sesión</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <section class="section">
-            <div class="container">
-                <h1 class="title is-2">
-                    Distribuidora Brocolin
-                </h1>
-                <h2 class="title is-3">
-                    Iniciar Sesión:
-                </h2>
-            </div><br><br>
+      
+        <br><br>
+        <section class="hero is-primary is-bold has-text-centered has-background-grey-light ">
+  <div class="hero-body">
+    <div class="container ">
+      <h1 class="title  is-size-1 is-family-sans-serif ">
+        BrocOnline Store 
+      </h1>
+      <h2 class="subtitle">
+        "The market in your hands"
+      </h2>
+    </div>
+  </div>
+</section>
+        
+        
+        <section class="section has-background-light "  >
+            
             <form action="LoggeoUsuarios" method="post">
-				<div class="field">
+				<div class="field  ">
                                     
-                                    <label class="title">Usuario</label><br>
+                                    <label class="title is-size-3">Usuario: </label><br>
                                         <div class="subtitle has-text-danger" ><%= message%></div>
 					<p class="control">
 						<input class="input" type="text" name="nameis" placeholder="Usuario">
 					</p>
 				</div>
                 <div class="field">
-                    <label class="title">Contraseña</label><br><br>
+                    <label class="title">Contraseña: </label><br><br>
                     <div class="control">
                         <input class="input" type="password" name="passis" id="passis"/>
                     </div>
                 </div>
+                                        <br> 
                 <div class="field">
                     <div class="control">
-                        <input class="button is-link" type="submit" value="send"/>
+                        <input class="button is-link is-bold" type="submit" value="Send"/>
                         
                     </div>
                 </div>
             </form>
-			<br>
+                                        <br>
             <div class="is-link">
                 <h2>
 					<strong>¿No tienes cuenta? </strong>
-					<br>
+                                        <br><br>
                     <a href="CuentaUsuario.jsp">Crea una cuenta de usuario</a>
 					<br>
-					<a href="CuentaEmpresa.jsp">Crea una cuenta de empresa</a>
+					<a href="CuentaEmpresa.jsp">Crea una cuenta empresarial </a>
                 </h2>
             </div>
         </section>
