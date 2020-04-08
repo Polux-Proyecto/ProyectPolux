@@ -66,7 +66,7 @@ public class AdminProductos extends Logic {
             
         }
         
-        return null;
+        return listaProductos;
     }
     
     public List<Producto> getPedidosPorUsuario (int idUsuario){
@@ -151,5 +151,44 @@ public class AdminProductos extends Logic {
         }
         
         return listaProductos;
+    }
+    
+    public List<Producto> getProductoPorPalabra (String palabra) {
+        //Devuelve una lista de productos buscando la palabra ingresada en el nombre del producto, de la empresa o la descripción
+        
+        List<Producto> listaProductos = null;
+        int     id, idEmpresa, existencias;
+        String  nombre, descripcion;
+        double  precio;    
+            
+        ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb "
+                + "inner join comercebd.empresatb on prodtb.empresa = empresatb.idempresatb "
+                + "where UPPER(prodtb.descripcion) like UPPER('%"+palabra+"%') "
+                + "or UPPER(prodtb.nombre) like UPPER('%"+palabra+"%') "
+                + "or UPPER(empresatb.Nombre) like UPPER('%"+palabra+"%');");
+        
+        if (result != null){
+            listaProductos = new ArrayList();
+            Producto productoActual = null;
+            
+            try {
+                while(result.next()){
+                    id = result.getInt("idprodtb");
+                    idEmpresa = result.getInt("empresa");
+                    nombre = result.getString("nombre");
+                    descripcion = result.getString("descripcion");
+                    precio = result.getDouble("precio");
+                    existencias = result.getInt("existencias");
+                    
+                    productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias);
+                    
+                    listaProductos.add(productoActual);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return listaProductos; 
     }
 }

@@ -76,21 +76,27 @@
             </div>
 
               <div class="navbar-end">
+                  
                 <div class="navbar-item">
-                    <p class="control">
-                      <input class="input" type="text" placeholder="Find a post">
-                    </p>
-                    <p class="control">
-                      <button class="button is-primary">
-                        Buscar
-                      </button>
-                    </p>
-                    <div class="buttons">
-                    <a class="button is-light">
-                      Cerrar sesión
-                    </a>
-                  </div>
+                    <form action="Buscadores" method="get" name="buscador">
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Find a post" name="palabra" id="palabra">
+                        </p>
+                        <p class="control">
+                          <button class="button is-primary">
+                            Buscar
+                          </button>
+                        </p>
+                        <input type="hidden" id="formid" name="formid" value="1">
+                    </form>
+                        <div class="buttons">
+                        <a class="button is-light">
+                          Cerrar sesión
+                        </a>
+                        </div>
+                    
                 </div>
+                  
               </div>
             </div>
           </nav>
