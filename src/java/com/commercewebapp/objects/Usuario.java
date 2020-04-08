@@ -5,6 +5,9 @@
  */
 package com.commercewebapp.objects;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /** ESte sí es un POJO
  * @author Mauricio Aguilar
  */
@@ -13,23 +16,59 @@ public class Usuario {
     private boolean microEmpresario;
     private boolean usuario;
     private int idUsuario;
-    private String nombre, contra, username;
+    private String nombre, contra, username, correo, genero, fechaN, direccion;
     
-    public Usuario(boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC, String contraC, String usernameC) {
+    public Usuario(boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC, String contraC, String usernameC, String correoC, String generoC, String fechaNC, String direccionC ) {
         this.setMicroEmpresario(microEmpresarioC);
         this.setUsuario(usuarioC);
         this.setNombre(nombreC);
         this.setIdUsuario(idUsuarioC); //Este es el id de la base de datos del usuario (Se supone que es la PK)
         this.setContra(contraC);
         this.setUsername(usernameC);
+        this.setCorreo(correoC);
+        this.setGenero(generoC);
+        this.setFechaN(fechaNC);
+        this.setDireccion(direccionC);
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    private void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    private void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getFechaN() {
+        return fechaN;
+    }
+
+    private void setFechaN(String fechaN) {
+        this.fechaN = fechaN;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    private void setCorreo(String correoP) {
+        this.correo = correoP;
+    }
+    
     public String getUsername() {
         return username;
     }
 
-    private void setUsername(String username) {
-        this.username = username;
+    private void setUsername(String usernameP) {
+        this.username = usernameP;
     }
     
 
@@ -37,43 +76,40 @@ public class Usuario {
         return contra;
     }
 
-    private void setContra(String contra) {
-        this.contra = contra;
+    private void setContra(String contraP) {
+        this.contra = contraP;
     }
 
     public boolean isMicroEmpresario() {
         return microEmpresario;
     }
 
-    private void setMicroEmpresario(boolean microEmpresariop) {
-        this.microEmpresario = microEmpresariop;
+    private void setMicroEmpresario(boolean microEmpresarioP) {
+        this.microEmpresario = microEmpresarioP;
     }
 
     public boolean isUsuario() {
         return usuario;
     }
 
-    private void setUsuario(boolean usuariop) {
-        this.usuario = usuariop;
+    private void setUsuario(boolean usuarioP) {
+        this.usuario = usuarioP;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    private void setNombre(String nombrep) {
-        this.nombre = nombrep;
+    private void setNombre(String nombreP) {
+        this.nombre = nombreP;
     }
 
     public int getIdUsuario() {
         return idUsuario;
     }
 
-    private void setIdUsuario(int idUsuariop) {
-        this.idUsuario = idUsuariop;
+    private void setIdUsuario(int idUsuarioP) {
+        this.idUsuario = idUsuarioP;
     }
-    
-    
-    
     
 }

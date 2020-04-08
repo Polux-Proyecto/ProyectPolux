@@ -49,6 +49,8 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 else
                 {
                     //usuario ya existente
+                    NuevoUsuarioParticular nuevouser = new NuevoUsuarioParticular(strname, struser, stremail, strpassword, strpais, strciudad, strdireccion);
+                    request.getSession().setAttribute("nuevouser", nuevouser);
                     response.sendRedirect("CuentaUsuario.jsp?error=1");
                 }
                         
@@ -73,6 +75,8 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 else
                 {
                     //usuario existe
+                    NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion);
+                    request.getSession().setAttribute("nuevoempresario", nuevoempresario);
                     response.sendRedirect("CuentaEmpresa.jsp?error=1");
                 }
             }

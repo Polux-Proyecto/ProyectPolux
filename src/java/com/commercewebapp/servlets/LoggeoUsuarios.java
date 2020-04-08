@@ -1,8 +1,11 @@
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.logics.BuscarUsuario;
+import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +34,15 @@ import javax.servlet.http.HttpServletResponse;
                     request.getSession().setAttribute("usuario", usuario);
                     request.getRequestDispatcher("InicioEmpresa.jsp").forward(request, response);
                 } else if (usuario.isUsuario()){
+                    AdminProductos administrador = new AdminProductos();
+                    List<Producto> deseos = administrador.getDeseosPorUsuario(usuario.getIdUsuario());
+                    List<Producto> pedidos = administrador.getPedidosPorUsuario(usuario.getIdUsuario());
+                    
+                    
+                    
                     request.getSession().setAttribute("usuario", usuario);
+                    request.getSession().setAttribute("deseos", deseos);
+                    request.getSession().setAttribute("pedidos", pedidos);
                     request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
             }
                 
