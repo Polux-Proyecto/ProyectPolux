@@ -1,6 +1,6 @@
 <%-- 
-    Document   : CategoriaEmpresas
-    Created on : 04-03-2020, 09:48:30 PM
+    Document   : Busqueda
+    Created on : 04-08-2020, 07:26:38 PM
     Author     : Joanna Rivas
 --%>
 
@@ -74,58 +74,26 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent ">
                     <div class="tile is-child box">
-                            <p class="title">Nombre de categoría</p>
+                        <p class="title">Nombre de Busqueda</p>
                             <div class="box">
                                 <article class="media">
                                     <div class="media-left">
-                                      <figure class="image is-128x128">
-                                          <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-                                      </figure>
+                                        <figure class="image is-128x128">
+                                            <a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                        </figure>
                                     </div>
                                     <div class="media-content">
-                                      <div class="content">
-                                        <p><strong>Nombre de la empresa</strong> 
-                                          <br>Descripción:
-                                        </p><br>
-                                      </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="box">
-                                <article class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-128x128">
-                                          <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <div class="content">
-                                        <p><strong>Nombre de la Empresa</strong> 
-                                          <br>Descripción:
-                                        </p>
-                                      </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="box">
-                                <article class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-128x128">
-                                          <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <div class="content">
-                                        <p><strong>Nombre de la Empresa</strong> 
-                                          <br>Descripción:
-                                        </p>
-                                      </div>
+                                        <div class="content">
+                                            <p><strong>Nombre de la empresa</strong> 
+                                            <br>Descripción:
+                                            </p><br>
+                                        </div>
                                     </div>
                                 </article>
                             </div>
                         </div>
+                    </div>
                 </div>
-            </div>
-        </section>    
+            </section>
     </body>
 </html>

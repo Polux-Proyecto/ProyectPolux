@@ -77,11 +77,13 @@
                     <p class="control">
                       <input class="input" type="text" placeholder="Find a post">
                     </p>
-                    <p class="control">
-                      <button class="button is-primary">
-                        Buscar
-                      </button>
-                    </p>
+                    <form method="get" action="Busqueda.jsp">
+                        <p class="control">
+                          <button class="button is-primary">
+                            Buscar
+                          </button>
+                        </p>
+                    </form>
                     <div class="buttons">
                     <a class="button is-light">
                       Cerrar sesión
