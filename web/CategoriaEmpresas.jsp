@@ -4,7 +4,16 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Producto"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+    List<Producto> listaProductos = (List<Producto>) request.getSession().getAttribute("listaProductos");
+    String nombreCategoria = (String) request.getSession().getAttribute("nombreCategoria");
+    Iterator<Producto> iteProductos = listaProductos.iterator();
+    int cantidadProductos = listaProductos.size();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,20 +41,20 @@
             </div>
 
             <div id="navbarBasicExample" class="navbar-menu">
-              <<div class="navbar-start">
+              <div class="navbar-start">
                 <a class="navbar-item" href="InicioCliente.jsp">
                   Inicio
                 </a>
-                 <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=3">
+                 <a class="navbar-item" href="Buscadores?idCat=3&formid=2">
                   Hogar
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=5">
+                <a class="navbar-item" href="Buscadores?idCat=5&formid=2">
                   Tecnología
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=1">
+                <a class="navbar-item" href="Buscadores?idCat=1&formid=2">
                   Música
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=*">
+                <a class="navbar-item" href="Buscadores?idCat=*&formid=2">
                   Todas las categorías
                 </a>
               </div>
@@ -76,56 +85,40 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent ">
                     <div class="tile is-child box">
-                            <p class="title">Nombre de categoría</p>
-                            <div class="box">
-                                <article class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-128x128">
-                                          <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <div class="content">
-                                        <p><strong>Nombre de la empresa</strong> 
-                                          <br>Descripción:
-                                        </p><br>
-                                      </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="box">
-                                <article class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-128x128">
-                                          <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <div class="content">
-                                        <p><strong>Nombre de la Empresa</strong> 
-                                          <br>Descripción:
-                                        </p>
-                                      </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="box">
-                                <article class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-128x128">
-                                          <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <div class="content">
-                                        <p><strong>Nombre de la Empresa</strong> 
-                                          <br>Descripción:
-                                        </p>
-                                      </div>
-                                    </div>
-                                </article>
-                            </div>
+                        <p class="title"><%= nombreCategoria %></p>
+                        <% 
+                            if (cantidadProductos==0){
+                        %>
+                        <div class="box"
+                             <p class="title">No hay productos de esta categorías</p>
                         </div>
+                        <%
+                            } else {
+                                Producto productoActual;
+                                while (iteProductos.hasNext()){
+                                productoActual = iteProductos.next();
+                        %>
+                        <div class="box">
+                            <article class="media">
+                                <div class="media-left">
+                                  <figure class="image is-128x128">
+                                      <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                  </figure>
+                                </div>
+                                <div class="media-content">
+                                  <div class="content">
+                                    <p><strong><%= productoActual.getNombre() %></strong> 
+                                      <br><%= productoActual.getDescripcion() %>
+                                    </p><br>
+                                  </div>
+                                </div>
+                            </article>
+                        </div>
+                        <% 
+                            }
+                        }
+                        %>
+                    </div>
                 </div>
             </div>
         </section>    

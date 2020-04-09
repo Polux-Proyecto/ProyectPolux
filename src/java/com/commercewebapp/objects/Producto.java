@@ -10,7 +10,7 @@ package com.commercewebapp.objects;
  * @author Mauricio Aguilar
  */
 public class Producto {
-    private String  nombre, descripcion;
+    private String  nombre, descripcion, nombreEmpresa;
     private int     id, idEmpresa, cantidad;
     private double  precio;
     private boolean activo;
@@ -22,7 +22,7 @@ public class Producto {
         this.setDescripcion(descripcionC);
         this.setPrecio(precioC);
         this.setCantidad(cantidadC);
-        
+        this.setNombreEmpresa("");
         if (activoIC==1){
             this.setActivo(true);
         } else {
@@ -31,6 +31,14 @@ public class Producto {
         
     }
 
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
+
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
+    
     public int getCantidad() {
         return cantidad;
     }

@@ -191,4 +191,64 @@ public class AdminProductos extends Logic {
         
         return listaProductos; 
     }
+    
+    public List<Producto> getProductoPorCategoria (int categoria, boolean colocarEmpresario) {
+        //Devuelve una lista de productos buscando la palabra ingresada en el nombre del producto, de la empresa o la descripción
+        
+        List<Producto> listaProductos = null;
+        int     id, idEmpresa, existencias;
+        String  nombre, descripcion, nombreEmpresario;
+        double  precio;    
+            
+        ResultSet result = localDatabase.executeQuery("SELECT prodtb.*, empresatb.Nombre as NombreEmpresario "
+                + "FROM comercebd.prodtb inner join comercebd.empresatb "
+                + "on empresatb.idempresatb = prodtb.empresa "
+                + "where prodtb.categoria = '"+categoria+"' LIMIT 15;");
+        
+        if (result != null){
+            listaProductos = new ArrayList();
+            Producto productoActual = null;
+            
+            try {
+                while(result.next()){
+                    id = result.getInt("idprodtb");
+                    idEmpresa = result.getInt("empresa");
+                    nombre = result.getString("nombre");
+                    descripcion = result.getString("descripcion");
+                    precio = result.getDouble("precio");
+                    existencias = result.getInt("existencias");
+                    
+                    productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias);
+                    
+                    if (colocarEmpresario){
+                        nombreEmpresario = result.getString("NombreEmpresario");
+                    }
+                    
+                    listaProductos.add(productoActual);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return listaProductos; 
+    }
+    
+    public String getNombreCategoriaPorId (int idCat){
+        ResultSet result = localDatabase.executeQuery("SELECT Nombre FROM comercebd.categorias where idCategorias = '"+idCat+"' LIMIT 1;");
+        String nombre = "";
+        
+        if (result!= null){
+            
+            try {
+                while (result.next()){
+                    nombre = result.getString("Nombre");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return nombre;
+    }
 }
