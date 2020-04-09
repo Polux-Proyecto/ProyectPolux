@@ -66,8 +66,46 @@ public class AdminProductos extends Logic {
             }
             
         }
-        
+    
         return listaProductos;
+    }
+    
+    public Producto getProductoPorId (int idProd){
+        
+        Producto producto = null;
+        int     idEmpresa, existencias;
+        String  nombre, descripcion;
+        double  precio;
+        
+        ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb where idprodtb='"+idProd+"';");
+        
+        if(result!=null){
+            Producto productoActual;
+            List<Producto> listaProductos;
+            listaProductos = new ArrayList();
+            
+            try {
+                
+                while(result.next()){
+                    idEmpresa = result.getInt("empresa");
+                    nombre = result.getString("nombre");
+                    descripcion = result.getString("descripcion");
+                    precio = result.getDouble("precio");
+                    existencias = result.getInt("existencias");
+                    productoActual = new Producto(idProd, idEmpresa, nombre, descripcion, precio, 1, existencias);
+                    listaProductos.add(productoActual);
+                }
+                
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+            
+            }
+            
+            producto = listaProductos.get(0);
+        }
+    
+        return producto;
     }
     
     public List<Producto> getPedidosPorUsuario (int idUsuario){
@@ -252,6 +290,7 @@ public class AdminProductos extends Logic {
         
         return nombre;
     }
+    
     
     
 }

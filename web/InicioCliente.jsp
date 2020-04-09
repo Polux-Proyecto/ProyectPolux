@@ -78,15 +78,11 @@
               <div class="navbar-end">
                   
                 <div class="navbar-item">
-                    <form action="Buscadores" method="get" name="buscador">
-                        <p class="control">
-                          <input class="input" type="text" placeholder="Find a post" name="palabra" id="palabra">
-                        </p>
-                        <p class="control">
+                    <form class="form-horizontal" action="Buscadores" method="get" name="buscador">
+                          <input class="input" type="text" placeholder="Buscar producto" name="palabra" id="palabra">
                           <button class="button is-primary">
                             Buscar
                           </button>
-                        </p>
                         <input type="hidden" id="formid" name="formid" value="1">
                     </form>
                         <div class="buttons">
@@ -94,7 +90,6 @@
                           Cerrar sesión
                         </a>
                         </div>
-                    
                 </div>
                   
               </div>
