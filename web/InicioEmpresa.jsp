@@ -38,16 +38,14 @@
         <script src="https://kit.fontawesome.com/709f0bb893.js" crossorigin="anonymous"></script>
         <title>InicioEmpresa</title>
     </head>
-    <body style="background-image:"Blue and Yellow Bananas Wallpaper.png";><br>
+    <body>
         
         <section>
         <div>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar" role="navigation" aria-label="main navigation" >
             <div class="navbar-brand">
-              <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-              </a>
-
+                <img src="images/BrocOnlineLogo.jpeg" width="150" height="28">
+                       
               <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -85,35 +83,44 @@
                       <input class="input" type="text" placeholder="Find a post">
                     </p>
                     <p class="control">
-                      <button class="button is-primary">
+                      <button class="button is-dark">
                         Buscar
                       </button>
                     </p>
                     <div class="buttons">
-                    <a class="button is-light">
+                        <a class="button is-primary" style="background-color: #34b575">
                       Cerrar sesión
                     </a>
                   </div>
                 </div>
               </div>
-            </div>
-          </nav>
+            </nav>
+          </div>
          </div>
         </section>
-        <section class="hero is-light">
+        <section class="hero is-dark" style="background-color:  #C0C0C0;">
             <div class="hero-body">
                 <div class="container">
-                    <h1 class="title">
-                        ¡Bienvenido, <%=usuario.getNombre() %>!
+                    <h1 class="title" style="color:black">
+                        <strong>¡Bienvenido, <%=usuario.getNombre() %>!</strong>
                     </h1>
-                    <h2 class="subtitle">
+                    <h2 class="subtitle"style="color:black">
                         Tus clientes esperan
                     </h2>
                 </div>
             </div>
         </section>
-        
-        <section class="section">
+        <section>
+            <div class="container">
+                <figure class="image" style="height: 200px;">
+                    <img src="images/LetrasNegras.png" alt=""/>
+                </figure>
+            </div>
+            <br>
+            <br>
+        </section>        
+        <section class="section notification is-dark" style="background-color:  #C0C0C0;">
+            
             <div class="tile is-ancestor">
                 <div class="tile is-vertical">
                 <div class="tile">
@@ -122,7 +129,7 @@
                         
                         <p class="title">Añadir Producto</p>
                         <p class="subtitle">Agrega nuevos productos a tu inventario</p>
-                        <button class="button is-primary modal-button" data-target="#Modal1" aria-haspopup="true">Nuevo Producto</button>
+                        <button class="button modal-button is-primary" data-target="#Modal1" aria-haspopup="true" style="background-color: #34b575">Nuevo Producto</button>
                         
                         <div class="modal" id="Modal1">
                             <div class="modal-background"></div>
@@ -230,7 +237,7 @@
                             <p class="subtitle">Tienes X envíos pendientes</p>
                             <div class="container" style="margin-left: 20px">
                                 <span class="icon is-large">
-                                    <a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: #00c4a7"></i></a>
+                                    <a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: #34a85c"></i></a>
                                 </span>
                             </div>
                         </article>
@@ -252,6 +259,7 @@
                     </article>
                   </div>
                 </div>
+            </div>
             </div>
         </section>
         
