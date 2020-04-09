@@ -12,8 +12,8 @@
     <body>
         
  
+        <form id="Nuevamicroempresaform" name="Nuevamicroempresaform" action="LogicRegistroNuevoUsuarioServlet" method="post" method="post" enctype="multipart/form-data">
         
-        <form id="Nuevamicroempresaform" name="Nuevamicroempresaform" action="LogicRegistroNuevoUsuarioServlet" method="post">
             <section class="section has-background-light ">
                 <div class="container">
                     <h1 class="title  is-size-1 has-text-primary ">
@@ -101,16 +101,16 @@
                  <div class="field">
                     <label>Categoría</label>
                     <br>
-                    <input class="is-checkradio" id="NecBasicas" type="radio" name="NecBasicas" checked="checked">
+                    <input class="is-checkradio" id="StrCategoria" type="radio" name="StrCategoria" checked="checked">
                     <label for="NecBasicas">Necesidades Básicas</label>
                     
-                    <input class="is-checkradio" id="Hogar" type="radio" name="Hogar" checked="checked">
+                    <input class="is-checkradio" id="StrCategoria" type="radio" name="StrCategoria">
                     <label for="Hogar">Hogar</label>
                     
-                    <input class="is-checkradio" id="Tec" type="radio" name="Tec" checked="checked">
+                    <input class="is-checkradio" id="StrCategoria" type="radio" name="StrCategoria" >
                     <label for="Tec">Tecnología</label>
                     
-                    <input class="is-checkradio" id="Repuestos" type="radio" name="Repuestos" checked="checked">
+                    <input class="is-checkradio" id="StrCategoria" type="radio" name="StrCategoria" >
                     <label for="Repuestos">Repuestos</label>
                 </div>
                     
