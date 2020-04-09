@@ -103,7 +103,6 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 else
                 {
                     //usuario existe
-                    request.getSession().setAttribute("dateobj", date);
                     response.sendRedirect("CuentaEmpresa.jsp");
                     
                 }
