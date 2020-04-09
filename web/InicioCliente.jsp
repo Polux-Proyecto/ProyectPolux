@@ -142,7 +142,6 @@
                                 
 			});
 		</script>
-    <container>
                 <section>
                     <div class="tile is-ancestor">
                     <div class="tile is-parent">
@@ -211,7 +210,7 @@
                         %>
                       </article>
                     </div>
-                    <div class="tile is-parent" text-align="center">
+                    <div class="tile is-parent" >
                       <article class="tile is-child box" >
                         <p class="title">Mi cuenta</p>
                         
@@ -238,8 +237,6 @@
                       </article>
                     </div>
                   </div>
-                </section>
-    </container>
-                
+                </section>        
     </body>
 </html>
