@@ -31,8 +31,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
-        
-        
+        <style>
+			body{
+				background:#508329
+			}
+			.color1{
+				background-color: #93d250
+			}
+			.color2{
+				background-color: #508329
+			}
+			.color3{
+				background-color: #dce5d2
+			}
+		</style>
         <title>BrocOnline</title>
     </head>
     <body>
@@ -41,7 +53,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
               <a class="navbar-item" href="InicioCliente.jsp">
-                <img src="https://lh4.googleusercontent.com/tNFKUTKSe7SDQcz5dvEDBcO43k8TtwJMyYuD5Qa2UjwZ7j8evkSkjvtxpR-HRqXC3cUqjv9brMDHHfNz2RbslpLnmhKkmGO5j3qfwoN73widMeA-6w=w1280" width="197" height="46">
+                <img src="https://lh4.googleusercontent.com/tNFKUTKSe7SDQcz5dvEDBcO43k8TtwJMyYuD5Qa2UjwZ7j8evkSkjvtxpR-HRqXC3cUqjv9brMDHHfNz2RbslpLnmhKkmGO5j3qfwoN73widMeA-6w=w1280" width="197" height="60">
               </a>
 
               <a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -83,14 +95,14 @@
                           <input class="input" type="text" placeholder="Find a post" name="palabra" id="palabra">
                         </p>
                         <p class="control">
-                          <button class="button is-primary">
+                          <button class="button color1">
                             Buscar
                           </button>
                         </p>
                         <input type="hidden" id="formid" name="formid" value="1">
                     </form>
                         <div class="buttons">
-                        <a class="button is-light">
+                        <a class="button color2">
                           Cerrar sesión
                         </a>
                         </div>
@@ -150,12 +162,15 @@
                         <% if (cantDeseos == 0){ %>
                         <p class="subtitle">Tu lista de deseos está vacía</p>
                         <% } else {
+						%>
+						<p class="subtitle">Tienes <%= cantDeseos %> deseo/s</p>
+						<%
                                 Producto deseoActual;
                                 while(iteDeseos.hasNext()){
                                     deseoActual = iteDeseos.next();
                         %>
-                        <p class="subtitle">Tienes <%= cantDeseos %> deseo/s</p>
-                        <div class="box">
+                        
+                        <div class="box color3">
                             <article class="media">
                                 <div class="media-left">
                                   <figure class="image is-128x128">
@@ -183,12 +198,14 @@
                         <% if(cantPedidos == 0){ %>
                         <p class="subtitle">No tienes pedidos pendientes</p>
                         <% } else {
+						%>
+						<p class="subtitle">Tienes <%= cantPedidos %> pedido/s pendiente/s</p>
+						<%
                                 Producto pedidoActual;
                                 while(itePedidos.hasNext()){
                                     pedidoActual = itePedidos.next();
                         %>
-                        <p class="subtitle">Tienes <%= cantPedidos %> pedido/s pendiente/s</p>
-                        <div class="box">
+                        <div class="box color3">
                             <article class="media">
                                 <div class="media-left">
                                   <figure class="image is-128x128">
