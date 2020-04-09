@@ -14,7 +14,7 @@
         <title>Crea una cuenta </title>
     </head>
     <%
-        NuevoUsuarioParticular usuarioexistente = (NuevoUsuarioParticular)request.getSession().getAttribute("usuarioexistente");
+           /*NuevoUsuarioParticular usuarioexistente = (NuevoUsuarioParticular)request.getSession().getAttribute("usuarioexistente");
            int error = (int)request.getSession().getAttribute("error");
            String nombre = "";
            String user = "";
@@ -38,7 +38,7 @@
                     fechanacimiento = usuarioexistente.getFechanacimiento();
                     imagenperfil = usuarioexistente.getImagen();
            
-                }
+                }*/
     %>
     
     <body>
@@ -79,12 +79,6 @@
                               </span>
                             </label>
                           </div>
-                    </div>
-                </div>
-                  <div class="field">
-                    <label >Nombre</label>
-                    <div class="control">
-                        <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input">
                     </div>
                 </div>
                 <div class="field">

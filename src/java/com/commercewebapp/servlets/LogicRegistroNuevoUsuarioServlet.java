@@ -1,7 +1,6 @@
 package com.commercewebapp.servlets;
 
 import com.commercewebapp.logics.BuscarUsuario;
-import com.commercewebapp.objects.ImagenObj;
 import com.commercewebapp.objects.NuevoMicroEmpresario;
 import com.commercewebapp.objects.NuevoUsuarioParticular;
 import com.commercewebapp.objects.Usuario;
@@ -32,7 +31,7 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
             BuscarUsuario buscador = new BuscarUsuario();
             int itype =0;
             boolean hasfailed;
-            ImagenObj imagen = null;
+            
             
 
             if(strForm.equals("1")){
