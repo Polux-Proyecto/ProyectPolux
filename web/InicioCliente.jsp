@@ -99,8 +99,6 @@
                   
               </div>
             </div>
-          </nav>
-         </div>
         </section>
         <section class="hero is-medium has-carousel">
                     <div class="hero-head"></div>
