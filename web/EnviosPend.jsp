@@ -56,12 +56,12 @@
                       <input class="input" type="text" placeholder="Find a post">
                     </p>
                     <p class="control">
-                      <button class="button is-dark">
+                      <button class="button" style="background-color: greenyellow">
                         Buscar
                       </button>
                     </p>
                     <div class="buttons">
-                        <a class="button is-primary" style="background-color: #34b575">
+                        <a class="button" style="background-color: #29b342">
                       Cerrar sesión
                     </a>
                   </div>
@@ -71,31 +71,38 @@
           </div>
          </div>
         </section>
-        <section class="section">
-            <div class="container">
-                <h1 class="title">
-                    Envios Pendientes
-                </h1>
-                <h2 class="title-2">
-                    Los siguientes clientes esperan sus pedidos en los próximos días 
-                </h2>
+         <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title" style="color:black">
+                        <strong>Envios Pendientes</strong>
+                    </h1>
+                    <h2 class="subtitle"style="color:black">
+                        Los siguientes clientes esperan sus pedidos en los próximos días 
+                    </h2>
+                </div>
             </div>
         </section>
         <section class="section">
             <div class="table-container">
-                <table class="table is striped">
+                <table class="table is-hoverable is-fullwidth">
                     <thead>
                         <tr>
-                          <th><abbr title="Cliente">Nombre de cliente</abbr></th>
+                            <th><abbr title="Cliente">Nombre de cliente</abbr></th>
                           <th><abbr title="Direccion">Dirección</abbr></th>
-                          <th><abbr title="Mensaje"> </abbr></th>
+                          <th><abbr title="DetalleCompra">Compra</abbr></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Nombre cliente</td>
-                            <td><a href="DetalleCompra.jsp">Direccion de Cliente</a></td>
-                            <td><a href="https://api.whatsapp.com/send?phone=503+phone+&text=Hola,%20tu%20pedido%20se%20encuentra%20en%20tu%20oficina%20de%20correos%20más%20cercana.">Enviar Mensaje</a></td>
+                            <td>Dirección de Cliente</td>
+                            <td><a href="DetalleCompra.jsp">Detalle de Compra</a></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre cliente2</td>
+                            <td>Dirección de Cliente2</td>
+                            <td><a href="DetalleCompra.jsp">Detalle de Compra</a></td>
                         </tr>
                     </tbody>
                 </table>
