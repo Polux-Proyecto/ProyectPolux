@@ -9,7 +9,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% 
-    
     Producto producto = (Producto) request.getSession().getAttribute("producto");
     Empresa empresa = (Empresa) request.getSession().getAttribute("empresa");
 %>
