@@ -13,6 +13,7 @@
     String nombreCategoria = (String) request.getSession().getAttribute("nombreCategoria");
     Iterator<Producto> iteProductos = listaProductos.iterator();
     int cantidadProductos = listaProductos.size();
+    String ref = "";
 %>
 <!DOCTYPE html>
 <html>
@@ -27,9 +28,9 @@
             <div>
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                  <a class="navbar-item" href="https://bulma.io">
-                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-                  </a>
+                    <a class="navbar-item" href="InicioCliente.jsp">
+                        <img src="https://lh4.googleusercontent.com/tNFKUTKSe7SDQcz5dvEDBcO43k8TtwJMyYuD5Qa2UjwZ7j8evkSkjvtxpR-HRqXC3cUqjv9brMDHHfNz2RbslpLnmhKkmGO5j3qfwoN73widMeA-6w=w1280" width="197" height="46">
+                    </a>
                     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                       <span aria-hidden="true"></span>
                       <span aria-hidden="true"></span>
@@ -91,18 +92,19 @@
                           Producto productoActual;
                           while (iteProductos.hasNext()){
                           productoActual = iteProductos.next();
+                          ref = "Buscadores?formid=4&idProd="+productoActual.getId();
                   %>
                   <div class="box">
                       <article class="media">
                           <div class="media-left">
                             <figure class="image is-128x128">
-                                <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                <a href=<%= ref %>><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
                             </figure>
                           </div>
                           <div class="media-content">
                             <div class="content">
-                              <p><strong><%= productoActual.getNombre() %></strong> 
-                                <br><%= productoActual.getDescripcion() %>
+                                <a href=<%= ref %>><strong><%= productoActual.getNombre() %></strong></a>
+                                <p><br><%= productoActual.getDescripcion() %>
                               </p><br>
                             </div>
                           </div>
