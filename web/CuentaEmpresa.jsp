@@ -10,18 +10,21 @@
         <title>Crea una cuenta empresarial</title>
     </head>
     <body>
+        
+ 
+        
         <form id="Nuevamicroempresaform" name="Nuevamicroempresaform" action="LogicRegistroNuevoUsuarioServlet" method="post">
-            <section class="section">
+            <section class="section has-background-light ">
                 <div class="container">
-                    <h1 class="title">
-                        Crea una cuenta empresarial
+                    <h1 class="title  is-size-1 has-text-primary ">
+                        Bienvenido a BrocOnline 
                     </h1>
-                    <h2 class="title is-2">
-                        Es fácil y rápido
+                    <h2 class="subtitle is-size-4 is-italic  ">
+                        Crea una cuenta empresarial 
                     </h2>
                 </div>
                 <div class="field">
-                    <label>Logo Empresarial</label>
+                    
                     <div class="control">
                         <div class="file has-name is-right">
                             <label class="file-label">
@@ -30,8 +33,8 @@
                                 <span class="file-icon">
                                   <i class="fas fa-upload"></i>
                                 </span>
-                                <span class="file-label">
-                                  Choose a file…
+                                <span class="file-label is-primary ">
+                                  Logo Empresarial... 
                                 </span>
                               </span>
                               <span class="file-name">
@@ -120,7 +123,7 @@
                  
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link">Submit</button>
+                        <button class="button is-link is-primary">Submit</button>
                     </div>
                     <div class="control">
                         <button class="button is-link is-light">Cancel</button>
