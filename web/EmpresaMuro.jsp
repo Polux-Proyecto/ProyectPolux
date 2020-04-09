@@ -82,22 +82,37 @@
             </div>    
         </section>
         <section class="hero is-medium has-carousel">
-			<div id="carousel-demo" class="hero-carousel">
-				<div class="item-1">
-                                    <a href="EmpresaMuro.jsp"><image src="https://wikiki.github.io/images/merry-christmas.jpg" /></a>
-                                
-				</div>
-				<div class="item-2">
-                                    <a title="Nombre Empresa" href="EmpresaMuro.jsp"><image src="https://wikiki.github.io/images/singer.jpg" /></a>
-				</div>
-				<div class="item-3">
-                                    <a href="EmpresaMuro.jsp"><image src="https://wikiki.github.io/images/sushi.jpg" /></a>
-				</div>
-			</div>
-			<div class="hero-head"></div>
-			<div class="hero-body"></div>
-			<div class="hero-foot"></div>
-		</section>
+                    <div class="hero-head"></div>
+                    <div class="hero-body">
+                        <div id="carousel-demo" class="hero-carousel" data-autoplay="true" data-navigation-keys="false" data-autoplay-speed="5000" data-effect="fade" data-duration="1000">
+                            <div class="carousel-item has-text-centered has-background">
+                                <img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/merry-christmas.jpg">
+                                <div class="box" >
+                                    <div class="EnlaceCarousel">
+                                        <a href="MuroProducto.jsp"><h1><strong>Nombre de Producto</strong></h1></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item has-text-centered has-background">
+                                <img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/singer.jpg">
+                                <div class="box" >
+                                    <div class="EnlaceCarousel">
+                                        <a href="MuroProducto.jsp"><h1><strong>Nombre de Producto</strong></h1></a>
+                                     </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item has-text-centered has-background">
+                                <img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/sushi.jpg">
+                                <div class="box" >
+                                    <div class="EnlaceCarousel">
+                                        <a href="MuroProducto.jsp"><h1><strong>Nombre de Producto</strong></h1></a>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-foot"></div>
+                </section>
 		<!-- End Hero Carousel -->
 
 		<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
