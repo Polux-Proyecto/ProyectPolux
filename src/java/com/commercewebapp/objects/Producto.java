@@ -14,6 +14,7 @@ public class Producto {
     private int     id, idEmpresa, cantidad;
     private double  precio;
     private boolean activo;
+    private Empresa empresa;
 
     public Producto(int idC, int idEmpresaC, String nombreC, String descripcionC, double precioC, int activoIC, int cantidadC) {
         this.setId(idC);
@@ -31,6 +32,15 @@ public class Producto {
         
     }
 
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+        
     public String getNombreEmpresa() {
         return nombreEmpresa;
     }

@@ -72,7 +72,7 @@
                 <a class="navbar-item" href="InicioCliente.jsp">
                   Inicio
                 </a>
-                 <a class="navbar-item" href="Buscadores?formid=2&idCat=2">
+                 <a class="navbar-item" href="Buscadores?formid=2&idCat=3">
                   Hogar
                 </a>
                 <a class="navbar-item" href="Buscadores?idCat=5&formid=2">
@@ -98,7 +98,6 @@
                           <button class="button color1">
                             Buscar
                           </button>
-                        </p>
                         <input type="hidden" id="formid" name="formid" value="1">
                     </form>
                         <div class="buttons">
@@ -106,7 +105,6 @@
                           Cerrar sesión
                         </a>
                         </div>
-                    
                 </div>
                   
               </div>
