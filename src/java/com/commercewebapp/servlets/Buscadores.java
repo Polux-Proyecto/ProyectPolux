@@ -44,7 +44,7 @@ import javax.servlet.http.HttpServletResponse;
             /* TODO output your page here. You may use following sample code. */
             // </editor-fold>
         } else if (formid.equals("2")){
-            // <editor-fold defaultstate="collapsed" desc="Para las barras de búsqueda">
+            // <editor-fold defaultstate="collapsed" desc="Para las barras de opciones de InicioCliente">
             String idCat = request.getParameter("idCat");
             int idCategoria = Integer.parseInt(idCat);
             AdminProductos buscador = new AdminProductos();
@@ -54,6 +54,12 @@ import javax.servlet.http.HttpServletResponse;
             request.getSession().setAttribute("listaProductos", listaProductos);
             request.getSession().setAttribute("nombreCategoria", nombreCategoria);
             request.getRequestDispatcher("CategoriaEmpresas.jsp").forward(request, response);
+            // </editor-fold>
+        } else if (formid.equals("3")){
+            // <editor-fold defaultstate="collapsed" desc="Para las barras de opciones de InicioCliente">
+            
+            
+            
             // </editor-fold>
         }
         

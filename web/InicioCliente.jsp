@@ -69,7 +69,7 @@
                 <a class="navbar-item" href="Buscadores?idCat=1&formid=2">
                   Música
                 </a>
-                <a class="navbar-item" href="Buscadores?idCat=*&formid=2">
+                <a class="navbar-item" href="Buscadores?formid=3">
                   Todas las categorías
                 </a>
               </div>
