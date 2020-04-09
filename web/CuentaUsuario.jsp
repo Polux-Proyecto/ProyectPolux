@@ -4,6 +4,7 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.NuevoUsuarioParticular"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,9 +13,36 @@
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>Crea una cuenta empresarial</title>
     </head>
+    <%
+        NuevoUsuarioParticular usuarioexistente = (NuevoUsuarioParticular)request.getSession().getAttribute("usuarioexistente");
+           int error = (int)request.getSession().getAttribute("error");
+           String nombre = "";
+           String user = "";
+           String email = "";
+           String password = "";
+           String pais = "";
+           String ciudad = "";
+           String direccion = "";
+           String sexo = "";
+           String fechanacimiento = "";
+           byte[] imagenperfil;
+           
+                if(usuarioexistente!=null && error==1){
+                    nombre = usuarioexistente.getName();
+                    user = usuarioexistente.getUsername();
+                    email = usuarioexistente.getEmail();
+                    pais = usuarioexistente.getPais();
+                    ciudad = usuarioexistente.getCiudad();
+                    direccion = usuarioexistente.getDireccion();
+                    sexo = usuarioexistente.getSexo();
+                    fechanacimiento = usuarioexistente.getFechanacimiento();
+                    imagenperfil = usuarioexistente.getImagen();
+           
+                }
+    %>
     
     <body>
-        <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post">
+        <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post" enctype="multipart/form-data">
             <section class="section">
                 <div class="container">
                     <h1 class="title">
@@ -140,7 +168,7 @@
                         </div>
                         <div class="select is-info">
                             <label class="label" style="font-weight: 100;">Año</label>
-                            <select onchange="confirm('Año: '+this.value)">
+                            <select name="StringNewUseryear" onchange="confirm('Año: '+this.value)">
                             <script>
                             var myDate = new Date();
                             var year = myDate.getFullYear();

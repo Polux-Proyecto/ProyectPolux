@@ -8,13 +8,64 @@ public class NuevoMicroEmpresario
     String nit;
     String password;
     String descripcion;
+    String email;
+    String pais;
+    String ciudad;
+    String categoria;
+    byte[] logo;
 
-    public NuevoMicroEmpresario(String Sname, String Suser, String Snit, String Spassword, String Sdescripcion) {
+    public NuevoMicroEmpresario(String Sname, String Suser, String Snit, String Spassword, String Sdescripcion,String Semail, String Spais, String Sciudad, String Scategoria, byte[] Slogo) 
+    {
         this.setName(Sname);
         this.setUser(Suser);
         this.setNit(Snit);
         this.setPassword(Spassword);
         this.setDescripcion(Sdescripcion);
+        this.setEmail(Semail);
+        this.setPais(Spais);
+        this.setCiudad(Sciudad);
+        this.setCategoria(Scategoria);
+        this.setLogo(Slogo);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    private void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    private void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    private void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    private void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public byte[] getLogo() {
+        return logo;
+    }
+
+    private void setLogo(byte[] logo) {
+        this.logo = logo;
     }
     
     

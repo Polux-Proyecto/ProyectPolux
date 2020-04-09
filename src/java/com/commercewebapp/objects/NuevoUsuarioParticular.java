@@ -7,11 +7,14 @@ public class NuevoUsuarioParticular
      String username;
      String email; 
      String password;
+     String sexo;
      String pais;
      String ciudad; 
      String direccion;
+     String fechanacimiento;
+     byte[] imagen;
 
-    public NuevoUsuarioParticular(String Sname, String Susername, String Semail, String Spassword, String Spais, String Sciudad, String Sdireccion) {
+    public NuevoUsuarioParticular(String Sname, String Susername, String Semail, String Spassword, String Spais, String Sciudad, String Sdireccion, String Ssexo, String Sfechanacimiento, byte[] Simagen) {
         this.setName(Sname);
         this.setUsername(Susername);
         this.setEmail(Semail);
@@ -19,8 +22,35 @@ public class NuevoUsuarioParticular
         this.setPais(Spais);
         this.setCiudad(Sciudad);
         this.setDireccion(Sdireccion);
+        this.setSexo(Ssexo);
+        this.setFechanacimiento(Sfechanacimiento);
+        this.setImagen(Simagen);
         
      }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    private void setSexo(String psexo) {
+        this.sexo = psexo;
+    }
+
+    public String getFechanacimiento() {
+        return fechanacimiento;
+    }
+
+    private void setFechanacimiento(String pfechanacimiento) {
+        this.fechanacimiento = pfechanacimiento;
+    }
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    private void setImagen(byte[] pimagen) {
+        this.imagen = pimagen;
+    }
      
      
     public String getName() {
