@@ -5,10 +5,8 @@
  */
 package com.commercewebapp.servlets;
 
-import com.commercewebapp.logics.AdminProductos;
-import com.commercewebapp.objects.Producto;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,52 +15,35 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Mauricio Aguilar
+ * @author 78GDO
  */
+@WebServlet(name = "ServletPrueba", urlPatterns = {"/ServletPrueba"})
+public class ServletPrueba extends HttpServlet {
 
-@WebServlet(name = "Buscadores", urlPatterns = {"/Buscadores"}) public class Buscadores extends HttpServlet {
-
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String formid = request.getParameter("formid");
-        
-        
-        if(formid.equals("1")){
-            // <editor-fold defaultstate="collapsed" desc="Para las barras de búsqueda">
-            //Es buscador de incioCliente
-            
-            String palabra = request.getParameter("palabra");
-            AdminProductos buscador = new AdminProductos();
-            
-            List<Producto> listaProductos = buscador.getProductoPorPalabra(palabra);
-            
-            
-            response.sendRedirect("CategoriaEmpresas.jsp");
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            // </editor-fold>
-        } else if (formid.equals("2")){
-            // <editor-fold defaultstate="collapsed" desc="Para las barras de opciones de InicioCliente">
-            String idCat = request.getParameter("idCat");
-            int idCategoria = Integer.parseInt(idCat);
-            AdminProductos buscador = new AdminProductos();
-            String nombreCategoria = buscador.getNombreCategoriaPorId(idCategoria);
-            List<Producto> listaProductos = buscador.getProductoPorCategoria(idCategoria, true);
-            
-            request.getSession().setAttribute("listaProductos", listaProductos);
-            request.getSession().setAttribute("nombreCategoria", nombreCategoria);
-            request.getRequestDispatcher("CategoriaEmpresas.jsp").forward(request, response);
-            // </editor-fold>
-        } else if (formid.equals("3")){
-            // <editor-fold defaultstate="collapsed" desc="Para las barras de opciones de InicioCliente">
-            
-            
-            
-            // </editor-fold>
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ServletPrueba</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ServletPrueba at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -40,7 +40,7 @@
         <div>
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-              <a class="navbar-item" href="Broconline">
+              <a class="navbar-item" href="InicioCliente.jsp">
                 <img src="https://lh4.googleusercontent.com/tNFKUTKSe7SDQcz5dvEDBcO43k8TtwJMyYuD5Qa2UjwZ7j8evkSkjvtxpR-HRqXC3cUqjv9brMDHHfNz2RbslpLnmhKkmGO5j3qfwoN73widMeA-6w=w1280" width="197" height="46">
               </a>
 
@@ -60,16 +60,16 @@
                 <a class="navbar-item" href="InicioCliente.jsp">
                   Inicio
                 </a>
-                 <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=3">
+                 <a class="navbar-item" href="Buscadores?formid=2&idCat=2">
                   Hogar
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=5">
+                <a class="navbar-item" href="Buscadores?idCat=5&formid=2">
                   Tecnología
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=1">
+                <a class="navbar-item" href="Buscadores?idCat=1&formid=2">
                   Música
                 </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp?idCat=*">
+                <a class="navbar-item" href="Buscadores?formid=3">
                   Todas las categorías
                 </a>
               </div>

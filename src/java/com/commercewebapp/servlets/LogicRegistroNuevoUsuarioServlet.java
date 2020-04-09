@@ -5,37 +5,53 @@ import com.commercewebapp.objects.NuevoMicroEmpresario;
 import com.commercewebapp.objects.NuevoUsuarioParticular;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 /**
  * Este es el servidor -1
  * @author Rodrigo Salazar
  */
-
+@MultipartConfig
 @WebServlet(name = "LogicRegistroNuevoUsuarioServlet", urlPatterns = {"/LogicRegistroNuevoUsuarioServlet"})
 public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {          
             String strForm = request.getParameter("formid");
             BuscarUsuario buscador = new BuscarUsuario();
             int itype =0;
             boolean hasfailed;
             
+            
+
             if(strForm.equals("1")){
+
                 String strname = request.getParameter("strnewNombreUsuario");
+                Part fileimagenperfil = request.getPart("resume");
                 String struser = request.getParameter("strNewUsername");
                 String stremail = request.getParameter("strNewEmail");
                 String strpassword = request.getParameter("newpassword");
-                String strpais = request.getParameter("strPais");
-                String strciudad = request.getParameter("strciudad");
-                String strdireccion = request.getParameter("strdireccion");
+                String strsexo = request.getParameter("StringNewSexo");
+                String strdia = request.getParameter("StringNewBornDay");
+                String strmes = request.getParameter("StringNewBornMonth");
+                String stranno = request.getParameter("StringNewUseryear");
+                String strFechaNacimiento = strdia + "/" + strmes + "/" + stranno;
+                String strpais = request.getParameter("StringNewCountry");
+                String strciudad = request.getParameter("strnewCiudadUsuario");
+                String strdireccion = request.getParameter("strnewDireccionUsuario");
+                
+                InputStream filecontent = fileimagenperfil.getInputStream();
+                byte[] imagenperfil = IOUtils.toByteArray(filecontent);
                 
                 Usuario usuario = buscador.getAllUsers(struser);
                 itype=1;
@@ -43,13 +59,18 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 if (usuario.isMicroEmpresario()==usuario.isUsuario())
                 {
                     //el usuario no existe
-                    NuevoUsuarioParticular nuevouser = new NuevoUsuarioParticular(strname, struser, stremail, strpassword, strpais, strciudad, strdireccion);
+                    NuevoUsuarioParticular nuevouser = new NuevoUsuarioParticular(strname, struser, stremail, strpassword, strpais, strciudad, strdireccion,strsexo,strFechaNacimiento,imagenperfil);
                     hasfailed = buscador.createnewuser(nuevouser,null);
+                    
                 }
                 else
                 {
                     //usuario ya existente
-                    response.sendRedirect("CuentaUsuario.jsp?error=1");
+                    int error = 1;
+                    NuevoUsuarioParticular nuevouser = new NuevoUsuarioParticular(strname, struser, stremail, strpassword, strpais, strciudad, strdireccion,strsexo,strFechaNacimiento,imagenperfil);
+                    request.getSession().setAttribute("usuarioexistente", nuevouser);
+                    request.getSession().setAttribute("error",error);
+                    response.sendRedirect("CuentaUsuario.jsp");
                 }
                         
             }
@@ -57,23 +78,32 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
             if(strForm.equals("2")){
                 String strname= request.getParameter("nombreEmp");
                 String struser= request.getParameter("userEmp");
+                String stremail = request.getParameter("strNewEmail");
                 String strnit= request.getParameter("nit");
                 String strpassword = request.getParameter("passEmp");
+                String strpais = request.getParameter("StringNewCountryEmp");
+                String strciudad = request.getParameter("strnewCiudadEmp");
+                String strcategoria = request.getParameter("StrCategoria");
                 String strdescripcion = request.getParameter("descEmp");
+                Part fileimagenperfil = request.getPart("resume");
+                
+                InputStream filecontent = fileimagenperfil.getInputStream();
+                byte[] imagenlogo = IOUtils.toByteArray(filecontent);
                 
                 Usuario usuario = buscador.getAllUsers(struser);
                 itype=2;
                 
                 if (usuario.isMicroEmpresario()==usuario.isUsuario())
                 {
-                    //usuario no existe
-                    NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion);
+                    //usuario no existe 
+                    NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion,stremail,strpais,strciudad,strcategoria,imagenlogo);
                     hasfailed = buscador.createnewuser(null, nuevoempresario);
                 }
                 else
                 {
                     //usuario existe
-                    response.sendRedirect("CuentaEmpresa.jsp?error=1");
+                    response.sendRedirect("CuentaEmpresa.jsp");
+                    
                 }
             }
         }
