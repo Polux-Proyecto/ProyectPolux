@@ -1,26 +1,40 @@
 <%-- 
-    Document   : CategoriaEmpresas
-    Created on : 04-03-2020, 09:48:30 PM
-    Author     : Joanna Rivas
+    Document   : Categorias
+    Created on : 04-09-2020, 11:06:39 AM
+    Author     : Mauricio Aguilar
 --%>
 
 <%@page import="java.util.Iterator"%>
-<%@page import="com.commercewebapp.objects.Producto"%>
+<%@page import="com.commercewebapp.objects.Categoria"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% 
-    List<Producto> listaProductos = (List<Producto>) request.getSession().getAttribute("listaProductos");
-    String nombreCategoria = (String) request.getSession().getAttribute("nombreCategoria");
-    Iterator<Producto> iteProductos = listaProductos.iterator();
-    int cantidadProductos = listaProductos.size();
-%>
 <!DOCTYPE html>
+<%
+    List<Categoria> listaCategoria = (List<Categoria>) request.getSession().getAttribute("listaCategoria");
+    int mitad = (Integer) request.getSession().getAttribute("mitad");
+    mitad ++;
+    Iterator<Categoria> iteCategorias = listaCategoria.iterator();
+    int cantidadCategorias = listaCategoria.size();
+    int i=0;
+%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
-        <title><%= nombreCategoria %></title>
+        <title>Categorias</title>
+        <Style>
+            #izquierda{
+                float:left;
+                width:50%;
+            }
+            #derecha{
+                float:right;
+                width:50%;
+            }
+            
+        </Style>
     </head>
     <body>
         <section>
@@ -79,20 +93,26 @@
       <div class="tile is-ancestor">
           <div class="tile is-parent ">
               <div class="tile is-child box">
-                  <p class="title"><%= nombreCategoria %></p>
+                  <p class="title">Todas las categorías</p>
                   <% 
-                      if (cantidadProductos==0){
+                      if (cantidadCategorias==0){
                   %>
                   <div class="box"
-                       <p class="title">No hay productos de esta categorías</p>
+                       <p class="title">No hay Categorías para mostrar :(</p>
                   </div>
                   <%
                       } else {
-                          Producto productoActual;
-                          while (iteProductos.hasNext()){
-                          productoActual = iteProductos.next();
-                  %>
-                  <div class="box">
+                          
+                          Categoria categoriaActual;
+                          while (iteCategorias.hasNext()){
+                            categoriaActual = iteCategorias.next();
+                            String ref = "Buscadores?formid=2&idCat="+categoriaActual.getIdCat();
+                            
+                                if (i<=mitad) {%>
+                    <div class="box" id="izquierda">
+                      <%        } else { %>
+                    <div class="box" id="derecha">
+                      <%        } %>
                       <article class="media">
                           <div class="media-left">
                             <figure class="image is-128x128">
@@ -101,9 +121,8 @@
                           </div>
                           <div class="media-content">
                             <div class="content">
-                              <p><strong><%= productoActual.getNombre() %></strong> 
-                                <br><%= productoActual.getDescripcion() %>
-                              </p><br>
+                              <a href=<%= ref %>><strong><%= categoriaActual.getNombre() %></strong> </a>
+                              <br>
                             </div>
                           </div>
                       </article>

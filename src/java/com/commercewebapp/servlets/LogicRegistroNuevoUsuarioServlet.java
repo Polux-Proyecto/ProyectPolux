@@ -32,8 +32,6 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
             int itype =0;
             boolean hasfailed;
             
-            
-
             if(strForm.equals("1")){
 
                 String strname = request.getParameter("strnewNombreUsuario");

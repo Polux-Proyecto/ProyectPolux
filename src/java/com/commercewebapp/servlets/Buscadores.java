@@ -5,7 +5,9 @@
  */
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.AdminCategorias;
 import com.commercewebapp.logics.AdminProductos;
+import com.commercewebapp.objects.Categoria;
 import com.commercewebapp.objects.Producto;
 import java.io.IOException;
 import java.util.List;
@@ -56,10 +58,18 @@ import javax.servlet.http.HttpServletResponse;
             request.getRequestDispatcher("CategoriaEmpresas.jsp").forward(request, response);
             // </editor-fold>
         } else if (formid.equals("3")){
-            // <editor-fold defaultstate="collapsed" desc="Para las barras de opciones de InicioCliente">
+            // <editor-fold defaultstate="collapsed" desc="Para la opcion de todas las categorias">
+            AdminCategorias buscador = new AdminCategorias();
+            int mitad = 0;
             
+            List<Categoria> listaCategoria = buscador.getAllCategorias();
+            if (listaCategoria!=null){
+                mitad = buscador.getMitadCategorias(listaCategoria.size());
+            }
             
-            
+            request.getSession().setAttribute("mitad", mitad);
+            request.getSession().setAttribute("listaCategoria", listaCategoria);
+            request.getRequestDispatcher("Categorias.jsp").forward(request, response);
             // </editor-fold>
         }
         

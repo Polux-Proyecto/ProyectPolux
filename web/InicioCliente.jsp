@@ -60,7 +60,7 @@
                 <a class="navbar-item" href="InicioCliente.jsp">
                   Inicio
                 </a>
-                 <a class="navbar-item" href="Buscadores?formid=2&idCat=2">
+                 <a class="navbar-item" href="Buscadores?formid=2&idCat=3">
                   Hogar
                 </a>
                 <a class="navbar-item" href="Buscadores?idCat=5&formid=2">

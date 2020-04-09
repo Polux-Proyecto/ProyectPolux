@@ -1,6 +1,7 @@
 package com.commercewebapp.logics;
 
 import com.commercewebapp.database.DatabaseZ;
+import com.commercewebapp.objects.Categoria;
 import com.commercewebapp.objects.Producto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -251,4 +252,6 @@ public class AdminProductos extends Logic {
         
         return nombre;
     }
+    
+    
 }
