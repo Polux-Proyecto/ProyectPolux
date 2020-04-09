@@ -23,11 +23,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
+		<style>
+		.content {
+		  max-width: 600px;
+		  margin: auto;
+		}
+		</style>
     </head>
     <body>
       
         <br><br>
-        <section class="hero is-primary is-bold has-text-centered has-background-grey-light ">
+        <section class="hero is-primary is-bold has-text-centered has-background-grey-light">
   <div class="hero-body">
     <div class="container ">
       <h1 class="title  is-size-1 is-family-sans-serif ">
@@ -41,9 +47,9 @@
 </section>
         
         
-        <section class="section has-background-light "  >
+        <section class="section has-background-light">
             
-            <form action="LoggeoUsuarios" method="post">
+            <form action="LoggeoUsuarios" method="post" class="content">
 				<div class="field  ">
                                     
                                     <label class="title is-size-3">Usuario: </label><br>
@@ -67,10 +73,10 @@
                 </div>
             </form>
                                         <br>
-            <div class="is-link">
+            <div class="is-link content">
                 <h2>
 					<strong>¿No tienes cuenta? </strong>
-                                        <br><br>
+                    <br>
                     <a href="CuentaUsuario.jsp">Crea una cuenta de usuario</a>
 					<br>
 					<a href="CuentaEmpresa.jsp">Crea una cuenta empresarial </a>
