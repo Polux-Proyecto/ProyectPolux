@@ -59,15 +59,23 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                     //el usuario no existe
                     NuevoUsuarioParticular nuevouser = new NuevoUsuarioParticular(strname, struser, stremail, strpassword, strpais, strciudad, strdireccion,strsexo,strFechaNacimiento,imagenperfil);
                     hasfailed = buscador.createnewuser(nuevouser,null);
+                    String codigo = "27";
+                    request.getSession().setAttribute("nuevouser", struser);
+                    request.getSession().setAttribute("codigo", codigo);
+                    response.sendRedirect("index.jsp");
                     
                 }
                 else
                 {
                     //usuario ya existente
-                    int error = 1;
+                    String error = "1";
                     NuevoUsuarioParticular nuevouser = new NuevoUsuarioParticular(strname, struser, stremail, strpassword, strpais, strciudad, strdireccion,strsexo,strFechaNacimiento,imagenperfil);
                     request.getSession().setAttribute("usuarioexistente", nuevouser);
                     request.getSession().setAttribute("error",error);
+                    request.getSession().setAttribute("imagenfile", fileimagenperfil);
+                    request.getSession().setAttribute("day", strdia);
+                    request.getSession().setAttribute("month", strmes);
+                    request.getSession().setAttribute("year", stranno);
                     response.sendRedirect("CuentaUsuario.jsp");
                 }
                         
@@ -93,13 +101,21 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 
                 if (usuario.isMicroEmpresario()==usuario.isUsuario())
                 {
-                    //usuario no existe 
+                    //usuario no existe               
                     NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion,stremail,strpais,strciudad,strcategoria,imagenlogo);
                     hasfailed = buscador.createnewuser(null, nuevoempresario);
+                    String codigo = "27";
+                    request.getSession().setAttribute("nuevouser", struser);
+                    request.getSession().setAttribute("codigo", codigo);
+                    response.sendRedirect("index.jsp");
                 }
                 else
                 {
                     //usuario existe
+                    String error = "2";
+                    NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion,stremail,strpais,strciudad,strcategoria,imagenlogo);
+                    request.getSession().setAttribute("usuarioexistente", nuevoempresario);
+                    request.getSession().setAttribute("error",error);
                     response.sendRedirect("CuentaEmpresa.jsp");
                     
                 }

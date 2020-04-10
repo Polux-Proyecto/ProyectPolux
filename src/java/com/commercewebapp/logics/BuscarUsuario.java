@@ -118,14 +118,14 @@ public class BuscarUsuario extends Logic {
             String bdcategoria = nuevoempresario.getCategoria();
             byte[] bdlogo = nuevoempresario.getLogo();
              
+            System.out.println("antes de insertar si salio");
             pSQL = "INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"
-                    + "VALUES('"+bdname+"','"+bdnit+"','"+bdpassword+"','"+bduser+"','"+bddescripcion+"','"+bdemail+"','"+bdpais+"','"
-                    + bdciudad +"','"+bdcategoria+"','"+Arrays.toString(bdlogo)+"')";
+                    + "VALUES('"+bdname+"','"+bdnit+"','"+bdpassword+"','"+bduser+"','"+bddescripcion+"','"+bdemail+"','"+bdpais+"','"  + bdciudad +"','"+bdcategoria+"','"+Arrays.toString(bdlogo)+"')";
             hasfailed = localDatabase.executeNonQueryBool(pSQL);
             System.out.println("Se insertaron los datos de microempresario correctamente");
                  
        }
-       
+        
         return hasfailed;
     }
 }
