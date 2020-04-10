@@ -4,8 +4,24 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Estadistico"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    List<Estadistico> listaEstadisticos = (List<Estadistico>) request.getSession().getAttribute("listaEstadisticos");
+    int cantEstadisticos = 0;
+    Iterator<Estadistico> iteEstadisticos = null;
+    
+    if (listaEstadisticos!=null){
+        cantEstadisticos = listaEstadisticos.size();
+        iteEstadisticos = listaEstadisticos.iterator();
+    }
+    
+    Estadistico estadistico = null;
+
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -95,31 +111,40 @@
                             <table class="table is-hoverable is-fullwidth">
                                 <thead>
                                     <tr>
-                                     <th><abbr title="Numero">Numero de Porducto</abbr></th>
-                                      <th><abbr title="NomProducto">Nombre de Producto</abbr></th>
-                                      <th><abbr title="Categoría">Categoría</abbr></th>
-                                      <th><abbr title="Existencias">Busquedas</abbr></th>
-                                      <th><abbr title="Existencias">En Lista de Deseos</abbr></th>
-                                      <th><abbr title="Existencias">Vendidos</abbr></th>
+                                        <th><abbr title="Numero">Numero de Porducto</abbr></th>
+                                        <th><abbr title="NomProducto">Nombre de Producto</abbr></th>
+                                        <th><abbr title="Categoría">Categoría</abbr></th>
+                                        <th><abbr title="Existencias">Busquedas</abbr></th>
+                                        <th><abbr title="Existencias">Vendidos</abbr></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <% 
+                                    if (cantEstadisticos == 0){
+                                    %>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Café Buendía</td>
-                                        <td>Comida</td>
-                                        <td>200</td>
-                                        <td>50000</td>
-                                        <td>30000</td>
+                                        <td>No data</td>
+                                        <td>No data</td>
+                                        <td>No data</td>
+                                        <td>No data</td>
+                                        <td>No data</td>
                                     </tr>
+                                    <% 
+                                    } else {
+                                        while (iteEstadisticos.hasNext()){
+                                            estadistico = iteEstadisticos.next();
+                                    %>
                                     <tr>
-                                        <td>2</td>
-                                        <td>Camisa de Mickey Mouse</td>
-                                        <td>Ropa</td>
-                                        <td>1000</td>
-                                        <td>200000</td>
-                                        <td>9000</td>
+                                        <td><%= estadistico.getnLista() %></td>
+                                        <td><%= estadistico.getNombreProd() %></td>
+                                        <td><%= estadistico.getNombrecategoria() %></td>
+                                        <td><%= estadistico.getCantBusquedas() %></td>
+                                        <td><%= estadistico.getCantVentas() %></td>
                                     </tr>
+                                    <% 
+                                        }
+                                    }
+                                    %>
                                 </tbody>
                             </table>
                         </div>
@@ -129,7 +154,7 @@
                     <div class="tile is-child box">
                         <article>
                             <p class="tile">
-                                <strong>Ventas según producto</strong>
+                                <strong>Top 5 ventas según producto</strong>
                             </p>
                             <div id="productChart" style="height: 250px;"></div>
                             <script>
@@ -155,7 +180,7 @@
                         </article>
                         <article>
                             <p class="tile">
-                                <strong>Ventas según Categoría</strong>
+                                <strong>Top 5 ventas según Categoría</strong>
                             </p>
                             <div id="categoryChart" style="height: 250px;"></div>
                             <script>

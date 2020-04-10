@@ -157,7 +157,7 @@ public class BuscarUsuario extends Logic {
              
             System.out.println("antes de insertar si salio");
            try {
-               //            pSQL = "INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"
+//            pSQL = "INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"
 //                    + "VALUES('"+bdname+"','"+bdnit+"','"+bdpassword+"','"+bduser+"','"+bddescripcion+"','"+bdemail+"','"+bdpais+"','"  + bdciudad +"','"+bdcategoria+"','"+Arrays.toString(bdlogo)+"')";
 //            hasfailed = localDatabase.executeNonQueryBool(pSQL);
                 statement = conn.prepareStatement("INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"

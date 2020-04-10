@@ -102,7 +102,7 @@
                 <a class="navbar-item" href="InicioEmpresa.jsp">
                   Inicio
                 </a>
-                 <a class="navbar-item" href="EstadoDeVentas.jsp">
+                 <a class="navbar-item" href="Empresarios?formid=2">
                   Ventas
                 </a>
                 <a class="navbar-item" href="EnviosPend.jsp">

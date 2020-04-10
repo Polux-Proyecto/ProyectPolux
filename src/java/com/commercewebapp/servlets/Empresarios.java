@@ -1,9 +1,12 @@
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.AdminProductos;
+import com.commercewebapp.objects.Estadistico;
 import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,11 +32,18 @@ public class Empresarios extends HttpServlet {
                 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ingresar producto nuevo.">
                 
                 
-                
-                break;// </editor-fold>
+                // </editor-fold>
+                break;
             }
             case "2":{
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ingresar producto nuevo.">
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                AdminPedidos buscador = new AdminPedidos();
+                List<Estadistico> listaEstadisticos = buscador.getAllEstadisticosPorIdEmpresa(usuario.getIdUsuario());
                 
+                request.getSession().setAttribute("listaEstadisticos", listaEstadisticos);
+                response.sendRedirect("EstadoDeVentas.jsp");
+                // </editor-fold>
                 break;
             }
             

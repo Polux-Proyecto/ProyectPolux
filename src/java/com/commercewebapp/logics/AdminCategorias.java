@@ -4,11 +4,7 @@ import com.commercewebapp.database.DatabaseZ;
 import com.commercewebapp.objects.Categoria;
 import com.commercewebapp.objects.Llenador;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
