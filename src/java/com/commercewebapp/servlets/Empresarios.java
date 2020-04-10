@@ -26,32 +26,10 @@ public class Empresarios extends HttpServlet {
         
         switch (formid){
             case "1":{
-                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
-                String  nombre = request.getParameter("nameProd"), 
-                        cantidadS = request.getParameter("cantProd"), 
-                        costoS = request.getParameter("costoProd"), 
-                        descripciónS  = request.getParameter("descProd");
-                Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
-
-                int     cantidad = Integer.parseInt(cantidadS);
-                double  costo = Double.parseDouble(costoS);
-                AdminProductos adminProd = new AdminProductos();
-                boolean hasFailed;
-
-
-                Producto producto = new Producto(0, usuario.getIdUsuario(), nombre, descripciónS, costo, 1, cantidad);
-
-                hasFailed = adminProd.crearProducto(producto);
-
-
-                if(hasFailed){
-
-                    response.sendRedirect("InicioEmpresa.jsp?Error=1");
-                } else {
-
-                    response.sendRedirect("InicioEmpresa.jsp?Mensaje=1");
-                }
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ingresar producto nuevo.">
+                
+                
+                
                 break;// </editor-fold>
             }
             case "2":{
