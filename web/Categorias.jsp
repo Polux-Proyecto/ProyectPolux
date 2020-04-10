@@ -80,7 +80,7 @@
                           </button>
                         </p>
                         <div class="buttons">
-                            <a class="button is-light">
+                            <a class="button is-light" href="index.jsp" >
                                 Cerrar sesión
                             </a>
                         </div>

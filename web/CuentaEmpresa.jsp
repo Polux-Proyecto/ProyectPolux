@@ -1,7 +1,18 @@
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Categoria"%>
+<%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.NuevoMicroEmpresario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% 
+    List<Categoria> categorias = (List<Categoria>) request.getSession().getAttribute("listaCategoria");
+    Iterator<Categoria> iteCategoria = null;
+    Categoria categoriaActual = null;
+    if (categorias!=null){
+         iteCategoria = categorias.iterator();
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -43,15 +54,21 @@
  
         <form id="Nuevamicroempresaform" name="Nuevamicroempresaform" action="LogicRegistroNuevoUsuarioServlet" method="post" method="post" enctype="multipart/form-data">
         
-            <section class="section has-background-light ">
-                <div class="container">
-                    <h1 class="title  is-size-1 has-text-primary ">
-                        Bienvenido a BrocOnline 
-                    </h1>
-                    <h2 class="subtitle is-size-4 is-italic  ">
-                        Crea una cuenta empresarial 
-                    </h2>
-                </div>
+        <section class="section has-background-light ">
+        <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post" enctype="multipart/form-data">
+                 <section class="hero is-primary is-bold has-text-centered has-background-grey-light">
+  <div class="hero-body">
+    <div class="container ">
+      <h1 class="title  is-size-1 is-family-sans-serif ">
+        BrocOnline Store 
+      </h1>
+      <h2 class="subtitle">
+        "CREA UNA CUENTA EMPRESARIAL"
+      </h2>
+    </div>
+  </div>
+</section>
+            <br><br> 
                 <div class="field">
                     
                     <div class="control">
@@ -132,32 +149,17 @@
                     <div class="control">
                         <div class="select is-info">
                             <select  id="StrCategoria" name="StrCategoria">
-                                <option value="1">Musica</option>
-                                <option value="2">Ropa, zapatos, joyería y relojes</option>
-                                <option value="3">Hogar y cocina</option>
-                                <option value="4">Libros</option>
-                                <option value="5">Electrónicos</option>
-                                <option value="6">Mascotas</option>
-                                <option value="7">Deportes y aire libre</option>
-                                <option value="8">Bebé</option>
-                                <option value="9">Automotriz</option>
-                                <option value="10">Arte y artesanías</option>
-                                <option value="11">Belleza y cuidado personal</option>
-                                <option value="12">Computadoras</option>
-                                <option value="13">Moda Mujeres</option>
-                                <option value="14">Moda Hombres</option>
-                                <option value="15">Moda niños</option>
-                                <option value="16">Salud</option>
-                                <option value="17">Películas</option>
-                                <option value="18">CSoftware</option>
-                                <option value="19">Herramientas y bricolage</option>
-                                <option value="20">Juguetes y juegos</option>
-                                <option value="21">Videojuegos</option>
+                                <% if(categorias!=null){
+                                        while(iteCategoria.hasNext()){
+                                            categoriaActual = iteCategoria.next();
+                                %>
+                                <option value=<%= categoriaActual.getIdCat() %>><%= categoriaActual.getNombre() %> </option>
+                                <%      }
+                                    }%>
                             </select>
                         </div>
                     </div>
                 </div>
-                    
                 <div class="field">
                 <label>Descripcion</label>
                     <div class="control">

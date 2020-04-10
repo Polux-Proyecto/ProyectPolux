@@ -1,9 +1,12 @@
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.AdminProductos;
+import com.commercewebapp.objects.Estadistico;
 import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,46 +26,33 @@ public class Empresarios extends HttpServlet {
     //Pedir el formid y el empresario
         response.setContentType("text/html;charset=UTF-8");
         String  formid = request.getParameter("formid");
-        Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
         
-        if (usuario == null){
-            response.sendRedirect("PaginaDeErrores.jsp");
-            //Este código se supone que no debe de ocurrir jamás
-        } else {
-            
-            if (formid.equals("11")){
-            //Acá está el código si el empresario quiere insertar un nuevo producto
-            //Obtenet parámetros
-                String  nombre = request.getParameter("nameProd"), 
-                        cantidadS = request.getParameter("cantProd"), 
-                        costoS = request.getParameter("costoProd"), 
-                        descripciónS  = request.getParameter("descProd");
-            //Convertir
-                int     cantidad = Integer.parseInt(cantidadS);
-                double  costo = Double.parseDouble(costoS);
-                AdminProductos adminProd = new AdminProductos();
-                boolean hasFailed;
-
-            //Crear pojo del nuevo producto
-                Producto producto = new Producto(0, usuario.getIdUsuario(), nombre, descripciónS, costo, 1, cantidad);
-            
-            //Insertar en la bd
-                hasFailed = adminProd.crearProducto(producto);
+        switch (formid){
+            case "1":{
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ingresar producto nuevo.">
                 
-            //Avisar al usuario 
-                if(hasFailed){
-                //Falló
-                    response.sendRedirect("InicioEmpresa.jsp?Error=1");
-                } else {
-                //Éxito
-                    response.sendRedirect("InicioEmpresa.jsp?Mensaje=1");
-                }
-            }    
+                
+                // </editor-fold>
+                break;
+            }
+            case "2":{
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ir al reporte de ventas.">
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                AdminPedidos buscador = new AdminPedidos();
+                List<Estadistico> listaEstadisticos = buscador.getAllEstadisticosPorIdEmpresa(usuario.getIdUsuario());
+                List<Estadistico> listaTop5Prod = buscador.getTop5Ventas(usuario.getIdUsuario());
+                List<Estadistico> listaTop5Cat = buscador.getTop5Categorias(usuario.getIdUsuario());
+                request.getSession().setAttribute("listaEstadisticos", listaEstadisticos);
+                request.getSession().setAttribute("listaTop5Prod", listaTop5Prod);
+                request.getSession().setAttribute("listaTop5Cat", listaTop5Cat);
+                response.sendRedirect("EstadoDeVentas.jsp");
+                // </editor-fold>
+                break;
+            }
+            
         }
-        
-        
     }
-
+        
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

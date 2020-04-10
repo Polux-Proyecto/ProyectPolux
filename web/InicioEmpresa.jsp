@@ -8,11 +8,49 @@
         1 - El producto se ingresó con éxito
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Producto"%>
+<%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%  Usuario usuario = (Usuario) request.getSession().getAttribute("usuario"); %>
-<!DOCTYPE html>
+
 <% 
+    Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+    List<Producto> listaProdMasVendidos = (List<Producto>) request.getSession().getAttribute("listaProdMasVendidos");
+    List<Producto> listaPrdMenosStock = (List<Producto>) request.getSession().getAttribute("listaPrdMenosStock");
+    List<Producto> listaProdSinStock = (List<Producto>) request.getSession().getAttribute("listaProdSinStock");
+    int cantidadProducto = (Integer) request.getSession().getAttribute("cantidadProducto");
+    
+    
+    int cantMasVendidos = 0;
+    int cantMenosStock = 0;
+    int cantSinStock = 0;
+    Iterator<Producto> iteMasVendidos = null;
+    Iterator<Producto> iteMenosStock = null;
+    Iterator<Producto> iteSinStock = null;
+    
+    if (cantidadProducto==-1){
+        cantidadProducto = 0;
+    }
+    if(listaProdMasVendidos!=null){
+        cantMasVendidos = listaProdMasVendidos.size();
+         iteMasVendidos = listaProdMasVendidos.iterator();
+    }
+    if(listaPrdMenosStock!=null){
+        cantMenosStock = listaPrdMenosStock.size();
+        iteMenosStock = listaPrdMenosStock.iterator();
+    }
+    if(listaProdSinStock!=null){
+        cantSinStock = listaProdSinStock.size();
+        iteSinStock = listaProdSinStock.iterator();
+    }
+    
+    Producto producto = null;
+    
+   %> 
+    
+    
+<%
     String error = request.getParameter("Error"), mensaje = request.getParameter("Mensaje"), avisoE = "", avisoM = "";
     
     if(error!= null){
@@ -31,6 +69,8 @@
     }
     
 %>
+
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -62,7 +102,7 @@
                 <a class="navbar-item" href="InicioEmpresa.jsp">
                   Inicio
                 </a>
-                 <a class="navbar-item" href="EstadoDeVentas.jsp">
+                 <a class="navbar-item" href="Empresarios?formid=2">
                   Ventas
                 </a>
                 <a class="navbar-item" href="EnviosPend.jsp">
@@ -88,7 +128,7 @@
                       </button>
                     </p>
                     <div class="buttons">
-                        <a class="button "  style="background-color: #29b342">
+                        <a class="button " href="index.jsp" style="background-color: #29b342">
                       Cerrar sesión
                     </a>
                   </div>
@@ -111,11 +151,13 @@
             </div>
         </section>
         <section>
-            <div class="container">
+            <div class="container" style="object-fit: contain">
                 <figure class="image" style="height: 200px;">
                     <img src="images/LetrasNegras.png" alt=""/>
                 </figure>
             </div>
+            <br>
+            <br>
             <br>
             <br>
         </section>        
@@ -239,7 +281,7 @@
                         </article>
                         <article class="tile is-child box" style="border: green 10px inset;">
                             <h1 class="title">Envíos</h1>
-                            <p class="subtitle">Tienes X envíos pendientes</p>
+                            <p class="subtitle">Tienes <%= cantidadProducto %> envíos pendientes</p>
                             <div class="container" style="margin-left: 20px">
                                 <span class="icon is-large">
                                     <a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: chartreuse"></i></a>
@@ -251,16 +293,68 @@
                       <article class="tile is-child box" style="border: black 10px inset;">
                         <p class="title">Informe de Ventas</p>
                         <p class="subtitle">Artículos más vendidos</p>
-                        <p class="list-item">a</p>
-                        <p class="list-item">b</p>
-                        <p class="subtitle">Productos en inventario</p>
-                        <p class="list-item">a</p>
-                        <p class="list-item">b</p>
-                        <p class="subtitle">Productos agotados</p>
-                        <p class="list-item">a</p>
-                        <p class="list-item">b</p>
+                        <% 
+                            if (cantMasVendidos == 0){
+                        %>
+                        <p class="list-item">No has vendido ningún producto</p>
+                        <% 
+                            }else{
+                                while(iteMasVendidos.hasNext()){
+                                producto = iteMasVendidos.next();
+                        %>
+                        <p class="list-item"><%= producto.getNombre() %></p>
+                        <% 
+                            }
+                        }
+                        %>
                         <br>
-                        <a href="EstadoDeVentas.jsp"><small>Más información</small></a>
+                        <p class="subtitle">Productos en inventario más cercanos a agotarse</p>
+                        <% 
+                            if (cantMenosStock == 0){
+                        %>
+                        <p class="list-item">No se encontraron productos en inventario</p>
+                        <% 
+                            }else{
+                                while(iteMenosStock.hasNext()){
+                                producto = iteMenosStock.next();
+                        %>
+                        <p class="list-item"><%= producto.getNombre() %></p>
+                        <% 
+                            }
+                        }
+                        %>
+                        <br>
+                        <p class="subtitle">Productos agotados</p>
+                        <% 
+                            if (cantSinStock == 0){
+                        %>
+                        <p class="list-item">No hay ningún producto sin Stock</p>
+                        <% 
+                            }else{
+                                while(iteSinStock.hasNext()){
+                                producto = iteSinStock.next();
+                        %>
+                        <p class="list-item"><%= producto.getNombre() %></p>
+                        <% 
+                            }
+                        }
+                        %>
+                        <br>
+                        
+                        <div class="field is-grouped">
+  <p class="control">
+    <button class="button is-link">
+      Ir a ventas  
+    </button>
+  </p>
+
+  <p class="control">
+    <button class="button is-primary">
+      Ir a inventario
+    </button>
+  </p>
+</div>
+                    
                     </article>
                   </div>
                 </div>

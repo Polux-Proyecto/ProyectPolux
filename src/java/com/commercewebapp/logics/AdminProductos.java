@@ -1,11 +1,10 @@
 package com.commercewebapp.logics;
 
 import com.commercewebapp.database.DatabaseZ;
-import com.commercewebapp.objects.Categoria;
+import com.commercewebapp.objects.Llenador;
 import com.commercewebapp.objects.Producto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,39 +32,10 @@ public class AdminProductos extends Logic {
     
     public List<Producto> getProductosPorNombre (String nombreBusqueda){
         
-        List<Producto> listaProductos = null;
-        int     id, idEmpresa, existencias;
-        String  nombre, descripcion;
-        double  precio;
-        
         ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb where upper(nombre) like Upper('%"+nombreBusqueda+"%');");
         
-        if(result!=null){
-            Producto productoActual;
-            listaProductos = new ArrayList();
-            
-            try {
-                
-                while(result.next()){
-                    id = result.getInt("idprodtb");
-                    idEmpresa = result.getInt("empresa");
-                    nombre = result.getString("nombre");
-                    descripcion = result.getString("descripcion");
-                    precio = result.getDouble("precio");
-                    existencias = result.getInt("existencias");
-                    
-                    productoActual = new Producto(id, idEmpresa, nombre, descripcion, precio, 1, existencias);
-                    
-                    listaProductos.add(productoActual);
-                }
-                
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
-            
-            }
-            
-        }
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
     
         return listaProductos;
     }
@@ -73,35 +43,13 @@ public class AdminProductos extends Logic {
     public Producto getProductoPorId (int idProd){
         
         Producto producto = null;
-        int     idEmpresa, existencias;
-        String  nombre, descripcion;
-        double  precio;
         
         ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb where idprodtb='"+idProd+"';");
         
-        if(result!=null){
-            Producto productoActual;
-            List<Producto> listaProductos;
-            listaProductos = new ArrayList();
-            
-            try {
-                
-                while(result.next()){
-                    idEmpresa = result.getInt("empresa");
-                    nombre = result.getString("nombre");
-                    descripcion = result.getString("descripcion");
-                    precio = result.getDouble("precio");
-                    existencias = result.getInt("existencias");
-                    productoActual = new Producto(idProd, idEmpresa, nombre, descripcion, precio, 1, existencias);
-                    listaProductos.add(productoActual);
-                }
-                
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
-            
-            }
-            
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
+        
+        if (listaProductos!=null){
             producto = listaProductos.get(0);
         }
     
@@ -110,123 +58,42 @@ public class AdminProductos extends Logic {
     
     public List<Producto> getPedidosPorUsuario (int idUsuario){
         
-        List<Producto> listaProductos = null;
-        int     id, idEmpresa, existencias;
-        String  nombre, descripcion;
-        double  precio;
-        
         ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb "
                 + "inner join comercebd.pedidostb "
                 + "where comercebd.pedidostb.producto = comercebd.prodtb.idprodtb "
                 + "and comercebd.pedidostb.cliente = '"+idUsuario+"' LIMIT 5;");
         
-        if(result!=null){
-            Producto productoActual;
-            listaProductos = new ArrayList();
-            
-            try {
-                
-                while(result.next()){
-                    id = result.getInt("idprodtb");
-                    idEmpresa = result.getInt("empresa");
-                    nombre = result.getString("nombre");
-                    descripcion = result.getString("descripcion");
-                    precio = result.getDouble("precio");
-                    existencias = result.getInt("existencias");
-                    
-                    productoActual = new Producto(id, idEmpresa, nombre, descripcion, precio, 1, existencias);
-                    
-                    listaProductos.add(productoActual);
-                }
-                
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
-            
-            }
-            
-        }
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
         
         return listaProductos;
     }
     
     public List<Producto> getDeseosPorUsuario (int idUsuario){
         
-        List<Producto> listaProductos = null;
-        int     id, idEmpresa, existencias;
-        String  nombre, descripcion;
-        double  precio;
         
         ResultSet result = localDatabase.executeQuery("SELECT  * FROM comercebd.prodtb "
                 + "inner join comercebd.deseostb where "
                 + "comercebd.deseostb.producto = comercebd.prodtb.idprodtb "
                 + "and comercebd.deseostb.cliente = '"+idUsuario+"' LIMIT 5;");
         
-        if(result!=null){
-            Producto productoActual;
-            listaProductos = new ArrayList();
-            
-            try {
-                
-                while(result.next()){
-                    id = result.getInt("idprodtb");
-                    idEmpresa = result.getInt("empresa");
-                    nombre = result.getString("nombre");
-                    descripcion = result.getString("descripcion");
-                    precio = result.getDouble("precio");
-                    existencias = result.getInt("existencias");
-                    
-                    productoActual = new Producto(id, idEmpresa, nombre, descripcion, precio, 1, existencias);
-                    
-                    listaProductos.add(productoActual);
-                }
-                
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
-            
-            }
-            
-        }
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
         
         return listaProductos;
     }
     
     public List<Producto> getProductoPorPalabra (String palabra) {
         //Devuelve una lista de productos buscando la palabra ingresada en el nombre del producto, de la empresa o la descripción
-        
-        List<Producto> listaProductos = null;
-        int     id, idEmpresa, existencias;
-        String  nombre, descripcion;
-        double  precio;    
-            
+           
         ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb "
                 + "inner join comercebd.empresatb on prodtb.empresa = empresatb.idempresatb "
                 + "where UPPER(prodtb.descripcion) like UPPER('%"+palabra+"%') "
                 + "or UPPER(prodtb.nombre) like UPPER('%"+palabra+"%') "
                 + "or UPPER(empresatb.Nombre) like UPPER('%"+palabra+"%');");
         
-        if (result != null){
-            listaProductos = new ArrayList();
-            Producto productoActual = null;
-            
-            try {
-                while(result.next()){
-                    id = result.getInt("idprodtb");
-                    idEmpresa = result.getInt("empresa");
-                    nombre = result.getString("nombre");
-                    descripcion = result.getString("descripcion");
-                    precio = result.getDouble("precio");
-                    existencias = result.getInt("existencias");
-                    
-                    productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias);
-                    
-                    listaProductos.add(productoActual);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
         
         return listaProductos; 
     }
@@ -234,41 +101,13 @@ public class AdminProductos extends Logic {
     public List<Producto> getProductoPorCategoria (int categoria, boolean colocarEmpresario) {
         //Devuelve una lista de productos buscando la palabra ingresada en el nombre del producto, de la empresa o la descripción
         
-        List<Producto> listaProductos = null;
-        int     id, idEmpresa, existencias;
-        String  nombre, descripcion, nombreEmpresario;
-        double  precio;    
-            
         ResultSet result = localDatabase.executeQuery("SELECT prodtb.*, empresatb.Nombre as NombreEmpresario "
                 + "FROM comercebd.prodtb inner join comercebd.empresatb "
                 + "on empresatb.idempresatb = prodtb.empresa "
                 + "where prodtb.categoria = '"+categoria+"' LIMIT 15;");
         
-        if (result != null){
-            listaProductos = new ArrayList();
-            Producto productoActual = null;
-            
-            try {
-                while(result.next()){
-                    id = result.getInt("idprodtb");
-                    idEmpresa = result.getInt("empresa");
-                    nombre = result.getString("nombre");
-                    descripcion = result.getString("descripcion");
-                    precio = result.getDouble("precio");
-                    existencias = result.getInt("existencias");
-                    
-                    productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias);
-                    
-                    if (colocarEmpresario){
-                        nombreEmpresario = result.getString("NombreEmpresario");
-                    }
-                    
-                    listaProductos.add(productoActual);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
         
         return listaProductos; 
     }
@@ -291,6 +130,47 @@ public class AdminProductos extends Logic {
         return nombre;
     }
     
+    public List<Producto> getArticulosMasVendidos(int idEmpresa, int limite){
+        
+        ResultSet result = localDatabase.executeQuery("SELECT sum(cantidad) as ventas, pedidostb.producto as idprodtb, empresatb.nombre as nombreEmpresa,  prodtb.nombre, prodtb.descripcion, prodtb.precio, prodtb.existencias "
+                + "FROM comercebd.pedidostb  INNER JOIN comercebd.prodtb  ON prodtb.idprodtb = pedidostb.producto "
+                + "INNER JOIN comercebd.empresatb ON empresatb.idempresatb = prodtb.idprodtb  "
+                + "WHERE empresatb.idempresatb = '"+idEmpresa+"'  "
+                + "GROUP BY pedidostb.producto, empresatb.nombre,  prodtb.nombre, prodtb.descripcion, prodtb.precio, prodtb.existencias "
+                + "ORDER BY ventas desc LIMIT '"+limite+"';");
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
+        
+        return listaProductos;
+    }
     
+    public List<Producto> getProductosPocoStock (int idEmpresa, int limite, boolean permitirCero){
+         ResultSet result = null;
+        if (permitirCero){   
+            result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb "
+                + "WHERE empresa = '"+idEmpresa+"' ORDER BY existencias asc LIMIT "+limite+";");
+        }else{
+            result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb "
+                + "WHERE empresa = '"+idEmpresa+"' and not existencias = 0"
+                + " ORDER BY existencias asc LIMIT "+limite+";");
+        }
+        
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
+        
+        
+        return listaProductos;
+    }
     
+    public List<Producto> getProductosSinStock (int idEmpresa, int limite){
+           
+        
+        ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb "
+                + "WHERE empresa = '"+idEmpresa+"' AND existencias = '0'  LIMIT "+limite+";");
+        
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
+        
+        return listaProductos;
+    }
 }

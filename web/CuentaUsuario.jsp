@@ -12,6 +12,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>Crea una cuenta </title>
+        <style>
+		.content {
+		  max-width: 600px;
+		  margin: auto;
+		}
+		</style>
     </head>
     <%
            NuevoUsuarioParticular usuarioexistente = (NuevoUsuarioParticular)request.getSession().getAttribute("usuarioexistente");
@@ -51,22 +57,20 @@
     <body>
             <section class="section has-background-light ">
         <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post" enctype="multipart/form-data">
-                <div class="container">
-                    <h1 class="title  is-size-1 has-text-primary ">
-                        Bienvenido a BrocOnline 
-                    </h1>
-                    <h2 class="subtitle is-size-4 is-italic  ">
-                        Crea una cuenta de comprador  
-                    </h2>
-                </div>
-              
-                <div class="field">
-                    
-                    <label >Nombre</label>
-                    <div class="control">
-                        <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input" value=<%=nombre%>>
-                    </div>
-                </div>
+                 <section class="hero is-primary is-bold has-text-centered has-background-grey-light">
+  <div class="hero-body">
+    <div class="container ">
+      <h1 class="title  is-size-1 is-family-sans-serif ">
+        BrocOnline Store 
+      </h1>
+      <h2 class="subtitle">
+        "CREA UNA CUENTA DE USUARIO"
+      </h2>
+    </div>
+  </div>
+</section>
+            <br><br> 
+               
                 <div class="field">
                     <label>Imagen de Perfil</label>
                     <div class="control">
@@ -86,6 +90,14 @@
                               </span>
                             </label>
                           </div>
+                    </div>
+                </div>
+                              <br><br> 
+                               <div class="field">
+                    
+                    <label >Nombre</label>
+                    <div class="control">
+                        <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input" value=<%=nombre%>>
                     </div>
                 </div>
                 <div class="field">
