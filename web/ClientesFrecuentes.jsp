@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
@@ -55,12 +56,12 @@
                       <input class="input" type="text" placeholder="Find a post">
                     </p>
                     <p class="control">
-                      <button class="button is-dark">
+                      <button class="button" style="background-color: greenyellow">
                         Buscar
                       </button>
                     </p>
                     <div class="buttons">
-                        <a class="button is-primary" style="background-color: #34b575">
+                        <a class="button" style="background-color: #29b342">
                       Cerrar sesión
                     </a>
                   </div>
@@ -69,6 +70,74 @@
             </nav>
           </div>
          </div>
+        </section>
+        <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title" style="color:black">
+                        <strong>Clientes Frecuentes</strong>
+                    </h1>
+                    <h2 class="subtitle"style="color:black">
+                        Conoce a tus clientes más fieles 
+                    </h2>
+                </div>
+            </div>
+        </section>
+        <br>
+        <section style="margin: 10px;">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                  <div class="tile is-child box"style="border: green 10px inset;">
+                      <p class="title">Información importante sobre tus Clientes</p><br>
+                        <p class="subtitle">Países de Origen Principales</p>
+                        <p class="list-item">a</p>
+                        <p class="list-item">b</p><br>
+                        <p class="subtitle">Ciudades Importantes</p>
+                        <p class="list-item">a</p>
+                        <p class="list-item">b</p><br>
+                        <p class="subtitle">Sexo predominante</p>
+                        <p class="list-item">a</p>
+                                           
+                  </div>
+                </div>
+                <div class="tile is-parent">
+                  <div class="tile is-child box"style="border: black 10px inset;">
+                    <p class="title">Top 10 Clientes Frecuentes</p>
+                        <div class="box">
+                            <article class="media">
+                                <div class="media-left">
+                                    <figure class="image is-128x128">
+                                        <a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong>Nombre del Cliente</strong> 
+                                            <br>País:<br>Ciudad:<br>Sexo:<br>Edad:
+                                        </p><br>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="box">
+                            <article class="media">
+                                <div class="media-left">
+                                    <figure class="image is-128x128">
+                                        <a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong>Nombre del Cliente</strong> 
+                                            <br>País:<br>Ciudad:<br>Sexo:<br>Edad:
+                                        </p><br>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </body>
 </html>

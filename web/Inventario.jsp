@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
@@ -55,12 +56,12 @@
                       <input class="input" type="text" placeholder="Find a post">
                     </p>
                     <p class="control">
-                      <button class="button is-dark">
+                      <button class="button" style="background-color: greenyellow">
                         Buscar
                       </button>
                     </p>
                     <div class="buttons">
-                        <a class="button is-primary" style="background-color: #34b575">
+                        <a class="button" style="background-color: #29b342">
                       Cerrar sesión
                     </a>
                   </div>
@@ -69,6 +70,46 @@
             </nav>
           </div>
          </div>
+        </section>
+        <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title" style="color:black">
+                        <strong>Inventario</strong>
+                    </h1>
+                    <h2 class="subtitle"style="color:black">
+                       Te ayudamos a controlar tu stock y a satisfacer a tus clientes  
+                    </h2>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="table-container">
+                <table class="table is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                          <th><abbr title="Numero">Numero de Porducto</abbr></th>
+                          <th><abbr title="NomProducto">Nombre de Producto</abbr></th>
+                          <th><abbr title="Categoría">Categoría</abbr></th>
+                          <th><abbr title="Existencias">Existencias</abbr></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Café Buendía</td>
+                            <td>Comida</td>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Camisa de Mickey Mouse</td>
+                            <td>Ropa</td>
+                            <td>1000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
         </section>
     </body>
 </html>

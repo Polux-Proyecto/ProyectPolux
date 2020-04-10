@@ -83,12 +83,12 @@
                       <input class="input" type="text" placeholder="Find a post">
                     </p>
                     <p class="control">
-                      <button class="button is-dark">
+                      <button class="button" style="background-color: greenyellow">
                         Buscar
                       </button>
                     </p>
                     <div class="buttons">
-                        <a class="button is-primary" style="background-color: #34b575">
+                        <a class="button "  style="background-color: #29b342">
                       Cerrar sesión
                     </a>
                   </div>
@@ -98,7 +98,7 @@
           </div>
          </div>
         </section>
-        <section class="hero is-dark" style="background-color:  #C0C0C0;">
+        <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title" style="color:black">
@@ -119,17 +119,16 @@
             <br>
             <br>
         </section>        
-        <section class="section notification is-dark" style="background-color:  #C0C0C0;">
-            
+        <section class="section" >
             <div class="tile is-ancestor">
                 <div class="tile is-vertical">
                 <div class="tile">
                   <div class="tile is-parent is-vertical">
-                    <article class="tile is-child box">
+                    <article class="tile is-child box" style="border: green 10px inset;">
                         
                         <p class="title">Añadir Producto</p>
                         <p class="subtitle">Agrega nuevos productos a tu inventario</p>
-                        <button class="button modal-button is-primary" data-target="#Modal1" aria-haspopup="true" style="background-color: #34b575">Nuevo Producto</button>
+                        <button class="button modal-button" data-target="#Modal1" aria-haspopup="true" style="background-color: chartreuse">Nuevo Producto</button>
                         
                         <div class="modal" id="Modal1">
                             <div class="modal-background"></div>
@@ -213,7 +212,7 @@
                               </section>
                               <footer class="modal-card-foot">
                                 <button class="button is-success">Save changes</button>
-                                <button class="button">Cancel</button>
+                                <button class="button is-delete">Cancel</button>
                               </footer>
                             </div>
                                     
@@ -225,25 +224,31 @@
 
                                   target.classList.add('is-active');
 
-                                  target.querySelector('.modal-close').addEventListener('click',   function() {
+                                  target.querySelector('.delete').addEventListener('click',   function() {
                                       target.classList.remove('is-active');
+                                  
+                                   });
+                                   target.querySelector('.is-delete').addEventListener('click',   function() {
+                                      target.classList.remove('is-active');
+                                  
                                    });
                                 });
                               });
+                              
                         </script>
                         </article>
-                        <article class="tile is-child box" style="margin-left: 10; margin-left: 10">
+                        <article class="tile is-child box" style="border: green 10px inset;">
                             <h1 class="title">Envíos</h1>
                             <p class="subtitle">Tienes X envíos pendientes</p>
                             <div class="container" style="margin-left: 20px">
                                 <span class="icon is-large">
-                                    <a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: #34a85c"></i></a>
+                                    <a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: chartreuse"></i></a>
                                 </span>
                             </div>
                         </article>
                   </div>
                   <div class="tile is-parent">
-                      <article class="tile is-child box">
+                      <article class="tile is-child box" style="border: black 10px inset;">
                         <p class="title">Informe de Ventas</p>
                         <p class="subtitle">Artículos más vendidos</p>
                         <p class="list-item">a</p>
@@ -261,9 +266,6 @@
                 </div>
             </div>
             </div>
-        </section>
-        
-            
         </section>
     </body>
 </html>

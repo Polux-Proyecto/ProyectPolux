@@ -11008,4 +11008,18 @@ img.grande{
         text-align: left;
     }
 }
-
+table{
+    
+}
+th{
+    border-color:black;
+    font-size: 20px;
+    border: 1px solid #000;
+    
+    a{
+      color:chartreuse;  
+    }
+    a:hover{
+        color:green;
+    }
+}
