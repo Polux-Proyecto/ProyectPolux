@@ -10,7 +10,7 @@ import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.objects.Categoria;
 import com.commercewebapp.objects.Empresa;
-import com.commercewebapp.objects.Producto;
+import com.commercewebapp.objects.Producto; 
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;

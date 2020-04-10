@@ -36,12 +36,15 @@ public class Empresarios extends HttpServlet {
                 break;
             }
             case "2":{
-                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ingresar producto nuevo.">
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ir al reporte de ventas.">
                 Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
                 AdminPedidos buscador = new AdminPedidos();
                 List<Estadistico> listaEstadisticos = buscador.getAllEstadisticosPorIdEmpresa(usuario.getIdUsuario());
-                
+                List<Estadistico> listaTop5Prod = buscador.getTop5Ventas(usuario.getIdUsuario());
+                List<Estadistico> listaTop5Cat = buscador.getTop5Categorias(usuario.getIdUsuario());
                 request.getSession().setAttribute("listaEstadisticos", listaEstadisticos);
+                request.getSession().setAttribute("listaTop5Prod", listaTop5Prod);
+                request.getSession().setAttribute("listaTop5Cat", listaTop5Cat);
                 response.sendRedirect("EstadoDeVentas.jsp");
                 // </editor-fold>
                 break;

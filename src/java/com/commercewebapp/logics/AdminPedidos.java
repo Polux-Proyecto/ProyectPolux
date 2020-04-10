@@ -66,7 +66,7 @@ public class AdminPedidos extends Logic{
                     nombreProd = result.getString("nombre");
                     categoria = result.getString("Nombre");
                     
-                    estadistico = new Estadistico(nombreProd, categoria, idEmpresa, busquedas, vendidos, numProd );
+                    estadistico = new Estadistico(nombreProd, categoria, idEmpresa, busquedas, vendidos, numProd , 0 );
                     listaEstadistico.add(estadistico);
                 }
             } catch (SQLException ex) {
@@ -77,4 +77,65 @@ public class AdminPedidos extends Logic{
         return listaEstadistico;
     }
     
+    public List<Estadistico> getTop5Ventas(int idEmpresa){
+        List<Estadistico> listaEstadistico = null;
+        String nombre;
+        double ventas;
+        
+        Estadistico estadistico;
+        
+        ResultSet result = localDatabase.executeQuery("SELECT prodtb.nombre, sum(pedidostb.precio) as ventas "
+                + "FROM comercebd.pedidostb INNER JOIN prodtb on prodtb.idprodtb = pedidostb.producto  "
+                + "where ( datediff(current_date(), pedidostb.fechaPedido) < 31  ) and prodtb.empresa = '"+idEmpresa+"' "
+                + "group by prodtb.nombre, prodtb.idprodtb LIMIT 5;");
+        
+        if (result!=null){
+            listaEstadistico = new ArrayList();
+            try {
+                while (result.next()){
+                    nombre = result.getString("nombre");
+                    ventas = result.getDouble("ventas");
+                    
+                    estadistico = new Estadistico(nombre, "", 0, 0, 0, 0, ventas);
+                    listaEstadistico.add(estadistico);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminPedidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return listaEstadistico;
+    }
+
+    
+    public List<Estadistico> getTop5Categorias(int idEmpresa){
+        List<Estadistico> listaEstadistico = null;
+        String nombre;
+        double ventas;
+        
+        Estadistico estadistico;
+        
+        ResultSet result = localDatabase.executeQuery("SELECT categorias.nombre, sum(pedidostb.precio) as ventas "
+                + "FROM comercebd.pedidostb  INNER JOIN prodtb on prodtb.idprodtb = pedidostb.producto  "
+                + "INNER JOIN categorias on categorias.idCategorias = prodtb.categoria "
+                + "where ( datediff(current_date(), pedidostb.fechaPedido) < 31  ) and prodtb.empresa = '"+idEmpresa+"' "
+                + "group by categorias.nombre, categorias.idCategorias LIMIT 5;");
+        
+        if (result!=null){
+            listaEstadistico = new ArrayList();
+            try {
+                while (result.next()){
+                    nombre = result.getString("nombre");
+                    ventas = result.getDouble("ventas");
+                    
+                    estadistico = new Estadistico(nombre, "", 0, 0, 0, 0, ventas);
+                    listaEstadistico.add(estadistico);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminPedidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return listaEstadistico;
+    }
 }

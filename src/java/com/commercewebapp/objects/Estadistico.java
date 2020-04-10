@@ -13,15 +13,27 @@ public class Estadistico {
     private String nombreProd, nombrecategoria;
     private int idEmpresa, nLista;
     private int cantBusquedas,  cantVentas;
+    private double cantDinero;
 
-    public Estadistico(String nombreProdC, String nombrecategoriaC, int idEmpresaC, int cantBusquedasC, int cantVentasC, int nListaC) {
+    public Estadistico(String nombreProdC, String nombrecategoriaC, int idEmpresaC, int cantBusquedasC, int cantVentasC, int nListaC, double cantDineroC) {
         this.setNombreProd(nombreProdC);
         this.setNombrecategoria(nombrecategoriaC) ;
         this.setIdEmpresa(idEmpresaC);
         this.setCantBusquedas(cantBusquedasC);
         this.setCantVentas(cantVentasC);
         this.setnLista(nListaC);
+        this.setCantDinero(cantDineroC);
     }
+
+    public double getCantDinero() {
+        return cantDinero;
+    }
+
+    private void setCantDinero(double cantDinero) {
+        this.cantDinero = cantDinero;
+    }
+    
+    
 
     public int getnLista() {
         return nLista;

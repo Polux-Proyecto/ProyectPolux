@@ -11,12 +11,25 @@
 <!DOCTYPE html>
 <%
     List<Estadistico> listaEstadisticos = (List<Estadistico>) request.getSession().getAttribute("listaEstadisticos");
+    List<Estadistico> listaTop5Prod = (List<Estadistico>) request.getSession().getAttribute("listaTop5Prod");
+    List<Estadistico> listaTop5Cat = (List<Estadistico>) request.getSession().getAttribute("listaTop5Cat");
     int cantEstadisticos = 0;
+    int cantTop5Prod = 0;
+    int cantTop5Cat = 0;
     Iterator<Estadistico> iteEstadisticos = null;
-    
+    Iterator<Estadistico> iteTop5Prod = null;
+    Iterator<Estadistico> iteTop5Cat = null;
     if (listaEstadisticos!=null){
         cantEstadisticos = listaEstadisticos.size();
         iteEstadisticos = listaEstadisticos.iterator();
+    }
+    if (listaEstadisticos!=null){
+        cantTop5Prod = listaTop5Prod.size();
+        iteTop5Prod = listaTop5Prod.iterator();
+    }
+    if (listaEstadisticos!=null){
+        cantTop5Cat = listaTop5Cat.size();
+        iteTop5Cat = listaTop5Cat.iterator();
     }
     
     Estadistico estadistico = null;
@@ -143,67 +156,12 @@
                                     </tr>
                                     <% 
                                         }
+                                        estadistico = null;
                                     }
                                     %>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-                <div class="tile is-parent">
-                    <div class="tile is-child box">
-                        <article>
-                            <p class="tile">
-                                <strong>Top 5 ventas según producto</strong>
-                            </p>
-                            <div id="productChart" style="height: 250px;"></div>
-                            <script>
-                                //Esto es JavaScript
-                                new Morris.Bar({
-                                    // ID del elemento en que se va a formar el gráfico
-                                    element: 'productChart',
-                                    // Data es la información a partir de la cual se construye el gráfico
-                                    data: [
-                                      { product: 'Café Buendía', ventas: 30000 },
-                                      { product: 'Camisa de Mickey Mouse', ventas: 9000 },
-                                    ],
-                                    // El nombre del atributo del eje x
-                                    xkey: 'product',
-                                    // El nombre del atributo del eje y
-                                    ykeys: ['ventas'],
-                                    // Etiqueta
-                                    labels: ['Ventas'],
-                                    
-                                    barColors: ['forestgreen']
-                                  });
-                            </script>
-                        </article>
-                        <article>
-                            <p class="tile">
-                                <strong>Top 5 ventas según Categoría</strong>
-                            </p>
-                            <div id="categoryChart" style="height: 250px;"></div>
-                            <script>
-                                //Esto es JavaScript
-                                new Morris.Bar({
-                                    // ID del elemento en que se va a formar el gráfico
-                                    element: 'categoryChart',
-                                    // Data es la información a partir de la cual se construye el gráfico
-                                    data: [
-                                      { product: 'Comida', ventas: 30000 },
-                                      { product: 'Ropa', ventas: 9000 },
-                                    ],
-                                    // El nombre del atributo del eje x
-                                    xkey: 'product',
-                                    // El nombre del atributo del eje y
-                                    ykeys: ['ventas'],
-                                    // Etiqueta
-                                    labels: ['Ventas'],
-                                    
-                                    barColors: ['chartreuse']
-                                  });
-                            </script>
-                        </article>
                     </div>
                 </div>
             </div>
