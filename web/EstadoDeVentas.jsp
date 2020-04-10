@@ -10,6 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -75,11 +79,107 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title" style="color:black">
-                        <strong>Envios Pendientes</strong>
+                        <strong>Ventas</strong>
                     </h1>
                     <h2 class="subtitle"style="color:black">
-                        Los siguientes clientes esperan sus pedidos en los próximos días 
+                        Te presentamos todo lo que quieres saber de tus ventas 
                     </h2>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="tile is-ancestor">
+                <div tile is-parent>
+                    <div class= "tile is-child box">
+                        <div class="table-container">
+                            <table class="table is-hoverable is-fullwidth">
+                                <thead>
+                                    <tr>
+                                     <th><abbr title="Numero">Numero de Porducto</abbr></th>
+                                      <th><abbr title="NomProducto">Nombre de Producto</abbr></th>
+                                      <th><abbr title="Categoría">Categoría</abbr></th>
+                                      <th><abbr title="Existencias">Busquedas</abbr></th>
+                                      <th><abbr title="Existencias">En Lista de Deseos</abbr></th>
+                                      <th><abbr title="Existencias">Vendidos</abbr></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Café Buendía</td>
+                                        <td>Comida</td>
+                                        <td>200</td>
+                                        <td>50000</td>
+                                        <td>30000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Camisa de Mickey Mouse</td>
+                                        <td>Ropa</td>
+                                        <td>1000</td>
+                                        <td>200000</td>
+                                        <td>9000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <article>
+                            <p class="tile">
+                                <strong>Ventas según producto</strong>
+                            </p>
+                            <div id="productChart" style="height: 250px;"></div>
+                            <script>
+                                //Esto es JavaScript
+                                new Morris.Bar({
+                                    // ID del elemento en que se va a formar el gráfico
+                                    element: 'productChart',
+                                    // Data es la información a partir de la cual se construye el gráfico
+                                    data: [
+                                      { product: 'Café Buendía', ventas: 30000 },
+                                      { product: 'Camisa de Mickey Mouse', ventas: 9000 },
+                                    ],
+                                    // El nombre del atributo del eje x
+                                    xkey: 'product',
+                                    // El nombre del atributo del eje y
+                                    ykeys: ['ventas'],
+                                    // Etiqueta
+                                    labels: ['Ventas'],
+                                    
+                                    barColors: ['forestgreen']
+                                  });
+                            </script>
+                        </article>
+                        <article>
+                            <p class="tile">
+                                <strong>Ventas según Categoría</strong>
+                            </p>
+                            <div id="categoryChart" style="height: 250px;"></div>
+                            <script>
+                                //Esto es JavaScript
+                                new Morris.Bar({
+                                    // ID del elemento en que se va a formar el gráfico
+                                    element: 'categoryChart',
+                                    // Data es la información a partir de la cual se construye el gráfico
+                                    data: [
+                                      { product: 'Comida', ventas: 30000 },
+                                      { product: 'Ropa', ventas: 9000 },
+                                    ],
+                                    // El nombre del atributo del eje x
+                                    xkey: 'product',
+                                    // El nombre del atributo del eje y
+                                    ykeys: ['ventas'],
+                                    // Etiqueta
+                                    labels: ['Ventas'],
+                                    
+                                    barColors: ['chartreuse']
+                                  });
+                            </script>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>

@@ -12,7 +12,7 @@
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
-    <body style="margin: 10px;">
+    <body>
         <section>
         <div>
         <nav class="navbar" role="navigation" aria-label="main navigation" >
@@ -84,7 +84,7 @@
             </div>
         </section>
         <br>
-        <section>
+        <section style="margin: 10px;">
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                   <div class="tile is-child box"style="border: green 10px inset;">

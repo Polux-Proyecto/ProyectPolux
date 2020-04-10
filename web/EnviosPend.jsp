@@ -88,7 +88,7 @@
                 <table class="table is-hoverable is-fullwidth">
                     <thead>
                         <tr>
-                            <th><abbr title="Cliente">Nombre de cliente</abbr></th>
+                          <th><abbr title="Cliente">Nombre de cliente</abbr></th>
                           <th><abbr title="Direccion">Dirección</abbr></th>
                           <th><abbr title="DetalleCompra">Compra</abbr></th>
                         </tr>

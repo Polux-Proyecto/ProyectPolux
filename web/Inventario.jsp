@@ -75,13 +75,41 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title" style="color:black">
-                        <strong>Envios Pendientes</strong>
+                        <strong>Inventario</strong>
                     </h1>
                     <h2 class="subtitle"style="color:black">
-                        Los siguientes clientes esperan sus pedidos en los próximos días 
+                       Te ayudamos a controlar tu stock y a satisfacer a tus clientes  
                     </h2>
                 </div>
             </div>
+        </section>
+        <section class="section">
+            <div class="table-container">
+                <table class="table is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                          <th><abbr title="Numero">Numero de Porducto</abbr></th>
+                          <th><abbr title="NomProducto">Nombre de Producto</abbr></th>
+                          <th><abbr title="Categoría">Categoría</abbr></th>
+                          <th><abbr title="Existencias">Existencias</abbr></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Café Buendía</td>
+                            <td>Comida</td>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Camisa de Mickey Mouse</td>
+                            <td>Ropa</td>
+                            <td>1000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
         </section>
     </body>
 </html>

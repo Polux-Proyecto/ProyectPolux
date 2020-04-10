@@ -88,7 +88,7 @@
                 <table class="table is-hoverable is-fullwidth">
                     <thead>
                         <tr>
-                          <th><abbr title="IdProducto">IdProducto</abbr></th>
+                          <th><abbr title="Numero">Numero de Porducto</abbr></th>
                           <th><abbr title="NomProducto">Nombre de Producto</abbr></th>
                           <th><abbr title="Cantidad">Cantidad comprada</abbr></th>
                           <th><abbr title="FechaEntrega">Fecha de Entrega</abbr></th>

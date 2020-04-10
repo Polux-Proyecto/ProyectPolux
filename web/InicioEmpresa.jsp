@@ -212,7 +212,7 @@
                               </section>
                               <footer class="modal-card-foot">
                                 <button class="button is-success">Save changes</button>
-                                <button class="button">Cancel</button>
+                                <button class="button is-delete">Cancel</button>
                               </footer>
                             </div>
                                     
@@ -226,6 +226,11 @@
 
                                   target.querySelector('.delete').addEventListener('click',   function() {
                                       target.classList.remove('is-active');
+                                  
+                                   });
+                                   target.querySelector('.is-delete').addEventListener('click',   function() {
+                                      target.classList.remove('is-active');
+                                  
                                    });
                                 });
                               });
