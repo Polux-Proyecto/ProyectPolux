@@ -4,6 +4,8 @@ import com.commercewebapp.database.DatabaseZ;
 import com.commercewebapp.objects.NuevoMicroEmpresario;
 import com.commercewebapp.objects.NuevoUsuarioParticular;
 import com.commercewebapp.objects.Usuario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -83,26 +85,61 @@ public class BuscarUsuario extends Logic {
     public boolean createnewuser(NuevoUsuarioParticular nuevouser, NuevoMicroEmpresario nuevoempresario) 
     {
        DatabaseZ localDatabase = getDatabase();
+       Connection conn = null;
+       PreparedStatement statement;
+       conn = localDatabase.getConnection();
        boolean hasfailed = true;
-       String pSQL;
+//       String pSQL;
 
        if(nuevouser!=null){
-           String bdnombre = nuevouser.getName();
-           String bduser = nuevouser.getUsername();
-           String bdemail = nuevouser.getEmail();
-           String bdpassword = nuevouser.getPassword();
-           String bdpais = nuevouser.getPais();
-           String bdciudad = nuevouser.getCiudad();
-           String bddireccion = nuevouser.getDireccion();
-           String bdsexo = nuevouser.getSexo();
-           String bdfechanacimiento = nuevouser.getFechanacimiento();
-           byte[] bdimagenperfil = nuevouser.getImagen();
-           
-           pSQL = "INSERT INTO comercebd.clientetb(Nombre,Correo,Username,Password,Pais,Ciudad,Dirección,Sexo,FechaNacimiento,ImagenPerfil)"
-                   + "VALUES('"+bdnombre+"','"+bdemail+"','"+bduser+"','"+bdpassword+"','"+bdpais+"','"+bdciudad+"','"+bddireccion+"','"+bdsexo+"','"
-                   + bdfechanacimiento + "','"+Arrays.toString(bdimagenperfil)+"')";
-           hasfailed = localDatabase.executeNonQueryBool(pSQL);           
-           System.out.println("Se insertaron los datos de usuario particular correctamente");
+
+               String bdnombre = nuevouser.getName();
+               String bduser = nuevouser.getUsername();
+               String bdemail = nuevouser.getEmail();
+               String bdpassword = nuevouser.getPassword();
+               String bdpais = nuevouser.getPais();
+               String bdciudad = nuevouser.getCiudad();
+               String bddireccion = nuevouser.getDireccion();
+               String bdsexo = nuevouser.getSexo();
+               String bdfechanacimiento = nuevouser.getFechanacimiento();
+               byte[] bdimagenperfil = nuevouser.getImagen();
+               
+//               pSQL = "INSERT INTO comercebd.clientetb(Nombre,Correo,Username,Password,Pais,Ciudad,Dirección,Sexo,FechaNacimiento,ImagenPerfil)"
+//                       + "VALUES('"+bdnombre+"','"+bdemail+"','"+bduser+"','"+bdpassword+"','"+bdpais+"','"+bdciudad+"','"+bddireccion+"','"+bdsexo+"','"
+//                       + bdfechanacimiento + "','"+Arrays.toString(bdimagenperfil)+"')";
+              
+               try{
+                   
+               statement = conn.prepareStatement("INSERT INTO comercebd.clientetb(Nombre,Correo,Username,Password,Pais,Ciudad,Dirección,Sexo,FechaNacimiento,ImagenPerfil)"
+                       + "VALUES(?,?,?,?,?,?,?,?,?,?)");
+               
+               
+                       statement.setString(1, bdnombre);
+                       statement.setString(2, bdemail);
+                       statement.setString(3, bduser);
+                       statement.setString(4, bdpassword);
+                       statement.setString(5, bdpais);
+                       statement.setString(6, bdciudad);
+                       statement.setString(7, bddireccion);
+                       statement.setString(8, bdsexo);
+                       statement.setString(9, bdfechanacimiento);
+                       statement.setBytes(10, bdimagenperfil);
+                       
+               System.out.println("hasta aca si llego");
+               
+//               hasfailed = localDatabase.executeNonQueryBool(pSQL);
+              int si = statement.executeUpdate();
+              
+              System.out.println("no valio");
+              if (si>0){
+                  hasfailed = true;
+              
+               System.out.println("Se insertaron los datos de usuario particular correctamente");
+              }
+              
+           } catch (SQLException ex) {
+               Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           }
            
        } 
        else if(nuevoempresario!=null)
@@ -119,11 +156,37 @@ public class BuscarUsuario extends Logic {
             byte[] bdlogo = nuevoempresario.getLogo();
              
             System.out.println("antes de insertar si salio");
-            pSQL = "INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"
-                    + "VALUES('"+bdname+"','"+bdnit+"','"+bdpassword+"','"+bduser+"','"+bddescripcion+"','"+bdemail+"','"+bdpais+"','"  + bdciudad +"','"+bdcategoria+"','"+Arrays.toString(bdlogo)+"')";
-            hasfailed = localDatabase.executeNonQueryBool(pSQL);
-            System.out.println("Se insertaron los datos de microempresario correctamente");
-                 
+           try {
+               //            pSQL = "INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"
+//                    + "VALUES('"+bdname+"','"+bdnit+"','"+bdpassword+"','"+bduser+"','"+bddescripcion+"','"+bdemail+"','"+bdpais+"','"  + bdciudad +"','"+bdcategoria+"','"+Arrays.toString(bdlogo)+"')";
+//            hasfailed = localDatabase.executeNonQueryBool(pSQL);
+                statement = conn.prepareStatement("INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?)");
+                
+                       statement.setString(1, bdname);
+                       statement.setString(2, bdnit);
+                       statement.setString(3, bdpassword);
+                       statement.setString(4, bduser);
+                       statement.setString(5, bddescripcion);
+                       statement.setString(6, bdemail);
+                       statement.setString(7, bdpais);
+                       statement.setString(8, bdciudad);
+                       statement.setString(9, bdcategoria);
+                       statement.setBytes(10, bdlogo);
+                
+                        int si = statement.executeUpdate();
+              
+              
+              if (si>0){
+                  hasfailed = true;
+              
+               System.out.println("Se insertaron los datos de microempresario correctamente");
+              }
+              
+           } catch (SQLException ex) {
+               Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           }
+            
        }
         
         return hasfailed;
