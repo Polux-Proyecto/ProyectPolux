@@ -32,6 +32,10 @@
 			.color3{
 				background-color: #dce5d2
 			}
+			.content {
+			  max-width: 600px;
+			  margin: auto;
+			}
 		</style>
     </head>
     <body>
@@ -101,21 +105,23 @@
         <section>
 			<div class="tile is-parent">
 				<article class="tile is-child box">
-					<form class="Pago" id="NuevaCompraForm" method="get" action="PagoProducto.jsp">
+					<form class="Pago content" id="NuevaCompraForm" method="get" action="PagoProducto.jsp">
 						<div>
-							<figure class="image is-128x128 is-centered">
-								<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" align="left">
-							</figure>
-							<h1>
-								Descripción:
-							</h1>
-							<p>
-								(Descripción)
-							</p>
+							<!--<figure class="image is-128x128 is-centered">
+								
+							</figure>-->
+							<div>
+								<h1><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" style="float:left">
+									Descripción:
+								</h1>
+								<p>
+									(Descripción)Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
+								</p>
+							</div>
 						</div>
-						<div class="field">
+						<div class="field" style="clear:both">
 							<label class="label"><h1> Cantidad:</h1></label>
-							<div class="control">
+							<div class="control" style="width:200px">
 								<input class="input" type="number" name="cantComprada" id="cantComprada" placeholder="Text input">
 							</div>
 						</div>
