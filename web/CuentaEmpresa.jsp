@@ -43,15 +43,21 @@
  
         <form id="Nuevamicroempresaform" name="Nuevamicroempresaform" action="LogicRegistroNuevoUsuarioServlet" method="post" method="post" enctype="multipart/form-data">
         
-            <section class="section has-background-light ">
-                <div class="container">
-                    <h1 class="title  is-size-1 has-text-primary ">
-                        Bienvenido a BrocOnline 
-                    </h1>
-                    <h2 class="subtitle is-size-4 is-italic  ">
-                        Crea una cuenta empresarial 
-                    </h2>
-                </div>
+        <section class="section has-background-light ">
+        <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post" enctype="multipart/form-data">
+                 <section class="hero is-primary is-bold has-text-centered has-background-grey-light">
+  <div class="hero-body">
+    <div class="container ">
+      <h1 class="title  is-size-1 is-family-sans-serif ">
+        BrocOnline Store 
+      </h1>
+      <h2 class="subtitle">
+        "CREA UNA CUENTA EMPRESARIAL"
+      </h2>
+    </div>
+  </div>
+</section>
+            <br><br> 
                 <div class="field">
                     
                     <div class="control">

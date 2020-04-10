@@ -77,7 +77,7 @@
                                         <br> 
                 <div class="field">
                     <div class="control">
-                        <input class="button is-link is-bold" type="submit" value="Send"/>
+                        <input class="button is-link is-bold is-medium" type="submit" value="Send"/>
                         
                     </div>
                 </div>
@@ -86,9 +86,9 @@
             <div class="is-link content">
                 <h2>
 					<strong>¿No tienes cuenta? </strong>
-                    <br>
+                                        <br><br>
                     <a href="CuentaUsuario.jsp">Crea una cuenta de usuario</a>
-					<br>
+                    <br>
 					<a href="CuentaEmpresa.jsp">Crea una cuenta empresarial </a>
                 </h2>
             </div>
