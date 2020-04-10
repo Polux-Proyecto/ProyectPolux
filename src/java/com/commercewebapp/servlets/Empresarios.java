@@ -24,42 +24,44 @@ public class Empresarios extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String  formid = request.getParameter("formid");
         
-        
-        
-        if (formid.equals("11")){
-        //Acá está el código si el empresario quiere insertar un nuevo producto
-        //Obtenet parámetros
-            String  nombre = request.getParameter("nameProd"), 
-                    cantidadS = request.getParameter("cantProd"), 
-                    costoS = request.getParameter("costoProd"), 
-                    descripciónS  = request.getParameter("descProd");
-            Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
-        //Convertir
-            int     cantidad = Integer.parseInt(cantidadS);
-            double  costo = Double.parseDouble(costoS);
-            AdminProductos adminProd = new AdminProductos();
-            boolean hasFailed;
+        switch (formid){
+            case "1":{
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
-        //Crear pojo del nuevo producto
-            Producto producto = new Producto(0, usuario.getIdUsuario(), nombre, descripciónS, costo, 1, cantidad);
+                String  nombre = request.getParameter("nameProd"), 
+                        cantidadS = request.getParameter("cantProd"), 
+                        costoS = request.getParameter("costoProd"), 
+                        descripciónS  = request.getParameter("descProd");
+                Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
 
-        //Insertar en la bd
-            hasFailed = adminProd.crearProducto(producto);
+                int     cantidad = Integer.parseInt(cantidadS);
+                double  costo = Double.parseDouble(costoS);
+                AdminProductos adminProd = new AdminProductos();
+                boolean hasFailed;
 
-        //Avisar al usuario 
-            if(hasFailed){
-            //Falló
-                response.sendRedirect("InicioEmpresa.jsp?Error=1");
-            } else {
-            //Éxito
-                response.sendRedirect("InicioEmpresa.jsp?Mensaje=1");
+
+                Producto producto = new Producto(0, usuario.getIdUsuario(), nombre, descripciónS, costo, 1, cantidad);
+
+                hasFailed = adminProd.crearProducto(producto);
+
+
+                if(hasFailed){
+
+                    response.sendRedirect("InicioEmpresa.jsp?Error=1");
+                } else {
+
+                    response.sendRedirect("InicioEmpresa.jsp?Mensaje=1");
+                }
+                break;// </editor-fold>
             }
-        }    
-        
-        
-        
+            case "2":{
+                
+                break;
+            }
+            
+        }
     }
-
+        
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

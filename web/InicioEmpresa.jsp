@@ -19,6 +19,8 @@
     List<Producto> listaProdMasVendidos = (List<Producto>) request.getSession().getAttribute("listaProdMasVendidos");
     List<Producto> listaPrdMenosStock = (List<Producto>) request.getSession().getAttribute("listaPrdMenosStock");
     List<Producto> listaProdSinStock = (List<Producto>) request.getSession().getAttribute("listaProdSinStock");
+    int cantidadProducto = (Integer) request.getSession().getAttribute("cantidadProducto");
+    
     
     int cantMasVendidos = 0;
     int cantMenosStock = 0;
@@ -27,6 +29,9 @@
     Iterator<Producto> iteMenosStock = null;
     Iterator<Producto> iteSinStock = null;
     
+    if (cantidadProducto==-1){
+        cantidadProducto = 0;
+    }
     if(listaProdMasVendidos!=null){
         cantMasVendidos = listaProdMasVendidos.size();
          iteMasVendidos = listaProdMasVendidos.iterator();
@@ -276,7 +281,7 @@
                         </article>
                         <article class="tile is-child box" style="border: green 10px inset;">
                             <h1 class="title">Envíos</h1>
-                            <p class="subtitle">Tienes X envíos pendientes</p>
+                            <p class="subtitle">Tienes <%= cantidadProducto %> envíos pendientes</p>
                             <div class="container" style="margin-left: 20px">
                                 <span class="icon is-large">
                                     <a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: chartreuse"></i></a>
