@@ -23,42 +23,39 @@ public class Empresarios extends HttpServlet {
     //Pedir el formid y el empresario
         response.setContentType("text/html;charset=UTF-8");
         String  formid = request.getParameter("formid");
-        Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
         
-        if (usuario == null){
-            response.sendRedirect("PaginaDeErrores.jsp");
-            //Este código se supone que no debe de ocurrir jamás
-        } else {
-            
-            if (formid.equals("11")){
-            //Acá está el código si el empresario quiere insertar un nuevo producto
-            //Obtenet parámetros
-                String  nombre = request.getParameter("nameProd"), 
-                        cantidadS = request.getParameter("cantProd"), 
-                        costoS = request.getParameter("costoProd"), 
-                        descripciónS  = request.getParameter("descProd");
-            //Convertir
-                int     cantidad = Integer.parseInt(cantidadS);
-                double  costo = Double.parseDouble(costoS);
-                AdminProductos adminProd = new AdminProductos();
-                boolean hasFailed;
+        
+        
+        if (formid.equals("11")){
+        //Acá está el código si el empresario quiere insertar un nuevo producto
+        //Obtenet parámetros
+            String  nombre = request.getParameter("nameProd"), 
+                    cantidadS = request.getParameter("cantProd"), 
+                    costoS = request.getParameter("costoProd"), 
+                    descripciónS  = request.getParameter("descProd");
+            Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+        //Convertir
+            int     cantidad = Integer.parseInt(cantidadS);
+            double  costo = Double.parseDouble(costoS);
+            AdminProductos adminProd = new AdminProductos();
+            boolean hasFailed;
 
-            //Crear pojo del nuevo producto
-                Producto producto = new Producto(0, usuario.getIdUsuario(), nombre, descripciónS, costo, 1, cantidad);
-            
-            //Insertar en la bd
-                hasFailed = adminProd.crearProducto(producto);
-                
-            //Avisar al usuario 
-                if(hasFailed){
-                //Falló
-                    response.sendRedirect("InicioEmpresa.jsp?Error=1");
-                } else {
-                //Éxito
-                    response.sendRedirect("InicioEmpresa.jsp?Mensaje=1");
-                }
-            }    
-        }
+        //Crear pojo del nuevo producto
+            Producto producto = new Producto(0, usuario.getIdUsuario(), nombre, descripciónS, costo, 1, cantidad);
+
+        //Insertar en la bd
+            hasFailed = adminProd.crearProducto(producto);
+
+        //Avisar al usuario 
+            if(hasFailed){
+            //Falló
+                response.sendRedirect("InicioEmpresa.jsp?Error=1");
+            } else {
+            //Éxito
+                response.sendRedirect("InicioEmpresa.jsp?Mensaje=1");
+            }
+        }    
+        
         
         
     }

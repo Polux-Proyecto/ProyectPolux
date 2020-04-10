@@ -50,4 +50,28 @@ public class Llenador {
         
     }
     
+    public List<Categoria> llenarListaCategoria (ResultSet result){
+        List<Categoria> listaCategorias = null;
+        
+        if(result!=null){
+            listaCategorias = new ArrayList();
+            Categoria categoria = null;
+            String nombre;
+            int idCat;
+            try {
+                while (result.next()){
+                    nombre = result.getString("Nombre");
+                    idCat = result.getInt("idCategorias");
+                    
+                    categoria = new Categoria (nombre, idCat);
+                    listaCategorias.add(categoria);
+                    
+                }
+                    } catch (SQLException ex) {
+                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return listaCategorias;
+    }
 }
