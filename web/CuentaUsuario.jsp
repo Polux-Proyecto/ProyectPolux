@@ -14,20 +14,23 @@
         <title>Crea una cuenta </title>
     </head>
     <%
-           /*NuevoUsuarioParticular usuarioexistente = (NuevoUsuarioParticular)request.getSession().getAttribute("usuarioexistente");
-           int error = (int)request.getSession().getAttribute("error");
+           NuevoUsuarioParticular usuarioexistente = (NuevoUsuarioParticular)request.getSession().getAttribute("usuarioexistente");
+           String error = (String)request.getSession().getAttribute("error");
            String nombre = "";
            String user = "";
-           String email = "";
+           String email = "me@example.com";
            String password = "";
            String pais = "";
            String ciudad = "";
            String direccion = "";
            String sexo = "";
-           String fechanacimiento = "";
-           byte[] imagenperfil;
+           String dia = "";
+           String mes = "";
+           String anno = "";
+           Part imagenperfil = null; 
+           String mensajeerror = "";
            
-                if(usuarioexistente!=null && error==1){
+               if(usuarioexistente!=null && error=="1"){
                     nombre = usuarioexistente.getName();
                     user = usuarioexistente.getUsername();
                     email = usuarioexistente.getEmail();
@@ -35,10 +38,14 @@
                     ciudad = usuarioexistente.getCiudad();
                     direccion = usuarioexistente.getDireccion();
                     sexo = usuarioexistente.getSexo();
-                    fechanacimiento = usuarioexistente.getFechanacimiento();
-                    imagenperfil = usuarioexistente.getImagen();
+                    dia = (String)request.getSession().getAttribute("day");
+                    mes = (String)request.getSession().getAttribute("month");
+                    anno = (String)request.getSession().getAttribute("year");
+                    imagenperfil = (Part)request.getSession().getAttribute("imagenfile");
+                    
+                    mensajeerror = "El nombre de usuario ya existe, intente con otro";
            
-                }*/
+                }
     %>
     
     <body>
@@ -57,7 +64,7 @@
                     
                     <label >Nombre</label>
                     <div class="control">
-                        <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input">
+                        <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input" value=<%=nombre%>>
                     </div>
                 </div>
                 <div class="field">
@@ -65,7 +72,7 @@
                     <div class="control">
                         <div class="file has-name is-right">
                             <label class="file-label">
-                              <input class="file-input" type="file" name="resume">
+                              <input class="file-input" type="file" name="resume" value=<%=imagenperfil%>>
                               <span class="file-cta">
                                 <span class="file-icon">
                                   <i class="fas fa-upload"></i>
@@ -84,6 +91,7 @@
                 <div class="field">
                     <label>Username</label>
                     <div class="control">
+                        <div style="color:red"><%= mensajeerror%>
                         <input id="strNewUsername" name="strNewUsername" class="input" type="text" placeholder="Text input" >
                     </div>
                 </div>
@@ -91,7 +99,7 @@
                 <div class="field">
                   <label>Email</label>
                   <div class="control">
-                    <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value="me@example.com">
+                    <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value=<%=email%>>
                   </div>
                 </div>
                 <div class="field">
@@ -104,7 +112,7 @@
                     <label>Sexo</label>
                     <div class="control">
                         <div class="select is-info">
-                            <select  id="StringNewSexo" name="StringNewSexo">
+                            <select  id="StringNewSexo" name="StringNewSexo" value=<%=sexo%>>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Indefinido">Prefiero no decirlo</option>
@@ -117,7 +125,7 @@
                     <div class="control">
                         <div class="select is-info">
                             <label class="label" style="font-weight: 100;">Día</label>
-                            <select  id="StringNewBornDay" name="StringNewBornDay">
+                            <select  id="StringNewBornDay" name="StringNewBornDay" value=<%=dia%>>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -153,7 +161,7 @@
                         </div>
                         <div class="select is-info">
                             <label class="label" style="font-weight: 100;">Mes</label>
-                            <select  id="StringNewBornMonth " name="StringNewBornMonth">
+                            <select  id="StringNewBornMonth " name="StringNewBornMonth" value=<%=mes%>>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -170,7 +178,7 @@
                         </div>
                         <div class="select is-info">
                             <label class="label" style="font-weight: 100;">Año</label>
-                            <select name="StringNewUseryear" onchange="confirm('Año: '+this.value)">
+                            <select name="StringNewUseryear" onchange="confirm('Año: '+this.value)" value=<%=anno%>>
                             
                             <script>
                             var myDate = new Date();
@@ -188,7 +196,7 @@
                     <label>País</label>
                     <div class="control">
                         <div class="select is-info">
-                            <select  id="StringNewCountry" name="StringNewCountry">
+                            <select  id="StringNewCountry" name="StringNewCountry" autofill=<%=pais%>>
                                 <option value="ElSalvador">El Salvador</option>
                                 <option value="Guatemala">Guatemala</option>
                                 <option value="Belice">Belice</option>
@@ -203,13 +211,13 @@
                 <div class="field">
                     <label>Ciudad</label>
                     <div class="control">
-                        <input id="strnewCiudadUsuario" name="strnewCiudadUsuario" class="input" type="text" placeholder="Text input">
+                        <input id="strnewCiudadUsuario" name="strnewCiudadUsuario"  class="input" type="text" placeholder="Text input" value=<%=ciudad%>>
                     </div>
                 </div>
                 <div class="field">
                     <label>Dirección</label>
                     <div class="control">
-                        <input id="strnewDireccionUsuario" name="strnewDireccionUsuario" class="input" type="text" placeholder="Text input">
+                        <input id="strnewDireccionUsuario" name="strnewDireccionUsuario"  class="input" type="text" placeholder="Text input" value=<%=direccion%>>
                     </div>
                 </div>          
                 <div class="field is-grouped">

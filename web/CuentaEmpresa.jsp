@@ -1,4 +1,5 @@
 
+<%@page import="com.commercewebapp.objects.NuevoMicroEmpresario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,6 +10,34 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
         <title>Crea una cuenta empresarial</title>
     </head>
+    <%
+        NuevoMicroEmpresario usuarioexistente = (NuevoMicroEmpresario)request.getSession().getAttribute("usuarioexistente");
+        String error = (String)request.getSession().getAttribute("error");
+            String name="";
+            String user=""; 
+            String nit="9-digitos";
+            String password="";
+            String descripcion="";
+            String email="me@example.com";
+            String pais="";
+            String ciudad="";
+            String categoria="";
+            byte[] logo=null;
+            String mensajeerror = "";
+            
+                if(usuarioexistente!=null && error=="2"){
+                    name = usuarioexistente.getName();
+                    nit = usuarioexistente.getNit();
+                    descripcion = usuarioexistente.getDescripcion();
+                    email =usuarioexistente.getEmail();
+                    pais= usuarioexistente.getPais();
+                    ciudad = usuarioexistente.getCiudad();
+                    categoria = usuarioexistente.getCategoria();
+                    
+                    mensajeerror = "El nombre de usuario ya existe, intente con otro";
+           
+                }
+    %>
     <body>
         
  
@@ -47,7 +76,7 @@
                 <div class="field">
                     <label>Nombre</label>
                     <div class="control">
-                        <input class="input" type="text" name="nombreEmp" id="nombreEmp" placeholder="Text input">
+                        <input class="input" type="text" name="nombreEmp" id="nombreEmp" placeholder="Text input" value =<%=name%>>
                     </div>
                 </div>
 
@@ -60,13 +89,13 @@
                 <div class="field">
                     <label>Email</label>
                     <div class="control">
-                        <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value="me@example.com">
+                        <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value =<%=email%>>
                     </div>
                 </div>
                 <div class="field">
                     <label>NIT</label>
                     <div class="control">
-                        <input class="input" type="text" name="nit" id="nit" placeholder="Text input" value="9 digitos">
+                        <input class="input" type="text" name="nit" id="nit" placeholder="Text input" value =<%=nit%>>
                     </div>
                 </div>
 
@@ -95,29 +124,44 @@
                 <div class="field">
                     <label>Ciudad</label>
                     <div class="control">
-                        <input id="strnewCiudadEmp" name="strnewCiudadEmp" class="input" type="text" placeholder="Text input">
+                        <input id="strnewCiudadEmp" name="strnewCiudadEmp" class="input" type="text" placeholder="Text input" value =<%=ciudad%>>
                     </div>
                 </div>
                  <div class="field">
                     <label>Categoría</label>
-                    <br>
-                    <input class="is-checkradio" id="StrCategoria" type="radio" name="StrCategoria" checked="checked">
-                    <label for="NecBasicas">Necesidades Básicas</label>
-                    
-                    <input class="is-checkradio" id="StrCategoria" type="radio" name="StrCategoria">
-                    <label for="Hogar">Hogar</label>
-                    
-                    <input class="is-checkradio" id="StrCategoria" type="radio" name="StrCategoria" >
-                    <label for="Tec">Tecnología</label>
-                    
-                    <input class="is-checkradio" id="StrCategoria" type="radio" name="StrCategoria" >
-                    <label for="Repuestos">Repuestos</label>
+                    <div class="control">
+                        <div class="select is-info">
+                            <select  id="StrCategoria" name="StrCategoria">
+                                <option value="1">Musica</option>
+                                <option value="2">Ropa, zapatos, joyería y relojes</option>
+                                <option value="3">Hogar y cocina</option>
+                                <option value="4">Libros</option>
+                                <option value="5">Electrónicos</option>
+                                <option value="6">Mascotas</option>
+                                <option value="7">Deportes y aire libre</option>
+                                <option value="8">Bebé</option>
+                                <option value="9">Automotriz</option>
+                                <option value="10">Arte y artesanías</option>
+                                <option value="11">Belleza y cuidado personal</option>
+                                <option value="12">Computadoras</option>
+                                <option value="13">Moda Mujeres</option>
+                                <option value="14">Moda Hombres</option>
+                                <option value="15">Moda niños</option>
+                                <option value="16">Salud</option>
+                                <option value="17">Películas</option>
+                                <option value="18">CSoftware</option>
+                                <option value="19">Herramientas y bricolage</option>
+                                <option value="20">Juguetes y juegos</option>
+                                <option value="21">Videojuegos</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                     
                 <div class="field">
                 <label>Descripcion</label>
                     <div class="control">
-                        <textarea class="textarea" type="text" name="descEmp" id="descEmp" placeholder="200 words or less"></textarea>
+                        <textarea class="textarea" type="text" name="descEmp" id="descEmp" placeholder="200 words or less" value =<%=descripcion%>></textarea>
                     </div>
                 </div>
                  

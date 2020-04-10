@@ -8,6 +8,9 @@
 <!DOCTYPE html>
 <% 
     String error = (String)session.getAttribute("error");
+    String codigo = (String)session.getAttribute("codigo");
+    String newuser = (String)session.getAttribute("nuevouser");
+    String usuarioregitrado = "";
     String message = "";
     if (error != null){
         if (error.equals("1")){
@@ -16,6 +19,13 @@
             message = "Error en inicio de sesión: el usuario ingresado no existe";
         }
     }
+    if (codigo!=null){
+        if(codigo=="27"){
+            message = "Bienvenido, su nuevo usuario ha sido regsitrado con exito! , ingrese su contraseña ";
+            usuarioregitrado = newuser;
+        }
+    }
+    
 %>
 <html>
     <head>
@@ -55,7 +65,7 @@
                                     <label class="title is-size-3">Usuario: </label><br>
                                         <div class="subtitle has-text-danger" ><%= message%></div>
 					<p class="control">
-						<input class="input" type="text" name="nameis" placeholder="Usuario">
+						<input class="input" type="text" name="nameis" placeholder="Usuario" value=<%=usuarioregitrado%>>
 					</p>
 				</div>
                 <div class="field">
