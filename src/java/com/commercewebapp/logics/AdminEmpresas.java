@@ -7,6 +7,7 @@ package com.commercewebapp.logics;
 
 import com.commercewebapp.database.DatabaseZ;
 import com.commercewebapp.objects.Empresa;
+import com.commercewebapp.objects.Producto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,5 +48,7 @@ public class AdminEmpresas extends Logic {
         
         return empresa;
     }
+    
+    
     
 }

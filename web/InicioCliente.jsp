@@ -101,7 +101,7 @@
 								</p>
 							</form>
 							<div class="buttons">
-								<a class="button color2">
+                                                            <a class="button color2" href="index.jsp">
 								  Cerrar sesión
 								</a>
 							</div>
@@ -167,7 +167,6 @@
 								while(iteDeseos.hasNext()){
 									deseoActual = iteDeseos.next();
 						%>
-
 						<div class="box color3">
 							<article class="media">
 								<div class="media-left">
