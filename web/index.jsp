@@ -77,7 +77,7 @@
                                         <br> 
                 <div class="field">
                     <div class="control">
-                        <input class="button is-link is-bold" type="submit" value="Send"/>
+                        <input class="button is-link is-bold is-medium" type="submit" value="Send"/>
                         
                     </div>
                 </div>

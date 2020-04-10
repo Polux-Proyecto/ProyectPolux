@@ -340,7 +340,21 @@
                         }
                         %>
                         <br>
-                        <a href="EstadoDeVentas.jsp"><small>Más información</small></a>
+                        
+                        <div class="field is-grouped">
+  <p class="control">
+    <button class="button is-link">
+      Ir a ventas  
+    </button>
+  </p>
+
+  <p class="control">
+    <button class="button is-primary">
+      Ir a inventario
+    </button>
+  </p>
+</div>
+                    
                     </article>
                   </div>
                 </div>
