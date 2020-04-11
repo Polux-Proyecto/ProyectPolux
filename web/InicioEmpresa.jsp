@@ -77,66 +77,81 @@
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <script src="https://kit.fontawesome.com/709f0bb893.js" crossorigin="anonymous"></script>
         <title>InicioEmpresa</title>
+		<style>
+			.color1{
+				background-color: #93d250
+			}
+			.color2{
+				background-color: #508329
+			}
+			.color3{
+				background-color: #dce5d2
+			}
+			.form-inline {  
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
+			}
+		</style>
     </head>
     <body>
         
         <section>
-        <div>
-        <nav class="navbar" role="navigation" aria-label="main navigation" >
-            <div class="navbar-brand">
-                <img src="images/BrocOnlineLogo.jpeg" width="150" height="28">
+			<div>
+				<nav class="navbar" role="navigation" aria-label="main navigation" >
+					<div class="navbar-brand">
+						<img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
                        
-              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-              </a>
-            </div>
+						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+						</a>
+					</div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
-                <!--  
-                Los Ids de las categorías más importantes son:
-                Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
-                -->
-              <div class="navbar-start">
-                <a class="navbar-item" href="InicioEmpresa.jsp">
-                  Inicio
-                </a>
-                 <a class="navbar-item" href="Empresarios?formid=2">
-                  Ventas
-                </a>
-                <a class="navbar-item" href="Empresarios?formid=3">
-                  Envíos
-                </a>
-                <a class="navbar-item" href="ClientesFrecuentes.jsp">
-                  Clientes 
-                </a>
-                <a class="navbar-item" href="Inventario.jsp">
-                  Inventario
-                </a>
-              </div>
-            </div>
+					<div id="navbarBasicExample" class="navbar-menu">
+						<!--  
+						Los Ids de las categorías más importantes son:
+						Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
+						-->
+						<div class="navbar-start">
+							<a class="navbar-item" href="InicioEmpresa.jsp">
+							  Inicio
+							</a>
+							<a class="navbar-item" href="Empresarios?formid=2">
+							  Ventas
+							</a>
+							<a class="navbar-item" href="Empresarios?formid=3">
+							  Envíos
+							</a>
+							<a class="navbar-item" href="ClientesFrecuentes.jsp">
+							  Clientes 
+							</a>
+							<a class="navbar-item" href="Inventario.jsp">
+							  Inventario
+							</a>
+						</div>
+					</div>
 
-              <div class="navbar-end">
-                <div class="navbar-item">
-                    <p class="control">
-                      <input class="input" type="text" placeholder="Find a post">
-                    </p>
-                    <p class="control">
-                      <button class="button" style="background-color: greenyellow">
-                        Buscar
-                      </button>
-                    </p>
-                    <div class="buttons">
-                        <a class="button " href="index.jsp" style="background-color: #29b342">
-                      Cerrar sesión
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </nav>
-          </div>
-         </div>
+					<div class="navbar-end">
+						<div class="navbar-item">
+							<p class="control">
+								<input class="input" type="text" placeholder="Find a post">
+							</p>
+							<p class="control">
+								<button class="button" style="background-color: greenyellow">
+									Buscar
+								</button>
+							</p>
+							<div class="buttons">
+								<a class="button " href="index.jsp" style="background-color: #29b342">
+									Cerrar sesión
+								</a>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
         </section>
         <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
             <div class="hero-body">
@@ -144,7 +159,7 @@
                     <h1 class="title" style="color:black">
                         <strong>¡Bienvenido, <%=usuario.getNombre() %>!</strong>
                     </h1>
-                    <h2 class="subtitle"style="color:black">
+                    <h2 class="subtitle" style="color:black">
                         Tus clientes esperan
                     </h2>
                 </div>
@@ -164,200 +179,200 @@
         <section class="section" >
             <div class="tile is-ancestor">
                 <div class="tile is-vertical">
-                <div class="tile">
-                  <div class="tile is-parent is-vertical">
-                    <article class="tile is-child box" style="border: green 10px inset;">
+					<div class="tile">
+						<div class="tile is-parent is-vertical">
+							<article class="tile is-child box" style="border: green 10px inset;">
                         
-                        <p class="title">Añadir Producto</p>
-                        <p class="subtitle">Agrega nuevos productos a tu inventario</p>
-                        <button class="button modal-button" data-target="#Modal1" aria-haspopup="true" style="background-color: chartreuse">Nuevo Producto</button>
+								<p class="title">Añadir Producto</p>
+								<p class="subtitle">Agrega nuevos productos a tu inventario</p>
+								<button class="button modal-button" data-target="#Modal1" aria-haspopup="true" style="background-color: chartreuse">Nuevo Producto</button>
                         
-                        <div class="modal" id="Modal1">
-                            <div class="modal-background"></div>
-                            <div class="modal-card">
-                              <header class="modal-card-head">
-                                <p class="modal-card-title">Nuevo Producto</p>
-                                <button class="delete" aria-label="close"></button>
-                              </header>
-                              <section class="modal-card-body">
-                                <form name="FrmNuevoProd" action="Empresarios" method="get" id="FrmNuevoProd">
-                                    <p class="subtitle has-text-danger"><%= avisoE %></p>
-                                    <p class="subtitle has-text-success"><%= avisoM %></p>
-                                    
-                                    <div class="field">
-                                        <label>Nombre del producto:</label>
-                                        <div class="control">
-                                          <input class="input" type="text" name="nameProd" id="nameProd"/>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <label>Imagen de Producto</label>
-                                        <div class="control">
-                                            <div class="file has-name is-right">
-                                                <label class="file-label">
-                                                  <input class="file-input" type="file" name="resume">
-                                                  <span class="file-cta">
-                                                    <span class="file-icon">
-                                                      <i class="fas fa-upload"></i>
-                                                    </span>
-                                                    <span class="file-label">
-                                                      Choose a file…
-                                                    </span>
-                                                  </span>
-                                                  <span class="file-name">
-                                                    Screen Shot 2017-07-29 at 15.54.25.png
-                                                  </span>
-                                                </label>
-                                              </div>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <label>Cantidad:</label>
-                                        <div class="control">
-                                          <input class="input" type="number" name="cantProd" id="cantProd" min="1"/>
-                                        </div>
-                                    </div>
-                                     <div class="field">
-                                        <label>Categoría</label>
-                                        <br>
-                                        <input class="is-checkradio" id="NecBasicas" type="radio" name="NecBasicas" checked="checked">
-                                        <label for="NecBasicas">Necesidades Básicas</label>
+								<div class="modal" id="Modal1">
+									<div class="modal-background"></div>
+									<div class="modal-card">
+										<header class="modal-card-head">
+											<p class="modal-card-title">Nuevo Producto</p>
+											<button class="delete" aria-label="close"></button>
+										</header>
+										<section class="modal-card-body">
+											<form name="FrmNuevoProd" action="Empresarios" method="get" id="FrmNuevoProd">
+												<p class="subtitle has-text-danger"><%= avisoE %></p>
+												<p class="subtitle has-text-success"><%= avisoM %></p>
 
-                                        <input class="is-checkradio" id="Hogar" type="radio" name="Hogar" checked="checked">
-                                        <label for="Hogar">Hogar</label>
+												<div class="field">
+													<label>Nombre del producto:</label>
+													<div class="control">
+													  <input class="input" type="text" name="nameProd" id="nameProd"/>
+													</div>
+												</div>
+												<div class="field">
+													<label>Imagen de Producto</label>
+													<div class="control">
+														<div class="file has-name is-right">
+															<label class="file-label">
+																<input class="file-input" type="file" name="resume">
+																<span class="file-cta">
+																	<span class="file-icon">
+																		<i class="fas fa-upload"></i>
+																	</span>
+																	<span class="file-label">
+																		Choose a file…
+																	</span>
+																</span>
+																<span class="file-name">
+																	Screen Shot 2017-07-29 at 15.54.25.png
+																</span>
+															</label>
+														</div>
+													</div>
+												</div>
+												<div class="field">
+													<label>Cantidad:</label>
+													<div class="control">
+														<input class="input" type="number" name="cantProd" id="cantProd" min="1"/>
+													</div>
+												</div>
+												<div class="field">
+													<label>Categoría</label>
+													<br>
+													<input class="is-checkradio" id="NecBasicas" type="radio" name="NecBasicas" checked="checked">
+													<label for="NecBasicas">Necesidades Básicas</label>
 
-                                        <input class="is-checkradio" id="Tec" type="radio" name="Tec" checked="checked">
-                                        <label for="Tec">Tecnología</label>
+													<input class="is-checkradio" id="Hogar" type="radio" name="Hogar" checked="checked">
+													<label for="Hogar">Hogar</label>
 
-                                        <input class="is-checkradio" id="Repuestos" type="radio" name="Repuestos" checked="checked">
-                                        <label for="Repuestos">Repuestos</label>
-                                    </div>
-                                    <div class="field">
-                                        <label>Precio Unitario:</label>
-                                        <div class="control">
-                                          <input class="input" type="number" name="precProd" id="precProd" min="1"/>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <label>Costo Unitario:</label>
-                                        <div class="control">
-                                          <input class="input" type="double" name="costoProd" id="costoProd" min="0.01"/>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <label>Descripción:</label>
-                                        <div class="control">
-                                          <input class="input" type="text" name="descProd" id="descProd"/>
-                                        </div>
-                                    </div>
-                                </form>
-                              </section>
-                              <footer class="modal-card-foot">
-                                <button class="button is-success">Save changes</button>
-                                <button class="button is-delete">Cancel</button>
-                              </footer>
-                            </div>
-                                    
-                          </div>
-                          <script>
-                            document.querySelectorAll('.modal-button').forEach(function(el) {
-                                el.addEventListener('click', function() {
-                                  var target = document.querySelector(el.getAttribute('data-target'));
+													<input class="is-checkradio" id="Tec" type="radio" name="Tec" checked="checked">
+													<label for="Tec">Tecnología</label>
 
-                                  target.classList.add('is-active');
+													<input class="is-checkradio" id="Repuestos" type="radio" name="Repuestos" checked="checked">
+													<label for="Repuestos">Repuestos</label>
+												</div>
+												<div class="field">
+													<label>Precio Unitario:</label>
+													<div class="control">
+														<input class="input" type="number" name="precProd" id="precProd" min="1"/>
+													</div>
+												</div>
+												<div class="field">
+													<label>Costo Unitario:</label>
+													<div class="control">
+														<input class="input" type="number" name="costoProd" id="costoProd" min="0.01"/>
+													</div>
+												</div>
+												<div class="field">
+													<label>Descripción:</label>
+													<div class="control">
+														<input class="input" type="text" name="descProd" id="descProd"/>
+													</div>
+												</div>
+											</form>
+										</section>
+										<footer class="modal-card-foot">
+											<button class="button is-success">Save changes</button>
+											<button class="button is-delete">Cancel</button>
+										</footer>
+									</div>
+								</div>
+								<script>
+									document.querySelectorAll('.modal-button').forEach(function(el) {
+										el.addEventListener('click', function() {
+										  var target = document.querySelector(el.getAttribute('data-target'));
 
-                                  target.querySelector('.delete').addEventListener('click',   function() {
-                                      target.classList.remove('is-active');
-                                  
-                                   });
-                                   target.querySelector('.is-delete').addEventListener('click',   function() {
-                                      target.classList.remove('is-active');
-                                  
-                                   });
-                                });
-                              });
+										  target.classList.add('is-active');
+
+										  target.querySelector('.delete').addEventListener('click',   function() {
+											  target.classList.remove('is-active');
+
+										   });
+										   target.querySelector('.is-delete').addEventListener('click',   function() {
+											  target.classList.remove('is-active');
+
+										   });
+										});
+									  });
                               
-                        </script>
-                        </article>
-                        <article class="tile is-child box" style="border: green 10px inset;">
-                            <h1 class="title">Envíos</h1>
-                            <p class="subtitle">Tienes <%= cantidadProducto %> envíos pendientes</p>
-                            <div class="container" style="margin-left: 20px">
-                                <span class="icon is-large">
-                                    <a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: chartreuse"></i></a>
-                                </span>
-                            </div>
-                        </article>
-                  </div>
-                  <div class="tile is-parent">
-                      <article class="tile is-child box" style="border: black 10px inset;">
-                        <p class="title">Informe de Ventas</p>
-                        <p class="subtitle">Artículos más vendidos</p>
-                        <% 
-                            if (cantMasVendidos == 0){
-                        %>
-                        <p class="list-item">No has vendido ningún producto</p>
-                        <% 
-                            }else{
-                                while(iteMasVendidos.hasNext()){
-                                producto = iteMasVendidos.next();
-                        %>
-                        <p class="list-item"><%= producto.getNombre() %></p>
-                        <% 
-                            }
-                        }
-                        %>
-                        <br>
-                        <p class="subtitle">Productos en inventario más cercanos a agotarse</p>
-                        <% 
-                            if (cantMenosStock == 0){
-                        %>
-                        <p class="list-item">No se encontraron productos en inventario</p>
-                        <% 
-                            }else{
-                                while(iteMenosStock.hasNext()){
-                                producto = iteMenosStock.next();
-                        %>
-                        <p class="list-item"><%= producto.getNombre() %></p>
-                        <% 
-                            }
-                        }
-                        %>
-                        <br>
-                        <p class="subtitle">Productos agotados</p>
-                        <% 
-                            if (cantSinStock == 0){
-                        %>
-                        <p class="list-item">No hay ningún producto sin Stock</p>
-                        <% 
-                            }else{
-                                while(iteSinStock.hasNext()){
-                                producto = iteSinStock.next();
-                        %>
-                        <p class="list-item"><%= producto.getNombre() %></p>
-                        <% 
-                            }
-                        }
-                        %>
-                        <br>
+								</script>
+							</article>
+							<article class="tile is-child box" style="border: green 10px inset;">
+								<h1 class="title">Envíos</h1>
+								<p class="subtitle">Tienes <%= cantidadProducto %> envíos pendientes</p>
+								<div class="container" style="margin-left: 20px">
+									<span class="icon is-large">
+										<a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: chartreuse"></i></a>
+									</span>
+								</div>
+							</article>
+						</div>
+						<div class="tile is-parent">
+							<article class="tile is-child box" style="border: black 10px inset;">
+								<p class="title">Informe de Ventas</p>
+								<p class="subtitle">Artículos más vendidos</p>
+								<% 
+									if (cantMasVendidos == 0){
+								%>
+								<p class="list-item">No has vendido ningún producto</p>
+								<% 
+									}else{
+										while(iteMasVendidos.hasNext()){
+										producto = iteMasVendidos.next();
+								%>
+								<p class="list-item"><%= producto.getNombre() %></p>
+								<% 
+									}
+								}
+								%>
+								<br>
+								<p class="subtitle">Productos en inventario más cercanos a agotarse</p>
+								<% 
+									if (cantMenosStock == 0){
+								%>
+								<p class="list-item">No se encontraron productos en inventario</p>
+								<% 
+									}else{
+										while(iteMenosStock.hasNext()){
+										producto = iteMenosStock.next();
+								%>
+								<p class="list-item"><%= producto.getNombre() %></p>
+								<% 
+									}
+								}
+								%>
+								<br>
+								<p class="subtitle">Productos agotados</p>
+								<% 
+									if (cantSinStock == 0){
+								%>
+								<p class="list-item">No hay ningún producto sin Stock</p>
+								<% 
+									}else{
+										while(iteSinStock.hasNext()){
+										producto = iteSinStock.next();
+								%>
+								<p class="list-item"><%= producto.getNombre() %></p>
+								<% 
+									}
+								}
+								%>
+								<br>
                         
-                        <div class="field is-grouped">
-                        <p class="control">
-                          <button class="button is-link">
-                            Ir a ventas  
-                          </button>
-                        </p>
+								<div class="field is-grouped">
+									<p class="control">
+										<button class="button is-link">
+											Ir a ventas  
+										</button>
+									</p>
 
-                        <p class="control">
-                          <button class="button is-primary">
-                            Ir a inventario
-                          </button>
-                        </p>
-                      </div>
-                    </article>
-                  </div>
-                </div>
-            </div>
+									<p class="control">
+										<button class="button is-primary">
+											Ir a inventario
+										</button>
+									</p>
+								</div>
+                    
+							</article>
+						</div>
+					</div>
+				</div>
             </div>
         </section>
     </body>

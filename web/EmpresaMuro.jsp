@@ -16,63 +16,85 @@
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
         <title>Nombre de la Empresa</title>
+		<style>
+			.color1{
+				background-color: #93d250
+			}
+			.color2{
+				background-color: #508329
+			}
+			.color3{
+				background-color: #dce5d2
+			}
+			.form-inline {  
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
+			}
+		</style>
     </head>
     <body>
-                <section>
-            <div>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-              <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-              </a>
+        <section>
+			<div>
+				<nav class="navbar" role="navigation" aria-label="main navigation">
+					<div class="navbar-brand">
+						<a class="navbar-item" href="InicioCliente.jsp">
+						  <img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
+						</a>
+						<a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+						  <span aria-hidden="true"></span>
+						  <span aria-hidden="true"></span>
+						  <span aria-hidden="true"></span>
+						</a>
+					</div>
 
-              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-              </a>
-            </div>
+					<div id="navbarBasicExample" class="navbar-menu">
+                <!--  
+                Los Ids de las categorías más importantes son:
+                Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
+                -->
+						<div class="navbar-start">
+							<a class="navbar-item" href="InicioCliente.jsp">
+							  Inicio
+							</a>
+							<a class="navbar-item" href="Buscadores?formid=2&idCat=3">
+							  Hogar
+							</a>
+							<a class="navbar-item" href="Buscadores?idCat=5&formid=2">
+							  Tecnología
+							</a>
+							<a class="navbar-item" href="Buscadores?idCat=1&formid=2">
+							  Música
+							</a>
+							<a class="navbar-item" href="Buscadores?formid=3">
+							  Todas las categorías
+							</a>
+						</div>
+					</div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
-              <div class="navbar-start">
-                <a class="navbar-item" href="InicioCliente">
-                  Inicio
-                </a>
-                 <a class="navbar-item" href="CategoriaEmpresas.jsp">
-                  Hogar
-                </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp">
-                  Tecnología
-                </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp">
-                  Conveniencia
-                </a>
-                <a class="navbar-item" href="CategoriaEmpresas.jsp">
-                  Otro
-                </a>
-              </div>
+					<div class="navbar-end">
+                  
+						<div class="navbar-item">
+							<form action="Buscadores" method="get" name="buscador" class="form-inline">
+								<p class="control">
+									<input class="input" type="text" placeholder="Find a post" name="palabra" id="palabra">
+								</p>
+								<p class="control">
+									<button class="button color1">
+										Buscar
+									</button>
+									<input type="hidden" id="formid" name="formid" value="1">
+								</p>
+							</form>
+							<div class="buttons">
+                                <a class="button color2" href="index.jsp">
+									Cerrar sesión
+								</a>
+							</div>
+						</div>
+					</div>
+				</nav>
             </div>
-
-              <div class="navbar-end">
-                <div class="navbar-item">
-                    <p class="control">
-                      <input class="input" type="text" placeholder="Find a post">
-                    </p>
-                    <p class="control">
-                      <button class="button is-primary">
-                        Buscar
-                      </button>
-                    </p>
-                    <div class="buttons">
-                    <a class="button is-light">
-                      Cerrar sesión
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
-         </div>
         </section>
         <section class="section">
             <div class="container">
@@ -126,201 +148,200 @@
                                 
 			});
 		</script>
-                <section>
-                    <div class="tile is-ancestor">
-                        <div class="tile is-parent ">
-                            <div class="tile is-child box">
-                                <p class="title">Nuestros Productos</p>
-                                <div class="box">
-                                    <article class="media">
-                                        <div class="media-left">
-                                          <figure class="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                                          </figure>
-                                        </div>
-                                        <div class="media-content">
-                                          <div class="content">
-                                            <p><strong>Nombre del producto</strong> 
-                                              <br>Precio:<br>Descripción:
-                                            </p><br>
-                                          </div>
-                                        </div>
-                                        <nav class="navbar" role="navigation" aria-label="main navigation">
-                                            <div class="field is-grouped">
-                                                <a class="navbar-item">
-                                                    <div class="control">
-                                                        <button class="button is-outlined is-danger">Lista de deseos</button>
-                                                    </div>
-                                                </a>
-                                                <a class="navbar-item" href="CompraProducto.jsp">
-                                                    <div class="control">
-                                                        <button class="button is-outlined ">Comprar</button>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </nav>
-                                    </article>
-                                </div>
-                                <div class="box">
-                                    <article class="media">
-                                        <div class="media-left">
-                                          <figure class="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                                          </figure>
-                                        </div>
-                                        <div class="media-content">
-                                          <div class="content">
-                                            <p><strong>Nombre del producto</strong> 
-                                              <br>Precio:<br>Descripción:
-                                            </p>
-                                          </div>
-                                        </div>
-                                        <nav class="navbar" role="navigation" aria-label="main navigation">
-                                            <div class="field is-grouped">
-                                                <a class="navbar-item">
-                                                    <div class="control">
-                                                        <button class="button is-outlined is-danger">Lista de deseos</button>
-                                                    </div>
-                                                </a>
-                                                <a class="navbar-item" href="CompraProducto.jsp">
-                                                    <div class="control">
-                                                        <button class="button is-outlined ">Comprar</button>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </nav>
-                                    </article>
-                                </div>
-                                <div class="box">
-                                    <article class="media">
-                                        <div class="media-left">
-                                          <figure class="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                                          </figure>
-                                        </div>
-                                        <div class="media-content">
-                                          <div class="content">
-                                            <p><strong>Nombre del producto</strong> 
-                                              <br>Precio:<br>Descripción:
-                                            </p>
-                                          </div>
-                                        </div>
-                                        <nav class="navbar" role="navigation" aria-label="main navigation">
-                                            <div class="field is-grouped">
-                                                <a class="navbar-item">
-                                                    <div class="control">
-                                                        <button class="button is-outlined is-danger">Lista de deseos</button>
-                                                    </div>
-                                                </a>
-                                                <a class="navbar-item" href="CompraProducto.jsp">
-                                                    <div class="control">
-                                                        <button class="button is-outlined ">Comprar</button>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </nav>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>    
-                        <div class="tile is-parent">
-                            <div class="tile is-child box">
-                                <p class="title">Novedades</p>
-                                <div class="box">
-                                    <article class="media">
-                                        <div class="media-left">
-                                          <figure class="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                                          </figure>
-                                        </div>
-                                        <div class="media-content">
-                                          <div class="content">
-                                            <p><strong>Nombre del producto</strong> 
-                                              <br>Precio:<br>Descripción:
-                                            </p><br>
-                                          </div>
-                                        </div>
-                                        <nav class="navbar" role="navigation" aria-label="main navigation">
-                                            <div class="field is-grouped">
-                                                <a class="navbar-item">
-                                                    <div class="control">
-                                                        <button class="button is-outlined is-danger">Lista de deseos</button>
-                                                    </div>
-                                                </a>
-                                                <a class="navbar-item" href="CompraProducto.jsp">
-                                                    <div class="control">
-                                                        <button class="button is-outlined ">Comprar</button>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </nav>
-                                    </article>
-                                </div>
-                                <div class="box">
-                                    <article class="media">
-                                        <div class="media-left">
-                                          <figure class="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                                          </figure>
-                                        </div>
-                                        <div class="media-content">
-                                          <div class="content">
-                                            <p><strong>Nombre del producto</strong> 
-                                              <br>Precio:<br>Descripción:
-                                            </p>
-                                          </div>
-                                        </div>
-                                        <nav class="navbar" role="navigation" aria-label="main navigation">
-                                            <div class="field is-grouped">
-                                                <a class="navbar-item">
-                                                    <div class="control">
-                                                        <button class="button is-outlined is-danger">Lista de deseos</button>
-                                                    </div>
-                                                </a>
-                                                <a class="navbar-item" href="CompraProducto.jsp">
-                                                    <div class="control">
-                                                        <button class="button is-outlined ">Comprar</button>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </nav>
-                                    </article>
-                                </div>
-                                <div class="box">
-                                    <article class="media">
-                                        <div class="media-left">
-                                          <figure class="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                                          </figure>
-                                        </div>
-                                        <div class="media-content">
-                                          <div class="content">
-                                            <p><strong>Nombre del producto</strong> 
-                                              <br>Precio:<br>Descripción:
-                                            </p>
-                                          </div>
-                                        </div>
-                                        <nav class="navbar" role="navigation" aria-label="main navigation">
-                                            <div class="field is-grouped">
-                                                <a class="navbar-item">
-                                                    <div class="control">
-                                                        <button class="button is-outlined is-danger">Lista de deseos</button>
-                                                    </div>
-                                                </a>
-                                                <a class="navbar-item" href="CompraProducto.jsp">
-                                                    <div class="control">
-                                                        <button class="button is-outlined ">Comprar</button>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </nav>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>    
-                
+		<section>
+			<div class="tile is-ancestor">
+				<div class="tile is-parent ">
+					<article class="tile is-child box" style="border: green 10px inset;">
+						<p class="title">Nuestros Productos</p>
+						<div class="box" style="border: lightgray 2px inset">
+							<article class="media">
+								<div class="media-left">
+									<figure class="image is-128x128">
+										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+									</figure>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p><strong>Nombre del producto</strong> 
+											<br>Precio:<br>Descripción:
+										</p><br>
+									</div>
+								</div>
+								<nav class="navbar" role="navigation" aria-label="main navigation">
+									<div class="field is-grouped">
+										<a class="navbar-item">
+											<div class="control">
+												<button class="button is-outlined is-danger">Lista de deseos</button>
+											</div>
+										</a>
+										<a class="navbar-item" href="CompraProducto.jsp">
+											<div class="control">
+												<button class="button is-outlined ">Comprar</button>
+											</div>
+										</a>
+									</div>
+								</nav>
+							</article>
+						</div>
+						<div class="box" style="border: lightgray 2px inset">
+							<article class="media">
+								<div class="media-left">
+									<figure class="image is-128x128">
+										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+									</figure>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p><strong>Nombre del producto</strong> 
+											<br>Precio:<br>Descripción:
+										</p>
+									</div>
+								</div>
+								<nav class="navbar" role="navigation" aria-label="main navigation">
+									<div class="field is-grouped">
+										<a class="navbar-item">
+											<div class="control">
+												<button class="button is-outlined is-danger">Lista de deseos</button>
+											</div>
+										</a>
+										<a class="navbar-item" href="CompraProducto.jsp">
+											<div class="control">
+												<button class="button is-outlined ">Comprar</button>
+											</div>
+										</a>
+									</div>
+								</nav>
+							</article>
+						</div>
+						<div class="box" style="border: lightgray 2px inset">
+							<article class="media">
+								<div class="media-left">
+									<figure class="image is-128x128">
+										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+									</figure>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p><strong>Nombre del producto</strong> 
+											<br>Precio:<br>Descripción:
+										</p>
+									</div>
+								</div>
+								<nav class="navbar" role="navigation" aria-label="main navigation">
+									<div class="field is-grouped">
+										<a class="navbar-item">
+											<div class="control">
+												<button class="button is-outlined is-danger">Lista de deseos</button>
+											</div>
+										</a>
+										<a class="navbar-item" href="CompraProducto.jsp">
+											<div class="control">
+												<button class="button is-outlined ">Comprar</button>
+											</div>
+										</a>
+									</div>
+								</nav>
+							</article>
+						</div>
+					</article>
+				</div>    
+				<div class="tile is-parent">
+					<article class="tile is-child box" style="border: green 10px inset;">
+						<p class="title">Novedades</p>
+						<div class="box" style="border: lightgray 2px inset">
+							<article class="media">
+								<div class="media-left">
+									<figure class="image is-128x128">
+										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+									</figure>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p><strong>Nombre del producto</strong> 
+											<br>Precio:<br>Descripción:
+										</p><br>
+									</div>
+								</div>
+								<nav class="navbar" role="navigation" aria-label="main navigation">
+									<div class="field is-grouped">
+										<a class="navbar-item">
+											<div class="control">
+												<button class="button is-outlined is-danger">Lista de deseos</button>
+											</div>
+										</a>
+										<a class="navbar-item" href="CompraProducto.jsp">
+											<div class="control">
+												<button class="button is-outlined ">Comprar</button>
+											</div>
+										</a>
+									</div>
+								</nav>
+							</article>
+						</div>
+						<div class="box" style="border: lightgray 2px inset">
+							<article class="media">
+								<div class="media-left">
+									<figure class="image is-128x128">
+										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+									</figure>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p><strong>Nombre del producto</strong> 
+											<br>Precio:<br>Descripción:
+										</p>
+									</div>
+								</div>
+								<nav class="navbar" role="navigation" aria-label="main navigation">
+									<div class="field is-grouped">
+										<a class="navbar-item">
+											<div class="control">
+												<button class="button is-outlined is-danger">Lista de deseos</button>
+											</div>
+										</a>
+										<a class="navbar-item" href="CompraProducto.jsp">
+											<div class="control">
+												<button class="button is-outlined ">Comprar</button>
+											</div>
+										</a>
+									</div>
+								</nav>
+							</article>
+						</div>
+						<div class="box" style="border: lightgray 2px inset">
+							<article class="media">
+								<div class="media-left">
+								  <figure class="image is-128x128">
+									<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+								  </figure>
+								</div>
+								<div class="media-content">
+								  <div class="content">
+									<p><strong>Nombre del producto</strong> 
+									  <br>Precio:<br>Descripción:
+									</p>
+								  </div>
+								</div>
+								<nav class="navbar" role="navigation" aria-label="main navigation">
+									<div class="field is-grouped">
+										<a class="navbar-item">
+											<div class="control">
+												<button class="button is-outlined is-danger">Lista de deseos</button>
+											</div>
+										</a>
+										<a class="navbar-item" href="CompraProducto.jsp">
+											<div class="control">
+												<button class="button is-outlined ">Comprar</button>
+											</div>
+										</a>
+									</div>
+								</nav>
+							</article>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>          
     </body>
 </html>
 
