@@ -81,6 +81,70 @@ public class BuscarUsuario extends Logic {
         
         return usuario;
     }
+    public Usuario getUsersConCiudadYPais (String username)  {
+        
+        DatabaseZ localDatabase = getDatabase();
+        Usuario usuario = null;
+        System.out.println("Select * from comercebd.clientetb where Username = '"+username+"';");
+        ResultSet result = localDatabase.executeQuery("Select * from comercebd.clientetb where Username = '"+username+"';"); 
+        String pass, nombre, correo ="", genero = "", fechaN = "", direccion = "", ciudad, pais;
+        int id;
+        int i = 0;
+        
+        try {
+             if (result != null){
+                 while (result.next()){
+                    System.out.println("Hay algo en la tabla de clientes");
+                    nombre = result.getString("Nombre");
+                    pass = result.getString("Password");
+                    id = result.getInt("idCliente");
+                    correo = result.getString("Correo");
+                    genero = result.getString("Sexo");
+                    fechaN = result.getString("FechaNacimiento");
+                    direccion = result.getString("Dirección");
+                    ciudad = result.getString("Ciudad");
+                    pais = result.getString("Pais");
+                    i++;
+                    usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion);
+                    System.out.println(nombre+" "+pass+" "+id);
+                    usuario.setCiudad(ciudad);
+                    usuario.setPais(pais);
+                 }
+                 System.out.println("Ya terminó la tabla de clientes");
+                 if (i==0){
+                     System.out.println("No se encontró nada en la tabla de clientes");
+                     System.out.println("SELECT * FROM comercebd.empresatb where Username = '"+username+"';");
+                     result = null;
+                     result = localDatabase.executeQuery("SELECT * FROM comercebd.empresatb where Username = '"+username+"';");
+                     
+                     if (result != null){
+                         i = 0;
+                         while (result.next()){
+                            System.out.println("Hay algo en la tabla de empresarios");
+                            nombre = result.getString("Nombre");
+                            pass = result.getString("Password");
+                            id = result.getInt("idempresatb");
+                            correo = result.getString("Email");
+                            usuario = new Usuario (true, false, nombre, id, pass, username, correo, genero, fechaN, direccion);
+                            System.out.println(nombre+" "+pass+" "+id);
+                            i++;
+                        }
+                        
+                    }
+                    System.out.println("Llego");
+                    if (i==0){
+                    System.out.println("El usuario no existe");
+                    usuario = new Usuario (false, false, "", 0, "", "", "", "", "", "");
+                     }
+                 }
+             }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return usuario;
+    }
 
     public boolean createnewuser(NuevoUsuarioParticular nuevouser, NuevoMicroEmpresario nuevoempresario) 
     {
@@ -192,7 +256,7 @@ public class BuscarUsuario extends Logic {
         return hasfailed;
     }
     
-    public String getNombreClinetePorId(int idCliente){
+    public String getNombreClientePorId(int idCliente){
         String nombre = null;
         DatabaseZ localDatabase = getDatabase();
         
@@ -203,6 +267,44 @@ public class BuscarUsuario extends Logic {
             try {
                 while(result.next()){
                     nombre = result.getString("Nombre");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return nombre;
+    }
+    public String getPaisClientePorId(int idCliente){
+        String nombre = null;
+        DatabaseZ localDatabase = getDatabase();
+        
+        ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.clientetb "
+                + "WHERE clientetb.idCliente = '"+idCliente+"' LIMIT 1;");
+        
+        if (result!=null){
+            try {
+                while(result.next()){
+                    nombre = result.getString("Pais");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return nombre;
+    }
+    public String getCiudadClientePorId(int idCliente){
+        String nombre = null;
+        DatabaseZ localDatabase = getDatabase();
+        
+        ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.clientetb "
+                + "WHERE clientetb.idCliente = '"+idCliente+"' LIMIT 1;");
+        
+        if (result!=null){
+            try {
+                while(result.next()){
+                    nombre = result.getString("Ciudad");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);

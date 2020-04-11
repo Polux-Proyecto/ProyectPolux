@@ -136,8 +136,8 @@
                         %>
                         <tr>
                             <td><%= cliente.getNombre() %></td>
-                            <td><%= cliente.getDireccion() %> </td>
-                            <td><%= cliente.getDireccion() %> </td>
+                            <td><%= cliente.getPais()%> </td>
+                            <td><%= cliente.getCiudad()%> </td>
                             <td><%= cliente.getDireccion() %> </td>
                             <td><a href=<%= ref %>>Detalle de Compra</a></td>
                         </tr>

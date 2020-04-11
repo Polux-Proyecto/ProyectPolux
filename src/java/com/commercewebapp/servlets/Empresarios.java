@@ -80,7 +80,7 @@ public class Empresarios extends HttpServlet {
                 AdminEmpresas buscador = new AdminEmpresas();
                 BuscarUsuario buscadorNombre = new BuscarUsuario();
                 List<Envio> lstEnvio = buscador.getEnviosPorIdEmpYCliente(usuario.getIdUsuario(), idCliente);
-                String nombre = buscadorNombre.getNombreClinetePorId(idCliente);
+                String nombre = buscadorNombre.getNombreClientePorId(idCliente);
                 request.getSession().setAttribute("lstEnvioPorCliente", lstEnvio);
                 request.getSession().setAttribute("nombre", nombre);
                 response.sendRedirect("DetalleCompra.jsp");

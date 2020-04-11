@@ -62,6 +62,7 @@ public class AdminEmpresas extends Logic {
         
         return lista;
     }
+    
     public List<Envio> getEnviosPorIdEmpYCliente (int idEmpresa, int idCliente){
         List<Envio> lista = null;
         
