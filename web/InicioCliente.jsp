@@ -32,9 +32,6 @@
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
         <style>
-			body{
-				background:#508329
-			}
 			.color1{
 				background-color: #93d250
 			}
@@ -44,11 +41,16 @@
 			.color3{
 				background-color: #dce5d2
 			}
+			.form-inline {  
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
+			}
 		</style>
         <title>BrocOnline</title>
     </head>
     <body>
-       <section>
+		<section>
 			<div>
 				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
@@ -89,20 +91,20 @@
 					<div class="navbar-end">
                   
 						<div class="navbar-item">
-							<form action="Buscadores" method="get" name="buscador">
+							<form action="Buscadores" method="get" name="buscador" class="form-inline">
 								<p class="control">
-								  <input class="input" type="text" placeholder="Find a post" name="palabra" id="palabra">
+									<input class="input" type="text" placeholder="Find a post" name="palabra" id="palabra">
 								</p>
 								<p class="control">
 									<button class="button color1">
-									  Buscar
+										Buscar
 									</button>
 									<input type="hidden" id="formid" name="formid" value="1">
 								</p>
 							</form>
 							<div class="buttons">
-                                                            <a class="button color2" href="index.jsp">
-								  Cerrar sesión
+                                <a class="button color2" href="index.jsp">
+									Cerrar sesión
 								</a>
 							</div>
 						</div>
@@ -153,9 +155,9 @@
 			});
 		</script>
 		<section>
-			<div class="tile is-ancestor">
+			<div class="tile is-ancestor" style="margin-left:10px;margin-right: 10px">
 				<div class="tile is-parent">
-					<article class="tile is-child box">
+					<article class="tile is-child box" style="border: green 10px inset">
 						<p class="title">Lista de deseos</p>
 						<% if (cantDeseos == 0){ %>
 						<p class="subtitle">Tu lista de deseos está vacía</p>
@@ -167,7 +169,7 @@
 								while(iteDeseos.hasNext()){
 									deseoActual = iteDeseos.next();
 						%>
-						<div class="box color3">
+						<div class="box" style="border: lightgray 2px inset">
 							<article class="media">
 								<div class="media-left">
 								  <figure class="image is-128x128">
@@ -190,7 +192,7 @@
 					</article>
 				</div>
 				<div class="tile is-parent">
-					<article class="tile is-child box">
+					<article class="tile is-child box" style="border: green 10px inset;">
 						<p class="title">Pedidos pendientes</p>
 						<% if(cantPedidos == 0){ %>
 						<p class="subtitle">No tienes pedidos pendientes</p>
@@ -202,7 +204,7 @@
 								while(itePedidos.hasNext()){
 									pedidoActual = itePedidos.next();
 						%>
-						<div class="box color3">
+						<div class="box" style="border: lightgray 2px inset">
 							<article class="media">
 								<div class="media-left">
 								  <figure class="image is-128x128">
@@ -226,7 +228,7 @@
 					</article>
 				</div>
 				<div class="tile is-parent" >
-					<article class="tile is-child box" >
+					<article class="tile is-child box" style="border: green 10px inset;">
 						<p class="title">Mi cuenta</p>
 
 						<p class="subtitle"><strong>Nombre de Contacto</strong></p>

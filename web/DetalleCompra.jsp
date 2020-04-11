@@ -11,76 +11,84 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>Detalle de Envios</title>
+		<style>
+			.color1{
+				background-color: #93d250
+			}
+			.color2{
+				background-color: #508329
+			}
+			.color3{
+				background-color: #dce5d2
+			}
+			.form-inline {  
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
+			}
+		</style>
     </head>
     <body>
         <section>
-        <div>
-        <nav class="navbar" role="navigation" aria-label="main navigation" >
-            <div class="navbar-brand">
-                <img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="150" height="28">
-                       
-              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-              </a>
-            </div>
+			<div>
+				<nav class="navbar" role="navigation" aria-label="main navigation">
+					<div class="navbar-brand">
+						<a class="navbar-item" href="InicioCliente.jsp">
+						  <img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
+						</a>
+						<a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+						  <span aria-hidden="true"></span>
+						  <span aria-hidden="true"></span>
+						  <span aria-hidden="true"></span>
+						</a>
+					</div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
+					<div id="navbarBasicExample" class="navbar-menu">
                 <!--  
                 Los Ids de las categorías más importantes son:
                 Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
                 -->
-              <div class="navbar-start">
-                <a class="navbar-item" href="InicioEmpresa.jsp">
-                  Inicio
-                </a>
-                 <a class="navbar-item" href="EstadoDeVentas.jsp">
-                  Ventas
-                </a>
-                <a class="navbar-item" href="EnviosPend.jsp">
-                  Envíos
-                </a>
-                <a class="navbar-item" href="ClientesFrecuentes.jsp">
-                  Clientes 
-                </a>
-                <a class="navbar-item" href="Inventario.jsp">
-                  Inventario
-                </a>
-              </div>
-            </div>
+						<div class="navbar-start">
+							<a class="navbar-item" href="InicioCliente.jsp">
+							  Inicio
+							</a>
+							<a class="navbar-item" href="Buscadores?formid=2&idCat=3">
+							  Hogar
+							</a>
+							<a class="navbar-item" href="Buscadores?idCat=5&formid=2">
+							  Tecnología
+							</a>
+							<a class="navbar-item" href="Buscadores?idCat=1&formid=2">
+							  Música
+							</a>
+							<a class="navbar-item" href="Buscadores?formid=3">
+							  Todas las categorías
+							</a>
+						</div>
+					</div>
 
-              <div class="navbar-end">
-                <div class="navbar-item">
-                    <p class="control">
-                      <input class="input" type="text" placeholder="Find a post">
-                    </p>
-                    <p class="control">
-                      <button class="button" style="background-color: greenyellow">
-                        Buscar
-                      </button>
-                    </p>
-                    <div class="buttons">
-                        <a class="button" style="background-color: #29b342">
-                      Cerrar sesión
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </nav>
-          </div>
-         </div>
-        </section>
-        <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title" style="color:black">
-                        <strong>Detalle de Envíos Pendientes</strong>
-                    </h1>
-                    <h2 class="subtitle"style="color:black">
-                        Conoce más sobre el pedido de María 
-                    </h2>
-                </div>
+					<div class="navbar-end">
+                  
+						<div class="navbar-item">
+							<form action="Buscadores" method="get" name="buscador" class="form-inline">
+								<p class="control">
+									<input class="input" type="text" placeholder="Find a post" name="palabra" id="palabra">
+								</p>
+								<p class="control">
+									<button class="button color1">
+										Buscar
+									</button>
+									<input type="hidden" id="formid" name="formid" value="1">
+								</p>
+							</form>
+							<div class="buttons">
+                                <a class="button color2" href="index.jsp">
+									Cerrar sesión
+								</a>
+							</div>
+						</div>
+					</div>
+				</nav>
             </div>
         </section>
         <section class="section">

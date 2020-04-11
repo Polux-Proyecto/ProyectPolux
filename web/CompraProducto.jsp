@@ -20,9 +20,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
         <title><%= producto.getNombre() %></title>
 		<style>
-			body{
-				background:#508329
-			}
 			.color1{
 				background-color: #93d250
 			}
@@ -36,6 +33,11 @@
 			  max-width: 600px;
 			  margin: auto;
 			}
+			.form-inline {  
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
+			}
 		</style>
     </head>
     <body>
@@ -43,27 +45,26 @@
 			<div>
 				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
-					  <a class="navbar-item" href="InicioCliente.jsp">
-						<img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
-					  </a>
-
-					  <a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-						<span aria-hidden="true"></span>
-						<span aria-hidden="true"></span>
-						<span aria-hidden="true"></span>
-					  </a>
+						<a class="navbar-item" href="InicioCliente.jsp">
+						  <img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
+						</a>
+						<a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+						  <span aria-hidden="true"></span>
+						  <span aria-hidden="true"></span>
+						  <span aria-hidden="true"></span>
+						</a>
 					</div>
 
 					<div id="navbarBasicExample" class="navbar-menu">
-						<!--  
-						Los Ids de las categorías más importantes son:
-						Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
-						-->
+                <!--  
+                Los Ids de las categorías más importantes son:
+                Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
+                -->
 						<div class="navbar-start">
 							<a class="navbar-item" href="InicioCliente.jsp">
 							  Inicio
 							</a>
-							 <a class="navbar-item" href="Buscadores?formid=2&idCat=3">
+							<a class="navbar-item" href="Buscadores?formid=2&idCat=3">
 							  Hogar
 							</a>
 							<a class="navbar-item" href="Buscadores?idCat=5&formid=2">
@@ -81,30 +82,30 @@
 					<div class="navbar-end">
                   
 						<div class="navbar-item">
-							<form action="Buscadores" method="get" name="buscador">
+							<form action="Buscadores" method="get" name="buscador" class="form-inline">
 								<p class="control">
-								  <input class="input" type="text" placeholder="Find a post" name="palabra" id="palabra">
+									<input class="input" type="text" placeholder="Find a post" name="palabra" id="palabra">
 								</p>
 								<p class="control">
-								  <button class="button color1">
-									Buscar
-								  </button>
-								<input type="hidden" id="formid" name="formid" value="1">
+									<button class="button color1">
+										Buscar
+									</button>
+									<input type="hidden" id="formid" name="formid" value="1">
+								</p>
 							</form>
 							<div class="buttons">
-								<a class="button color2">
-								  Cerrar sesión
+                                <a class="button color2" href="index.jsp">
+									Cerrar sesión
 								</a>
 							</div>
 						</div>
-                  
 					</div>
 				</nav>
             </div>
         </section>
         <section>
 			<div class="tile is-parent">
-				<article class="tile is-child box">
+				<article class="tile is-child box" style="border: green 10px inset">
 					<form class="Pago content" id="NuevaCompraForm" method="get" action="PagoProducto.jsp">
 						<div>
 							<!--<figure class="image is-128x128 is-centered">
