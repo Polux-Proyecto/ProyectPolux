@@ -41,28 +41,23 @@
 		</style>
     </head>
     <body>
-      
         <br><br>
         <section class="hero is-primary is-bold has-text-centered has-background-grey-light">
-  <div class="hero-body">
-    <div class="container ">
-      <h1 class="title  is-size-1 is-family-sans-serif ">
-        BrocOnline Store 
-      </h1>
-      <h2 class="subtitle">
-        "The market in your hands"
-      </h2>
-    </div>
-  </div>
-</section>
-        
-        
-        <section class="section has-background-light">
-            
-            <form action="LoggeoUsuarios" method="post" class="content">
+			<div class="hero-body">
+				<div class="container ">
+					<h1 class="title  is-size-1 is-family-sans-serif ">
+						BrocOnline Store 
+					</h1>
+					<h2 class="subtitle">
+						"The market in your hands"
+					</h2>
+				</div>
+			</div>
+		</section>
+		<section class="section has-background-light">
+			<form action="LoggeoUsuarios" method="post" class="content">
 				<div class="field  ">
-                                    
-                                    <label class="title is-size-3">Usuario: </label><br>
+                    <label class="title is-size-3">Usuario: </label><br>
                                         <div class="subtitle has-text-danger" ><%= message%></div>
 					<p class="control">
 						<input class="input" type="text" name="nameis" placeholder="Usuario" value=<%=usuarioregitrado%>>
