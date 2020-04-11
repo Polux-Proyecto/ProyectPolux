@@ -95,10 +95,12 @@ import javax.servlet.http.HttpServletResponse;
                     List<Categoria> listaCategoria = buscador.getAllCategorias();
                     
                     request.getSession().setAttribute("listaCategoria", listaCategoria);
+                    
                     request.getRequestDispatcher("CuentaEmpresa.jsp").forward(request, response);
                     // </editor-fold>
                 break;
             }
+            
         }
         
     }
