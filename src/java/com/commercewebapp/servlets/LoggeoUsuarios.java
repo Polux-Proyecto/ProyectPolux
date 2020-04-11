@@ -27,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
         String  clave = request.getParameter("passis");
         Usuario usuario = buscador.getAllUsers(nombre);
         
+        String logo = "https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280";
+        
         if (!usuario.isMicroEmpresario()==usuario.isUsuario()){
             String claveIngresada = usuario.getContra();
             if (claveIngresada.equals(clave)){
@@ -45,6 +47,7 @@ import javax.servlet.http.HttpServletResponse;
                     request.getSession().setAttribute("listaProdMasVendidos", listaProdMasVendidos);
                     request.getSession().setAttribute("listaPrdMenosStock",listaProdMenosStock);
                     request.getSession().setAttribute("usuario", usuario);
+                    request.getSession().setAttribute("logo", logo);
                     request.getRequestDispatcher("InicioEmpresa.jsp").forward(request, response);
                     
                     
@@ -58,6 +61,7 @@ import javax.servlet.http.HttpServletResponse;
                     request.getSession().setAttribute("usuario", usuario);
                     request.getSession().setAttribute("deseos", deseos);
                     request.getSession().setAttribute("pedidos", pedidos);
+                    request.getSession().setAttribute("logo", logo);
                     request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
             }
                 

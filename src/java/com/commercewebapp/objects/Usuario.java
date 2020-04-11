@@ -5,8 +5,7 @@
  */
 package com.commercewebapp.objects;
 
-import java.util.HashSet;
-import java.util.Set;
+
 
 /** ESte sí es un POJO
  * @author Mauricio Aguilar
@@ -16,7 +15,7 @@ public class Usuario {
     private boolean microEmpresario;
     private boolean usuario;
     private int idUsuario;
-    private String nombre, contra, username, correo, genero, fechaN, direccion;
+    private String nombre, contra, username, correo, genero, fechaN, direccion, ciudad, pais;
     
     public Usuario(boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC, String contraC, String usernameC, String correoC, String generoC, String fechaNC, String direccionC ) {
         this.setMicroEmpresario(microEmpresarioC);
@@ -31,6 +30,24 @@ public class Usuario {
         this.setDireccion(direccionC);
     }
 
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+    
+    
+   
     public String getDireccion() {
         return direccion;
     }

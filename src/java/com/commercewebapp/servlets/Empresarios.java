@@ -2,11 +2,9 @@ package com.commercewebapp.servlets;
 
 import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminPedidos;
-import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.logics.BuscarUsuario;
 import com.commercewebapp.objects.Envio;
 import com.commercewebapp.objects.Estadistico;
-import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
 import java.util.List;
@@ -80,7 +78,7 @@ public class Empresarios extends HttpServlet {
                 AdminEmpresas buscador = new AdminEmpresas();
                 BuscarUsuario buscadorNombre = new BuscarUsuario();
                 List<Envio> lstEnvio = buscador.getEnviosPorIdEmpYCliente(usuario.getIdUsuario(), idCliente);
-                String nombre = buscadorNombre.getNombreClinetePorId(idCliente);
+                String nombre = buscadorNombre.getNombreClientePorId(idCliente);
                 request.getSession().setAttribute("lstEnvioPorCliente", lstEnvio);
                 request.getSession().setAttribute("nombre", nombre);
                 response.sendRedirect("DetalleCompra.jsp");

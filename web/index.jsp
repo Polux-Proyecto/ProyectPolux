@@ -84,7 +84,7 @@
                     <br>
                     <a href="CuentaUsuario.jsp">Crea una cuenta de usuario</a>
                         <br>
-                        <a href="Buscadores?formid=5">Crea una cuenta empresarial</a>
+                    <a href="Buscadores?formid=5">Crea una cuenta empresarial</a>
                 </h2>
             </div>
         </section>

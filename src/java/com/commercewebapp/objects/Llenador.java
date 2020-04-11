@@ -39,9 +39,10 @@ public class Llenador {
                         descripcion = result.getString("descripcion");
                         precio = result.getDouble("precio");
                         existencias = result.getInt("existencias");
+                        
 
                         productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias);
-
+                        ;
                         listaProductos.add(productoActual);
                     }
                 } catch (SQLException ex) {
@@ -96,7 +97,7 @@ public class Llenador {
                     idProd = result.getInt("idprodtb");
                     cantidad = result.getInt("cantidad");
                     fecha =  result.getString("fechaPedido");
-                    usuario = buscarUsuario.getAllUsers(username);
+                    usuario = buscarUsuario.getUsersConCiudadYPais(username);
                     producto = adminProd.getProductoPorId(idProd);
                     envio = new Envio(usuario, producto, cantidad, fecha);
                     
