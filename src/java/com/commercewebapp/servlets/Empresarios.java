@@ -5,6 +5,7 @@ import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.BuscarUsuario;
 import com.commercewebapp.objects.Envio;
 import com.commercewebapp.objects.Estadistico;
+import com.commercewebapp.objects.Stock;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
 import java.util.List;
@@ -71,7 +72,7 @@ public class Empresarios extends HttpServlet {
                 break;
             } 
             case "5":{
-                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ir al reporte de envios pendientes.">
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ir al detalle de compra.">
                 Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
                 String cliente = request.getParameter("idCliente");
                 int idCliente = Integer.parseInt(cliente);
@@ -82,6 +83,20 @@ public class Empresarios extends HttpServlet {
                 request.getSession().setAttribute("lstEnvioPorCliente", lstEnvio);
                 request.getSession().setAttribute("nombre", nombre);
                 response.sendRedirect("DetalleCompra.jsp");
+                // </editor-fold>
+                break;
+            }
+            case "6":{
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ir al inventario.">
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                
+                AdminEmpresas buscador = new AdminEmpresas();
+                
+                List<Stock> listaStock = buscador.getInvertarioPorId(usuario.getIdUsuario());
+                
+                request.getSession().setAttribute("listaStock", listaStock);
+                request.getRequestDispatcher("Inventario.jsp").forward(request, response);
+                        
                 // </editor-fold>
                 break;
             }

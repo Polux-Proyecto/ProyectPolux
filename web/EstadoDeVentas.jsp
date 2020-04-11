@@ -77,7 +77,7 @@
                 <a class="navbar-item" href="ClientesFrecuentes.jsp">
                   Clientes 
                 </a>
-                <a class="navbar-item" href="Inventario.jsp">
+                <a class="navbar-item" href="Empresarios?formid=6">
                   Inventario
                 </a>
               </div>

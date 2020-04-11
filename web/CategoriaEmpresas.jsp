@@ -110,7 +110,7 @@
 						<% 
 							if (cantidadProductos==0){
 						%>
-						<div class="box"
+						<div class="box">
 							<p class="title">No hay productos de esta categorías</p>
 						</div>
 						<%
