@@ -12,6 +12,7 @@
     
     Producto producto = (Producto) request.getSession().getAttribute("producto");
     Empresa empresa = (Empresa) request.getSession().getAttribute("empresa");
+	String  logo = (String)  request.getSession().getAttribute("logo");
 %>
 <html>
     <head>
@@ -46,7 +47,7 @@
 				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
-						  <img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
+						  <img src= "<%= logo %>" width="197" height="60">
 						</a>
 						<a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 						  <span aria-hidden="true"></span>

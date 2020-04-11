@@ -16,6 +16,7 @@
     Iterator<Categoria> iteCategorias = listaCategoria.iterator();
     int cantidadCategorias = listaCategoria.size();
     int i=0;
+	String  logo = (String)  request.getSession().getAttribute("logo");
 %>
 
 <html>
@@ -55,7 +56,7 @@
 				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
-						  <img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
+							<img src= "<%= logo %>" width="197" height="60">
 						</a>
 						<a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 						  <span aria-hidden="true"></span>
@@ -120,7 +121,7 @@
                         <% 
                             if (cantidadCategorias==0){
                         %>
-                        <div class="box"
+                        <div class="box">
                              <p class="title">No hay Categorías para mostrar :(</p>
                         </div>
                         <%
@@ -132,9 +133,9 @@
                                   String ref = "Buscadores?formid=2&idCat="+categoriaActual.getIdCat();
 
                                       if (i<=mitad) {%>
-                          <div class="box" id="izquierda">
+                          <div class="box" style="border: lightgray 2px inset" id="izquierda">
                             <%        } else { %>
-                          <div class="box" id="derecha">
+                          <div class="box" style="border: lightgray 2px inset" id="derecha">
                             <%        } %>
                             <article class="media">
                                 <div class="media-left">
@@ -144,7 +145,7 @@
                                 </div>
                                 <div class="media-content">
                                   <div class="content">
-                                    <a href=<%= ref %>><strong><%= categoriaActual.getNombre() %></strong> </a>
+                                    <a href= "<%= ref %>" ><strong><%= categoriaActual.getNombre() %></strong> </a>
                                     <br>
                                   </div>
                                 </div>

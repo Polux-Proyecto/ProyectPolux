@@ -24,7 +24,7 @@
         cantEnvios = lstEnvio.size();
         iteEnvio = lstEnvio.iterator();
     }
-
+	String  logo = (String)  request.getSession().getAttribute("logo");
 %>
 <html>
     <head>
@@ -37,7 +37,7 @@
 			<div>
 				<nav class="navbar" role="navigation" aria-label="main navigation" >
 					<div class="navbar-brand">
-						<img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="150" height="28">
+						<img src="<%= logo %>" width="150" height="28">
                        
 						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 							<span aria-hidden="true"></span>

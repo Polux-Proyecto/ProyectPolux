@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%String  logo = (String)  request.getSession().getAttribute("logo");%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,7 +35,7 @@
 				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
-						  <img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
+						  <img src="<%= logo %>" width="197" height="60">
 						</a>
 						<a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 						  <span aria-hidden="true"></span>

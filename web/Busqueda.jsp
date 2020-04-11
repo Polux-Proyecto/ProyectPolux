@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%String  logo = (String)  request.getSession().getAttribute("logo");%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -35,12 +36,12 @@
 				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
-						  <img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
+							<img src="<%= logo %>" width="197" height="60">
 						</a>
 						<a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-						  <span aria-hidden="true"></span>
-						  <span aria-hidden="true"></span>
-						  <span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
 						</a>
 					</div>
 
@@ -97,25 +98,25 @@
                 <div class="tile is-parent ">
                     <div class="tile is-child box">
                         <p class="title">Nombre de Busqueda</p>
-                            <div class="box">
-                                <article class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-128x128">
-                                            <a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-                                        </figure>
-                                    </div>
-                                    <div class="media-content">
-                                        <div class="content">
-                                            <p><strong>Nombre de la empresa</strong> 
-                                            <br>Descripción:
-                                            </p><br>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+						<div class="box">
+							<article class="media">
+								<div class="media-left">
+									<figure class="image is-128x128">
+										<a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+									</figure>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p><strong>Nombre de la empresa</strong> 
+										<br>Descripción:
+										</p><br>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+        </section>
     </body>
 </html>

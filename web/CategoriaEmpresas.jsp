@@ -14,6 +14,7 @@
     Iterator<Producto> iteProductos = listaProductos.iterator();
     int cantidadProductos = listaProductos.size();
     String ref = "";
+	String  logo = (String)  request.getSession().getAttribute("logo");
 %>
 <!DOCTYPE html>
 <html>
@@ -45,7 +46,7 @@
 				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
-						  <img src="https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280" width="197" height="60">
+						  <img src="<%= logo %>" width="197" height="60">
 						</a>
 						<a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 						  <span aria-hidden="true"></span>
@@ -55,10 +56,10 @@
 					</div>
 
 					<div id="navbarBasicExample" class="navbar-menu">
-                <!--  
-                Los Ids de las categorías más importantes son:
-                Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
-                -->
+						<!--  
+						Los Ids de las categorías más importantes son:
+						Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
+						-->
 						<div class="navbar-start">
 							<a class="navbar-item" href="InicioCliente.jsp">
 							  Inicio
@@ -110,7 +111,7 @@
 						<% 
 							if (cantidadProductos==0){
 						%>
-						<div class="box"
+						<div class="box" style="border: lightgray 2px inset">
 							<p class="title">No hay productos de esta categorías</p>
 						</div>
 						<%
@@ -120,16 +121,16 @@
 								productoActual = iteProductos.next();
 								ref = "Buscadores?formid=4&idProd="+productoActual.getId();
 						%>
-						<div class="box">
+						<div class="box" style="border: lightgray 2px inset">
 							<article class="media">
 								<div class="media-left">
 									<figure class="image is-128x128">
-										<a href=<%= ref %>><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+										<a href= "<%= ref %>" ><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
 									</figure>
 								</div>
 								<div class="media-content">
 									<div class="content">
-										<a href=<%= ref %>><strong><%= productoActual.getNombre() %></strong></a>
+										<a href= "<%= ref %>" ><strong><%= productoActual.getNombre() %></strong></a>
 										<p><br><%= productoActual.getDescripcion() %>
 										</p><br>
 									</div>

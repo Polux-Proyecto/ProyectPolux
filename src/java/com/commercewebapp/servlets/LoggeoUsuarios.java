@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
         String  clave = request.getParameter("passis");
         Usuario usuario = buscador.getAllUsers(nombre);
         
-        String logo = "https://lh5.googleusercontent.com/iW2Jwicwe-GQ_iRcZ701dOarjhCOinwnSHh7PllNdHqfJ7c1uF_vFBIuXxZ-FERn6iiifZdkTCcO1r1xO3_OrW2-kIt5bKQyccLPGMlkRuyJzYGrGg=w1280";
+        String logo = "https://lh4.googleusercontent.com/VBuqBZkhkfOgH50ilV-ukH93Otj7dvlPVdL67jwqOiU_U_lkUaqUaHOAH-wJbVRFXcQAmzxD0ct5IL2KqWwW_KOq0I-nehJrl5tU_IFBmv1BOCrGtA=w1280";
         
         if (!usuario.isMicroEmpresario()==usuario.isUsuario()){
             String claveIngresada = usuario.getContra();
