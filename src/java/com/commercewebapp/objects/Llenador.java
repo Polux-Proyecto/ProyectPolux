@@ -111,4 +111,31 @@ public class Llenador {
         
         return lista;
     }
+
+    public List<Stock> llenarStock(ResultSet result) {
+        List<Stock> listaStock = null;
+
+        if (result!=null){
+            String nombre, categoria;
+            int existencias, numero;
+            Stock productoActual;
+            listaStock = new ArrayList();
+            try {
+                    while(result.next()){
+                        numero = result.getInt("numero");
+                        nombre = result.getString("nombre");
+                        categoria = result.getString("nombreCat");
+                        existencias = result.getInt("existencias");
+                        
+                        productoActual = new Stock (nombre, categoria, existencias, numero);
+                        
+                        listaStock.add(productoActual);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        return listaStock;
+    }
 }

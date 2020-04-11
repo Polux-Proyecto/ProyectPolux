@@ -173,4 +173,6 @@ public class AdminProductos extends Logic {
         
         return listaProductos;
     }
+    
+    
 }

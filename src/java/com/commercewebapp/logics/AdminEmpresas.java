@@ -8,6 +8,7 @@ import com.commercewebapp.database.DatabaseZ;
 import com.commercewebapp.objects.Empresa;
 import com.commercewebapp.objects.Envio;
 import com.commercewebapp.objects.Llenador;
+import com.commercewebapp.objects.Stock;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -76,6 +77,18 @@ public class AdminEmpresas extends Logic {
         lista = llenador.llenarEnvios(result);
         
         return lista;
+    }
+    
+    public List<Stock> getInvertarioPorId (int idEmpresario){
+        
+        ResultSet result = localDatabase.executeQuery("SELECT row_number() over (order by existencias asc) as numero, prodtb.nombre, categorias.Nombre as nombreCat , prodtb.existencias  "
+                + "FROM comercebd.prodtb INNER JOIN comercebd.categorias on prodtb.categoria = categorias.idCategorias "
+                + "WHERE prodtb.empresa = '"+idEmpresario+"';");
+        
+        Llenador llenador = new Llenador();
+        List<Stock> listaStock = llenador.llenarStock(result);
+        
+        return listaStock;
     }
     
 }

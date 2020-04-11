@@ -4,7 +4,22 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Stock"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+    List<Stock> inventario = (List<Stock>) request.getSession().getAttribute("listaStock");
+    int cantInventario = 0;
+    Iterator <Stock> iteInventario = null;
+    Stock stock = null;
+    
+    if (inventario!=null){
+        cantInventario = inventario.size();
+        iteInventario = inventario.iterator();
+    }
+    
+ %>
 <!DOCTYPE html>
 <%String  logo = (String)  request.getSession().getAttribute("logo");%>
 <html>
@@ -45,7 +60,7 @@
                 <a class="navbar-item" href="ClientesFrecuentes.jsp">
                   Clientes 
                 </a>
-                <a class="navbar-item" href="Inventario.jsp">
+                <a class="navbar-item" href="Empresarios?formid=6">
                   Inventario
                 </a>
               </div>
@@ -96,18 +111,31 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%  
+                        if (cantInventario==0){  
+                        %>
                         <tr>
-                            <td>1</td>
-                            <td>Café Buendía</td>
-                            <td>Comida</td>
-                            <td>200</td>
+                            <td>No se encontraron datos</td>
+                            <td>No se encontraron datos</td>
+                            <td>No se encontraron datos</td>
+                            <td>No se encontraron datos</td>
                         </tr>
+                        <%  
+                            
+                        } else {
+                            while(iteInventario.hasNext()){
+                            stock = iteInventario.next();
+                        %>
                         <tr>
-                            <td>2</td>
-                            <td>Camisa de Mickey Mouse</td>
-                            <td>Ropa</td>
-                            <td>1000</td>
+                            <td><%= stock.getNumero()  %></td>
+                            <td><%= stock.getNombre()%></td>
+                            <td><%= stock.getCategoria()%></td>
+                            <td><%= stock.getExistencias()%></td>
                         </tr>
+                        <% 
+                            }
+                        }
+                        %>
                     </tbody>
                 </table>
             </div>    
