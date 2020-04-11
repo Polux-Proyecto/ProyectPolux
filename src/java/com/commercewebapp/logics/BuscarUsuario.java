@@ -191,4 +191,24 @@ public class BuscarUsuario extends Logic {
         
         return hasfailed;
     }
+    
+    public String getNombreClinetePorId(int idCliente){
+        String nombre = null;
+        DatabaseZ localDatabase = getDatabase();
+        
+        ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.clientetb "
+                + "WHERE clientetb.idCliente = '"+idCliente+"' LIMIT 1;");
+        
+        if (result!=null){
+            try {
+                while(result.next()){
+                    nombre = result.getString("Nombre");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return nombre;
+    }
 }

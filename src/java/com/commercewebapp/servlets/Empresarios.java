@@ -1,7 +1,10 @@
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.AdminProductos;
+import com.commercewebapp.logics.BuscarUsuario;
+import com.commercewebapp.objects.Envio;
 import com.commercewebapp.objects.Estadistico;
 import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Usuario;
@@ -49,7 +52,41 @@ public class Empresarios extends HttpServlet {
                 // </editor-fold>
                 break;
             }
-            
+            case "3":{
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ir al reporte de envios pendientes.">
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                AdminEmpresas buscador = new AdminEmpresas();
+                List<Envio> lstEnvio = buscador.getEnviosPorId(usuario.getIdUsuario()); 
+                request.getSession().setAttribute("lstEnvio", lstEnvio);
+                response.sendRedirect("EnviosPend.jsp");
+                // </editor-fold>
+                break;
+            }
+            case "4":{
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ir al reporte de envios pendientes.">
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                AdminEmpresas buscador = new AdminEmpresas();
+                List<Envio> lstEnvio = buscador.getEnviosPorId(usuario.getIdUsuario()); 
+                request.getSession().setAttribute("lstEnvio", lstEnvio);
+                response.sendRedirect("EnviosPend.jsp");
+                // </editor-fold>
+                break;
+            } 
+            case "5":{
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ir al reporte de envios pendientes.">
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                String cliente = request.getParameter("idCliente");
+                int idCliente = Integer.parseInt(cliente);
+                AdminEmpresas buscador = new AdminEmpresas();
+                BuscarUsuario buscadorNombre = new BuscarUsuario();
+                List<Envio> lstEnvio = buscador.getEnviosPorIdEmpYCliente(usuario.getIdUsuario(), idCliente);
+                String nombre = buscadorNombre.getNombreClinetePorId(idCliente);
+                request.getSession().setAttribute("lstEnvioPorCliente", lstEnvio);
+                request.getSession().setAttribute("nombre", nombre);
+                response.sendRedirect("DetalleCompra.jsp");
+                // </editor-fold>
+                break;
+            }
         }
     }
         

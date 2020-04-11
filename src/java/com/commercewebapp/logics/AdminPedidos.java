@@ -107,7 +107,6 @@ public class AdminPedidos extends Logic{
         return listaEstadistico;
     }
 
-    
     public List<Estadistico> getTop5Categorias(int idEmpresa){
         List<Estadistico> listaEstadistico = null;
         String nombre;

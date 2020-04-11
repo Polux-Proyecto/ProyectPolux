@@ -5,7 +5,9 @@
  */
 package com.commercewebapp.objects;
 
+import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminProductos;
+import com.commercewebapp.logics.BuscarUsuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Mauricio Aguilar
  */
+
 public class Llenador {
     
     public List<Producto> llenarListaProductos(ResultSet result){
@@ -73,5 +76,38 @@ public class Llenador {
         }
         
         return listaCategorias;
+    }
+    
+    public List<Envio> llenarEnvios (ResultSet result){
+        List<Envio> lista = null;
+        
+        if (result!=null){
+            BuscarUsuario buscarUsuario = new BuscarUsuario();
+            AdminProductos adminProd = new AdminProductos();
+            lista = new ArrayList();
+            Usuario usuario;
+            Producto producto;
+            String username , fecha;
+            Envio envio;
+            int idProd, cantidad;
+            try {
+                while(result.next()){
+                    username = result.getString("Username");
+                    idProd = result.getInt("idprodtb");
+                    cantidad = result.getInt("cantidad");
+                    fecha =  result.getString("fechaPedido");
+                    usuario = buscarUsuario.getAllUsers(username);
+                    producto = adminProd.getProductoPorId(idProd);
+                    envio = new Envio(usuario, producto, cantidad, fecha);
+                    
+                    lista.add(envio);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminEmpresas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+        return lista;
     }
 }

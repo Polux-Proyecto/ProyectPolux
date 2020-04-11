@@ -105,7 +105,7 @@
                  <a class="navbar-item" href="Empresarios?formid=2">
                   Ventas
                 </a>
-                <a class="navbar-item" href="EnviosPend.jsp">
+                <a class="navbar-item" href="Empresarios?formid=3">
                   Envíos
                 </a>
                 <a class="navbar-item" href="ClientesFrecuentes.jsp">
@@ -342,19 +342,18 @@
                         <br>
                         
                         <div class="field is-grouped">
-  <p class="control">
-    <button class="button is-link">
-      Ir a ventas  
-    </button>
-  </p>
+                        <p class="control">
+                          <button class="button is-link">
+                            Ir a ventas  
+                          </button>
+                        </p>
 
-  <p class="control">
-    <button class="button is-primary">
-      Ir a inventario
-    </button>
-  </p>
-</div>
-                    
+                        <p class="control">
+                          <button class="button is-primary">
+                            Ir a inventario
+                          </button>
+                        </p>
+                      </div>
                     </article>
                   </div>
                 </div>

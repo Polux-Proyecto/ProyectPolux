@@ -4,8 +4,26 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
+<%@page import="com.commercewebapp.objects.Producto"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="com.commercewebapp.objects.Envio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%  
+    List<Envio> lstEnvioPorCliente = (List<Envio>) request.getSession().getAttribute("lstEnvioPorCliente");
+    String nombre = (String) request.getSession().getAttribute("nombre");
+    Iterator<Envio> iteEnvioPC = null;
+    int cantEnviosPC = 0, i = 0;
+    Producto producto;
+    Usuario cliente;
+    Envio envio;
+    if (lstEnvioPorCliente!=null){
+        iteEnvioPC = lstEnvioPorCliente.iterator();
+        cantEnviosPC = lstEnvioPorCliente.size() ;
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -78,8 +96,10 @@
                         <strong>Detalle de Envíos Pendientes</strong>
                     </h1>
                     <h2 class="subtitle"style="color:black">
-                        Conoce más sobre el pedido de María 
+                        Conoce más sobre los pedidos realizados por <%= nombre %>.
+                        Los pedidos están ordenados de forma cronológica
                     </h2>
+                    
                 </div>
             </div>
         </section>
@@ -88,25 +108,42 @@
                 <table class="table is-hoverable is-fullwidth">
                     <thead>
                         <tr>
-                          <th><abbr title="Numero">Numero de Porducto</abbr></th>
-                          <th><abbr title="NomProducto">Nombre de Producto</abbr></th>
+                          <th><abbr title="Numero">Numero de porducto</abbr></th>
+                          <th><abbr title="NomProducto">Nombre de producto</abbr></th>
                           <th><abbr title="Cantidad">Cantidad comprada</abbr></th>
-                          <th><abbr title="FechaEntrega">Fecha de Entrega</abbr></th>
+                          <th><abbr title="FechaEntrega">Fecha de compra</abbr></th>
+                          <th><abbr title="FechaEntrega">Suma</abbr></th>
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                            if (cantEnviosPC == 0){
+                        %>
                         <tr>
-                            <td>1</td>
-                            <td>Café Buendía</td>
-                            <td>20</td>
-                            <td>20/06/2020</td>
+                            <td>No se encontraron datos</td>
+                            <td>No se encontraron datos</td>
+                            <td>No se encontraron datos</td>
+                            <td>No se encontraron datos</td>
+                            <td>No se encontraron datos</td>
                         </tr>
+                        <% } else {
+                                while(iteEnvioPC.hasNext()){
+                                envio = iteEnvioPC.next();
+                                cliente = envio.getUsuario();
+                                producto = envio.getProducto();
+                                i++;
+                            %>
                         <tr>
-                            <td>2</td>
-                            <td>Camisa</td>
-                            <td>54</td>
-                            <td>06/04/2020</td>
+                            <td><%= i %></td>
+                            <td><%= producto.getNombre() %></td>
+                            <td><%= envio.getCantidad() %></td>
+                            <td><%= envio.getFecha() %></td>
+                            <td><%= envio.getCantidad()*producto.getPrecio() %></td>
                         </tr>
+                        <% 
+                            }
+                        }   
+                        %>
                     </tbody>
                 </table>
             </div>    
