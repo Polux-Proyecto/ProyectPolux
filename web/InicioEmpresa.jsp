@@ -99,7 +99,7 @@
         <section>
 			<div>
 				<nav class="navbar" role="navigation" aria-label="main navigation" >
-					<div class="navbar-brand">
+					<div class="navbar-brand is-light">
 						<img src="<%= logo %>" width="197" height="60">
                        
 						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -108,6 +108,7 @@
 							<span aria-hidden="true"></span>
 						</a>
 					</div>
+
 
 					<div id="navbarBasicExample" class="navbar-menu">
 						
@@ -132,14 +133,7 @@
 
 					<div class="navbar-end">
 						<div class="navbar-item">
-							<p class="control">
-								<input class="input" type="text" placeholder="Find a post">
-							</p>
-							<p class="control">
-								<button class="button" style="background-color: greenyellow">
-									Buscar
-								</button>
-							</p>
+							
 							<div class="buttons">
 								<a class="button " href="index.jsp" style="background-color: #29b342">
 									Cerrar sesión
@@ -149,6 +143,8 @@
 					</div>
 				</nav>
 			</div>
+
+          
         </section>
         <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
             <div class="hero-body">
