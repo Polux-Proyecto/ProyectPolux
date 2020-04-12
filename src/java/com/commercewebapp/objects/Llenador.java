@@ -40,9 +40,8 @@ public class Llenador {
                         precio = result.getDouble("precio");
                         existencias = result.getInt("existencias");
                         
-
                         productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias);
-                        ;
+                        
                         listaProductos.add(productoActual);
                     }
                 } catch (SQLException ex) {
