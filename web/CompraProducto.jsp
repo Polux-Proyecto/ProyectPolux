@@ -30,14 +30,18 @@
 			.color3{
 				background-color: #dce5d2
 			}
-			.content {
-			  max-width: 600px;
-			  margin: auto;
-			}
 			.form-inline {  
 				display: flex;
 				flex-flow: row wrap;
 				align-items: center;
+			}
+			.col-container {
+				display: table;
+				width: 100%;
+			}
+			.col {
+				display: table-cell;
+				padding: 16px;
 			}
 		</style>
     </head>
@@ -104,43 +108,42 @@
 				</nav>
             </div>
         </section>
-        <section>
-			<div class="tile is-parent">
-				<article class="tile is-child box" style="border: green 10px inset">
-					<form class="Pago content" id="NuevaCompraForm" method="get" action="PagoProducto.jsp">
-						<div>
-							<!--<figure class="image is-128x128 is-centered">
-								
-							</figure>-->
-							<div>
-								<h1><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" style="float:left">
-									Descripción:
-								</h1>
-								<p>
-									(Descripción)Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
-								</p>
+		<section style="border: green 10px inset; margin-left: 10px; margin-right: 10px">
+			<h1 class="title"> <%= producto.getNombre() %> </h1>
+			<div class="col-container">
+				<div class="col" style="width: 50%">
+					<div>
+						<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+						<h1>
+							Descripción:
+						</h1>
+						<p>
+							(Descripción)Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
+						</p>
+					</div>
+				</div>
+				<div class="col" style="width: 50%">
+					<form class="Pago" id="NuevaCompraForm" method="get" action="PagoProducto.jsp">
+						<div class="box" style="border: lightgray 2px inset">
+							<div class="control" style="width:50px">
+								<label class="label">Cantidad:</label>
+								<input class="input" type="number" name="cantComprada" id="cantComprada">
 							</div>
 						</div>
-						<div class="field" style="clear:both">
-							<label class="label"><h1> Cantidad:</h1></label>
-							<div class="control" style="width:200px">
-								<input class="input" type="number" name="cantComprada" id="cantComprada" placeholder="Text input">
-							</div>
-						</div>
-						<div class="field">
-							<label class="label"><h1> Precio Unitario:</h1></label>
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Precio Unitario:</label>
 							<div class="control">
 								<p class="subtitle"><%= producto.getPrecio() %></p>
 							</div>
 						</div>
-						<div class="field">
-							<label class="label"><h1> Cargo por Envío:</h1></label>
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Cargo por Envío:</label>
 							<div class="control">
 								<p class="subtitle"><%= producto.getPrecio()*0.15 %></p>
 							</div>
 						</div>
-						<div class="field">
-							<label class="label"><h1> Total a Pagar:</h1></label>
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Total a Pagar:</label>
 							<div class="control">
 								<p class="subtitle"><%= producto.getPrecio()*1.15 %></p>
 							</div>
@@ -154,7 +157,7 @@
 							</div>
 						</div>
 					</form>
-				</article>
+				</div>
 			</div>
 		</section>
     </body>

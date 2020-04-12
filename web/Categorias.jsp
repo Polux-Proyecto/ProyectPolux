@@ -121,7 +121,7 @@
                         <% 
                             if (cantidadCategorias==0){
                         %>
-                        <div class="box">
+                        <div class="box" style="border: lightgray 2px inset">
                              <p class="title">No hay Categorías para mostrar :(</p>
                         </div>
                         <%
