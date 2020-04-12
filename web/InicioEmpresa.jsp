@@ -353,17 +353,17 @@
 								<br>
                         
 								<div class="field is-grouped">
-									<p class="control">
-										<button class="button is-link">
+                                                                    <form method="get" action="EstadoDeVentas.jsp">
+										<button class="button" style="background-color: #29b342">
 											Ir a ventas  
 										</button>
-									</p>
+									</form>
 
-									<p class="control">
-										<button class="button is-primary">
+                                                                    <form method="get" action="Inventario.jsp">
+										<button class="button" style="background-color: chartreuse">
 											Ir a inventario
 										</button>
-									</p>
+									</form>
 								</div>
                     
 							</article>
