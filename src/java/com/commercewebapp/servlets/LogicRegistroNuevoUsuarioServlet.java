@@ -90,6 +90,7 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 String strpais = request.getParameter("StringNewCountryEmp");
                 String strciudad = request.getParameter("strnewCiudadEmp");
                 String strcategoria = request.getParameter("StrCategoria");
+                int intcategoria = Integer.parseInt(strcategoria);
                 String strdescripcion = request.getParameter("descEmp");
                 Part fileimagenperfil = request.getPart("resume");
                 
@@ -102,7 +103,7 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 if (usuario.isMicroEmpresario()==usuario.isUsuario())
                 {
                     //usuario no existe               
-                    NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion,stremail,strpais,strciudad,strcategoria,imagenlogo);
+                    NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion,stremail,strpais,strciudad,intcategoria,imagenlogo);
                     hasfailed = buscador.createnewuser(null, nuevoempresario);
                     String codigo = "27";
                     request.getSession().setAttribute("nuevouser", struser);
@@ -113,7 +114,7 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 {
                     //usuario existe
                     String error = "2";
-                    NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion,stremail,strpais,strciudad,strcategoria,imagenlogo);
+                    NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion,stremail,strpais,strciudad,intcategoria,imagenlogo);
                     request.getSession().setAttribute("usuarioexistente", nuevoempresario);
                     request.getSession().setAttribute("error",error);
                     response.sendRedirect("CuentaEmpresa.jsp");
