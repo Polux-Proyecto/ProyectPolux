@@ -4,9 +4,43 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.InformacionCliente"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Usuario"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%String  logo = (String)  request.getSession().getAttribute("logo");%>
+<%String  logo = (String)  request.getSession().getAttribute("logo");
+    List<Usuario> top10 = (List<Usuario>) request.getSession().getAttribute("top10Clientes");
+    List<InformacionCliente> paises = (List<InformacionCliente>) request.getSession().getAttribute("paises");
+    List<InformacionCliente> ciudades = (List<InformacionCliente>) request.getSession().getAttribute("ciudades");
+    InformacionCliente genero = (InformacionCliente) request.getSession().getAttribute("genero");
+    
+    int cantTop10 = 0;
+    int cantPaises = 0;
+    int cantCiudades = 0;
+    
+    Iterator<Usuario> iteTop10 = null;
+    Iterator<InformacionCliente> itePaises = null;
+    Iterator<InformacionCliente> iteCiudades = null;
+    
+    Usuario usuario = null;
+    InformacionCliente info = null;
+    
+    if(top10!=null){
+        iteTop10 = top10.iterator();
+        cantTop10 = top10.size();
+    }
+    if(top10!=null){
+        itePaises = paises.iterator();
+        cantPaises = paises.size();
+    }
+    if(top10!=null){
+        iteCiudades = ciudades.iterator();
+        cantCiudades = ciudades.size();
+    }
+
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,23 +66,23 @@
                 Los Ids de las categorías más importantes son:
                 Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
                 -->
-              <div class="navbar-start">
-                <a class="navbar-item" href="InicioEmpresa.jsp">
-                  Inicio
-                </a>
-                 <a class="navbar-item" href="Empresarios?formid=2">
-                  Ventas
-                </a>
-                <a class="navbar-item" href="Empresarios?formid=3">
-                  Envíos
-                </a>
-                <a class="navbar-item" href="ClientesFrecuentes.jsp">
-                  Clientes 
-                </a>
-                <a class="navbar-item" href="Inventario.jsp">
-                  Inventario
-                </a>
-              </div>
+                <div class="navbar-start">
+                    <a class="navbar-item" href="InicioEmpresa.jsp">
+                      Inicio
+                    </a>
+                    <a class="navbar-item" href="Empresarios?formid=2">
+                      Ventas
+                    </a>
+                    <a class="navbar-item" href="Empresarios?formid=3">
+                      Envíos
+                    </a>
+                    <a class="navbar-item" href="Empresarios?formid=7">
+                      Clientes 
+                    </a>
+                    <a class="navbar-item" href="Empresarios?formid=6">
+                      Inventario
+                    </a>
+                </div>
             </div>
 
               <div class="navbar-end">
@@ -91,51 +125,71 @@
                   <div class="tile is-child box"style="border: green 10px inset;">
                       <p class="title">Información importante sobre tus Clientes</p><br>
                         <p class="subtitle">Países de Origen Principales</p>
-                        <p class="list-item">a</p>
-                        <p class="list-item">b</p><br>
+                        <% if (cantPaises == 0 ){ %>
+                        <p class="list-item">No se encontraron datos</p>
+                        <%  } else { 
+                                while (itePaises.hasNext()){
+                                    info = itePaises.next(); 
+                        %>
+                        <p class="list-item"><%= info.getPais() %></p><br>
+                        <% 
+                                }
+                            }
+                        %>
                         <p class="subtitle">Ciudades Importantes</p>
+                        <% if (cantCiudades == 0 ){ %>
                         <p class="list-item">a</p>
-                        <p class="list-item">b</p><br>
+                        <%  } else { 
+                                while (iteCiudades.hasNext()){
+                                    info = iteCiudades.next(); 
+                        %>
+                        <p class="list-item"><%= info.getCiudades() %></p><br>
+                        <% 
+                                }
+                            }
+                        %>
                         <p class="subtitle">Sexo predominante</p>
-                        <p class="list-item">a</p>
-                                           
+                        <% if (genero == null){ %>
+                        <p class="list-item">No se encontraron datos</p>
+                        <%  } else { %>
+                        <p class="list-item"><%= genero.getGenero() %></p><br>
+                        <% 
+                            }
+                        %>             
                   </div>
                 </div>
                 <div class="tile is-parent">
-                  <div class="tile is-child box"style="border: black 10px inset;">
+                  <div class="tile is-child box" style="border: black 10px inset;">
                     <p class="title">Top 10 Clientes Frecuentes</p>
+                    <% 
+                    if(cantTop10 == 0){
+                    %>
+                    <p>No se encontraron datos</p>
+                    <%
+                        } else {
+                            while(iteTop10.hasNext()){
+                                usuario = iteTop10.next();
+                        %>
                         <div class="box">
                             <article class="media">
                                 <div class="media-left">
                                     <figure class="image is-128x128">
-                                        <a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                        <a href=""><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
                                     </figure>
                                 </div>
                                 <div class="media-content">
                                     <div class="content">
-                                        <p><strong>Nombre del Cliente</strong> 
-                                            <br>País:<br>Ciudad:<br>Sexo:<br>Edad:
+                                        <p><strong><%= usuario.getNombre() %></strong> 
+                                            <br>País:<%= usuario.getPais() %><br>Ciudad: <%= usuario.getCiudad() %><br>Género: <%= usuario.getGenero() %><br>Dirección: <%= usuario.getDireccion() %>
                                         </p><br>
                                     </div>
                                 </div>
                             </article>
                         </div>
-                        <div class="box">
-                            <article class="media">
-                                <div class="media-left">
-                                    <figure class="image is-128x128">
-                                        <a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <div class="content">
-                                        <p><strong>Nombre del Cliente</strong> 
-                                            <br>País:<br>Ciudad:<br>Sexo:<br>Edad:
-                                        </p><br>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+                        <% 
+                            }
+                        }
+                        %>
                     </div>
                 </div>
             </div>

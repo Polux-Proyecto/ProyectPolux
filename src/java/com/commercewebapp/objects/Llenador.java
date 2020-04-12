@@ -138,4 +138,42 @@ public class Llenador {
 
         return listaStock;
     }
+    
+    public List<Usuario> llenarUsuario(ResultSet result){
+        List<Usuario> lista = null;
+        String pass, nombre, correo ="", genero = "", fechaN = "", direccion = "", username = "", pais = "", ciudad = "";
+        int id;
+        Usuario usuario = null;
+        if(result!=null){
+            lista = new ArrayList();
+            try {
+                 if (result != null){
+                     while (result.next()){
+                         System.out.println("Hay algo en la tabla de clientes");
+                         nombre = result.getString("Nombre");
+
+                         pass =  "";
+                         id = result.getInt("idCliente");
+                         correo = "";
+                         genero = result.getString("Sexo");
+                         fechaN = result.getString("FechaNacimiento");
+                         direccion = result.getString("Dirección");
+                         ciudad = result.getString("Ciudad");
+                         pais = result.getString("Pais");
+                        
+                         usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion);
+                         usuario.setCiudad(ciudad);
+                         usuario.setPais(pais);
+                         
+                         lista.add(usuario);
+                     }
+                 }
+
+
+            } catch (SQLException ex) {
+                    Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    return lista;
+    }
 }

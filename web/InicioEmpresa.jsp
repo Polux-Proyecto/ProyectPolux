@@ -110,10 +110,7 @@
 					</div>
 
 					<div id="navbarBasicExample" class="navbar-menu">
-						<!--  
-						Los Ids de las categorías más importantes son:
-						Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
-						-->
+						
 						<div class="navbar-start">
 							<a class="navbar-item" href="InicioEmpresa.jsp">
 							  Inicio
@@ -124,7 +121,7 @@
 							<a class="navbar-item" href="Empresarios?formid=3">
 							  Envíos
 							</a>
-							<a class="navbar-item" href="ClientesFrecuentes.jsp">
+							<a class="navbar-item" href="Empresarios?formid=7">
 							  Clientes 
 							</a>
 							<a class="navbar-item" href="Empresarios?formid=6">

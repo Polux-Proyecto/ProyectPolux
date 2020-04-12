@@ -151,7 +151,7 @@
         </section>
         <section class="section">
             <div class="tile is-ancestor">
-                <div tile is-parent>
+                <div class="tile is-parent">
                     <div class= "tile is-child box">
                         <div class="table-container">
                             <table class="table is-hoverable is-fullwidth">

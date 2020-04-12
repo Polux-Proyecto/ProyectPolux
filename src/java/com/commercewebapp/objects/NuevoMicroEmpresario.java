@@ -68,8 +68,6 @@ public class NuevoMicroEmpresario
         this.logo = logo;
     }
     
-    
-
     public String getName() {
         return name;
     }

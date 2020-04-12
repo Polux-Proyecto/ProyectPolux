@@ -48,22 +48,22 @@
                 Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
                 -->
               <div class="navbar-start">
-                <a class="navbar-item" href="InicioEmpresa.jsp">
-                  Inicio
-                </a>
-                 <a class="navbar-item" href="Empresarios?formid=2">
-                  Ventas
-                </a>
-                <a class="navbar-item" href="Empresarios?formid=3">
-                  Envíos
-                </a>
-                <a class="navbar-item" href="ClientesFrecuentes.jsp">
-                  Clientes 
-                </a>
-                <a class="navbar-item" href="Empresarios?formid=6">
-                  Inventario
-                </a>
-              </div>
+                    <a class="navbar-item" href="InicioEmpresa.jsp">
+                      Inicio
+                    </a>
+                    <a class="navbar-item" href="Empresarios?formid=2">
+                      Ventas
+                    </a>
+                    <a class="navbar-item" href="Empresarios?formid=3">
+                      Envíos
+                    </a>
+                    <a class="navbar-item" href="Empresarios?formid=7">
+                      Clientes 
+                    </a>
+                    <a class="navbar-item" href="Empresarios?formid=6">
+                      Inventario
+                    </a>
+            </div>
             </div>
 
               <div class="navbar-end">

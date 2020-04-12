@@ -68,19 +68,19 @@
 						-->
 						<div class="navbar-start">
 							<a class="navbar-item" href="InicioEmpresa.jsp">
-								Inicio
+							  Inicio
 							</a>
 							<a class="navbar-item" href="Empresarios?formid=2">
-								Ventas
+							  Ventas
 							</a>
 							<a class="navbar-item" href="Empresarios?formid=3">
-								Envíos
+							  Envíos
 							</a>
-							<a class="navbar-item" href="ClientesFrecuentes.jsp">
-								Clientes 
+							<a class="navbar-item" href="Empresarios?formid=7">
+							  Clientes 
 							</a>
-							<a class="navbar-item" href="Inventario.jsp">
-								Inventario
+							<a class="navbar-item" href="Empresarios?formid=6">
+							  Inventario
 							</a>
 						</div>
 					</div>

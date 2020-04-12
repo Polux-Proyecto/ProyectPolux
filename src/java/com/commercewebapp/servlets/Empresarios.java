@@ -5,6 +5,7 @@ import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.BuscarUsuario;
 import com.commercewebapp.objects.Envio;
 import com.commercewebapp.objects.Estadistico;
+import com.commercewebapp.objects.InformacionCliente;
 import com.commercewebapp.objects.Stock;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
@@ -97,6 +98,25 @@ public class Empresarios extends HttpServlet {
                 request.getSession().setAttribute("listaStock", listaStock);
                 request.getRequestDispatcher("Inventario.jsp").forward(request, response);
                         
+                // </editor-fold>
+                break;
+            }
+            case "7":{
+                // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ver los clientes frecuentes.">
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                
+                AdminEmpresas buscador = new AdminEmpresas();
+                List<Usuario> top10Clientes = buscador.getTop10Clientes(usuario.getIdUsuario());
+                List<InformacionCliente> paises = buscador.getTopPaises(usuario.getIdUsuario(), 3);
+                List<InformacionCliente> ciudades = buscador.getTopCiudades(usuario.getIdUsuario(), 3);
+                InformacionCliente genero = buscador.getTopGenero(usuario.getIdUsuario());
+                
+                request.getSession().setAttribute("paises", paises);
+                request.getSession().setAttribute("ciudades", ciudades);
+                request.getSession().setAttribute("genero", genero);
+                request.getSession().setAttribute("top10Clientes", top10Clientes);
+                response.sendRedirect("ClientesFrecuentes.jsp");
+                
                 // </editor-fold>
                 break;
             }

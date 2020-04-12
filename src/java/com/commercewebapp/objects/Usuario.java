@@ -45,8 +45,6 @@ public class Usuario {
     public void setPais(String pais) {
         this.pais = pais;
     }
-    
-    
    
     public String getDireccion() {
         return direccion;
