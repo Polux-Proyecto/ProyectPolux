@@ -151,7 +151,7 @@ public class BuscarUsuario extends Logic {
        Connection conn = null;
        PreparedStatement statement;
        conn = localDatabase.getConnection();
-       boolean hasfailed = true;
+       boolean hasfailed = false;
 //       String pSQL;
 
        if(nuevouser!=null){
@@ -215,7 +215,7 @@ public class BuscarUsuario extends Logic {
             String bdemail = nuevoempresario.getEmail();
             String bdpais = nuevoempresario.getPais();
             String bdciudad = nuevoempresario.getCiudad();
-            String bdcategoria = nuevoempresario.getCategoria();
+            int bdcategoria = nuevoempresario.getCategoria();
             byte[] bdlogo = nuevoempresario.getLogo();
              
             System.out.println("antes de insertar si salio");
@@ -234,7 +234,7 @@ public class BuscarUsuario extends Logic {
                        statement.setString(6, bdemail);
                        statement.setString(7, bdpais);
                        statement.setString(8, bdciudad);
-                       statement.setString(9, bdcategoria);
+                       statement.setInt(9, bdcategoria);
                        statement.setBytes(10, bdlogo);
                 
                         int si = statement.executeUpdate();

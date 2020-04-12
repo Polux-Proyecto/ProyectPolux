@@ -2,26 +2,35 @@ package com.commercewebapp.servlets;
 
 import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminPedidos;
+import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.logics.BuscarUsuario;
 import com.commercewebapp.objects.Envio;
 import com.commercewebapp.objects.Estadistico;
+<<<<<<< Updated upstream
 import com.commercewebapp.objects.InformacionCliente;
+=======
+import com.commercewebapp.objects.NuevoProducto;
+>>>>>>> Stashed changes
 import com.commercewebapp.objects.Stock;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 
 /**
  * Este es el servidor 1
  * Este servidor administra todo lo qe hagan los empresarios
  * @author Mauricio Aguilar
  */
-
+@MultipartConfig
 @WebServlet(name = "Empresarios", urlPatterns = {"/Empresarios"})
 public class Empresarios extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +43,39 @@ public class Empresarios extends HttpServlet {
             case "1":{
                 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ingresar producto nuevo.">
                 
+                boolean hasfailed ;
+                AdminProductos productos = new AdminProductos();
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                String nombreproducto=request.getParameter("nameProd");
+                String strprecioproducto=request.getParameter("precProd");
+                int precioproducto= Integer.parseInt(strprecioproducto);
+                String descripcionproducto=request.getParameter("descProd");
+                int empresaproducto = usuario.getIdUsuario();
+                String strcategoriaproducto = request.getParameter("StrCategoria");
+                int categoriaproducto = Integer.parseInt(strcategoriaproducto);
+                int busquedasproducto = 0000000000;
+                String strexistenciasproducto = request.getParameter("cantProd");
+                int existenciasproducto= Integer.parseInt(strexistenciasproducto);
+                Part fileimagenproducto = request.getPart("resume");
                 
+                InputStream filecontent = fileimagenproducto.getInputStream();
+                byte[] imagenproducto = IOUtils.toByteArray(filecontent);
+                
+                NuevoProducto productoingresado = new NuevoProducto(nombreproducto , precioproducto, descripcionproducto , empresaproducto , categoriaproducto, busquedasproducto, existenciasproducto, imagenproducto);
+                hasfailed = productos.crearProducto(productoingresado);
+                
+                
+                if(hasfailed==true)
+                {
+                    String productoexitoso="25";
+                    
+                    request.getSession().setAttribute("productoexitoso", productoexitoso);
+                    response.sendRedirect("Inventario.jsp");
+                } 
+                else 
+                {
+                    System.out.println("ha habido un error al ingresar nuevo producto");
+                }
                 // </editor-fold>
                 break;
             }

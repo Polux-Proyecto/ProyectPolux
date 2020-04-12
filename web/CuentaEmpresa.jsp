@@ -48,7 +48,8 @@
                     email =usuarioexistente.getEmail();
                     pais= usuarioexistente.getPais();
                     ciudad = usuarioexistente.getCiudad();
-                    categoria = usuarioexistente.getCategoria();
+                    int intcategoria = usuarioexistente.getCategoria();
+                    categoria = Integer.toString(intcategoria);
                     
                     mensajeerror = "El nombre de usuario ya existe, intente con otro";
            
@@ -105,6 +106,7 @@
                 <div class="field">
                     <label>Username</label>
                     <div class="control">
+                        <div style="color:red"><%= mensajeerror%>
                         <input class="input" type="text" name="userEmp" id="userEmp" idplaceholder="Text input">
                     </div>
                 </div>

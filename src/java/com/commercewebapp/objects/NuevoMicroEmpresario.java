@@ -11,10 +11,10 @@ public class NuevoMicroEmpresario
     String email;
     String pais;
     String ciudad;
-    String categoria;
+    int categoria;
     byte[] logo;
 
-    public NuevoMicroEmpresario(String Sname, String Suser, String Snit, String Spassword, String Sdescripcion,String Semail, String Spais, String Sciudad, String Scategoria, byte[] Slogo) 
+    public NuevoMicroEmpresario(String Sname, String Suser, String Snit, String Spassword, String Sdescripcion,String Semail, String Spais, String Sciudad, int Scategoria, byte[] Slogo) 
     {
         this.setName(Sname);
         this.setUser(Suser);
@@ -52,11 +52,11 @@ public class NuevoMicroEmpresario
         this.ciudad = ciudad;
     }
 
-    public String getCategoria() {
+    public int getCategoria() {
         return categoria;
     }
 
-    private void setCategoria(String categoria) {
+    private void setCategoria(int categoria) {
         this.categoria = categoria;
     }
 
