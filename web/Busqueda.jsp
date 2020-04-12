@@ -4,15 +4,30 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Producto"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%String  logo = (String)  request.getSession().getAttribute("logo");%>
+<%      
+    String  logo = (String)  request.getSession().getAttribute("logo");
+    String  palabra = (String)  request.getSession().getAttribute("palabra");
+    List<Producto>  listaProductos = (List<Producto>)  request.getSession().getAttribute("listaProductos");
+    int cantProd = 0;
+    Producto producto = null;
+    Iterator<Producto> iteProducto = null;
+    if (listaProductos!=null){
+        cantProd = listaProductos.size();
+        iteProducto = listaProductos.iterator();
+    }
+%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
-        <title>JSP Page</title>
+        <title>Buscar <%= palabra %></title>
 		<style>
 			.color1{
 				background-color: #93d250
@@ -95,26 +110,49 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent ">
                     <div class="tile is-child box">
-                        <p class="title">Nombre de Busqueda</p>
-						<div class="box">
-							<article class="media">
-								<div class="media-left">
-									<figure class="image is-128x128">
-										<a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-									</figure>
-								</div>
-								<div class="media-content">
-									<div class="content">
-										<p><strong>Nombre de la empresa</strong> 
-										<br>Descripción:
-										</p><br>
-									</div>
-								</div>
-							</article>
-						</div>
-					</div>
-				</div>
-			</div>
+                        <p class="title"><%= palabra %></p>
+                        <% 
+                            if (cantProd==0){
+                                
+                            %>
+                            <div class="box">
+                                    <div class="media-content">
+                                        <div class="content">
+                                            <p><strong>No se encontraron resultados</strong> 
+                                            <br>Lo sentimos, no hemos encontrado nada que se parezca a tu búsqueda
+                                            </p><br>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        <% } else {
+                                while(iteProducto.hasNext()){
+                                    producto = iteProducto.next();
+                        %>   
+                            <div class="box">
+                                <article class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-128x128">
+                                            <a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <div class="content">
+                                            <p><strong><%= producto.getNombreEmpresa() %></strong>
+                                                <br>Nombre del producto: <%= producto.getNombre() %>
+                                                <br>Descripción: <%= producto.getDescripcion() %>
+                                            </p><br>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        <% 
+                                }   
+                            } 
+                        %>
+                    </div>
+                </div>
+            </div>
         </section>
     </body>
 </html>

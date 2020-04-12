@@ -41,7 +41,9 @@ import javax.servlet.http.HttpServletResponse;
                     String palabra = request.getParameter("palabra");
                     AdminProductos buscador = new AdminProductos();
                     List<Producto> listaProductos = buscador.getProductoPorPalabra(palabra);
-                    response.sendRedirect("CategoriaEmpresas.jsp");
+                    request.getSession().setAttribute("palabra", palabra);
+                    request.getSession().setAttribute("listaProductos", listaProductos);
+                    response.sendRedirect("Busqueda.jsp");
                     
                     // </editor-fold>
                 break;
@@ -100,7 +102,11 @@ import javax.servlet.http.HttpServletResponse;
                     // </editor-fold>
                 break;
             }
-            
+            case "6" :{
+                // <editor-fold defaultstate="collapsed" desc="Para crear una cuenta empresarial">
+                    
+                // </editor-fold>
+            }
         }
         
     }
