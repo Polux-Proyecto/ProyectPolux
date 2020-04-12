@@ -11,7 +11,11 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<% 
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     List<Envio> lstEnvio = (List<Envio>) request.getSession().getAttribute("lstEnvio");
     int cantEnvios = 0;
     Iterator<Envio> iteEnvio = null;

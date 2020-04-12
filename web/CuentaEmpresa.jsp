@@ -1,11 +1,16 @@
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Categoria"%>
 <%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.NuevoMicroEmpresario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<% 
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     List<Categoria> categorias = (List<Categoria>) request.getSession().getAttribute("listaCategoria");
     Iterator<Categoria> iteCategoria = null;
     Categoria categoriaActual = null;

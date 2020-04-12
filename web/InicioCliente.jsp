@@ -11,7 +11,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% 
-    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    Usuario  usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     List<Producto>  deseos  = (List<Producto>)  request.getSession().getAttribute("deseos");
     List<Producto>  pedidos = (List<Producto>)  request.getSession().getAttribute("pedidos");
     String  logo = (String)  request.getSession().getAttribute("logo");
@@ -105,7 +108,7 @@
                                                                 
 							</form>
 							<div class="buttons">
-                                <a class="button color2" href="index.jsp">
+                                <a class="button color2" href="Buscadores?formid=6">
 									Cerrar sesión
 								</a>
 							</div>

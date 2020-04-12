@@ -4,8 +4,15 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="com.commercewebapp.objects.NuevoUsuarioParticular"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>

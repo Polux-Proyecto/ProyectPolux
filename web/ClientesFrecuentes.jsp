@@ -10,7 +10,12 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%String  logo = (String)  request.getSession().getAttribute("logo");
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
+    String  logo = (String)  request.getSession().getAttribute("logo");
     List<Usuario> top10 = (List<Usuario>) request.getSession().getAttribute("top10Clientes");
     List<InformacionCliente> paises = (List<InformacionCliente>) request.getSession().getAttribute("paises");
     List<InformacionCliente> ciudades = (List<InformacionCliente>) request.getSession().getAttribute("ciudades");

@@ -103,8 +103,9 @@ import javax.servlet.http.HttpServletResponse;
                 break;
             }
             case "6" :{
-                // <editor-fold defaultstate="collapsed" desc="Para crear una cuenta empresarial">
-                    
+                // <editor-fold defaultstate="collapsed" desc="Para cerrar sesión">
+                    request.getSession().setAttribute("usuario", null);
+                    response.sendRedirect("index.jsp");
                 // </editor-fold>
             }
         }

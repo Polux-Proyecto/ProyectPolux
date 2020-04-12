@@ -4,11 +4,16 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Stock"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% 
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     List<Stock> inventario = (List<Stock>) request.getSession().getAttribute("listaStock");
     int cantInventario = 0;
     Iterator <Stock> iteInventario = null;

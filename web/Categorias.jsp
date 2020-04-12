@@ -4,12 +4,17 @@
     Author     : Mauricio Aguilar
 --%>
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Categoria"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     List<Categoria> listaCategoria = (List<Categoria>) request.getSession().getAttribute("listaCategoria");
     int mitad = (Integer) request.getSession().getAttribute("mitad");
     mitad ++;

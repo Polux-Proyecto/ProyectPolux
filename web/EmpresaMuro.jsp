@@ -4,11 +4,18 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="com.commercewebapp.objects.Empresa"%>
 <%@page import="com.commercewebapp.objects.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%String  logo = (String)  request.getSession().getAttribute("logo");%>
+<%
+    String  logo = (String)  request.getSession().getAttribute("logo");
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
+%>
 
 <html>
     <head>
