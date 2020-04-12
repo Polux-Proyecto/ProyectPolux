@@ -104,15 +104,17 @@
 				</nav>
             </div>
         </section>
-        <section class="section">
-            <div class="container">
-                <h1 class="title">
-                    Nombre de la Empresa 
-                </h1>
-                <h2 class="title-2">
-                    Nuestros Productos Favoritos
-                </h2>
-            </div>    
+        <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title" style="color:black">
+                        <strong>Nombre de la Empresa</strong>
+                    </h1>
+                    <h2 class="subtitle" style="color:black">
+                        Nuestros productos favoritos
+                    </h2>
+                </div>
+            </div>
         </section>
         <section class="hero is-medium has-carousel">
                     <div class="hero-head"></div>

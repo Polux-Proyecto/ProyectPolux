@@ -111,7 +111,7 @@
         <section>
 			<div>
 				<nav class="navbar" role="navigation" aria-label="main navigation" >
-					<div class="navbar-brand">
+					<div class="navbar-brand is-light">
 						<img src="<%= logo %>" width="197" height="60">
                        
 						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -120,6 +120,7 @@
 							<span aria-hidden="true"></span>
 						</a>
 					</div>
+
 
 					<div id="navbarBasicExample" class="navbar-menu">
 						
@@ -144,14 +145,7 @@
 
 					<div class="navbar-end">
 						<div class="navbar-item">
-							<p class="control">
-								<input class="input" type="text" placeholder="Find a post">
-							</p>
-							<p class="control">
-								<button class="button" style="background-color: greenyellow">
-									Buscar
-								</button>
-							</p>
+							
 							<div class="buttons">
 								<a class="button " href="index.jsp" style="background-color: #29b342">
 									Cerrar sesión
@@ -161,6 +155,8 @@
 					</div>
 				</nav>
 			</div>
+
+          
         </section>
         <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
             <div class="hero-body">
@@ -292,96 +288,92 @@
                                                                   target.querySelector('.delete').addEventListener('click',   function() {
                                                                           target.classList.remove('is-active');
 
-                                                                   });
-                                                                   target.querySelector('.is-delete').addEventListener('click',   function() {
-                                                                          target.classList.remove('is-active');
+										   });
+										});
+									  });
+                              
+								</script>
+							</article>
+							<article class="tile is-child box" style="border: green 10px inset;">
+								<h1 class="title">Envíos</h1>
+								<p class="subtitle">Tienes <%= cantidadProducto %> envíos pendientes</p>
+								<div class="container" style="margin-left: 20px">
+									<span class="icon is-large">
+										<a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: chartreuse"></i></a>
+									</span>
+								</div>
+							</article>
+						</div>
+						<div class="tile is-parent">
+							<article class="tile is-child box" style="border: black 10px inset;">
+								<p class="title">Informe de Ventas</p>
+								<p class="subtitle">Artículos más vendidos</p>
+								<% 
+									if (cantMasVendidos == 0){
+								%>
+								<p class="list-item">No has vendido ningún producto</p>
+								<% 
+									}else{
+										while(iteMasVendidos.hasNext()){
+										producto = iteMasVendidos.next();
+								%>
+								<p class="list-item"><%= producto.getNombre() %></p>
+								<% 
+									}
+								}
+								%>
+								<br>
+								<p class="subtitle">Productos en inventario más cercanos a agotarse</p>
+								<% 
+									if (cantMenosStock == 0){
+								%>
+								<p class="list-item">No se encontraron productos en inventario</p>
+								<% 
+									}else{
+										while(iteMenosStock.hasNext()){
+										producto = iteMenosStock.next();
+								%>
+								<p class="list-item"><%= producto.getNombre() %></p>
+								<% 
+									}
+								}
+								%>
+								<br>
+								<p class="subtitle">Productos agotados</p>
+								<% 
+									if (cantSinStock == 0){
+								%>
+								<p class="list-item">No hay ningún producto sin Stock</p>
+								<% 
+									}else{
+										while(iteSinStock.hasNext()){
+										producto = iteSinStock.next();
+								%>
+								<p class="list-item"><%= producto.getNombre() %></p>
+								<% 
+									}
+								}
+								%>
+								<br>
+                        
+								<div class="field is-grouped">
+                                                                    <form method="get" action="EstadoDeVentas.jsp">
+										<button class="button" style="background-color: #29b342">
+											Ir a ventas  
+										</button>
+									</form>
 
-                                                                   });
-                                                                });
-                                                          });
-
-                                                </script>
-                                        </article>
-                                        <article class="tile is-child box" style="border: green 10px inset;">
-                                                <h1 class="title">Envíos</h1>
-                                                <p class="subtitle">Tienes <%= cantidadProducto %> envíos pendientes</p>
-                                                <div class="container" style="margin-left: 20px">
-                                                        <span class="icon is-large">
-                                                                <a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: chartreuse"></i></a>
-                                                        </span>
-                                                </div>
-                                        </article>
-                                </div>
-                                <div class="tile is-parent">
-                                        <article class="tile is-child box" style="border: black 10px inset;">
-                                                <p class="title">Informe de Ventas</p>
-                                                <p class="subtitle">Artículos más vendidos</p>
-                                                <% 
-                                                        if (cantMasVendidos == 0){
-                                                %>
-                                                <p class="list-item">No has vendido ningún producto</p>
-                                                <% 
-                                                        }else{
-                                                                while(iteMasVendidos.hasNext()){
-                                                                producto = iteMasVendidos.next();
-                                                %>
-                                                <p class="list-item"><%= producto.getNombre() %></p>
-                                                <% 
-                                                        }
-                                                }
-                                                %>
-                                                <br>
-                                                <p class="subtitle">Productos en inventario más cercanos a agotarse</p>
-                                                <% 
-                                                        if (cantMenosStock == 0){
-                                                %>
-                                                <p class="list-item">No se encontraron productos en inventario</p>
-                                                <% 
-                                                        }else{
-                                                                while(iteMenosStock.hasNext()){
-                                                                producto = iteMenosStock.next();
-                                                %>
-                                                <p class="list-item"><%= producto.getNombre() %></p>
-                                                <% 
-                                                        }
-                                                }
-                                                %>
-                                                <br>
-                                                <p class="subtitle">Productos agotados</p>
-                                                <% 
-                                                        if (cantSinStock == 0){
-                                                %>
-                                                <p class="list-item">No hay ningún producto sin Stock</p>
-                                                <% 
-                                                        }else{
-                                                                while(iteSinStock.hasNext()){
-                                                                producto = iteSinStock.next();
-                                                %>
-                                                <p class="list-item"><%= producto.getNombre() %></p>
-                                                <% 
-                                                        }
-                                                }
-                                                %>
-                                                <br>
-
-                                                <div class="field is-grouped">
-                                                        <p class="control">
-                                                                <button class="button is-link">
-                                                                        Ir a ventas  
-                                                                </button>
-                                                        </p>
-
-                                                        <p class="control">
-                                                                <button class="button is-primary">
-                                                                        Ir a inventario
-                                                                </button>
-                                                        </p>
-                                                </div>
-
-                                        </article>
-                                </div>
-                        </div>
-                </div>
+                                                                    <form method="get" action="Inventario.jsp">
+										<button class="button" style="background-color: chartreuse">
+											Ir a inventario
+										</button>
+									</form>
+								</div>
+                    
+							</article>
+						</div>
+					</div>
+				</div>
             </div>
         </section>
     </body>

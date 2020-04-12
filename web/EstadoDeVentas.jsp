@@ -91,14 +91,6 @@
 
 					<div class="navbar-end">
 						<div class="navbar-item">
-							<p class="control">
-								<input class="input" type="text" placeholder="Find a post">
-							</p>
-							<p class="control">
-								<button class="button" style="background-color: greenyellow">
-									Buscar
-								</button>
-							</p>
 							<div class="buttons">
 								<a class="button " href="index.jsp" style="background-color: #29b342">
 									Cerrar sesión
