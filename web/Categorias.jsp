@@ -125,33 +125,45 @@
                              <p class="title">No hay Categorías para mostrar :(</p>
                         </div>
                         <%
-                            } else {
+						} else {
 
-                                Categoria categoriaActual;
-                                while (iteCategorias.hasNext()){
-                                  categoriaActual = iteCategorias.next();
-                                  String ref = "Buscadores?formid=2&idCat="+categoriaActual.getIdCat();
+						Categoria categoriaActual;
+						while (iteCategorias.hasNext()){
+						categoriaActual = iteCategorias.next();
+						String ref = "Buscadores?formid=2&idCat="+categoriaActual.getIdCat();
 
-                                      if (i<=mitad) {%>
-                          <div class="box" style="border: lightgray 2px inset" id="izquierda">
-                            <%        } else { %>
-                          <div class="box" style="border: lightgray 2px inset" id="derecha">
-                            <%        } %>
-                            <article class="media">
+						if (i<=mitad) {%>
+						<div class="box" style="border: lightgray 2px inset" id="izquierda">
+							<article class="media">
                                 <div class="media-left">
-                                  <figure class="image is-128x128">
-                                      <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
-                                  </figure>
+									<figure class="image is-128x128">
+										<a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+									</figure>
                                 </div>
                                 <div class="media-content">
-                                  <div class="content">
-                                    <a href= "<%= ref %>" ><strong><%= categoriaActual.getNombre() %></strong> </a>
-                                    <br>
-                                  </div>
+									<div class="content">
+										<a href= "<%= ref %>" ><strong><%= categoriaActual.getNombre() %></strong> </a>
+										<br>
+									</div>
                                 </div>
                             </article>
                         </div>
-                        <% 
+						<%        } else { %>
+						<div class="box" style="border: lightgray 2px inset" id="derecha"><article class="media">
+                                <div class="media-left">
+									<figure class="image is-128x128">
+										<a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+									</figure>
+                                </div>
+                                <div class="media-content">
+									<div class="content">
+										<a href= "<%= ref %>" ><strong><%= categoriaActual.getNombre() %></strong> </a>
+										<br>
+									</div>
+                                </div>
+                            </article>
+                        </div>
+                            <%	} 
                             }
                         }
                         %>
