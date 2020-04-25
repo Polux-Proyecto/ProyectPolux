@@ -17,7 +17,7 @@ Usuario         usuario = (Usuario)         request.getSession().getAttribute("u
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
-        <title>JSP Page</title>
+        <title>Pagar</title>
 		<style>
 			.color1{
 				background-color: #93d250
@@ -100,24 +100,28 @@ Usuario         usuario = (Usuario)         request.getSession().getAttribute("u
         </section>
         <div class="creditCardForm">
             <div class="title">
-                <p>Confirm Purchase</p>
+                <p>Datos de la targeta VISA</p>
             </div>
             <div class="payment">
                 <form>
                     <div class="form-group owner">
-                        <label for="owner">Owner</label>
+                        <label for="owner">Dueño de la targeta</label>
                         <input type="text" class="form-control" id="owner">
                     </div>
                     <div class="form-group CVV">
-                        <label for="cvv">CVV</label>
+                        <label for="cvv">Código de seguridad</label>
                         <input type="text" class="form-control" id="cvv">
                     </div>
                     <div class="form-group" id="card-number-field">
-                        <label for="cardNumber">Card Number</label>
+                        <label for="cardNumber">Número de targeta</label>
+                        <input type="text" class="form-control" id="cardNumber">
+                    </div>
+                    <div class="form-group" id="card-number-field">
+                        <label for="cardNumber">Nombre en targeta</label>
                         <input type="text" class="form-control" id="cardNumber">
                     </div>
                     <div class="form-group" id="expiration-date">
-                        <label>Expiration Date</label>
+                        <label>Fecha de expiración</label>
                         <select>
                             <option value="01">January</option>
                             <option value="02">February </option>
@@ -147,7 +151,7 @@ Usuario         usuario = (Usuario)         request.getSession().getAttribute("u
                         <img src="assets/images/amex.jpg" id="amex">
                     </div>
                     <div class="form-group" id="pay-now">
-                        <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+                        <button type="submit" class="btn btn-default" id="confirm-purchase">Confirmar</button>
                     </div>
                     <div class="field is-grouped">
                     

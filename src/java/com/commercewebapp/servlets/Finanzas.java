@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author rods2
+ * @author 78GDO
  */
-@WebServlet(name = "pruebaservlets", urlPatterns = {"/pruebaservlets"})
-public class pruebaservlets extends HttpServlet {
+@WebServlet(name = "Finanzas", urlPatterns = {"/Finanzas"})
+public class Finanzas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +33,16 @@ public class pruebaservlets extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-                System.out.println("llego");
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Finanzas</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Finanzas at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
