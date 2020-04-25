@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
         String  clave = request.getParameter("passis");
         Usuario usuario = buscador.getAllUsers(nombre);
         
-        String logo = "https://i.pinimg.com/originals/ce/17/b0/ce17b04f1763ba06d11bddebfe32de4e.jpg";
+        String logo = "https://i.pinimg.com/originals/1c/39/0a/1c390a0c4ca3850fa5bd314c6fb37efc.png";
         
         if (!usuario.isMicroEmpresario()==usuario.isUsuario()){
             String claveIngresada = usuario.getContra();
