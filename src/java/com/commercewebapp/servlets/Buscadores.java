@@ -84,7 +84,8 @@ import javax.servlet.http.HttpServletResponse;
                 Producto producto = buscadorProd.getProductoPorId(idProducto);
                 if (producto!=null){
                     empresa = buscadorEmpr.getEmpresasPorId(producto.getIdEmpresa());
-                }   request.getSession().setAttribute("producto", producto);
+                }   
+                request.getSession().setAttribute("producto", producto);
                 request.getSession().setAttribute("empresa", empresa);
                 request.getRequestDispatcher("MuroProducto.jsp").forward(request, response);
                 // </editor-fold>
