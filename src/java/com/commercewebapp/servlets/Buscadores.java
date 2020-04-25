@@ -10,6 +10,7 @@ import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.objects.Categoria;
 import com.commercewebapp.objects.Empresa;
+import com.commercewebapp.objects.Precios;
 import com.commercewebapp.objects.Producto; 
 import java.io.IOException;
 import java.util.List;
@@ -79,12 +80,14 @@ import javax.servlet.http.HttpServletResponse;
                 String idProd = request.getParameter("idProd");
                 int idProducto = Integer.parseInt(idProd);
                 Empresa empresa = null;
+                Precios precios = null;
                 AdminProductos buscadorProd = new AdminProductos();
                 AdminEmpresas buscadorEmpr = new AdminEmpresas();
                 Producto producto = buscadorProd.getProductoPorId(idProducto);
                 if (producto!=null){
                     empresa = buscadorEmpr.getEmpresasPorId(producto.getIdEmpresa());
-                }   request.getSession().setAttribute("producto", producto);
+                }   
+                request.getSession().setAttribute("producto", producto);
                 request.getSession().setAttribute("empresa", empresa);
                 request.getRequestDispatcher("MuroProducto.jsp").forward(request, response);
                 // </editor-fold>
@@ -106,6 +109,23 @@ import javax.servlet.http.HttpServletResponse;
                 // <editor-fold defaultstate="collapsed" desc="Para cerrar sesión">
                     request.getSession().setAttribute("usuario", null);
                     response.sendRedirect("index.jsp");
+                // </editor-fold>
+            }
+            case "7":{
+                // <editor-fold defaultstate="collapsed" desc="Cargar precios de producto">
+                    String cant = request.getParameter("cantidad");
+                    int cantidad =  Integer.parseInt(cant);
+                    Producto producto = (Producto) request.getSession().getAttribute("producto");
+                    AdminProductos buscadorProd = new AdminProductos();
+                    Precios precios = buscadorProd.getPrecios(producto, cantidad);
+                    request.getSession().setAttribute("precios", precios);
+                    request.getRequestDispatcher("CompraProducto.jsp").forward(request, response);
+                // </editor-fold>
+                break;
+            }
+            case "8":{
+                // <editor-fold defaultstate="collapsed" desc="Ir a pagina de compras">
+                response.sendRedirect("PagoProducto.jsp");
                 // </editor-fold>
             }
         }

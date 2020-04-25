@@ -3,6 +3,7 @@ package com.commercewebapp.logics;
 import com.commercewebapp.database.DatabaseZ;
 import com.commercewebapp.objects.Llenador;
 import com.commercewebapp.objects.NuevoProducto;
+import com.commercewebapp.objects.Precios;
 import com.commercewebapp.objects.Producto;
 import java.sql.Blob;
 import java.sql.Connection;
@@ -212,5 +213,10 @@ public class AdminProductos extends Logic {
         return listaProductos;
     }
     
+   public Precios getPrecios (Producto producto, int cantidad){
+       Precios precios = null;
+       precios = new Precios(producto.getPrecio(), cantidad);
+       return precios;
+   }
     
 }

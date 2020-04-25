@@ -4,6 +4,7 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Precios"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="com.commercewebapp.objects.Empresa"%>
 <%@page import="com.commercewebapp.objects.Producto"%>
@@ -16,7 +17,9 @@
     }
     Producto producto = (Producto) request.getSession().getAttribute("producto");
     Empresa empresa = (Empresa) request.getSession().getAttribute("empresa");
-	String  logo = (String)  request.getSession().getAttribute("logo");
+    String  logo = (String)  request.getSession().getAttribute("logo");
+    Precios precios = (Precios) request.getSession().getAttribute("precios");
+        
 %>
     
 <html>
@@ -119,7 +122,7 @@
                             <div class="media-content">
                               <div class="content">
                                 <p><strong><%= producto.getNombre() %></strong> 
-                                  <br>Precio: <%= producto.getPrecio()%>
+                                  <br>Precio: <%= producto.getPrecio() %>
                                   <br>Descripción: <%= producto.getDescripcion()%>
                                   <br>Empresa: <%= empresa.getNombre() %>
                                 </p><br>
@@ -132,7 +135,7 @@
                                             <button class="button is-outlined is-danger">Lista de deseos</button>
                                         </div>
                                     </a>
-                                    <a class="navbar-item" href="CompraProducto.jsp">
+                                    <a class="navbar-item" href="Buscadores?formid=7&cantidad=1">
                                         <div class="control">
                                             <button class="button is-outlined ">Comprar</button>
                                         </div>

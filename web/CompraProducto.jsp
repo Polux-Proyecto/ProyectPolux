@@ -4,6 +4,7 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Precios"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="com.commercewebapp.objects.Empresa"%>
 <%@page import="com.commercewebapp.objects.Producto"%>
@@ -16,7 +17,8 @@
     }
     Producto producto = (Producto) request.getSession().getAttribute("producto");
     Empresa empresa = (Empresa) request.getSession().getAttribute("empresa");
-	String  logo = (String)  request.getSession().getAttribute("logo");
+    String  logo = (String)  request.getSession().getAttribute("logo");
+    Precios precios = (Precios) request.getSession().getAttribute("precios");
 %>
 <html>
     <head>
@@ -65,10 +67,7 @@
 					</div>
 
 					<div id="navbarBasicExample" class="navbar-menu">
-                <!--  
-                Los Ids de las categorías más importantes son:
-                Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
-                -->
+                
 						<div class="navbar-start">
 							<a class="navbar-item" href="InicioCliente.jsp">
 							  Inicio
@@ -127,40 +126,48 @@
 					</div>
 				</div>
 				<div class="col" style="width: 50%">
-					<form class="Pago" id="NuevaCompraForm" method="get" action="PagoProducto.jsp">
-						<div class="box" style="border: lightgray 2px inset">
-							<div class="control" style="width:50px">
-								<label class="label">Cantidad:</label>
-								<input class="input" type="number" name="cantComprada" id="cantComprada">
-							</div>
-						</div>
-						<div class="box" style="border: lightgray 2px inset">
-							<label class="label">Precio Unitario:</label>
-							<div class="control">
-								<p class="subtitle"><%= producto.getPrecio() %></p>
-							</div>
-						</div>
-						<div class="box" style="border: lightgray 2px inset">
-							<label class="label">Cargo por Envío:</label>
-							<div class="control">
-								<p class="subtitle"><%= producto.getPrecio()*0.15 %></p>
-							</div>
-						</div>
-						<div class="box" style="border: lightgray 2px inset">
-							<label class="label">Total a Pagar:</label>
-							<div class="control">
-								<p class="subtitle"><%= producto.getPrecio()*1.15 %></p>
-							</div>
-						</div>
-						<div class="field is-grouped">
-							<div class="control">
-								<button class="button is-link">Continuar</button>
-							</div>
-							<div class="control">
-								<button class="button is-link is-light">Cancelar</button>
-							</div>
-						</div>
-					</form>
+                                    <form class="Pago" id="CalcularPrecios" method="get" action="Buscadores">
+                                        <div class="box" style="border: lightgray 2px inset">
+                                            <div class="control" style="width:200px">
+                                                <label class="label">Cantidad:</label>
+                                                <input type="hidden" name="formid" id="formid" value="7">
+                                                <input class="input" type="number" name="cantidad" id="cantidad" placeholder="<%= precios.getCantidad() %>" >
+                                            </div>
+                                            <div class="control" style="width:200px">
+                                                <button class="button color1"  >Calcular</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form class="Pago" id="NuevaCompraForm" method="get" action="Buscadores">
+                                        <div class="box" style="border: lightgray 2px inset">
+                                            <label class="label">Precio Unitario:</label>
+                                            <div class="control">
+                                                    <p class="subtitle"><%= precios.getPrecioUnitario() %></p>
+                                            </div>
+                                        </div>
+                                        <div class="box" style="border: lightgray 2px inset">
+                                            <label class="label">Cargo por Envío:</label>
+                                            <div class="control">
+                                                    <p class="subtitle"><%= precios.getCargoEnvio() %></p>
+                                            </div>
+                                        </div>
+                                        <div class="box" style="border: lightgray 2px inset">
+                                            <label class="label">Total a Pagar:</label>
+                                            <div class="control">
+                                                <p class="subtitle"><%= precios.getTotalPagar() %></p>
+                                            </div>
+                                        </div>
+                                        <div class="field is-grouped">
+                                            <div class="control">
+                                                    <button class="button is-link">Continuar</button>
+                                            </div>
+                                            <div class="control">
+                                                    <button class="button is-link is-light">Cancelar</button>
+                                            </div>
+                                            <input type="hidden" id="formid" name="formid" value="8" >
+                                                
+                                        </div>
+                                    </form>
 				</div>
 			</div>
 		</section>
