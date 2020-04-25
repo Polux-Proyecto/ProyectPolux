@@ -54,51 +54,36 @@
     <body>
         <section>
 			<div>
-				<nav class="navbar" role="navigation" aria-label="main navigation" >
+				<nav class="navbar is-light" role="navigation" aria-label="main navigation" >
 					<div class="navbar-brand">
-						<img src="<%= logo %>" width="150" height="28">
-                       
-						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-							<span aria-hidden="true"></span>
-							<span aria-hidden="true"></span>
-							<span aria-hidden="true"></span>
-						</a>
+						<img src="<%=logo%>" width="197" height="60">    
+							<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+							  <span aria-hidden="true"></span>
+							  <span aria-hidden="true"></span>
+							  <span aria-hidden="true"></span>
+							</a>
 					</div>
-
 					<div id="navbarBasicExample" class="navbar-menu">
-						<!--  
-						Los Ids de las categorías más importantes son:
-						Música - 1; Ropa, zapatos, joyería y relojes - 2; Hogar y cocina - 3; Electrónicos - 5; 
-						-->
 						<div class="navbar-start">
-							<a class="navbar-item" href="InicioEmpresa.jsp">
-							  Inicio
-							</a>
-							<a class="navbar-item" href="Empresarios?formid=2">
-							  Ventas
-							</a>
-							<a class="navbar-item" href="Empresarios?formid=3">
-							  Envíos
-							</a>
-							<a class="navbar-item" href="Empresarios?formid=7">
-							  Clientes 
-							</a>
-							<a class="navbar-item" href="Empresarios?formid=6">
-							  Inventario
-							</a>
+								<a class="navbar-item" href="InicioEmpresa.jsp">
+									Inicio
+								</a>
+								<a class="navbar-item" href="Empresarios?formid=2">
+									Ventas
+								</a>
+								<a class="navbar-item" href="Empresarios?formid=3">
+									 Envíos
+								</a>
+								<a class="navbar-item" href="Empresarios?formid=7">
+									Clientes 
+								</a>
+								<a class="navbar-item" href="Empresarios?formid=6">
+									Inventario
+								</a>
 						</div>
 					</div>
-
 					<div class="navbar-end">
 						<div class="navbar-item">
-							<p class="control">
-								<input class="input" type="text" placeholder="Find a post">
-							</p>
-							<p class="control">
-								<button class="button" style="background-color: greenyellow">
-									Buscar
-								</button>
-							</p>
 							<div class="buttons">
 								<a class="button" style="background-color: #29b342">
 									Cerrar sesión

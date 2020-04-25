@@ -107,23 +107,18 @@
 		</style>
     </head>
     <body>
-        
         <section>
 			<div>
-				<nav class="navbar" role="navigation" aria-label="main navigation" >
+				<nav class="navbar is-light" role="navigation" aria-label="main navigation" >
 					<div class="navbar-brand is-light">
 						<img src="<%= logo %>" width="197" height="60">
-                       
 						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 							<span aria-hidden="true"></span>
 							<span aria-hidden="true"></span>
 							<span aria-hidden="true"></span>
 						</a>
 					</div>
-
-
 					<div id="navbarBasicExample" class="navbar-menu">
-						
 						<div class="navbar-start">
 							<a class="navbar-item" href="InicioEmpresa.jsp">
 							  Inicio
@@ -142,10 +137,8 @@
 							</a>
 						</div>
 					</div>
-
 					<div class="navbar-end">
 						<div class="navbar-item">
-							
 							<div class="buttons">
 								<a class="button " href="index.jsp" style="background-color: #29b342">
 									Cerrar sesión
@@ -155,8 +148,6 @@
 					</div>
 				</nav>
 			</div>
-
-          
         </section>
         <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
             <div class="hero-body">
