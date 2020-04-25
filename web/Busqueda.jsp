@@ -88,9 +88,7 @@
 							</a>
 						</div>
 					</div>
-
 					<div class="navbar-end">
-                  
 						<div class="navbar-item">
 							<form action="Buscadores" method="get" name="buscador" class="form-inline">
 								<p class="control">

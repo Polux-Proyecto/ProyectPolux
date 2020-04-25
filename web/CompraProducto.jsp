@@ -57,7 +57,7 @@
 				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
-						  <img src= "<%= logo %>" width="197" height="60">
+							<img src= "<%= logo %>" width="197" height="60">
 						</a>
 						<a role="button" class="navbar is-white" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 						  <span aria-hidden="true"></span>
@@ -126,48 +126,48 @@
 					</div>
 				</div>
 				<div class="col" style="width: 50%">
-                                    <form class="Pago" id="CalcularPrecios" method="get" action="Buscadores">
-                                        <div class="box" style="border: lightgray 2px inset">
-                                            <div class="control" style="width:200px">
-                                                <label class="label">Cantidad:</label>
-                                                <input type="hidden" name="formid" id="formid" value="7">
-                                                <input class="input" type="number" name="cantidad" id="cantidad" placeholder="<%= precios.getCantidad() %>" >
-                                            </div>
-                                            <div class="control" style="width:200px">
-                                                <button class="button color1"  >Calcular</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <form class="Pago" id="NuevaCompraForm" method="get" action="Buscadores">
-                                        <div class="box" style="border: lightgray 2px inset">
-                                            <label class="label">Precio Unitario:</label>
-                                            <div class="control">
-                                                    <p class="subtitle"><%= precios.getPrecioUnitario() %></p>
-                                            </div>
-                                        </div>
-                                        <div class="box" style="border: lightgray 2px inset">
-                                            <label class="label">Cargo por Envío:</label>
-                                            <div class="control">
-                                                    <p class="subtitle"><%= precios.getCargoEnvio() %></p>
-                                            </div>
-                                        </div>
-                                        <div class="box" style="border: lightgray 2px inset">
-                                            <label class="label">Total a Pagar:</label>
-                                            <div class="control">
-                                                <p class="subtitle"><%= precios.getTotalPagar() %></p>
-                                            </div>
-                                        </div>
-                                        <div class="field is-grouped">
-                                            <div class="control">
-                                                    <button class="button is-link">Continuar</button>
-                                            </div>
-                                            <div class="control">
-                                                    <button class="button is-link is-light">Cancelar</button>
-                                            </div>
-                                            <input type="hidden" id="formid" name="formid" value="8" >
-                                                
-                                        </div>
-                                    </form>
+					<form class="Pago" id="CalcularPrecios" method="get" action="Buscadores">
+						<div class="box" style="border: lightgray 2px inset">
+							<div class="control" style="width:200px">
+								<label class="label">Cantidad:</label>
+								<input type="hidden" name="formid" id="formid" value="7">
+								<input class="input" type="number" name="cantidad" id="cantidad" placeholder="<%= precios.getCantidad() %>" >
+							</div>
+							<div class="control" style="width:200px">
+								<button class="button color1"  >Calcular</button>
+							</div>
+						</div>
+					</form>
+					<form class="Pago" id="NuevaCompraForm" method="get" action="Buscadores">
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Precio Unitario:</label>
+							<div class="control">
+									<p class="subtitle"><%= precios.getPrecioUnitario() %></p>
+							</div>
+						</div>
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Cargo por Envío:</label>
+							<div class="control">
+									<p class="subtitle"><%= precios.getCargoEnvio() %></p>
+							</div>
+						</div>
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Total a Pagar:</label>
+							<div class="control">
+								<p class="subtitle"><%= precios.getTotalPagar() %></p>
+							</div>
+						</div>
+						<div class="field is-grouped">
+							<div class="control">
+									<button class="button is-link">Continuar</button>
+							</div>
+							<div class="control">
+									<button class="button is-link is-light">Cancelar</button>
+							</div>
+							<input type="hidden" id="formid" name="formid" value="8" >
+
+						</div>
+					</form>
 				</div>
 			</div>
 		</section>

@@ -5,6 +5,7 @@ import com.commercewebapp.objects.Llenador;
 import com.commercewebapp.objects.NuevoProducto;
 import com.commercewebapp.objects.Precios;
 import com.commercewebapp.objects.Producto;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.rowset.serial.SerialBlob;
 
 /**
  * Este Logic sirve para administrar todo lo que suceda con los productos, ingresar un nuevo producto, comprar un producto, etc
@@ -38,6 +40,7 @@ public class AdminProductos extends Logic {
                 int bdbusquedasproducto = producto.getCategoriaproducto();
                 int bdexistenciasproducto = producto.getExistenciasproducto();
                 byte[] bdimagenproducto = producto.getImagenproducto();
+                Blob imagenblob = new SerialBlob(bdimagenproducto);
                 
                 statement = conn.prepareStatement("INSERT INTO comercebd.prodtb(nombre,precio,descripcion,empresa,categoria,busquedas,existencias,ImagenProducto)VALUES(?,?,?,?,?,?,?,?)");
                 // INSERT INTO comercebd.prodtb(idprodtb,nombre,precio,descripcion,empresa,categoria,busquedas,existencias,ImagenProducto)VALUES()
@@ -48,7 +51,7 @@ public class AdminProductos extends Logic {
                 statement.setInt(5, bdcategoriaproducto);
                 statement.setInt(6, bdbusquedasproducto);
                 statement.setInt(7, bdexistenciasproducto);
-                statement.setBytes(8, bdimagenproducto);
+                statement.setBlob(8, imagenblob);
                 
                 int si = statement.executeUpdate();
               
