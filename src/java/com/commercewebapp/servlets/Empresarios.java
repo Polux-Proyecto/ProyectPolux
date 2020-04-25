@@ -6,11 +6,8 @@ import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.logics.BuscarUsuario;
 import com.commercewebapp.objects.Envio;
 import com.commercewebapp.objects.Estadistico;
-<<<<<<< Updated upstream
 import com.commercewebapp.objects.InformacionCliente;
-=======
 import com.commercewebapp.objects.NuevoProducto;
->>>>>>> Stashed changes
 import com.commercewebapp.objects.Stock;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
