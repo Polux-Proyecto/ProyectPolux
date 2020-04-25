@@ -4,6 +4,7 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Arreglos"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,11 @@ Usuario         usuario = (Usuario)         request.getSession().getAttribute("u
     if (usuario==null){
         response.sendRedirect("ErrorEnInicioSesion");
     }
+Arreglos arreglos = new Arreglos();
+int annos[] = arreglos.getAnnos();
+int dias[] = arreglos.getDias();
+String meses[] = arreglos.getMeses();
+int canAnnos = arreglos.getCant();
 %>
 <html>
     <head>
@@ -38,7 +44,7 @@ Usuario         usuario = (Usuario)         request.getSession().getAttribute("u
     <body>
 		<section>
 			<div>
-				<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
 						  <img src="<%= logo %>" width="197" height="60">
@@ -116,33 +122,26 @@ Usuario         usuario = (Usuario)         request.getSession().getAttribute("u
                         <label for="cardNumber">Número de targeta</label>
                         <input type="text" class="form-control" id="cardNumber">
                     </div>
-                    <div class="form-group" id="card-number-field">
-                        <label for="cardNumber">Nombre en targeta</label>
-                        <input type="text" class="form-control" id="cardNumber">
-                    </div>
                     <div class="form-group" id="expiration-date">
                         <label>Fecha de expiración</label>
                         <select>
-							<option value="01">January</option>
-							<option value="02">February </option>
-							<option value="03">March</option>
-							<option value="04">April</option>
-							<option value="05">May</option>
-							<option value="06">June</option>
-							<option value="07">July</option>
-							<option value="08">August</option>
-							<option value="09">September</option>
-							<option value="10">October</option>
-							<option value="11">November</option>
-							<option value="12">December</option>
+<% 
+for (int i = 0; i <12; i++){
+%>
+                            <option value="01"><%= meses[i] %></option>
+<%
+}
+%>
                         </select>
                         <select>
-                            <option value="16"> 2016</option>
-                            <option value="17"> 2017</option>
-                            <option value="18"> 2018</option>
-                            <option value="19"> 2019</option>
-                            <option value="20"> 2020</option>
-                            <option value="21"> 2021</option>
+<% 
+    for(int i = 0; i < canAnnos ; i++ ){
+    %>
+                            <option value="<%= annos[i] + 20 %>"> <%= annos[i] + 20 %> </option>
+                                
+<%
+    }
+%>
                         </select>
                     </div>
                     <div class="form-group" id="credit_cards">
@@ -153,9 +152,6 @@ Usuario         usuario = (Usuario)         request.getSession().getAttribute("u
                     <div class="form-group" id="pay-now">
                         <button type="submit" class="btn btn-default" id="confirm-purchase">Confirmar</button>
                     </div>
-                    <div class="field is-grouped">
-                    
-                </div>
                 </form>
             </div>
         </div>
