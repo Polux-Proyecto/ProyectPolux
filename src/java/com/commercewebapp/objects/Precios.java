@@ -11,10 +11,11 @@ package com.commercewebapp.objects;
  */
 public class Precios {
     private String precioUnitario, cargoEnvio, totalPagar;
+    private int cantidad;
     
-    Precios (double precioU, int cantidad){
+    public Precios (double precioU, int cantidad){
         double dCargoEnvio = cantidad*precioU*0.1;
-        double dtotalPagar = cantidad*precioU;
+        double dtotalPagar = cantidad*precioU + dCargoEnvio;
         
         dCargoEnvio = (double) Math.round(dCargoEnvio * 100d / 100d);
         dtotalPagar = (double) Math.round(dtotalPagar * 100d / 100d);
@@ -22,8 +23,18 @@ public class Precios {
         this.setPrecioUnitario(Double.toString(precioU));
         this.setCargoEnvio(Double.toString(dCargoEnvio));
         this.setTotalPagar(Double.toString(dtotalPagar));
+        this.setCantidad(cantidad);
         
     }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    private void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
 
     public String getPrecioUnitario() {
         return precioUnitario;
