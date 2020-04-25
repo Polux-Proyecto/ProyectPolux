@@ -4,12 +4,17 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Producto"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%      
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     String  logo = (String)  request.getSession().getAttribute("logo");
     String  palabra = (String)  request.getSession().getAttribute("palabra");
     List<Producto>  listaProductos = (List<Producto>)  request.getSession().getAttribute("listaProductos");

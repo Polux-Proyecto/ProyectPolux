@@ -1,11 +1,16 @@
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Categoria"%>
 <%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.NuevoMicroEmpresario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<% 
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     List<Categoria> categorias = (List<Categoria>) request.getSession().getAttribute("listaCategoria");
     Iterator<Categoria> iteCategoria = null;
     Categoria categoriaActual = null;
@@ -43,7 +48,8 @@
                     email =usuarioexistente.getEmail();
                     pais= usuarioexistente.getPais();
                     ciudad = usuarioexistente.getCiudad();
-                    categoria = usuarioexistente.getCategoria();
+                    int intcategoria = usuarioexistente.getCategoria();
+                    categoria = Integer.toString(intcategoria);
                     
                     mensajeerror = "El nombre de usuario ya existe, intente con otro";
            
@@ -100,6 +106,7 @@
                 <div class="field">
                     <label>Username</label>
                     <div class="control">
+                        <div style="color:red"><%= mensajeerror%>
                         <input class="input" type="text" name="userEmp" id="userEmp" idplaceholder="Text input">
                     </div>
                 </div>

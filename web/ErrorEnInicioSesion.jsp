@@ -9,9 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Error</title>
     </head>
     <body>
         <h1>Hubo un error en el inicio de la sesión</h1>
+        <a herf="index.jsp">Inicie su seción aquí</a>
     </body>
 </html>

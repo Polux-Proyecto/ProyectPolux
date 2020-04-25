@@ -1,9 +1,11 @@
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.AdminCategorias;
 import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.logics.BuscarUsuario;
+import com.commercewebapp.objects.Categoria;
 import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
@@ -38,15 +40,18 @@ import javax.servlet.http.HttpServletResponse;
                     
                     AdminProductos buscadorProd = new AdminProductos();
                     AdminPedidos buscadorPedidos = new AdminPedidos();
+                    AdminCategorias buscadorCategoria = new AdminCategorias();
                     List<Producto> listaProdMasVendidos = buscadorProd.getArticulosMasVendidos(usuario.getIdUsuario() , 3);
                     List<Producto> listaProdMenosStock = buscadorProd.getProductosPocoStock(usuario.getIdUsuario(), 3, false);
                     List<Producto> listaProdSinStock = buscadorProd.getProductosSinStock(usuario.getIdUsuario(), 3);
+                    List<Categoria> listaCategoria = buscadorCategoria.getAllCategorias();
                     int cantidadProducto = buscadorPedidos.getCantidadPedidos(usuario.getIdUsuario()); 
                     request.getSession().setAttribute("cantidadProducto", cantidadProducto);
                     request.getSession().setAttribute("listaProdSinStock", listaProdSinStock);
                     request.getSession().setAttribute("listaProdMasVendidos", listaProdMasVendidos);
                     request.getSession().setAttribute("listaPrdMenosStock",listaProdMenosStock);
                     request.getSession().setAttribute("usuario", usuario);
+                    request.getSession().setAttribute("listaCategoria", listaCategoria);
                     request.getSession().setAttribute("logo", logo);
                     request.getRequestDispatcher("InicioEmpresa.jsp").forward(request, response);
                     

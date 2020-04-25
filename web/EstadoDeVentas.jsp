@@ -4,12 +4,17 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Estadistico"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     List<Estadistico> listaEstadisticos = (List<Estadistico>) request.getSession().getAttribute("listaEstadisticos");
     List<Estadistico> listaTop5Prod = (List<Estadistico>) request.getSession().getAttribute("listaTop5Prod");
     List<Estadistico> listaTop5Cat = (List<Estadistico>) request.getSession().getAttribute("listaTop5Cat");
@@ -86,14 +91,6 @@
 
 					<div class="navbar-end">
 						<div class="navbar-item">
-							<p class="control">
-								<input class="input" type="text" placeholder="Find a post">
-							</p>
-							<p class="control">
-								<button class="button" style="background-color: greenyellow">
-									Buscar
-								</button>
-							</p>
 							<div class="buttons">
 								<a class="button " href="index.jsp" style="background-color: #29b342">
 									Cerrar sesión

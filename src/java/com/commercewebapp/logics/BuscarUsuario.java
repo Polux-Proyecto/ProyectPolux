@@ -4,12 +4,14 @@ import com.commercewebapp.database.DatabaseZ;
 import com.commercewebapp.objects.NuevoMicroEmpresario;
 import com.commercewebapp.objects.NuevoUsuarioParticular;
 import com.commercewebapp.objects.Usuario;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.rowset.serial.SerialBlob;
 
 /**
  * @version 1.0
@@ -151,7 +153,7 @@ public class BuscarUsuario extends Logic {
        Connection conn = null;
        PreparedStatement statement;
        conn = localDatabase.getConnection();
-       boolean hasfailed = true;
+       boolean hasfailed = false;
 //       String pSQL;
 
        if(nuevouser!=null){
@@ -172,7 +174,7 @@ public class BuscarUsuario extends Logic {
 //                       + bdfechanacimiento + "','"+Arrays.toString(bdimagenperfil)+"')";
               
                try{
-                   
+                  Blob imagenblob = new SerialBlob(bdimagenperfil); 
                statement = conn.prepareStatement("INSERT INTO comercebd.clientetb(Nombre,Correo,Username,Password,Pais,Ciudad,Dirección,Sexo,FechaNacimiento,ImagenPerfil)"
                        + "VALUES(?,?,?,?,?,?,?,?,?,?)");
                
@@ -186,7 +188,7 @@ public class BuscarUsuario extends Logic {
                        statement.setString(7, bddireccion);
                        statement.setString(8, bdsexo);
                        statement.setString(9, bdfechanacimiento);
-                       statement.setBytes(10, bdimagenperfil);
+                       statement.setBlob(10, imagenblob);
                        
                System.out.println("hasta aca si llego");
                
@@ -215,11 +217,12 @@ public class BuscarUsuario extends Logic {
             String bdemail = nuevoempresario.getEmail();
             String bdpais = nuevoempresario.getPais();
             String bdciudad = nuevoempresario.getCiudad();
-            String bdcategoria = nuevoempresario.getCategoria();
+            int bdcategoria = nuevoempresario.getCategoria();
             byte[] bdlogo = nuevoempresario.getLogo();
              
             System.out.println("antes de insertar si salio");
            try {
+               Blob imagenblob = new SerialBlob(bdlogo); 
 //            pSQL = "INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"
 //                    + "VALUES('"+bdname+"','"+bdnit+"','"+bdpassword+"','"+bduser+"','"+bddescripcion+"','"+bdemail+"','"+bdpais+"','"  + bdciudad +"','"+bdcategoria+"','"+Arrays.toString(bdlogo)+"')";
 //            hasfailed = localDatabase.executeNonQueryBool(pSQL);
@@ -234,8 +237,8 @@ public class BuscarUsuario extends Logic {
                        statement.setString(6, bdemail);
                        statement.setString(7, bdpais);
                        statement.setString(8, bdciudad);
-                       statement.setString(9, bdcategoria);
-                       statement.setBytes(10, bdlogo);
+                       statement.setInt(9, bdcategoria);
+                       statement.setBlob(10, imagenblob);
                 
                         int si = statement.executeUpdate();
               

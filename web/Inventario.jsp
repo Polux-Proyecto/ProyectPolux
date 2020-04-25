@@ -4,11 +4,16 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Stock"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% 
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     List<Stock> inventario = (List<Stock>) request.getSession().getAttribute("listaStock");
     int cantInventario = 0;
     Iterator <Stock> iteInventario = null;
@@ -22,6 +27,18 @@
  %>
 <!DOCTYPE html>
 <%String  logo = (String)  request.getSession().getAttribute("logo");%>
+
+<%
+   /* ESTE MENSAJE ES POR SI ACASO (NO TOCAR)*/
+    String productoexitoso = (String)request.getSession().getAttribute("productoexitoso");
+    String messageprod="";
+    if(productoexitoso=="25")
+    {
+        messageprod="Su nuevo producto ha sido registrado con exito";
+        productoexitoso="26";
+        request.getSession().setAttribute("productoexitoso", productoexitoso);
+    }
+    %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -96,6 +113,7 @@
                     <h2 class="subtitle"style="color:black">
                        Te ayudamos a controlar tu stock y a satisfacer a tus clientes  
                     </h2>
+                   <div style="color:blue"><%= messageprod%>
                 </div>
             </div>
         </section>

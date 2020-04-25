@@ -2,12 +2,17 @@ package com.commercewebapp.logics;
 
 import com.commercewebapp.database.DatabaseZ;
 import com.commercewebapp.objects.Llenador;
+import com.commercewebapp.objects.NuevoProducto;
 import com.commercewebapp.objects.Producto;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.rowset.serial.SerialBlob;
 
 /**
  * Este Logic sirve para administrar todo lo que suceda con los productos, ingresar un nuevo producto, comprar un producto, etc
@@ -16,15 +21,48 @@ import java.util.logging.Logger;
 public class AdminProductos extends Logic {
     DatabaseZ localDatabase = getDatabase();
     
-    public boolean crearProducto(Producto producto){
-        String  pSQL;
+    public boolean crearProducto(NuevoProducto producto){
         boolean hasFailed = true;
+        DatabaseZ localDatabase2 = getDatabase();
+        Connection conn = null;
+        PreparedStatement statement;
+        conn = localDatabase2.getConnection();
         
-        if (producto != null){
-            pSQL = "INSERT INTO `comercebd`.`prodtb` (`idprodtb`,`nombre`,`precio`,`descripcion`,`empresa`,`activo`,`cantidad`) "
-                +"VALUES(0, '"+producto.getNombre()+"',"+producto.getPrecio()+",'"+producto.getDescripcion()+"',"+producto.getIdEmpresa()+",1,"+producto.getCantidad()+");";
-            hasFailed = localDatabase.executeNonQueryBool(pSQL);
-            System.out.println("Se insertaron los datos de usuario particular correctamente");
+        if (producto != null)
+        {
+            try {
+                String bdnombre = producto.getNombreproducto();
+                int bdprecioproducto = producto.getPrecioproducto();
+                String bddescripcionproducto= producto.getDescripcionproducto();
+                int bdempresaproducto = producto.getEmpresaproducto();
+                int bdcategoriaproducto = producto.getCategoriaproducto();
+                int bdbusquedasproducto = producto.getCategoriaproducto();
+                int bdexistenciasproducto = producto.getExistenciasproducto();
+                byte[] bdimagenproducto = producto.getImagenproducto();
+                Blob imagenblob = new SerialBlob(bdimagenproducto);
+                
+                statement = conn.prepareStatement("INSERT INTO comercebd.prodtb(nombre,precio,descripcion,empresa,categoria,busquedas,existencias,ImagenProducto)VALUES(?,?,?,?,?,?,?,?)");
+                // INSERT INTO comercebd.prodtb(idprodtb,nombre,precio,descripcion,empresa,categoria,busquedas,existencias,ImagenProducto)VALUES()
+                statement.setString(1, bdnombre);
+                statement.setInt(2, bdprecioproducto);
+                statement.setString(3, bddescripcionproducto);
+                statement.setInt(4, bdempresaproducto);
+                statement.setInt(5, bdcategoriaproducto);
+                statement.setInt(6, bdbusquedasproducto);
+                statement.setInt(7, bdexistenciasproducto);
+                statement.setBlob(8, imagenblob);
+                
+                int si = statement.executeUpdate();
+              
+              if (si>0){
+                  hasFailed = true;
+              
+                System.out.println("Se insertaron los datos de nuevo producto correctamente");
+              }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         return hasFailed;

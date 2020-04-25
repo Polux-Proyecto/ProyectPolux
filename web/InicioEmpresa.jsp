@@ -10,12 +10,16 @@
 
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Producto"%>
+<%@page import="com.commercewebapp.objects.Categoria"%>
 <%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% 
+<%  
     Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
     List<Producto> listaProdMasVendidos = (List<Producto>) request.getSession().getAttribute("listaProdMasVendidos");
     List<Producto> listaPrdMenosStock = (List<Producto>) request.getSession().getAttribute("listaPrdMenosStock");
     List<Producto> listaProdSinStock = (List<Producto>) request.getSession().getAttribute("listaProdSinStock");
@@ -48,7 +52,15 @@
     Producto producto = null;
     String  logo = (String)  request.getSession().getAttribute("logo");
    %> 
-    
+   
+<% 
+                List<Categoria> categorias = (List<Categoria>) request.getSession().getAttribute("listaCategoria");
+                Iterator<Categoria> iteCategoria = null;
+                Categoria categoriaActual = null;
+                if (categorias!=null){
+                 iteCategoria = categorias.iterator();
+                }
+%>
     
 <%
     String error = request.getParameter("Error"), mensaje = request.getParameter("Mensaje"), avisoE = "", avisoM = "";
@@ -99,7 +111,7 @@
         <section>
 			<div>
 				<nav class="navbar" role="navigation" aria-label="main navigation" >
-					<div class="navbar-brand">
+					<div class="navbar-brand is-light">
 						<img src="<%= logo %>" width="197" height="60">
                        
 						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -108,6 +120,7 @@
 							<span aria-hidden="true"></span>
 						</a>
 					</div>
+
 
 					<div id="navbarBasicExample" class="navbar-menu">
 						
@@ -132,14 +145,7 @@
 
 					<div class="navbar-end">
 						<div class="navbar-item">
-							<p class="control">
-								<input class="input" type="text" placeholder="Find a post">
-							</p>
-							<p class="control">
-								<button class="button" style="background-color: greenyellow">
-									Buscar
-								</button>
-							</p>
+							
 							<div class="buttons">
 								<a class="button " href="index.jsp" style="background-color: #29b342">
 									Cerrar sesión
@@ -149,6 +155,8 @@
 					</div>
 				</nav>
 			</div>
+
+          
         </section>
         <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
             <div class="hero-body">
@@ -176,113 +184,109 @@
         <section class="section" >
             <div class="tile is-ancestor">
                 <div class="tile is-vertical">
-					<div class="tile">
-						<div class="tile is-parent is-vertical">
-							<article class="tile is-child box" style="border: green 10px inset;">
-                        
-								<p class="title">Añadir Producto</p>
-								<p class="subtitle">Agrega nuevos productos a tu inventario</p>
-								<button class="button modal-button" data-target="#Modal1" aria-haspopup="true" style="background-color: chartreuse">Nuevo Producto</button>
-                        
-								<div class="modal" id="Modal1">
-									<div class="modal-background"></div>
-									<div class="modal-card">
-										<header class="modal-card-head">
-											<p class="modal-card-title">Nuevo Producto</p>
-											<button class="delete" aria-label="close"></button>
-										</header>
-										<section class="modal-card-body">
-											<form name="FrmNuevoProd" action="Empresarios" method="get" id="FrmNuevoProd">
-												<p class="subtitle has-text-danger"><%= avisoE %></p>
-												<p class="subtitle has-text-success"><%= avisoM %></p>
+                        <div class="tile">
+                                <div class="tile is-parent is-vertical">
+                                        <article class="tile is-child box" style="border: green 10px inset;">
 
-												<div class="field">
-													<label>Nombre del producto:</label>
-													<div class="control">
-													  <input class="input" type="text" name="nameProd" id="nameProd"/>
-													</div>
-												</div>
-												<div class="field">
-													<label>Imagen de Producto</label>
-													<div class="control">
-														<div class="file has-name is-right">
-															<label class="file-label">
-																<input class="file-input" type="file" name="resume">
-																<span class="file-cta">
-																	<span class="file-icon">
-																		<i class="fas fa-upload"></i>
-																	</span>
-																	<span class="file-label">
-																		Choose a file…
-																	</span>
-																</span>
-																<span class="file-name">
-																	Screen Shot 2017-07-29 at 15.54.25.png
-																</span>
-															</label>
-														</div>
-													</div>
-												</div>
-												<div class="field">
-													<label>Cantidad:</label>
-													<div class="control">
-														<input class="input" type="number" name="cantProd" id="cantProd" min="1"/>
-													</div>
-												</div>
-												<div class="field">
-													<label>Categoría</label>
-													<br>
-													<input class="is-checkradio" id="NecBasicas" type="radio" name="NecBasicas" checked="checked">
-													<label for="NecBasicas">Necesidades Básicas</label>
+                                        <p class="title">Añadir Producto</p>
+                                        <p class="subtitle">Agrega nuevos productos a tu inventario</p>
+                                        <button class="button modal-button" data-target="#Modal1" aria-haspopup="true" style="background-color: chartreuse">Nuevo Producto</button>
 
-													<input class="is-checkradio" id="Hogar" type="radio" name="Hogar" checked="checked">
-													<label for="Hogar">Hogar</label>
+                                        <div class="modal" id="Modal1">
+                                                <div class="modal-background"></div>
+                                                <div class="modal-card">
+                                                        <header class="modal-card-head">
+                                                                <p class="modal-card-title">Nuevo Producto</p>
+                                                                <button class="delete" aria-label="close"></button>
+                                                        </header>
+                                                        <section class="modal-card-body">
+                                                                <form name="FrmNuevoProd" action="Empresarios" method="post" id="FrmNuevoProd" enctype="multipart/form-data">
+                                                                    <input type="hidden" name="formid" id="formid" value="1">
+                                                                        <p class="subtitle has-text-danger"><%= avisoE %></p>
+                                                                        <p class="subtitle has-text-success"><%= avisoM %></p>
 
-													<input class="is-checkradio" id="Tec" type="radio" name="Tec" checked="checked">
-													<label for="Tec">Tecnología</label>
+                                                                        <div class="field">
+                                                                                <label>Nombre del producto:</label>
+                                                                                <div class="control">
+                                                                                  <input class="input" type="text" name="nameProd" id="nameProd"/>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="field">
+                                                                                <label>Imagen de Producto</label>
+                                                                                <div class="control">
+                                                                                        <div class="file has-name is-right">
+                                                                                                <label class="file-label">
+                                                                                                        <input class="file-input" type="file" name="resume">
+                                                                                                        <span class="file-cta">
+                                                                                                                <span class="file-icon">
+                                                                                                                        <i class="fas fa-upload"></i>
+                                                                                                                </span>
+                                                                                                                <span class="file-label">
+                                                                                                                        Choose a file…
+                                                                                                                </span>
+                                                                                                        </span>
+                                                                                                        <span class="file-name">
+                                                                                                                Screen Shot 2017-07-29 at 15.54.25.png
+                                                                                                        </span>
+                                                                                                </label>
+                                                                                        </div>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="field">
+                                                                                <label>Cantidad:</label>
+                                                                                <div class="control">
+                                                                                        <input class="input" type="number" name="cantProd" id="cantProd" min="1"/>
+                                                                                </div>
+                                                                        </div>
 
-													<input class="is-checkradio" id="Repuestos" type="radio" name="Repuestos" checked="checked">
-													<label for="Repuestos">Repuestos</label>
-												</div>
-												<div class="field">
-													<label>Precio Unitario:</label>
-													<div class="control">
-														<input class="input" type="number" name="precProd" id="precProd" min="1"/>
-													</div>
-												</div>
-												<div class="field">
-													<label>Costo Unitario:</label>
-													<div class="control">
-														<input class="input" type="number" name="costoProd" id="costoProd" min="0.01"/>
-													</div>
-												</div>
-												<div class="field">
-													<label>Descripción:</label>
-													<div class="control">
-														<input class="input" type="text" name="descProd" id="descProd"/>
-													</div>
-												</div>
-											</form>
-										</section>
-										<footer class="modal-card-foot">
-											<button class="button is-success">Save changes</button>
-											<button class="button is-delete">Cancel</button>
-										</footer>
-									</div>
-								</div>
-								<script>
-									document.querySelectorAll('.modal-button').forEach(function(el) {
-										el.addEventListener('click', function() {
-										  var target = document.querySelector(el.getAttribute('data-target'));
+                                                                                <div class="field">
+                                                                                        <label>Categoría</label>
+                                                                                         <div class="control">
+                                                                                        <div class="select is-info">
+                                                                                            <select  id="StrCategoria" name="StrCategoria">
+                                                                                                <% if(categorias!=null){
+                                                                                                        while(iteCategoria.hasNext()){
+                                                                                                            categoriaActual = iteCategoria.next();
+                                                                                                %>
+                                                                                                <option value=<%= categoriaActual.getIdCat() %>><%= categoriaActual.getNombre() %> </option>
+                                                                                                <%      }
+                                                                                                    }%>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="field">
+                                                                                        <label>Precio Unitario:</label>
+                                                                                        <div class="control">
+                                                                                                <input class="input" type="number" name="precProd" id="precProd" min="1"/>
+                                                                                        </div>
+                                                                                </div>
 
-										  target.classList.add('is-active');
+                                                                                <div class="field">
+                                                                                        <label>Descripción:</label>
+                                                                                        <div class="control">
+                                                                                                <input class="input" type="text" name="descProd" id="descProd"/>
+                                                                                        </div>
+                                                                                </div>
+                                                                        
+                                                                </section>
+                                                                <footer class="modal-card-foot">
+                                                                    <input type="hidden" id="formid" value="1">
+                                                                        <button class="button is-success" >Save changes</button>
+                                                                        <button class="button is-delete">Cancel</button>
+                                                                </footer>
+                                                                </form>                            
+                                                        </div>
+                                                </div>
+                                                <script>
+                                                        document.querySelectorAll('.modal-button').forEach(function(el) {
+                                                                el.addEventListener('click', function() {
+                                                                  var target = document.querySelector(el.getAttribute('data-target'));
 
-										  target.querySelector('.delete').addEventListener('click',   function() {
-											  target.classList.remove('is-active');
+                                                                  target.classList.add('is-active');
 
-										   });
-										   target.querySelector('.is-delete').addEventListener('click',   function() {
-											  target.classList.remove('is-active');
+                                                                  target.querySelector('.delete').addEventListener('click',   function() {
+                                                                          target.classList.remove('is-active');
 
 										   });
 										});
@@ -353,17 +357,17 @@
 								<br>
                         
 								<div class="field is-grouped">
-									<p class="control">
-										<button class="button is-link">
+                                                                    <form method="get" action="EstadoDeVentas.jsp">
+										<button class="button" style="background-color: #29b342">
 											Ir a ventas  
 										</button>
-									</p>
+									</form>
 
-									<p class="control">
-										<button class="button is-primary">
+                                                                    <form method="get" action="Inventario.jsp">
+										<button class="button" style="background-color: chartreuse">
 											Ir a inventario
 										</button>
-									</p>
+									</form>
 								</div>
                     
 							</article>

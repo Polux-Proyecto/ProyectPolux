@@ -20,6 +20,9 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.commons-io-2.6.jar-1}</file>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.BalcorpFWJavaLibrary.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

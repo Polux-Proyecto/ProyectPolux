@@ -10,7 +10,12 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%String  logo = (String)  request.getSession().getAttribute("logo");
+<%  
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSesion");
+    }
+    String  logo = (String)  request.getSession().getAttribute("logo");
     List<Usuario> top10 = (List<Usuario>) request.getSession().getAttribute("top10Clientes");
     List<InformacionCliente> paises = (List<InformacionCliente>) request.getSession().getAttribute("paises");
     List<InformacionCliente> ciudades = (List<InformacionCliente>) request.getSession().getAttribute("ciudades");
@@ -24,7 +29,7 @@
     Iterator<InformacionCliente> itePaises = null;
     Iterator<InformacionCliente> iteCiudades = null;
     
-    Usuario usuario = null;
+    Usuario user = null;
     InformacionCliente info = null;
     
     if(top10!=null){
@@ -168,7 +173,7 @@
                     <%
                         } else {
                             while(iteTop10.hasNext()){
-                                usuario = iteTop10.next();
+                                user = iteTop10.next();
                         %>
                         <div class="box">
                             <article class="media">
@@ -179,8 +184,8 @@
                                 </div>
                                 <div class="media-content">
                                     <div class="content">
-                                        <p><strong><%= usuario.getNombre() %></strong> 
-                                            <br>País:<%= usuario.getPais() %><br>Ciudad: <%= usuario.getCiudad() %><br>Género: <%= usuario.getGenero() %><br>Dirección: <%= usuario.getDireccion() %>
+                                        <p><strong><%= user.getNombre() %></strong> 
+                                            <br>País:<%= user.getPais() %><br>Ciudad: <%= user.getCiudad() %><br>Género: <%= usuario.getGenero() %><br>Dirección: <%= usuario.getDireccion() %>
                                         </p><br>
                                     </div>
                                 </div>
