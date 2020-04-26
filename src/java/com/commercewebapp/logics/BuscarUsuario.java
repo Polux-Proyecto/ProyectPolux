@@ -168,10 +168,7 @@ public class BuscarUsuario extends Logic {
                String bdsexo = nuevouser.getSexo();
                String bdfechanacimiento = nuevouser.getFechanacimiento();
                byte[] bdimagenperfil = nuevouser.getImagen();
-               
-//               pSQL = "INSERT INTO comercebd.clientetb(Nombre,Correo,Username,Password,Pais,Ciudad,Dirección,Sexo,FechaNacimiento,ImagenPerfil)"
-//                       + "VALUES('"+bdnombre+"','"+bdemail+"','"+bduser+"','"+bdpassword+"','"+bdpais+"','"+bdciudad+"','"+bddireccion+"','"+bdsexo+"','"
-//                       + bdfechanacimiento + "','"+Arrays.toString(bdimagenperfil)+"')";
+
               
                try{
                   Blob imagenblob = new SerialBlob(bdimagenperfil); 

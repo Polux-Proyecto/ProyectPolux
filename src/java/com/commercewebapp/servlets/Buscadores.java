@@ -123,11 +123,7 @@ import javax.servlet.http.HttpServletResponse;
                 // </editor-fold>
                 break;
             }
-            case "8":{
-                // <editor-fold defaultstate="collapsed" desc="Ir a pagina de compras">
-                response.sendRedirect("PagoProducto.jsp");
-                // </editor-fold>
-            }
+            
         }
         
     }

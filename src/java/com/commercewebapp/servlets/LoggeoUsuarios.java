@@ -1,11 +1,11 @@
 package com.commercewebapp.servlets;
 
 import com.commercewebapp.logics.AdminCategorias;
-import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.logics.BuscarUsuario;
 import com.commercewebapp.objects.Categoria;
+import com.commercewebapp.objects.DefaulImage;
 import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
@@ -45,7 +45,9 @@ import javax.servlet.http.HttpServletResponse;
                     List<Producto> listaProdMenosStock = buscadorProd.getProductosPocoStock(usuario.getIdUsuario(), 3, false);
                     List<Producto> listaProdSinStock = buscadorProd.getProductosSinStock(usuario.getIdUsuario(), 3);
                     List<Categoria> listaCategoria = buscadorCategoria.getAllCategorias();
+                    DefaulImage imgD = buscadorProd.getDefaultImage();
                     int cantidadProducto = buscadorPedidos.getCantidadPedidos(usuario.getIdUsuario()); 
+                    request.getSession().setAttribute("imgD", imgD);
                     request.getSession().setAttribute("cantidadProducto", cantidadProducto);
                     request.getSession().setAttribute("listaProdSinStock", listaProdSinStock);
                     request.getSession().setAttribute("listaProdMasVendidos", listaProdMasVendidos);
@@ -60,9 +62,8 @@ import javax.servlet.http.HttpServletResponse;
                     AdminProductos administrador = new AdminProductos();
                     List<Producto> deseos = administrador.getDeseosPorUsuario(usuario.getIdUsuario());
                     List<Producto> pedidos = administrador.getPedidosPorUsuario(usuario.getIdUsuario());
-                    
-                    
-                    
+                    DefaulImage imgD = administrador.getDefaultImage();
+                    request.getSession().setAttribute("imgD", imgD);
                     request.getSession().setAttribute("usuario", usuario);
                     request.getSession().setAttribute("deseos", deseos);
                     request.getSession().setAttribute("pedidos", pedidos);

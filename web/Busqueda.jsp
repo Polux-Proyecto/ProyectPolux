@@ -25,6 +25,7 @@
         cantProd = listaProductos.size();
         iteProducto = listaProductos.iterator();
     }
+    int k = 0;
 %>
 
 <html>
@@ -53,7 +54,7 @@
     <body>
         <section>
 			<div>
-				<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
 							<img src="<%= logo %>" width="197" height="60">
@@ -138,7 +139,7 @@
                                 <article class="media">
                                     <div class="media-left">
                                         <figure class="image is-128x128">
-                                            <a href="MuroProducto.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                            <a href="MuroProducto.jsp"><img src="Imagenes?formid=1&idImgen=<%= k %>&att=listaProductos" alt="Image"></a>
                                         </figure>
                                     </div>
                                     <div class="media-content">
@@ -151,7 +152,8 @@
                                     </div>
                                 </article>
                             </div>
-                        <% 
+                        <%          
+                                    k ++;
                                 }   
                             } 
                         %>

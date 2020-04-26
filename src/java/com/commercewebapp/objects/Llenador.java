@@ -8,6 +8,7 @@ package com.commercewebapp.objects;
 import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.logics.BuscarUsuario;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,9 +29,11 @@ public class Llenador {
         if (result!=null){
             int     id, existencias, idEmpresa;
             String  nombre, descripcion;
-            double  precio;   
+            double  precio;
+            Blob blob = null;
             Producto productoActual= null;
             listaProductos = new ArrayList();
+            byte[] imagen = null;
             try {
                     while(result.next()){
                         id = result.getInt("idprodtb");
@@ -39,8 +42,14 @@ public class Llenador {
                         descripcion = result.getString("descripcion");
                         precio = result.getDouble("precio");
                         existencias = result.getInt("existencias");
+                        blob = result.getBlob("imagen");
+                        if (blob != null){
+                            imagen = blob.getBytes(1,(int) blob.length());
+                        } else {
+                             imagen = null;
+                        }
                         
-                        productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias);
+                        productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias, imagen);
                         
                         listaProductos.add(productoActual);
                     }
@@ -61,12 +70,21 @@ public class Llenador {
             Categoria categoria = null;
             String nombre;
             int idCat;
+            byte[] img = null;
+            Blob blob = null;
             try {
                 while (result.next()){
                     nombre = result.getString("Nombre");
                     idCat = result.getInt("idCategorias");
+                    blob = result.getBlob("imagen");
                     
-                    categoria = new Categoria (nombre, idCat);
+                    if (blob!=null){
+                        img = blob.getBytes(1, (int) blob.length());
+                    } else {
+                        img = null;
+                    }
+                    
+                    categoria = new Categoria (nombre, idCat, img);
                     listaCategorias.add(categoria);
                     
                 }
@@ -174,5 +192,36 @@ public class Llenador {
             }
         }
     return lista;
+    }
+    
+    public List<Tarjetas> llenarTarjetas(ResultSet result){
+        List<Tarjetas> lista = null;
+        Tarjetas tarjeta = null;
+        String propietario, tipo, numero, codigoS, anno, mes;
+        int idTarjeta, idCliente;
+        if (result!=null){
+            lista = new ArrayList();
+            try {
+                while (result.next()){
+                    propietario = result.getString("Dueño");
+                    tipo = result.getString("tipo");
+                    numero = result.getString("NúmeroTargeta");
+                    codigoS = result.getString("CodigoSeguridad");
+                    mes = result.getString("MesExpira");
+                    anno = result.getString("AñoExpira");
+                    idTarjeta = result.getInt("idtargetas");
+                    idCliente = result.getInt("Cliente");
+                    
+                    tarjeta = new Tarjetas (propietario, tipo, numero, codigoS, mes, anno, idTarjeta, idCliente);
+                    
+                    lista.add(tarjeta);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Llenador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+        return lista;
     }
 }
