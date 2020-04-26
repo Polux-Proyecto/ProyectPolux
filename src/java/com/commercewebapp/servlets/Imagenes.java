@@ -5,9 +5,10 @@
  */
 package com.commercewebapp.servlets;
 
-import com.commercewebapp.logics.AdminPedidos;
+import com.commercewebapp.objects.Producto;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.OutputStream;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 78GDO
  */
-@WebServlet(name = "Finanzas", urlPatterns = {"/Finanzas"})
-public class Finanzas extends HttpServlet {
+@WebServlet(name = "Imagenes", urlPatterns = {"/Imagenes"})
+public class Imagenes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,32 +36,34 @@ public class Finanzas extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String formid = request.getParameter("formid");
+       
         
         switch (formid){
             case "1":{
-                // <editor-fold defaultstate="collapsed" desc="Añadir a lista de deseos">
-                AdminPedidos adminProd = new AdminPedidos();
-                String idClient = request.getParameter("idCliente");
-                String idProd = request.getParameter("idProd"), h = "";
-                int idCliente = Integer.parseInt(idClient);
-                int idProducto = Integer.parseInt(idProd);
                 
-                boolean hasFailed = adminProd.setListaDeseos(idCliente, idProducto);
+                //Cuando viene de loggeo usuario
+                String k = request.getParameter("idImgen");
+                String att = request.getParameter("att");
+                int i = Integer.parseInt(k);
+                List<Producto> lista = (List<Producto>) request.getSession().getAttribute(att);
                 
+                byte[] img = null;
+                OutputStream out = null;
                 
-                if (!hasFailed){
-                    h = "0";
-                    request.getSession().setAttribute("h", h);
-                    response.sendRedirect("MuroProducto.jsp");
-                } else {
-                    h = "1";
-                    request.setAttribute("h", h);
-                    request.getRequestDispatcher("MuroProducto.jsp").forward(request, response);
+
+                img =  lista.get(i).getImagen();
+                if (img!= null){
+                response.setContentType("image/gif");
+                    out = response.getOutputStream();
+                    out.write(img);
+                    out.flush();
+                    out.close();
                 }
-                //</editor-fold>
+                
                 break;
             }
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

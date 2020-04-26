@@ -7,10 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%  
-    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
-    if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
-    }
+   
     List<Categoria> categorias = (List<Categoria>) request.getSession().getAttribute("listaCategoria");
     Iterator<Categoria> iteCategoria = null;
     Categoria categoriaActual = null;

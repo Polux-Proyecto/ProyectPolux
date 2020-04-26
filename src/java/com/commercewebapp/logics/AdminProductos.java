@@ -42,7 +42,7 @@ public class AdminProductos extends Logic {
                 byte[] bdimagenproducto = producto.getImagenproducto();
                 Blob imagenblob = new SerialBlob(bdimagenproducto);
                 
-                statement = conn.prepareStatement("INSERT INTO comercebd.prodtb(nombre,precio,descripcion,empresa,categoria,busquedas,existencias,ImagenProducto)VALUES(?,?,?,?,?,?,?,?)");
+                statement = conn.prepareStatement("INSERT INTO comercebd.prodtb(nombre,precio,descripcion,empresa,categoria,busquedas,existencias,imagen)VALUES(?,?,?,?,?,?,?,?)");
                 // INSERT INTO comercebd.prodtb(idprodtb,nombre,precio,descripcion,empresa,categoria,busquedas,existencias,ImagenProducto)VALUES()
                 statement.setString(1, bdnombre);
                 statement.setInt(2, bdprecioproducto);

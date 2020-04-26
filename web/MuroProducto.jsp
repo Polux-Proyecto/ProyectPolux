@@ -15,6 +15,10 @@
     if (usuario==null){
         response.sendRedirect("ErrorEnInicioSesion");
     }
+    String hasFailed = (String) request.getSession().getAttribute("h");
+    if (hasFailed == null){
+        hasFailed = "2";
+    }
     Producto producto = (Producto) request.getSession().getAttribute("producto");
     Empresa empresa = (Empresa) request.getSession().getAttribute("empresa");
     String  logo = (String)  request.getSession().getAttribute("logo");
@@ -130,14 +134,29 @@
                             </div>
                             <nav class="navbar" role="navigation" aria-label="main navigation">
                                 <div class="field is-grouped">
-                                    <a class="navbar-item">
-                                        <div class="control">
-                                            <button class="button is-outlined is-danger">Lista de deseos</button>
-                                        </div>
+                                    
+                                        
+                                    <% if (hasFailed.equals("2")){ %>
+                                    <div class="control">
+                                        <a class="navbar-item" href="Finanzas?formid=1&idProd=<%= producto.getId() %>&idCliente=<%= usuario.getIdUsuario() %>">
+                                            <button class="button is-outlined is-danger" >Lista de deseos</button>
+                                        </a>
+                                    </div>
+                                    <% } else if (hasFailed.equals("1")){ %>
+                                    <div class="subtitle has-text-danger" >Hubo un error</div><br>
+                                    <a class="navbar-item" href="Finanzas?formid=1&idProd=<%= producto.getId() %>&idCliente=<%= usuario.getIdUsuario() %>">
+                                            <button class="button is-outlined is-danger" >Lista de deseos</button>
                                     </a>
+                                    <% } else if (hasFailed.equals("0")){ %>
+                                    <div class="subtitle has-text-success" >Tu producto se añadió correctamente</div><br>
+                                    <a class="navbar-item" href="Finanzas?formid=1&idProd=<%= producto.getId() %>&idCliente=<%= usuario.getIdUsuario() %>">
+                                            <button class="button is-outlined is-danger" >Lista de deseos</button>
+                                    </a>
+                                    
+                                    <% } %>
                                     <a class="navbar-item" href="Buscadores?formid=7&cantidad=1">
                                         <div class="control">
-                                            <button class="button is-outlined ">Comprar</button>
+                                            <button class="button is-outlined">Comprar</button>
                                         </div>
                                     </a>
                                 </div>

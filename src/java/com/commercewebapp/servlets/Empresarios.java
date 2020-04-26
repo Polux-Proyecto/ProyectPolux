@@ -50,7 +50,7 @@ public class Empresarios extends HttpServlet {
                 int empresaproducto = usuario.getIdUsuario();
                 String strcategoriaproducto = request.getParameter("StrCategoria");
                 int categoriaproducto = Integer.parseInt(strcategoriaproducto);
-                int busquedasproducto = 0000000000;
+                int busquedasproducto = 0;
                 String strexistenciasproducto = request.getParameter("cantProd");
                 int existenciasproducto= Integer.parseInt(strexistenciasproducto);
                 Part fileimagenproducto = request.getPart("resume");
@@ -67,7 +67,7 @@ public class Empresarios extends HttpServlet {
                     String productoexitoso="25";
                     
                     request.getSession().setAttribute("productoexitoso", productoexitoso);
-                    response.sendRedirect("Inventario.jsp");
+                    response.sendRedirect("Empresarios?formid=6");
                 } 
                 else 
                 {
