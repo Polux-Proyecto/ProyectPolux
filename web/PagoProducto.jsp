@@ -106,20 +106,78 @@ int canAnnos = arreglos.getCant();
         </section>
         <div class="creditCardForm">
             <div class="title">
-                <p>Datos de la targeta VISA</p>
+                <p>Pago con tarjeta de credito</p>
             </div>
             <div class="payment">
                 <form>
+                    <div class="subtitle">
+                <p>Seleccione su tarjeta de credito:</p>
+            </div>
+                    <section>
+                     <div class="box" style="border: lightgray 2px inset" id="derecha"><article class="media">
+                                <div class="media-left">
+									<figure class="image is-128x128">
+										
+									</figure>
+                                </div>
+                                <div class="media-content">
+									<div class="content">
+                                                                            
+                    <label>Nombre del propietario:</label>
+                    <br><br>
+                    <label>Tipo de tarjeta de credito: </label>
+                    <br><br>
+                    <label>Numero de Tarjeta de credito:</label>
+                    <br><br>
+                    <label>Codigo de seguridad:</label>
+                    
+                    
+                        <br><br>
+                                                                    
+                            
+                             <div class="control">
+                        <button class="button is-link">Utilizar esta tarjeta de credito</button>
+                    </div>
+                        </div>                                             
+                                                                                
+									</div>
+                                </div>
+                        
+                        
+                        
+                    </section>
+                    		
+                          
+                    
+                    
+                    
+                        <div class="subtitle">
+                <p>Registre una nueva tarjeta de credito:</p>
+            </div>
                     <div class="form-group owner">
-                        <label for="owner">Dueño de la targeta</label>
+                        <label for="owner">Dueño de la tarjeta de credito</label>
                         <input type="text" class="form-control" id="owner">
                     </div>
+                    
+                                 <label>Tipo de Tarjeta de credito</label>
+                    <div class="control">
+                        <div class="select is-info">
+                            <select  id="StringNewCountry" name="StringNewCountry" >>
+                                <option value="Visa">Visa</option>
+                                <option value="American Express">American Express</option>
+                                <option value="Mastercard">Mastercard</option>
+                                
+                            </select>
+                        </div>
+
+                    
+                </div>
                     <div class="form-group CVV">
                         <label for="cvv">Código de seguridad</label>
                         <input type="text" class="form-control" id="cvv">
                     </div>
                     <div class="form-group" id="card-number-field">
-                        <label for="cardNumber">Número de targeta</label>
+                        <label for="cardNumber">Número de tarjeta</label>
                         <input type="text" class="form-control" id="cardNumber">
                     </div>
                     <div class="form-group" id="expiration-date">
@@ -142,15 +200,28 @@ for (int i = 0; i <12; i++){
     }
 %>
                         </select>
+                        
+                        <br>
+                        <br>
+                        <br>
+                              <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link">Ingresar tarjeta de credito</button>
                     </div>
-                    <div class="form-group" id="credit_cards">
-                        <img src="assets/images/visa.jpg" id="visa">
-                        <img src="assets/images/mastercard.jpg" id="mastercard">
-                        <img src="assets/images/amex.jpg" id="amex">
+                    <div class="control">
+                        <button class="button is-link is-light">Cancelar</button>
                     </div>
-                    <div class="form-group" id="pay-now">
-                        <button type="submit" class="btn btn-default" id="confirm-purchase">Confirmar</button>
+                </div>
                     </div>
+                        
+                   
+                        
+                        
+                        
+                        
+                        
+
+                  
                 </form>
             </div>
         </div>
