@@ -18,7 +18,9 @@
     String nombreCategoria = (String) request.getSession().getAttribute("nombreCategoria");
     Iterator<Producto> iteProductos = listaProductos.iterator();
     int cantidadProductos = listaProductos.size();
+    
     String ref = "";
+    int k = 0;
 	String  logo = (String)  request.getSession().getAttribute("logo");
 %>
 <!DOCTYPE html>
@@ -130,7 +132,7 @@
 							<article class="media">
 								<div class="media-left">
 									<figure class="image is-128x128">
-										<a href= "<%= ref %>" ><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+										<a href= "<%= ref %>" ><img src="Imagenes?formid=1&idImgen=<%= k %>&att=listaProductos" alt="Image" ></a>
 									</figure>
 								</div>
 								<div class="media-content">
@@ -143,6 +145,7 @@
 							</article>
 						</div>
 						<% 
+                                                            k++;
 							}
 						}
 						%>
