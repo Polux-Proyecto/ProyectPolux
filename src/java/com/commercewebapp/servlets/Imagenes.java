@@ -5,6 +5,8 @@
  */
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.objects.Categoria;
+import com.commercewebapp.objects.DefaulImage;
 import com.commercewebapp.objects.Producto;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -40,7 +42,7 @@ public class Imagenes extends HttpServlet {
         
         switch (formid){
             case "1":{
-                
+                // <editor-fold defaultstate="collapsed" desc="Para imágenes en Productos.">
                 //Cuando viene de loggeo usuario
                 String k = request.getParameter("idImgen");
                 String att = request.getParameter("att");
@@ -52,14 +54,44 @@ public class Imagenes extends HttpServlet {
                 
 
                 img =  lista.get(i).getImagen();
-                if (img!= null){
+                if (img == null){
+                    DefaulImage defImage = (DefaulImage) request.getSession().getAttribute("imgD");
+                    img = defImage.getImg();
+                }
                 response.setContentType("image/gif");
                     out = response.getOutputStream();
                     out.write(img);
                     out.flush();
                     out.close();
-                }
                 
+                // </editor-fold>
+                break;
+            }
+            case "2":{
+                // <editor-fold defaultstate="collapsed" desc="Para desplegar imagenes de categorias">
+                String k = request.getParameter("idImgen");
+                String att = request.getParameter("att");
+                int i = Integer.parseInt(k);
+                List<Categoria> lista = (List<Categoria>) request.getSession().getAttribute(att);
+                
+                byte[] img = null;
+                OutputStream out = null;
+                
+
+                img =  lista.get(i).getImg();
+                
+                if (img == null){
+                    DefaulImage defImage = (DefaulImage) request.getSession().getAttribute("imgD");
+                    img = defImage.getImg();
+                }
+                response.setContentType("image/gif");
+                    out = response.getOutputStream();
+                    out.write(img);
+                    out.flush();
+                    out.close();
+                
+                
+                // </editor-fold>
                 break;
             }
         }

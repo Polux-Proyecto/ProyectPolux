@@ -1,11 +1,11 @@
 package com.commercewebapp.servlets;
 
 import com.commercewebapp.logics.AdminCategorias;
-import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.logics.BuscarUsuario;
 import com.commercewebapp.objects.Categoria;
+import com.commercewebapp.objects.DefaulImage;
 import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
         String  clave = request.getParameter("passis");
         Usuario usuario = buscador.getAllUsers(nombre);
         
-        String logo = "https://i.pinimg.com/originals/ce/17/b0/ce17b04f1763ba06d11bddebfe32de4e.jpg";
+        String logo = "https://i.pinimg.com/originals/1c/39/0a/1c390a0c4ca3850fa5bd314c6fb37efc.png";
         
         if (!usuario.isMicroEmpresario()==usuario.isUsuario()){
             String claveIngresada = usuario.getContra();
@@ -45,7 +45,9 @@ import javax.servlet.http.HttpServletResponse;
                     List<Producto> listaProdMenosStock = buscadorProd.getProductosPocoStock(usuario.getIdUsuario(), 3, false);
                     List<Producto> listaProdSinStock = buscadorProd.getProductosSinStock(usuario.getIdUsuario(), 3);
                     List<Categoria> listaCategoria = buscadorCategoria.getAllCategorias();
+                    DefaulImage imgD = buscadorProd.getDefaultImage();
                     int cantidadProducto = buscadorPedidos.getCantidadPedidos(usuario.getIdUsuario()); 
+                    request.getSession().setAttribute("imgD", imgD);
                     request.getSession().setAttribute("cantidadProducto", cantidadProducto);
                     request.getSession().setAttribute("listaProdSinStock", listaProdSinStock);
                     request.getSession().setAttribute("listaProdMasVendidos", listaProdMasVendidos);
@@ -60,6 +62,8 @@ import javax.servlet.http.HttpServletResponse;
                     AdminProductos administrador = new AdminProductos();
                     List<Producto> deseos = administrador.getDeseosPorUsuario(usuario.getIdUsuario());
                     List<Producto> pedidos = administrador.getPedidosPorUsuario(usuario.getIdUsuario());
+                    DefaulImage imgD = administrador.getDefaultImage();
+                    request.getSession().setAttribute("imgD", imgD);
                     request.getSession().setAttribute("usuario", usuario);
                     request.getSession().setAttribute("deseos", deseos);
                     request.getSession().setAttribute("pedidos", pedidos);

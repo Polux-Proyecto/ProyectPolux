@@ -12,11 +12,22 @@ package com.commercewebapp.objects;
 public class Categoria {
     String nombre;
     int idCat;
+    byte[] img;
 
-    public Categoria(String nombreC, int idCatC) {
+    public Categoria(String nombreC, int idCatC, byte[] imgC) {
         this.setNombre(nombreC);
         this.setIdCat(idCatC);
+        this.setImg(imgC);
     }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    private void setImg(byte[] img) {
+        this.img = img;
+    }
+    
     
     public String getNombre() {
         return nombre;

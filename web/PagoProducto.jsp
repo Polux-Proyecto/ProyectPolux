@@ -4,21 +4,39 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Tarjetas"%>
+<%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.Arreglos"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
+<%@page import="com.commercewebapp.objects.Precios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%String  logo = (String)  request.getSession().getAttribute("logo");
-Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+<%
+    String  logo = (String)  request.getSession().getAttribute("logo");
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    List<Tarjetas> tarjetas = (List<Tarjetas>) request.getSession().getAttribute("tarjetas");
+	Precios precios = (Precios) request.getSession().getAttribute("precios");
     if (usuario==null){
         response.sendRedirect("ErrorEnInicioSesion");
     }
-Arreglos arreglos = new Arreglos();
-int annos[] = arreglos.getAnnos();
-int dias[] = arreglos.getDias();
-String meses[] = arreglos.getMeses();
-int canAnnos = arreglos.getCant();
-%>
+
+    Iterator<Tarjetas> iteTarjetas = null;
+    int cantTarjetas = 0;
+    Tarjetas tarjeta = null;
+
+     if (tarjetas != null){
+        cantTarjetas = tarjetas.size();
+        iteTarjetas = tarjetas.iterator();
+    }
+
+
+    Arreglos arreglos = new Arreglos();
+    int annos[] = arreglos.getAnnos();
+    int dias[] = arreglos.getDias();
+    String meses[] = arreglos.getMeses();
+    int canAnnos = arreglos.getCant();
+    %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -39,12 +57,20 @@ int canAnnos = arreglos.getCant();
 				flex-flow: row wrap;
 				align-items: center;
 			}
+                        .col {
+				display: table-cell;
+				padding: 16px;
+			}
+			.col-container {
+				display: table;
+				width: 100%;
+			}
 		</style>
     </head>
     <body>
 		<section>
 			<div>
-				<nav class="navbar" role="navigation" aria-label="main navigation">
+				<nav class="navbar is-light" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
 						  <img src="<%= logo %>" width="197" height="60">
@@ -104,126 +130,160 @@ int canAnnos = arreglos.getCant();
 				</nav>
             </div>
         </section>
-        <div class="creditCardForm">
-            <div class="title">
-                <p>Pago con tarjeta de credito</p>
-            </div>
-            <div class="payment">
-                <form>
-                    <div class="subtitle">
-                <p>Seleccione su tarjeta de credito:</p>
-            </div>
-                    <section>
-                     <div class="box" style="border: lightgray 2px inset" id="derecha"><article class="media">
-                                <div class="media-left">
-									<figure class="image is-128x128">
-										
-									</figure>
-                                </div>
-                                <div class="media-content">
-									<div class="content">
-                                                                            
-                    <label>Nombre del propietario:</label>
-                    <br><br>
-                    <label>Tipo de tarjeta de credito: </label>
-                    <br><br>
-                    <label>Numero de Tarjeta de credito:</label>
-                    <br><br>
-                    <label>Codigo de seguridad:</label>
-                    
-                    
-                        <br><br>
-                                                                    
-                            
-                             <div class="control">
-                        <button class="button is-link">Utilizar esta tarjeta de credito</button>
-                    </div>
-                        </div>                                             
-                                                                                
+		<section style="margin-left: 10px; margin-right: 10px">
+			<h1 class="title"> Pago con tarjeta de crédito </h1>
+			<div class="col-container">
+				<div class="col" style="border: green 10px inset;width: 50%">
+					<div class="title is-ancestor">
+						<p></p>
+					</div>
+					<div class="payment" >
+						<div class="title is-parent">
+							<p>Seleccione su tarjeta de credito:</p>
+						</div>
+						<section>
+
+						<%  
+	if (cantTarjetas > 0) {
+	while(iteTarjetas.hasNext()){
+	tarjeta = iteTarjetas.next();
+
+					   %>
+							<div class="box" style="border: lightgray 2px inset" >
+								<article class="media">
+									<div class="media-content">
+										<div class="content">      
+											<form>
+												<p><strong> Nombre del propietario: </strong> <%= tarjeta.getPropietario() %> </p>
+												<p><strong> Tipo de tarjeta de credito: </strong> <%= tarjeta.getTipo() %> </p>
+												<p><strong> Numero de tarjeta de credito: </strong> <%= tarjeta.getCodigoHidden()%> </p>
+												<p><strong> Codigo de seguridad: </strong> <%= tarjeta.getCodigoS()%> </p>
+
+												<div class="control" >
+														<button class="button is-link">Utilizar esta tarjeta de credito</button>
+												</div>
+											</form>
+										</div>
 									</div>
-                                </div>
-                        
-                        
-                        
-                    </section>
-                    		
-                          
-                    
-                    
-                    
-                        <div class="subtitle">
-                <p>Registre una nueva tarjeta de credito:</p>
-            </div>
-                    <div class="form-group owner">
-                        <label for="owner">Dueño de la tarjeta de credito</label>
-                        <input type="text" class="form-control" id="owner">
-                    </div>
-                    
-                                 <label>Tipo de Tarjeta de credito</label>
-                    <div class="control">
-                        <div class="select is-info">
-                            <select  id="StringNewCountry" name="StringNewCountry" >>
-                                <option value="Visa">Visa</option>
-                                <option value="American Express">American Express</option>
-                                <option value="Mastercard">Mastercard</option>
-                                
-                            </select>
-                        </div>
+								</article>
+							</div>
+					   <% 
+	}
+	} else {
 
-                    
-                </div>
-                    <div class="form-group CVV">
-                        <label for="cvv">Código de seguridad</label>
-                        <input type="text" class="form-control" id="cvv">
-                    </div>
-                    <div class="form-group" id="card-number-field">
-                        <label for="cardNumber">Número de tarjeta</label>
-                        <input type="text" class="form-control" id="cardNumber">
-                    </div>
-                    <div class="form-group" id="expiration-date">
-                        <label>Fecha de expiración</label>
-                        <select>
-<% 
-for (int i = 0; i <12; i++){
-%>
-                            <option value="01"><%= meses[i] %></option>
-<%
-}
-%>
-                        </select>
-                        <select>
-<% 
-    for(int i = 0; i < canAnnos ; i++ ){
-    %>
-                            <option value="<%= annos[i] + 20 %>"> <%= annos[i] + 20 %> </option>
-<%
-    }
-%>
-                        </select>
-                        
-                        <br>
-                        <br>
-                        <br>
-                              <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link">Ingresar tarjeta de credito</button>
-                    </div>
-                    <div class="control">
-                        <button class="button is-link is-light">Cancelar</button>
-                    </div>
-                </div>
-                    </div>
-                        
-                   
-                        
-                        
-                        
-                        
-                        
+					   %>
 
-                  
-                </form>
-            </div>
-        </div>
+							<div class="media-content">
+								<div class="content">
+									<label>No tienes ninguna tarjeta agregada aún ¡agrégala!</label>
+								</div>
+							</div>
+
+					   <% 
+	}
+					   %>
+						</section>
+						<br><br>
+						<section>
+							<div class="title is-parent">
+								<p>Registre una nueva tarjeta de credito:</p>
+							</div>
+
+							<div class="box" style="border: lightgray 2px inset">
+								<form method="get" action="Finanzas">
+
+										<label for="owner">Dueño de la tarjeta de crédito</label>
+										<input type="text" class="form-control" id="Dueno" name="Dueno" placeholder="<%= usuario.getNombre()%>">
+										<br><br>
+										<label for="Tipo">Tipo de tarjeta de crédito</label>
+
+									<div class="select is-info">
+										<select  id="Tipo" name="Tipo">
+											<option value="Visa">Visa</option>
+											<option value="American Express">American Express</option>
+											<option value="Mastercard">Mastercard</option>
+										</select>
+										<br>
+									</div>
+									<br><br>
+
+									<label for="numero">Número de la tarjeta de crédito</label>
+									<input type="text" class="form-control" id="numero" name="numero" pattern=".{16,16}" placeholder="0000000000000000">
+									<br><br>
+
+									<label for="código">Código de la tarjeta de crédito</label>
+									<input type="text" class="form-control" id="codigo" name="codigo" pattern=".{4,4}" placeholder="0000">
+									<br><br>
+
+									<label for="mes">Mes de vencimieto</label>
+									<select name="mes" id="mes">
+	<% 
+	for (int i = 0; i <12; i++){
+	%>
+										<option value="<%= i + 1 %>"><%= meses[i] %></option>
+	<%
+	}
+	%>
+									</select>
+									<br><br>
+
+									<label for="anno">Año de vencimieto</label>
+
+									<select name="anno" id="anno">
+										<% 
+		for(int i = 0; i < canAnnos ; i++ ){
+		%>
+										<option value="<%= annos[i] + 20 %>"> <%= annos[i] + 20 %> </option>
+	<%
+		}
+	%>  
+									</select>
+									<br><br>
+									<input type ="hidden" value ="3" name="formid" id="formid">
+									<input type="hidden" value="<%= usuario.getIdUsuario() %>" name="idCliente" id="idCliente">
+									<div>
+										<button  type="submit" class="button is-link">Ingresar tarjeta de crédito</button>
+									</div>
+									<div>
+										<button class="button is-link is-light">Cancelar</button>
+									</div>
+								</form>
+							</div>
+						</section>
+					</div>
+				</div>
+				<div class="col" style="border: green 10px inset">
+					<form class="Pago" id="CalcularPrecios" method="get" action="Buscadores">
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Cargo por Envío:</label>
+							<div class="control">
+									<p class="subtitle"><%= precios.getCantidad() %></p>
+							</div>
+						</div>
+					</form>
+							<br>
+					<form class="Pago" id="NuevaCompraForm" method="get" action="Finanzas">
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Precio Unitario:</label>
+							<div class="control">
+									<p class="subtitle"><%= precios.getPrecioUnitario() %></p>
+							</div>
+						</div>
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Cargo por Envío:</label>
+							<div class="control">
+									<p class="subtitle"><%= precios.getCargoEnvio() %></p>
+							</div>
+						</div>
+						<div class="box" style="border: lightgray 2px inset">
+							<label class="label">Total a Pagar:</label>
+							<div class="control">
+								<p class="subtitle"><%= precios.getTotalPagar() %></p>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+        </section>
     </body>
 </html>

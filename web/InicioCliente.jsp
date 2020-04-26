@@ -191,7 +191,7 @@
 							</article>
 						</div>
 
-						<%      }    
+						<%    k++;  }    
 							}
 						%>
 					</article>
@@ -206,6 +206,7 @@
 						<p class="subtitle">Tienes <%= cantPedidos %> pedido/s pendiente/s</p>
 						<%
 								Producto pedidoActual;
+                                                                k = 0;
 								while(itePedidos.hasNext()){
 									pedidoActual = itePedidos.next();
 						%>
@@ -213,7 +214,7 @@
 							<article class="media">
 								<div class="media-left">
 								  <figure class="image is-128x128">
-									  <a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+									  <a href="EmpresaMuro.jsp"><img src="Imagenes?formid=1&idImgen=<%= k %>&att=pedidos" alt="Image"></a>
 								  </figure>
 								</div>
 								<div class="media-content">
@@ -227,7 +228,7 @@
 							</article>
 						</div>
 
-						<%      }    
+						<%      k++; }    
                                                     }
 						%>
 					</article>

@@ -21,7 +21,8 @@
     Iterator<Categoria> iteCategorias = listaCategoria.iterator();
     int cantidadCategorias = listaCategoria.size();
     int i=0;
-	String  logo = (String)  request.getSession().getAttribute("logo");
+    int k = 0;
+    String  logo = (String)  request.getSession().getAttribute("logo");
 %>
 
 <html>
@@ -142,7 +143,7 @@
 							<article class="media">
                                 <div class="media-left">
 									<figure class="image is-128x128">
-										<a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+										<a href="EmpresaMuro.jsp"><img src="Imagenes?formid=2&idImgen=<%= k %>&att=listaCategoria" alt="Image"></a>
 									</figure>
                                 </div>
                                 <div class="media-content">
@@ -153,11 +154,11 @@
                                 </div>
                             </article>
                         </div>
-						<%        } else { %>
+						<%      } else { %>
 						<div class="box" style="border: lightgray 2px inset" id="derecha"><article class="media">
                                 <div class="media-left">
 									<figure class="image is-128x128">
-										<a href="EmpresaMuro.jsp"><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+										<a href="EmpresaMuro.jsp"><img src="Imagenes?formid=2&idImgen=<%= k %>&att=listaCategoria" alt="Image"></a>
 									</figure>
                                 </div>
                                 <div class="media-content">
@@ -168,7 +169,8 @@
                                 </div>
                             </article>
                         </div>
-                            <%	} 
+                            <%         } 
+                                    k++;
                             }
                         }
                         %>

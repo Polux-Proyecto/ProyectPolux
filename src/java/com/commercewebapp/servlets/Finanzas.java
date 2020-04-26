@@ -5,9 +5,11 @@
  */
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.AdminFinanzas;
 import com.commercewebapp.logics.AdminPedidos;
+import com.commercewebapp.objects.Tarjetas;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author 78GDO
+ * @author Mauricio Aguilar
  */
 @WebServlet(name = "Finanzas", urlPatterns = {"/Finanzas"})
 public class Finanzas extends HttpServlet {
@@ -57,6 +59,40 @@ public class Finanzas extends HttpServlet {
                     request.setAttribute("h", h);
                     request.getRequestDispatcher("MuroProducto.jsp").forward(request, response);
                 }
+                //</editor-fold>
+                break;
+            }
+            case "2":{
+                // <editor-fold defaultstate="collapsed" desc="Ir a Pago producto">
+                AdminFinanzas adminFinanzas = new AdminFinanzas();
+                String idClient = request.getParameter("idCliente");
+                int idCliente = Integer.parseInt(idClient);
+                List<Tarjetas> tarjetas = adminFinanzas.getTarjetasByIdCliente(idCliente);
+                
+                request.getSession().setAttribute("tarjetas", tarjetas);
+                response.sendRedirect("PagoProducto.jsp");
+                //</editor-fold>
+                break;
+            }
+            case "3":{
+                // <editor-fold defaultstate="collapsed" desc="Agregar una targeta">
+                AdminFinanzas admin = new AdminFinanzas();
+                String propietario  = request.getParameter("Dueno");
+                String codigo  = request.getParameter("codigo");
+                String numero  = request.getParameter("numero");
+                String mes  = request.getParameter("mes");
+                String anno  = request.getParameter("anno");
+                String idClient  = request.getParameter("idCliente");
+                int idCliente = Integer.parseInt(idClient);
+                String tipo  = request.getParameter("Tipo");
+                anno = anno.substring(2, 4);
+                
+                Tarjetas tarjeta = new Tarjetas(propietario, tipo, numero, codigo, mes, anno, 0, idCliente);
+                
+                boolean hasFailed = admin.setNuevaTarjeta(tarjeta);
+                
+                response.sendRedirect("Finanzas?formid=2&idCliente="+idCliente);
+                
                 //</editor-fold>
                 break;
             }
