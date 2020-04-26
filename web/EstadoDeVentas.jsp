@@ -54,7 +54,7 @@
     <body>
         <section>
 			<div>
-				<nav class="navbar" role="navigation" aria-label="main navigation" >
+				<nav class="navbar is-light" role="navigation" aria-label="main navigation" >
 					<div class="navbar-brand">
 						<img src="<%= logo %>" width="197" height="60">
                        

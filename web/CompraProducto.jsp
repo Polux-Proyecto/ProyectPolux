@@ -4,6 +4,9 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Tarjetas"%>
+<%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.Precios"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="com.commercewebapp.objects.Empresa"%>
@@ -12,6 +15,8 @@
 <!DOCTYPE html>
 <% 
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    
+    
     if (usuario==null){
         response.sendRedirect("ErrorEnInicioSesion");
     }
@@ -54,7 +59,7 @@
     <body>
 		<section>
 			<div>
-				<nav class="navbar" role="navigation" aria-label="main navigation">
+				<nav class="navbar is-light" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<a class="navbar-item" href="InicioCliente.jsp">
 							<img src= "<%= logo %>" width="197" height="60">
@@ -116,12 +121,12 @@
 			<div class="col-container">
 				<div class="col" style="width: 50%">
 					<div>
-						<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+						<img src=Imagenes?formid=3&att=producto" alt="Image" alt="Image">
 						<h1>
 							Descripción:
 						</h1>
 						<p>
-							(Descripción)Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
+							<%= producto.getDescripcion() %>
 						</p>
 					</div>
 				</div>
@@ -138,7 +143,8 @@
 							</div>
 						</div>
 					</form>
-					<form class="Pago" id="NuevaCompraForm" method="get" action="Buscadores">
+							<br>
+					<form class="Pago" id="NuevaCompraForm" method="get" action="Finanzas">
 						<div class="box" style="border: lightgray 2px inset">
 							<label class="label">Precio Unitario:</label>
 							<div class="control">
@@ -164,7 +170,8 @@
 							<div class="control">
 									<button class="button is-link is-light">Cancelar</button>
 							</div>
-							<input type="hidden" id="formid" name="formid" value="8" >
+							<input type="hidden" id="formid" name="formid" value="2" >
+							<input type="hidden" id="idCliente" name="idCliente" value ="<%= usuario.getIdUsuario() %>" >
 
 						</div>
 					</form>

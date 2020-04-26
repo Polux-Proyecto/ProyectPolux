@@ -1,6 +1,7 @@
 package com.commercewebapp.logics;
 
 import com.commercewebapp.database.DatabaseZ;
+import com.commercewebapp.objects.DefaulImage;
 import com.commercewebapp.objects.Llenador;
 import com.commercewebapp.objects.NuevoProducto;
 import com.commercewebapp.objects.Precios;
@@ -22,6 +23,8 @@ import javax.sql.rowset.serial.SerialBlob;
 public class AdminProductos extends Logic {
     DatabaseZ localDatabase = getDatabase();
     
+
+    
     public boolean crearProducto(NuevoProducto producto){
         boolean hasFailed = true;
         DatabaseZ localDatabase2 = getDatabase();
@@ -42,8 +45,10 @@ public class AdminProductos extends Logic {
                 byte[] bdimagenproducto = producto.getImagenproducto();
                 Blob imagenblob = new SerialBlob(bdimagenproducto);
                 
-                statement = conn.prepareStatement("INSERT INTO comercebd.prodtb(nombre,precio,descripcion,empresa,categoria,busquedas,existencias,imagen)VALUES(?,?,?,?,?,?,?,?)");
-                // INSERT INTO comercebd.prodtb(idprodtb,nombre,precio,descripcion,empresa,categoria,busquedas,existencias,ImagenProducto)VALUES()
+                statement = conn.prepareStatement("INSERT INTO comercebd.prodtb"
+                        + "(nombre,precio,descripcion,empresa,categoria,busquedas,existencias,imagen)"
+                        + "VALUES(?,?,?,?,?,?,?,?)");
+                
                 statement.setString(1, bdnombre);
                 statement.setInt(2, bdprecioproducto);
                 statement.setString(3, bddescripcionproducto);
@@ -217,6 +222,31 @@ public class AdminProductos extends Logic {
        Precios precios = null;
        precios = new Precios(producto.getPrecio(), cantidad);
        return precios;
+   }
+   
+   public DefaulImage getDefaultImage() {
+       DefaulImage img = null;
+       Blob blob = null;
+       byte[] arr = null;
+       
+       ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.defaultimage LIMIT 1;");
+       
+       if (result!=null){
+           try {
+               while (result.next()){
+                   blob = result.getBlob("image");
+                   
+                   arr = blob.getBytes(1, (int) blob.length()) ;
+                   
+                   img = new DefaulImage(arr);
+               }
+           } catch (SQLException ex) {
+               Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
+       
+       
+       return img;
    }
     
 }

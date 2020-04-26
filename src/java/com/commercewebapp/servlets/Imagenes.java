@@ -5,6 +5,8 @@
  */
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.objects.Categoria;
+import com.commercewebapp.objects.DefaulImage;
 import com.commercewebapp.objects.Producto;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -22,15 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Imagenes", urlPatterns = {"/Imagenes"})
 public class Imagenes extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -40,7 +34,7 @@ public class Imagenes extends HttpServlet {
         
         switch (formid){
             case "1":{
-                
+                // <editor-fold defaultstate="collapsed" desc="Para imágenes en Productos.">
                 //Cuando viene de loggeo usuario
                 String k = request.getParameter("idImgen");
                 String att = request.getParameter("att");
@@ -52,16 +46,68 @@ public class Imagenes extends HttpServlet {
                 
 
                 img =  lista.get(i).getImagen();
-                if (img!= null){
+                if (img == null){
+                    DefaulImage defImage = (DefaulImage) request.getSession().getAttribute("imgD");
+                    img = defImage.getImg();
+                }
                 response.setContentType("image/gif");
                     out = response.getOutputStream();
                     out.write(img);
                     out.flush();
                     out.close();
-                }
                 
+                // </editor-fold>
                 break;
             }
+            case "2":{
+                // <editor-fold defaultstate="collapsed" desc="Para desplegar imagenes de categorias">
+                String k = request.getParameter("idImgen");
+                String att = request.getParameter("att");
+                int i = Integer.parseInt(k);
+                List<Categoria> lista = (List<Categoria>) request.getSession().getAttribute(att);
+                
+                byte[] img = null;
+                OutputStream out = null;
+                
+
+                img =  lista.get(i).getImg();
+                
+                if (img == null){
+                    DefaulImage defImage = (DefaulImage) request.getSession().getAttribute("imgD");
+                    img = defImage.getImg();
+                }
+                response.setContentType("image/gif");
+                    out = response.getOutputStream();
+                    out.write(img);
+                    out.flush();
+                    out.close();
+                
+                // </editor-fold>
+                break;
+            }
+            case "3":{
+                // <editor-fold defaultstate="collapsed" desc="Para desplegar imagenes de producto en MuroProducto o Pago producto">
+                String att = request.getParameter("att");
+//                Producto producto = (Producto) request.getSession().getAttribute(att);
+                Producto producto = (Producto) request.getSession().getAttribute("producto");
+                request.getSession().setAttribute(att, producto);
+                byte[] img = null;
+                OutputStream out = null;
+                
+
+                img =  producto.getImagen();
+                if (img == null){
+                    DefaulImage defImage = (DefaulImage) request.getSession().getAttribute("imgD");
+                    img = defImage.getImg();
+                }
+                response.setContentType("image/gif");
+                    out = response.getOutputStream();
+                    out.write(img);
+                    out.flush();
+                    out.close();
+                // </editor-fold>
+            }
+            
         }
         
     }
