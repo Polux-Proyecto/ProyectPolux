@@ -96,6 +96,13 @@ public class Finanzas extends HttpServlet {
                 //</editor-fold>
                 break;
             }
+            case "4":{
+                // <editor-fold defaultstate="collapsed" desc="Pagar un producto">
+                
+                
+                
+                //</editor-fold>
+            }
         }
     }
 

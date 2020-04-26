@@ -24,15 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Imagenes", urlPatterns = {"/Imagenes"})
 public class Imagenes extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -90,10 +82,30 @@ public class Imagenes extends HttpServlet {
                     out.flush();
                     out.close();
                 
-                
                 // </editor-fold>
                 break;
             }
+            case "3":{
+                String att = request.getParameter("att");
+                Producto producto = (Producto) request.getSession().getAttribute(att);
+                
+                byte[] img = null;
+                OutputStream out = null;
+                
+
+                img =  producto.getImagen();
+                if (img == null){
+                    DefaulImage defImage = (DefaulImage) request.getSession().getAttribute("imgD");
+                    img = defImage.getImg();
+                }
+                response.setContentType("image/gif");
+                    out = response.getOutputStream();
+                    out.write(img);
+                    out.flush();
+                    out.close();
+                
+            }
+            
         }
         
     }

@@ -4,6 +4,8 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Precios"%>
+<%@page import="com.commercewebapp.objects.Producto"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Tarjetas"%>
 <%@page import="java.util.List"%>
@@ -14,7 +16,9 @@
 <%
     String  logo = (String)  request.getSession().getAttribute("logo");
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    Producto producto = (Producto) request.getSession().getAttribute("producto");
     List<Tarjetas> tarjetas = (List<Tarjetas>) request.getSession().getAttribute("tarjetas");
+    Precios precios = (Precios) request.getSession().getAttribute("precios");
     if (usuario==null){
         response.sendRedirect("ErrorEnInicioSesion");
     }
@@ -168,16 +172,13 @@ if (cantTarjetas > 0) {
                            <% 
     }
 } else {
-
                            %>
-                           
                                     <div class="media-content">
                                         <div class="content">
                                             <label>No tienes ninguna tarjeta agregada aún ¡agrégala!</label>
                                         </div>
 
                                     </div>
-                           
                            <% 
 }
                            %>
@@ -246,16 +247,8 @@ for (int i = 0; i <12; i++){
                                 <div><button  type="submit" class="button is-link">Ingresar tarjeta de crédito</button></div>
                                 <div><button class="button is-link is-light">Cancelar</button></div>
                             </form>
-                        
                         </section>
-                                
-                                
-                                
-
-                        </div>
-                                
-                             
-                             
+                    </div>  
                 </div>
             </div>
             </div>
