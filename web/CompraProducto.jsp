@@ -145,6 +145,7 @@
 							</div>
 						</div>
 					</form>
+							<br>
 					<form class="Pago" id="NuevaCompraForm" method="get" action="Finanzas">
 						<div class="box" style="border: lightgray 2px inset">
 							<label class="label">Precio Unitario:</label>
@@ -172,7 +173,7 @@
 									<button class="button is-link is-light">Cancelar</button>
 							</div>
 							<input type="hidden" id="formid" name="formid" value="2" >
-                                                        <input type="hidden" id="idCliente" name="idCliente" value ="<%= usuario.getIdUsuario() %>" >
+							<input type="hidden" id="idCliente" name="idCliente" value ="<%= usuario.getIdUsuario() %>" >
 
 						</div>
 					</form>
