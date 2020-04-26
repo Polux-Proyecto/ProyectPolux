@@ -60,9 +60,6 @@ import javax.servlet.http.HttpServletResponse;
                     AdminProductos administrador = new AdminProductos();
                     List<Producto> deseos = administrador.getDeseosPorUsuario(usuario.getIdUsuario());
                     List<Producto> pedidos = administrador.getPedidosPorUsuario(usuario.getIdUsuario());
-                    
-                    
-                    
                     request.getSession().setAttribute("usuario", usuario);
                     request.getSession().setAttribute("deseos", deseos);
                     request.getSession().setAttribute("pedidos", pedidos);

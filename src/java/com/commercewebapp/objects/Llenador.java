@@ -8,6 +8,7 @@ package com.commercewebapp.objects;
 import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.logics.BuscarUsuario;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,9 +29,11 @@ public class Llenador {
         if (result!=null){
             int     id, existencias, idEmpresa;
             String  nombre, descripcion;
-            double  precio;   
+            double  precio;
+            Blob blob = null;
             Producto productoActual= null;
             listaProductos = new ArrayList();
+            byte[] imagen = null;
             try {
                     while(result.next()){
                         id = result.getInt("idprodtb");
@@ -39,8 +42,14 @@ public class Llenador {
                         descripcion = result.getString("descripcion");
                         precio = result.getDouble("precio");
                         existencias = result.getInt("existencias");
+                        blob = result.getBlob("imagen");
+                        if (blob != null){
+                            imagen = blob.getBytes(1,(int) blob.length());
+                        } else {
+                             imagen = null;
+                        }
                         
-                        productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias);
+                        productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias, imagen);
                         
                         listaProductos.add(productoActual);
                     }

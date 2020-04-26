@@ -138,7 +138,6 @@ for (int i = 0; i <12; i++){
     for(int i = 0; i < canAnnos ; i++ ){
     %>
                             <option value="<%= annos[i] + 20 %>"> <%= annos[i] + 20 %> </option>
-                                
 <%
     }
 %>

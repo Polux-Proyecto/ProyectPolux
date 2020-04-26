@@ -137,4 +137,12 @@ public class AdminPedidos extends Logic{
         
         return listaEstadistico;
     }
+    
+    public boolean setListaDeseos(int idCliente, int idProducto){
+        boolean hasFailed = true;
+        
+        hasFailed = localDatabase.executeNonQueryBool("INSERT INTO comercebd.deseostb (cliente, producto) VALUES ('"+idCliente+"', '"+idProducto+"');");
+        
+        return hasFailed;
+    }
 }

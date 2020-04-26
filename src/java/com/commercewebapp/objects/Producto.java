@@ -5,6 +5,7 @@
  */
 package com.commercewebapp.objects;
 
+
 /**
  *
  * @author Mauricio Aguilar
@@ -15,8 +16,10 @@ public class Producto {
     private double  precio;
     private boolean activo;
     private Empresa empresa;
+    private byte[] imagen;
+    
 
-    public Producto(int idC, int idEmpresaC, String nombreC, String descripcionC, double precioC, int activoIC, int cantidadC) {
+    public Producto(int idC, int idEmpresaC, String nombreC, String descripcionC, double precioC, int activoIC, int cantidadC, byte[] imagenC ) {
         this.setId(idC);
         this.setIdEmpresa(idEmpresaC);
         this.setNombre(nombreC);
@@ -29,9 +32,19 @@ public class Producto {
         } else {
             this.setActivo(false);
         }
+        this.setImagen(imagenC);
         
     }
 
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    private void setImagen(byte[] imagen) {
+        this.imagen = imagen;
+    }
+    
+    
     public Empresa getEmpresa() {
         return empresa;
     }
