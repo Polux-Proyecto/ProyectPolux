@@ -40,7 +40,7 @@ public class Imagenes extends HttpServlet {
         
         switch (formid){
             case "1":{
-                
+                // <editor-fold defaultstate="collapsed" desc="Para el inicio Cliente.">
                 //Cuando viene de loggeo usuario
                 String k = request.getParameter("idImgen");
                 String att = request.getParameter("att");
@@ -59,7 +59,7 @@ public class Imagenes extends HttpServlet {
                     out.flush();
                     out.close();
                 }
-                
+                // </editor-fold>
                 break;
             }
         }
