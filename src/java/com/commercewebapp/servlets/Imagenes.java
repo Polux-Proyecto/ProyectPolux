@@ -105,4 +105,3 @@ public class Imagenes extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-}

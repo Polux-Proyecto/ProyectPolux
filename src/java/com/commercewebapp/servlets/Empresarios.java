@@ -12,6 +12,7 @@ import com.commercewebapp.objects.Stock;
 import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -57,6 +58,7 @@ public class Empresarios extends HttpServlet {
                 
                 InputStream filecontent = fileimagenproducto.getInputStream();
                 byte[] imagenproducto = IOUtils.toByteArray(filecontent);
+                System.out.println(Arrays.toString(imagenproducto));
                 
                 NuevoProducto productoingresado = new NuevoProducto(nombreproducto , precioproducto, descripcionproducto , empresaproducto , categoriaproducto, busquedasproducto, existenciasproducto, imagenproducto);
                 hasfailed = productos.crearProducto(productoingresado);
