@@ -4,21 +4,37 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.commercewebapp.objects.Tarjetas"%>
+<%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.Arreglos"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%String  logo = (String)  request.getSession().getAttribute("logo");
-Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+<%
+    String  logo = (String)  request.getSession().getAttribute("logo");
+    Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    List<Tarjetas> tarjetas = (List<Tarjetas>) request.getSession().getAttribute("tarjetas");
     if (usuario==null){
         response.sendRedirect("ErrorEnInicioSesion");
     }
-Arreglos arreglos = new Arreglos();
-int annos[] = arreglos.getAnnos();
-int dias[] = arreglos.getDias();
-String meses[] = arreglos.getMeses();
-int canAnnos = arreglos.getCant();
-%>
+
+    Iterator<Tarjetas> iteTarjetas = null;
+    int cantTarjetas = 0;
+    Tarjetas tarjeta = null;
+
+     if (tarjetas != null){
+        cantTarjetas = tarjetas.size();
+        iteTarjetas = tarjetas.iterator();
+    }
+
+
+    Arreglos arreglos = new Arreglos();
+    int annos[] = arreglos.getAnnos();
+    int dias[] = arreglos.getDias();
+    String meses[] = arreglos.getMeses();
+    int canAnnos = arreglos.getCant();
+    %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -105,124 +121,125 @@ int canAnnos = arreglos.getCant();
             </div>
         </section>
         <div class="creditCardForm">
-            <div class="title">
-                <p>Pago con tarjeta de credito</p>
+            <div class="title is-ancestor">
+                <p>Pago con tarjeta de crédito</p>
             </div>
             <div class="payment">
                 <form>
-                    <div class="subtitle">
+                    <div class="title is-parent">
                 <p>Seleccione su tarjeta de credito:</p>
             </div>
                     <section>
-                     <div class="box" style="border: lightgray 2px inset" id="derecha"><article class="media">
-                                <div class="media-left">
-									<figure class="image is-128x128">
-										
-									</figure>
-                                </div>
-                                <div class="media-content">
-									<div class="content">
-                                                                            
-                    <label>Nombre del propietario:</label>
-                    <br><br>
-                    <label>Tipo de tarjeta de credito: </label>
-                    <br><br>
-                    <label>Numero de Tarjeta de credito:</label>
-                    <br><br>
-                    <label>Codigo de seguridad:</label>
-                    
-                    
-                        <br><br>
-                                                                    
-                            
-                             <div class="control">
-                        <button class="button is-link">Utilizar esta tarjeta de credito</button>
-                    </div>
-                        </div>                                             
-                                                                                
-									</div>
-                                </div>
                         
-                        
-                        
-                    </section>
-                    		
-                          
-                    
-                    
-                    
-                        <div class="subtitle">
-                <p>Registre una nueva tarjeta de credito:</p>
-            </div>
-                    <div class="form-group owner">
-                        <label for="owner">Dueño de la tarjeta de credito</label>
-                        <input type="text" class="form-control" id="owner">
-                    </div>
-                    
-                                 <label>Tipo de Tarjeta de credito</label>
-                    <div class="control">
-                        <div class="select is-info">
-                            <select  id="StringNewCountry" name="StringNewCountry" >>
-                                <option value="Visa">Visa</option>
-                                <option value="American Express">American Express</option>
-                                <option value="Mastercard">Mastercard</option>
-                                
-                            </select>
-                        </div>
+                            <%  
+if (cantTarjetas > 0) {
+    while(iteTarjetas.hasNext()){
+        tarjeta = iteTarjetas.next();
+                               
+                           %>
+                           <div class="box" style="border: green 10px inset;">
+                               <article class="media">
+                                    <div class="media-content">
+                                        <div class="content">      
+                                            <form>
+                                                <p><strong> Nombre del propietario: </strong> <%= tarjeta.getPropietario() %> </p>
+                                                <p><strong> Tipo de tarjeta de credito: </strong> <%= tarjeta.getTipo() %> </p>
+                                                <p><strong> Numero de tarjeta de credito: </strong> <%= tarjeta.getCodigoHidden()%> </p>
+                                                <p><strong> Codigo de seguridad: </strong> <%= tarjeta.getCodigoS()%> </p>
 
-                    
-                </div>
-                    <div class="form-group CVV">
-                        <label for="cvv">Código de seguridad</label>
-                        <input type="text" class="form-control" id="cvv">
-                    </div>
-                    <div class="form-group" id="card-number-field">
-                        <label for="cardNumber">Número de tarjeta</label>
-                        <input type="text" class="form-control" id="cardNumber">
-                    </div>
-                    <div class="form-group" id="expiration-date">
-                        <label>Fecha de expiración</label>
-                        <select>
+                                                <div class="control">
+                                                        <button class="button is-link">Utilizar esta tarjeta de credito</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </article>
+                           </div>
+                           <% 
+    }
+} else {
+
+                           %>
+                           
+                           <div class="media-content">
+                               <div class="content">
+                                   <label>No tienes ninguna tarjeta agregada aún ¡agrégala!</label>
+                               </div>
+                               
+                           </div>
+                           
+                           <% 
+}
+                           %>
+                       
+                    </section>
+                    <br><br>
+                    <section>
+                        
+                        <div class="title is-parent">
+                            <p>Registre una nueva tarjeta de credito:</p>
+                        </div>
+                        
+                        <div class="box" style="border: green 10px inset;">
+                            <form method="get" action="Finanzas">
+                                
+                                    <label for="owner">Dueño de la tarjeta de crédito</label>
+                                    <input type="text" class="form-control" id="Dueno" name="Dueno" placeholder="<%= usuario.getNombre()%>">
+                                    <br><br>
+                                    <label for="Tipo">Tipo de tarjeta de crédito</label>
+                                
+                                <div class="select is-info">
+                                    <select  id="Tipo" name="Tipo">
+                                        <option value="Visa">Visa</option>
+                                        <option value="American Express">American Express</option>
+                                        <option value="Mastercard">Mastercard</option>
+                                    </select>
+                                    <br>
+                                </div>
+                                <br><br>
+                                
+                                <label for="numero">Número de la tarjeta de crédito</label>
+                                <input type="text" class="form-control" id="numero" name="numero" pattern=".{16,16}" placeholder="0000000000000000">
+                                <br><br>
+                                
+                                <label for="código">Código de la tarjeta de crédito</label>
+                                <input type="text" class="form-control" id="codigo" name="codigo" pattern=".{4,4}" placeholder="0000">
+                                <br><br>
+                                
+                                <label for="mes">Mes de vencimieto</label>
+                                <select name="mes" id="mes">
 <% 
 for (int i = 0; i <12; i++){
 %>
-                            <option value="01"><%= meses[i] %></option>
+                                <option value="<%= i + 1 %>"><%= meses[i] %></option>
 <%
 }
 %>
-                        </select>
-                        <select>
-<% 
+                                </select>
+                                <br><br>
+                                
+                                <label for="anno">Mes de vencimieto</label>
+                                
+                                <select name="anno" id="anno">
+                                    <% 
     for(int i = 0; i < canAnnos ; i++ ){
     %>
-                            <option value="<%= annos[i] + 20 %>"> <%= annos[i] + 20 %> </option>
+                                    <option value="<%= annos[i] + 20 %>"> <%= annos[i] + 20 %> </option>
 <%
     }
-%>
-                        </select>
-                        
-                        <br>
-                        <br>
-                        <br>
-                              <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link">Ingresar tarjeta de credito</button>
-                    </div>
-                    <div class="control">
-                        <button class="button is-link is-light">Cancelar</button>
-                    </div>
+%>  
+                                </select>
+                                <br><br>
+                                <input type ="hidden" value ="3" name="formid" id="formid"></input>
+                                <input type="hidden" value="<%= usuario.getIdUsuario() %>" name="idCliente" id="idCliente">
+                                <div><button  type="submit" class="button is-link">Ingresar tarjeta de crédito</button></div>
+                                <div><button class="button is-link is-light">Cancelar</button></div>
+                            </form>
+                        </div>
+                    </section>
+                    
                 </div>
-                    </div>
-                        
-                   
-                        
-                        
-                        
-                        
-                        
 
-                  
-                </form>
             </div>
         </div>
     </body>
