@@ -55,6 +55,14 @@
 				flex-flow: row wrap;
 				align-items: center;
 			}
+                        .col {
+				display: table-cell;
+				padding: 16px;
+			}
+			.col-container {
+				display: table;
+				width: 100%;
+			}
 		</style>
     </head>
     <body>
@@ -130,14 +138,15 @@
                 <p>Seleccione su tarjeta de credito:</p>
             </div>
                     <section>
-                        
+                        <div class="col-container">
+                            
                             <%  
 if (cantTarjetas > 0) {
     while(iteTarjetas.hasNext()){
         tarjeta = iteTarjetas.next();
                                
                            %>
-                           <div class="box" style="border: green 10px inset;">
+                           <div class="box" style="border: green 10px inset;" >
                                <article class="media">
                                     <div class="media-content">
                                         <div class="content">      
@@ -146,8 +155,8 @@ if (cantTarjetas > 0) {
                                                 <p><strong> Tipo de tarjeta de credito: </strong> <%= tarjeta.getTipo() %> </p>
                                                 <p><strong> Numero de tarjeta de credito: </strong> <%= tarjeta.getCodigoHidden()%> </p>
                                                 <p><strong> Codigo de seguridad: </strong> <%= tarjeta.getCodigoS()%> </p>
-
-                                                <div class="control">
+                                                
+                                                <div class="control" >
                                                         <button class="button is-link">Utilizar esta tarjeta de credito</button>
                                                 </div>
                                             </form>
@@ -171,7 +180,7 @@ if (cantTarjetas > 0) {
                            <% 
 }
                            %>
-                       
+                           </div>
                     </section>
                     <br><br>
                     <section>

@@ -70,12 +70,21 @@ public class Llenador {
             Categoria categoria = null;
             String nombre;
             int idCat;
+            byte[] img = null;
+            Blob blob = null;
             try {
                 while (result.next()){
                     nombre = result.getString("Nombre");
                     idCat = result.getInt("idCategorias");
+                    blob = result.getBlob("imagen");
                     
-                    categoria = new Categoria (nombre, idCat);
+                    if (blob!=null){
+                        img = blob.getBytes(1, (int) blob.length());
+                    } else {
+                        img = null;
+                    }
+                    
+                    categoria = new Categoria (nombre, idCat, img);
                     listaCategorias.add(categoria);
                     
                 }
