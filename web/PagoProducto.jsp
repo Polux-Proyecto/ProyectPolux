@@ -137,50 +137,52 @@
                     <div class="title is-parent">
                 <p>Seleccione su tarjeta de credito:</p>
             </div>
+                <div class="col-container" >
                     <section>
-                        <div class="col-container">
-                            
+                        
+                            <div class="col" style="width: 50%">
                             <%  
 if (cantTarjetas > 0) {
     while(iteTarjetas.hasNext()){
         tarjeta = iteTarjetas.next();
                                
                            %>
-                           <div class="box" style="border: green 10px inset;" >
-                               <article class="media">
-                                    <div class="media-content">
-                                        <div class="content">      
-                                            <form>
-                                                <p><strong> Nombre del propietario: </strong> <%= tarjeta.getPropietario() %> </p>
-                                                <p><strong> Tipo de tarjeta de credito: </strong> <%= tarjeta.getTipo() %> </p>
-                                                <p><strong> Numero de tarjeta de credito: </strong> <%= tarjeta.getCodigoHidden()%> </p>
-                                                <p><strong> Codigo de seguridad: </strong> <%= tarjeta.getCodigoS()%> </p>
-                                                
-                                                <div class="control" >
-                                                        <button class="button is-link">Utilizar esta tarjeta de credito</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                    <div class="box" style="border: green 10px inset;" >
+                                        <article class="media">
+                                             <div class="media-content">
+                                                 <div class="content">      
+                                                     <form>
+                                                         <p><strong> Nombre del propietario: </strong> <%= tarjeta.getPropietario() %> </p>
+                                                         <p><strong> Tipo de tarjeta de credito: </strong> <%= tarjeta.getTipo() %> </p>
+                                                         <p><strong> Numero de tarjeta de credito: </strong> <%= tarjeta.getCodigoHidden()%> </p>
+                                                         <p><strong> Codigo de seguridad: </strong> <%= tarjeta.getCodigoS()%> </p>
+
+                                                         <div class="control" >
+                                                                 <button class="button is-link">Utilizar esta tarjeta de credito</button>
+                                                         </div>
+                                                     </form>
+                                                 </div>
+                                             </div>
+                                         </article>
                                     </div>
-                                </article>
-                           </div>
                            <% 
     }
 } else {
 
                            %>
                            
-                           <div class="media-content">
-                               <div class="content">
-                                   <label>No tienes ninguna tarjeta agregada aún ¡agrégala!</label>
-                               </div>
-                               
-                           </div>
+                                    <div class="media-content">
+                                        <div class="content">
+                                            <label>No tienes ninguna tarjeta agregada aún ¡agrégala!</label>
+                                        </div>
+
+                                    </div>
                            
                            <% 
 }
                            %>
-                           </div>
+                                
+                            
                     </section>
                     <br><br>
                     <section>
@@ -244,11 +246,18 @@ for (int i = 0; i <12; i++){
                                 <div><button  type="submit" class="button is-link">Ingresar tarjeta de crédito</button></div>
                                 <div><button class="button is-link is-light">Cancelar</button></div>
                             </form>
-                        </div>
-                    </section>
-                    
-                </div>
+                        
+                        </section>
+                                
+                                
+                                
 
+                        </div>
+                                
+                             
+                             
+                </div>
+            </div>
             </div>
         </div>
     </body>
