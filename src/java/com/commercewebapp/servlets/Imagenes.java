@@ -86,9 +86,11 @@ public class Imagenes extends HttpServlet {
                 break;
             }
             case "3":{
+                // <editor-fold defaultstate="collapsed" desc="Para desplegar imagenes de producto en MuroProducto o Pago producto">
                 String att = request.getParameter("att");
-                Producto producto = (Producto) request.getSession().getAttribute(att);
-                
+//                Producto producto = (Producto) request.getSession().getAttribute(att);
+                Producto producto = (Producto) request.getSession().getAttribute("producto");
+                request.getSession().setAttribute(att, producto);
                 byte[] img = null;
                 OutputStream out = null;
                 
@@ -103,7 +105,7 @@ public class Imagenes extends HttpServlet {
                     out.write(img);
                     out.flush();
                     out.close();
-                
+                // </editor-fold>
             }
             
         }

@@ -258,7 +258,7 @@
 				<div class="col" style="border: green 10px inset">
 					<form class="Pago" id="CalcularPrecios" method="get" action="Buscadores">
 						<div class="box" style="border: lightgray 2px inset">
-							<label class="label">Cargo por Envío:</label>
+							<label class="label">Unidades a facturar:</label>
 							<div class="control">
 									<p class="subtitle"><%= precios.getCantidad() %></p>
 							</div>
