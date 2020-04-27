@@ -23,6 +23,8 @@
         if(codigo=="27"){
             message = "Bienvenido, su nuevo usuario ha sido regsitrado con exito! , ingrese su contraseña ";
             usuarioregitrado = newuser;
+            codigo ="";
+            request.getSession().setAttribute("codigo", codigo);
         }
     }
     

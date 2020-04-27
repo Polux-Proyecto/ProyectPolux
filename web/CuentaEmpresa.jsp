@@ -35,6 +35,7 @@
             String pais="";
             String ciudad="";
             String categoria="";
+            int intcategoria=-1;
             byte[] logo=null;
             String mensajeerror = "";
             
@@ -45,7 +46,7 @@
                     email =usuarioexistente.getEmail();
                     pais= usuarioexistente.getPais();
                     ciudad = usuarioexistente.getCiudad();
-                    int intcategoria = usuarioexistente.getCategoria();
+                     intcategoria = usuarioexistente.getCategoria();
                     categoria = Integer.toString(intcategoria);
                     
                     mensajeerror = "El nombre de usuario ya existe, intente con otro";
@@ -131,13 +132,71 @@
                     <div class="control">
                         <div class="select is-info">
                             <select  id="StringNewCountryEmp" name="StringNewCountryEmp">
-                                <option value="ElSalvador">El Salvador</option>
+                                                                <%if(pais.equals("El Salvador")){%>
+                                <option value="ElSalvador" selected="">El Salvador</option>
                                 <option value="Guatemala">Guatemala</option>
                                 <option value="Belice">Belice</option>
                                 <option value="Nicaragua">Nicaragua</option>
                                 <option value="Honduras">Honduras</option>
                                 <option value="Panama">Panamá</option>
                                 <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("Guatemala")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" selected="">Guatemala</option>
+                                <option value="Belice">Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option> 
+                                <%}else if(pais.equals("Belice")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" selected="">Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("Nicaragua")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua" selected="">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("Honduras")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras" selected="">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("Panama")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama" selected="">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("CostaRica")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica" selected="">Costa Rica</option>
+                                <%}else{%>
+                                <option value="ElSalvador" selected="">El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}%>
                             </select>
                         </div>
                     </div>
@@ -156,10 +215,12 @@
                                 <% if(categorias!=null){
                                         while(iteCategoria.hasNext()){
                                             categoriaActual = iteCategoria.next();
+                                            if(categoriaActual.getIdCat()==intcategoria){
                                 %>
-                                <option value=<%= categoriaActual.getIdCat() %>><%= categoriaActual.getNombre() %> </option>
-                                <%      }
-                                    }%>
+                                <option selected="" value=<%= categoriaActual.getIdCat() %> > <%= categoriaActual.getNombre() %> </option>
+                                <%      }else{%>
+                                    <option value=<%= categoriaActual.getIdCat() %>><%= categoriaActual.getNombre() %> </option>
+                                    <%}}}%>
                             </select>
                         </div>
                     </div>
@@ -167,7 +228,7 @@
                 <div class="field">
                 <label>Descripcion</label>
                     <div class="control">
-                        <textarea class="textarea" type="text" name="descEmp" id="descEmp" placeholder="200 words or less" value =<%=descripcion%>></textarea>
+                        <textarea class="textarea" type="text" name="descEmp" id="descEmp" placeholder="200 words or less"> <%=descripcion%> </textarea>
                     </div>
                 </div>
                  
