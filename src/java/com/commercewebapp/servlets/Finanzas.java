@@ -46,6 +46,8 @@ public class Finanzas extends HttpServlet {
             case "1":{
                 // <editor-fold defaultstate="collapsed" desc="Añadir a lista de deseos">
                 AdminPedidos adminProd = new AdminPedidos();
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                AdminProductos admin = new AdminProductos();
                 String idClient = request.getParameter("idCliente");
                 String idProd = request.getParameter("idProd"), h = "";
                 int idCliente = Integer.parseInt(idClient);
@@ -56,7 +58,9 @@ public class Finanzas extends HttpServlet {
                 
                 if (!hasFailed){
                     h = "0";
+                    List<Producto> deseos = admin.getDeseosPorUsuario(usuario.getIdUsuario());
                     request.getSession().setAttribute("h", h);
+                    request.getSession().setAttribute("deseos", deseos);
                     response.sendRedirect("MuroProducto.jsp");
                 } else {
                     h = "1";
@@ -126,6 +130,7 @@ public class Finanzas extends HttpServlet {
                 
                 //</editor-fold>
             }
+            
         }
     }
 

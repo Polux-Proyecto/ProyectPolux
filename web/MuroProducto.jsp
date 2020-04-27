@@ -142,12 +142,17 @@
                                             <button class="button is-outlined is-danger" >Lista de deseos</button>
                                         </a>
                                     </div>
-                                    <% } else if (hasFailed.equals("1")){ %>
+                                    <% } else if (hasFailed.equals("1")){ 
+                                        request.getSession().setAttribute("h", "2");
+                                    %>
                                     <div class="subtitle has-text-danger" >Hubo un error</div><br>
                                     <a class="navbar-item" href="Finanzas?formid=1&idProd=<%= producto.getId() %>&idCliente=<%= usuario.getIdUsuario() %>">
                                             <button class="button is-outlined is-danger" >Lista de deseos</button>
                                     </a>
-                                    <% } else if (hasFailed.equals("0")){ %>
+                                    <% } else if (hasFailed.equals("0")){ 
+                                        
+                                        request.getSession().setAttribute("h", "2");
+                                    %>
                                     <div class="subtitle has-text-success" >Tu producto se añadió correctamente</div><br>
                                     <a class="navbar-item" href="Finanzas?formid=1&idProd=<%= producto.getId() %>&idCliente=<%= usuario.getIdUsuario() %>">
                                             <button class="button is-outlined is-danger" >Lista de deseos</button>

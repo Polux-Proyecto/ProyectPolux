@@ -31,12 +31,14 @@
     String valor = (String) request.getSession().getAttribute("valor");
     if (valor != null){
         if(valor.equals("1")){
+            
             %>
             <script>
                 alert('¡Lo sentimos, no se puedo realizar la compra, inténtelo de nuevo más tarde!');
             </script>
             <%
         } else {
+            request.getSession().setAttribute("valor", null);
             %>
             <script>
                 alert('¡Gracias por tu compra, se realizó con éxito, en unos momentos recivirás un correo de confirmación!');
