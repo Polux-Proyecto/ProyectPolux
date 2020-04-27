@@ -206,7 +206,16 @@
 										<br><%= deseoActual.getDescripcion() %>
 									</p><br>
 								  </div>
+                                                                        <div class="buttons">
+                                                                        <a class="button " href="EliminaRegistros?formid=25&idprod=<%= deseoActual.getId() %>&idusu=<%= usuario.getIdUsuario() %>" style="background-color: #29b342">
+                                                                                Eliminar de deseos
+                                                                        </a>
+                                                                        <a class="button " href="Buscadores?formid=4&idProd=<%= deseoActual.getId() %>" style="background-color: #29b342">
+                                                                                Comprar
+                                                                        </a>
+                                                                    </div>
 								</div>
+                                                                        
 							</article>
 						</div>
 
