@@ -129,15 +129,33 @@ import javax.servlet.http.HttpServletResponse;
                 int idEmpresa = Integer.parseInt(idEmp), mitad = 0;
                 AdminProductos buscador = new AdminProductos();
                 AdminCategorias admin  = new AdminCategorias();
+                AdminEmpresas buscadorEmpresa = new AdminEmpresas();
                 List<Producto> lista = buscador.getProductosPorEmpresa(idEmpresa, 40);
                 if (lista!=null){
                     mitad = admin.getMitadCategorias(idEmpresa);
                 }
+                Empresa empresa = buscadorEmpresa.getEmpresasPorId(idEmpresa);
                 
+                request.getSession().setAttribute("empresa", empresa);
                 request.getSession().setAttribute("listaProductos", lista);
                 request.getSession().setAttribute("mitad", mitad);
                 request.getRequestDispatcher("EmpresaMuro.jsp").forward(request, response);
                 
+                // </editor-fold>
+                break;
+            }
+            case "9":{
+                // <editor-fold defaultstate="collapsed" desc="Cargar precios de producto">
+                    String cant = request.getParameter("cantidad");
+                    String idP = request.getParameter("idProd");
+                    int idProd = Integer.parseInt(idP);
+                    int cantidad =  Integer.parseInt(cant);
+                    AdminProductos buscadorProd = new AdminProductos();
+                    Producto producto = buscadorProd.getProductoPorId(idProd);
+                    Precios precios = buscadorProd.getPrecios(producto, cantidad);
+                    request.getSession().setAttribute("precios", precios);
+                    request.getSession().setAttribute("producto", producto);
+                    request.getRequestDispatcher("CompraProducto.jsp").forward(request, response);
                 // </editor-fold>
                 break;
             }

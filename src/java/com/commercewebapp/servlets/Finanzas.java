@@ -45,7 +45,7 @@ public class Finanzas extends HttpServlet {
         
         switch (formid){
             case "1":{
-                // <editor-fold defaultstate="collapsed" desc="Añadir a lista de deseos">
+                // <editor-fold defaultstate="collapsed" desc="Añadir a lista de deseos desde MuroProducto">
                 AdminPedidos adminProd = new AdminPedidos();
                 Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
                 AdminProductos admin = new AdminProductos();
@@ -71,6 +71,7 @@ public class Finanzas extends HttpServlet {
                 //</editor-fold>
                 break;
             }
+            
             case "2":{
                 // <editor-fold defaultstate="collapsed" desc="Ir a Pago producto">
                 AdminFinanzas adminFinanzas = new AdminFinanzas();
@@ -133,7 +134,33 @@ public class Finanzas extends HttpServlet {
                 
                 //</editor-fold>
             }
-            
+            case "5":{
+                // <editor-fold defaultstate="collapsed" desc="Añadir a lista de deseos desde EmpresaMuro">
+                AdminPedidos adminProd = new AdminPedidos();
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                AdminProductos admin = new AdminProductos();
+                String idClient = request.getParameter("idCliente");
+                String idProd = request.getParameter("idProd"), h = "";
+                int idCliente = Integer.parseInt(idClient);
+                int idProducto = Integer.parseInt(idProd);
+                
+                boolean hasFailed = adminProd.setListaDeseos(idCliente, idProducto);
+                
+                
+                if (!hasFailed){
+                    h = "0";
+                    
+                    request.getSession().setAttribute("h", h);
+                    
+                    response.sendRedirect("EmpresaMuro.jsp");
+                } else {
+                    h = "1";
+                    request.setAttribute("h", h);
+                    request.getRequestDispatcher("EmpresaMuro.jsp").forward(request, response);
+                }
+                //</editor-fold>
+                break;
+            }
         }
     }
 

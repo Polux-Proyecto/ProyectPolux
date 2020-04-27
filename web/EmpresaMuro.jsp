@@ -4,17 +4,31 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
 <%@page import="com.commercewebapp.objects.Usuario"%>
 <%@page import="com.commercewebapp.objects.Empresa"%>
 <%@page import="com.commercewebapp.objects.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    String  logo = (String)  request.getSession().getAttribute("logo");
+    String          logo = (String)  request.getSession().getAttribute("logo");
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    Empresa         empresa = (Empresa)         request.getSession().getAttribute("empresa");
+    List<Producto>  producto = (List<Producto>)         request.getSession().getAttribute("listaProductos");
+    Producto  productoActual = null;
+    Iterator<Producto> iteProducto = null;
+    int             mitad = (Integer)         request.getSession().getAttribute("mitad"), n = 0;
+    mitad++;
+    String hasFailed = (String) request.getSession().getAttribute("h");
+    
     if (usuario==null){
         response.sendRedirect("ErrorEnInicioSesion");
     }
+    if (producto != null){
+        iteProducto = producto.iterator();
+    }
+    
 %>
 
 <html>
@@ -23,22 +37,49 @@
         
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
-        <title>Nombre de la Empresa</title>
+            <%
+        if (hasFailed == null){
+                hasFailed = "2";
+            } else {
+                if(hasFailed.equals("1")){
+                    %> 
+                    <script>
+                        alert('Hubo un error y no se pudo añadir a tu lista de deseos');
+                    </script>
+
+                            <%
+                } else {
+                    %>
+                    <script>
+                        alert('El producto se añadió correctamente');
+                    </script>
+                    <%
+                }
+            } %>
+        <title><%= empresa.getNombre() %></title>
 		<style>
-			.color1{
-				background-color: #93d250
-			}
-			.color2{
-				background-color: #508329
-			}
-			.color3{
-				background-color: #dce5d2
-			}
-			.form-inline {  
-				display: flex;
-				flex-flow: row wrap;
-				align-items: center;
-			}
+                    #izquierda{
+                        float:left;
+                        width:50%;
+                    }
+                    #derecha{
+                        float:right;
+                        width:50%;
+                    }
+                    .color1{
+                            background-color: #93d250
+                    }
+                    .color2{
+                            background-color: #508329
+                    }
+                    .color3{
+                            background-color: #dce5d2
+                    }
+                    .form-inline {  
+                            display: flex;
+                            flex-flow: row wrap;
+                            align-items: center;
+                    }
 		</style>
     </head>
     <body>
@@ -108,10 +149,10 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title" style="color:black">
-                        <strong>Nombre de la Empresa</strong>
+                        <strong><%= empresa.getNombre() %></strong>
                     </h1>
                     <h2 class="subtitle" style="color:black">
-                        Nuestros productos favoritos
+                        Nuestros productos 
                     </h2>
                 </div>
             </div>
@@ -163,28 +204,35 @@
 				<div class="tile is-parent ">
 					<article class="tile is-child box" style="border: green 10px inset;">
 						<p class="title">Nuestros Productos</p>
-						<div class="box" style="border: lightgray 2px inset">
+                                                <% if (mitad!=0){
+                                                    while (iteProducto.hasNext()){
+                                                        productoActual = iteProducto.next();
+                                                        if(n<mitad){
+                                                %>
+                                                
+						 <div class="box" style="border: lightgray 2px inset" id ="derecha">
 							<article class="media">
 								<div class="media-left">
 									<figure class="image is-128x128">
-										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+										<img src="Imagenes?formid=1&idImgen=<%= n  %>&att=listaProductos" alt="Image">
 									</figure>
 								</div>
 								<div class="media-content">
 									<div class="content">
-										<p><strong>Nombre del producto</strong> 
-											<br>Precio:<br>Descripción:
+										<p><strong><%= productoActual.getNombre() %></strong> 
+											<br>Precio: <%= productoActual.getPrecio() %> 
+                                                                                        <br>Descripción: <%= productoActual.getDescripcion() %>
 										</p><br>
 									</div>
 								</div>
 								<nav class="navbar" role="navigation" aria-label="main navigation">
 									<div class="field is-grouped">
-										<a class="navbar-item">
+										<a class="navbar-item" href="Finanzas?formid=5&idProd=<%= productoActual.getId() %>&idCliente=<%= usuario.getIdUsuario() %>">
 											<div class="control">
 												<button class="button is-outlined is-danger">Lista de deseos</button>
 											</div>
 										</a>
-										<a class="navbar-item" href="CompraProducto.jsp">
+										<a class="navbar-item" href="Buscadores?formid=9&cantidad=1&idProd=<%= productoActual.getId() %>">
 											<div class="control">
 												<button class="button is-outlined ">Comprar</button>
 											</div>
@@ -193,93 +241,30 @@
 								</nav>
 							</article>
 						</div>
-						<div class="box" style="border: lightgray 2px inset">
+						<%          } else {    %>
+                                                <div class="box" style="border: lightgray 2px inset" id ="izquierda">
 							<article class="media">
 								<div class="media-left">
 									<figure class="image is-128x128">
-										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+										<img src="Imagenes?formid=1&idImgen=<%= n %>&att=listaProductos" alt="Image">
 									</figure>
 								</div>
 								<div class="media-content">
 									<div class="content">
-										<p><strong>Nombre del producto</strong> 
-											<br>Precio:<br>Descripción:
-										</p>
-									</div>
-								</div>
-								<nav class="navbar" role="navigation" aria-label="main navigation">
-									<div class="field is-grouped">
-										<a class="navbar-item">
-											<div class="control">
-												<button class="button is-outlined is-danger">Lista de deseos</button>
-											</div>
-										</a>
-										<a class="navbar-item" href="CompraProducto.jsp">
-											<div class="control">
-												<button class="button is-outlined ">Comprar</button>
-											</div>
-										</a>
-									</div>
-								</nav>
-							</article>
-						</div>
-						<div class="box" style="border: lightgray 2px inset">
-							<article class="media">
-								<div class="media-left">
-									<figure class="image is-128x128">
-										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-									</figure>
-								</div>
-								<div class="media-content">
-									<div class="content">
-										<p><strong>Nombre del producto</strong> 
-											<br>Precio:<br>Descripción:
-										</p>
-									</div>
-								</div>
-								<nav class="navbar" role="navigation" aria-label="main navigation">
-									<div class="field is-grouped">
-										<a class="navbar-item">
-											<div class="control">
-												<button class="button is-outlined is-danger">Lista de deseos</button>
-											</div>
-										</a>
-										<a class="navbar-item" href="CompraProducto.jsp">
-											<div class="control">
-												<button class="button is-outlined ">Comprar</button>
-											</div>
-										</a>
-									</div>
-								</nav>
-							</article>
-						</div>
-					</article>
-				</div>    
-				<div class="tile is-parent">
-					<article class="tile is-child box" style="border: green 10px inset;">
-						<p class="title">Novedades</p>
-						<div class="box" style="border: lightgray 2px inset">
-							<article class="media">
-								<div class="media-left">
-									<figure class="image is-128x128">
-										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-									</figure>
-								</div>
-								<div class="media-content">
-									<div class="content">
-										<p><strong>Nombre del producto</strong> 
-											<br>Precio:<br>Descripción:
+										<p><strong><%= productoActual.getNombre() %></strong> 
+											<br>Precio: <%= productoActual.getPrecio() %> 
+                                                                                        <br>Descripción: <%= productoActual.getDescripcion() %>
 										</p><br>
 									</div>
 								</div>
 								<nav class="navbar" role="navigation" aria-label="main navigation">
 									<div class="field is-grouped">
-										<a class="navbar-item">
+										<a class="navbar-item" href="Finanzas?formid=5&idProd=<%= productoActual.getId() %>&idCliente=<%= usuario.getIdUsuario() %>">
 											<div class="control">
 												<button class="button is-outlined is-danger">Lista de deseos</button>
 											</div>
 										</a>
-										<a class="navbar-item" href="CompraProducto.jsp">
+										<a class="navbar-item" href="Buscadores?formid=9&cantidad=1&idProd=<%= productoActual.getId() %>">
 											<div class="control">
 												<button class="button is-outlined ">Comprar</button>
 											</div>
@@ -288,66 +273,20 @@
 								</nav>
 							</article>
 						</div>
-						<div class="box" style="border: lightgray 2px inset">
-							<article class="media">
-								<div class="media-left">
-									<figure class="image is-128x128">
-										<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-									</figure>
-								</div>
-								<div class="media-content">
-									<div class="content">
-										<p><strong>Nombre del producto</strong> 
-											<br>Precio:<br>Descripción:
-										</p>
-									</div>
-								</div>
-								<nav class="navbar" role="navigation" aria-label="main navigation">
-									<div class="field is-grouped">
-										<a class="navbar-item">
-											<div class="control">
-												<button class="button is-outlined is-danger">Lista de deseos</button>
-											</div>
-										</a>
-										<a class="navbar-item" href="CompraProducto.jsp">
-											<div class="control">
-												<button class="button is-outlined ">Comprar</button>
-											</div>
-										</a>
-									</div>
-								</nav>
-							</article>
-						</div>
-						<div class="box" style="border: lightgray 2px inset">
-							<article class="media">
-								<div class="media-left">
-								  <figure class="image is-128x128">
-									<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-								  </figure>
-								</div>
-								<div class="media-content">
-								  <div class="content">
-									<p><strong>Nombre del producto</strong> 
-									  <br>Precio:<br>Descripción:
-									</p>
-								  </div>
-								</div>
-								<nav class="navbar" role="navigation" aria-label="main navigation">
-									<div class="field is-grouped">
-										<a class="navbar-item">
-											<div class="control">
-												<button class="button is-outlined is-danger">Lista de deseos</button>
-											</div>
-										</a>
-										<a class="navbar-item" href="CompraProducto.jsp">
-											<div class="control">
-												<button class="button is-outlined ">Comprar</button>
-											</div>
-										</a>
-									</div>
-								</nav>
-							</article>
-						</div>
+
+
+
+                                                        <%    }
+                                                        n++;
+                                                        }
+                                                    } else { %>
+
+                                                    <div class="box" style="border: lightgray 2px inset">
+                                                     <p class="title">No hay Categorías para mostrar :(</p>
+                                                </div> 
+                                                    <% } %>
+					
+						
 					</article>
 				</div>
 			</div>
