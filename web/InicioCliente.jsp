@@ -177,18 +177,22 @@
 						<div class="box" style="border: lightgray 2px inset">
 							<article class="media">
 								<div class="media-left">
-								  <figure class="image is-128x128">
-									  <a href="EmpresaMuro.jsp"><img src="Imagenes?formid=1&idImgen=<%= k %>&att=deseos" alt="Image" ></a>
-								  </figure>
+									<figure class="image is-128x128">
+										<a href="EmpresaMuro.jsp"><img src="Imagenes?formid=1&idImgen=<%= k %>&att=deseos" alt="Image" ></a>
+									</figure>
 								</div>
 								<div class="media-content">
-								  <div class="content">
-									<p><strong><%= deseoActual.getNombre() %></strong> 
-										<br><%= deseoActual.getDescripcion() %>
-									</p><br>
-								  </div>
+									<div class="content">
+										<p><strong><%= deseoActual.getNombre() %></strong> 
+											<br><%= deseoActual.getDescripcion() %>
+										</p><br>
+									</div>
 								</div>
 							</article>
+							<div>
+								<button class="button is-outlined is-danger">Eliminar de deseos</button>
+								<button class="button is-outlined" >Comprar</button>
+							</div>
 						</div>
 
 						<%    k++;  }    

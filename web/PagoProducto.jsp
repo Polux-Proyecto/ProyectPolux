@@ -160,96 +160,86 @@
 									<div class="media-content">
 										<div class="content">      
 											
-												<p><strong> Nombre del propietario: </strong> <%= tarjeta.getPropietario() %> </p>
-												<p><strong> Tipo de tarjeta de credito: </strong> <%= tarjeta.getTipo() %> </p>
-												<p><strong> Numero de tarjeta de credito: </strong> <%= tarjeta.getCodigoHidden()%> </p>
-												<p><strong> Codigo de seguridad: </strong> <%= tarjeta.getCodigoS()%> </p>
+											<p><strong> Nombre del propietario: </strong> <%= tarjeta.getPropietario() %> </p>
+											<p><strong> Tipo de tarjeta de credito: </strong> <%= tarjeta.getTipo() %> </p>
+											<p><strong> Numero de tarjeta de credito: </strong> <%= tarjeta.getCodigoHidden()%> </p>
+											<p><strong> Codigo de seguridad: </strong> <%= tarjeta.getCodigoS()%> </p>
 
-												<div class="control" >
-                                                                                                    <input type="button" class="button modal-button" data-target="#Modal<%= n %>" aria-haspopup="true" style="background-color: chartreuse" value="Utilizar esta tarjeta"></input>
-												</div>
-                                                                                                <div class="modal" id="Modal<%= n %>">
-                                                                                                    <div class="modal-background"></div>
-                                                                                                    <form action="Finanzas" name="pago<%= tarjeta.getIdTarjeta() %>" id="pago<%= tarjeta.getIdTarjeta() %>">
-                                                                                                    <div class="modal-card">
-                                                                                                        
-                                                                                                            <header class="modal-card-head">
-                                                                                                                <p class="modal-card-title">Confirmar Pago</p>
-                                                                                                                <button class="delete" aria-label="close"></button>
-                                                                                                            </header>
-                                                                                                            <section class="modal-card-body">
+											<div class="control" >
+												<input type="button" class="button modal-button" data-target="#Modal<%= n %>" aria-haspopup="true" style="background-color: chartreuse" value="Utilizar esta tarjeta"></input>
+											</div>
+											<div class="modal" id="Modal <%= n %> ">
+												<div class="modal-background"></div>
+												<form action="Finanzas" name="pago<%= tarjeta.getIdTarjeta() %>" id="pago<%=tarjeta.getIdTarjeta()%>">
+													<div class="modal-card">
+														<header class="modal-card-head">
+															<p class="modal-card-title">Confirmar Pago</p>
+															<button class="delete" aria-label="close"></button>
+														</header>
+														<section class="modal-card-body">
+															<p><strong>Datos del producto a facturar</strong></p>
+															<br>
+															<div class="field">
+																<label>Nombre del producto: <%= producto.getNombre() %> </label>
+															</div>
+															<br>
+															<div class="field">
+																<label>Cantidad: <%= precios.getCantidad() %> </label>
+															</div>
+															<br>
+															<div class="field">
+																<label>Total a pagar: <%= precios.getTotalPagar() %> </label>
+															</div>
+															<br>
+															<p><strong>Datos de la tarjeta</strong></p>
+															<br>
+															<div class="field">
+																<label>Tipo de tarjeta: <%= tarjeta.getTipo() %> </label>
+															</div>
+															<br>
+															<div class="field">
+																<label>Número de tarjeta: <%= tarjeta.getCodigoHidden()%> </label>
+															</div>
+															<br>
+															<div class="field">
+																<label>Propietario de tarjeta: <%= tarjeta.getPropietario()%> </label>
+															</div>
+															<br>
+															<p><strong>Datos de facturación:</strong></p>
 
-                                                                                                                <p><strong>Datos del producto a facturar</strong></p>
-                                                                                                                <br>
-                                                                                                                <div class="field">
-                                                                                                                    <label>Nombre del producto: <%= producto.getNombre() %> </label>
-                                                                                                                </div>
-                                                                                                                <br>
-                                                                                                                <div class="field">
-                                                                                                                    <label>Cantidad: <%= precios.getCantidad() %> </label>
-                                                                                                                </div>
-                                                                                                                <br>
-                                                                                                                <div class="field">
-                                                                                                                    <label>Total a pagar: <%= precios.getTotalPagar() %> </label>
-                                                                                                                </div>
-                                                                                                                <br>
-                                                                                                                <p><strong>Datos de la tarjeta</strong></p>
-                                                                                                                <br>
-                                                                                                                <div class="field">
-                                                                                                                    <label>Tipo de tarjeta: <%= tarjeta.getTipo() %> </label>
-                                                                                                                </div>
-                                                                                                                <br>
-                                                                                                                <div class="field">
-                                                                                                                    <label>Número de tarjeta: <%= tarjeta.getCodigoHidden()%> </label>
-                                                                                                                </div>
-                                                                                                                <br>
-                                                                                                                <div class="field">
-                                                                                                                    <label>Propietario de tarjeta: <%= tarjeta.getPropietario()%> </label>
-                                                                                                                </div>
-                                                                                                                <br>
-                                                                                                                <p><strong>Datos de facturación:</strong></p>
+															<p>Presiona confirmar para adquirir este producto, además, recivirás un correo electrónico a la dirección: <%= usuario.getCorreo() %></p>
 
-                                                                                                                <p>Presiona confirmar para adquirir este producto, además, recivirás un correo electrónico a la dirección: <%= usuario.getCorreo() %></p>
-                                                                                                            
-                                                                                                            <footer>
-
-                                                                                                                    <input type="hidden" id="formid" name="formid" value="4">
-                                                                                                                    <input type="hidden" id="idTarjeta" name="idTarjeta" value="<%= tarjeta.getIdTarjeta() %>">
-                                                                                                                    <button class="button is-success" >Comprar</button>
-                                                                                                                    <button class="button is-delete">Cancelar</button>
-
-                                                                                                            </footer>
-                                                                                                         </section>
-                                                                                                        </div>
-                                                                                                    </form>  
-                                                                                                </div>
-                                                                                                
-                                                                                                
-
-											</form>
+															<footer>
+																<input type="hidden" id="formid" name="formid" value="4">
+																<input type="hidden" id="idTarjeta" name="idTarjeta" value="<%= tarjeta.getIdTarjeta() %>">
+																<button class="button is-success" >Comprar</button>
+																<button class="button is-delete">Cancelar</button>
+															</footer>
+														</section>
+													</div>
+												</form>  
+											</div>
 										</div>
 									</div>
 								</article>
 							</div>
 					   <% 
 	} %>
-        
-                                                        <script>
-                                                            document.querySelectorAll('.modal-button').forEach(function(el) {
-                                                            el.addEventListener('click', function() {
-                                                              var target = document.querySelector(el.getAttribute('data-target'));
+							<script>
+									document.querySelectorAll('.modal-button').forEach(function(el) {
+									el.addEventListener('click', function() {
+									var target = document.querySelector(el.getAttribute('data-target'));
 
-                                                              target.classList.add('is-active');
+									target.classList.add('is-active');
 
-                                                              target.querySelector('.delete').addEventListener('click',   function() {
-                                                                      target.classList.remove('is-active');
+									target.querySelector('.delete').addEventListener('click',   function() {
+									target.classList.remove('is-active');
 
-                                                                               });
-                                                                            });
-                                                                      });
+									});
+								});
+							});
 
-                                                            </script>                                                                                                          
-                                                        
+							</script>        
 	<%
                                                                                                    } else {
 

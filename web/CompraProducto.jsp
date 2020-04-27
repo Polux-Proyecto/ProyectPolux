@@ -121,7 +121,7 @@
 			<div class="col-container">
 				<div class="col" style="width: 50%">
 					<div>
-						<img src=Imagenes?formid=3&att=producto" alt="Image" alt="Image">
+						<img src="Imagenes?formid=3&att=producto" alt="Image" alt="Image">
 						<h1>
 							Descripción:
 						</h1>
@@ -172,7 +172,6 @@
 							</div>
 							<input type="hidden" id="formid" name="formid" value="2" >
 							<input type="hidden" id="idCliente" name="idCliente" value ="<%= usuario.getIdUsuario() %>" >
-
 						</div>
 					</form>
 				</div>
