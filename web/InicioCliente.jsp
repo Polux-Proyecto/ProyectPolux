@@ -22,6 +22,7 @@
     Iterator<Producto> itePedidos   = pedidos.iterator();
     int cantDeseos = 0, cantPedidos = 0;
     int k = 0;
+	String ref = "";
     if(deseos!=null){
         cantDeseos = deseos.size();
     }
@@ -29,7 +30,10 @@
         cantPedidos = pedidos.size();
     }
     String valor = (String) request.getSession().getAttribute("valor");
-    if (valor != null){
+    %> 
+<html>
+	<head>
+	<%if (valor != null){
         if(valor.equals("1")){
             
             %>
@@ -48,8 +52,6 @@
     }
     
 %>
-<html>
-    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
@@ -192,12 +194,13 @@
 								Producto deseoActual;
 								while(iteDeseos.hasNext()){
 									deseoActual = iteDeseos.next();
+									ref = "Buscadores?formid=4&idProd="+deseoActual.getId();
 						%>
 						<div class="box" style="border: lightgray 2px inset">
 							<article class="media">
 								<div class="media-left">
 									<figure class="image is-128x128">
-										<img src="Imagenes?formid=1&idImgen=<%= k %>&att=deseos" alt="Image" >
+										<a href= "<%= ref %>" ><img src="Imagenes?formid=1&idImgen=<%= k %>&att=deseos" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px"></a>
 									</figure>
 								</div>
 								<div class="media-content">
@@ -238,12 +241,13 @@
                                                                 k = 0;
 								while(itePedidos.hasNext()){
 									pedidoActual = itePedidos.next();
+									ref = "Buscadores?formid=4&idProd="+pedidoActual.getId();
 						%>
 						<div class="box" style="border: lightgray 2px inset">
 							<article class="media">
 								<div class="media-left">
 								  <figure class="image is-128x128">
-									  <img src="Imagenes?formid=1&idImgen=<%= k %>&att=pedidos" alt="Image">
+									  <a href= "<%= ref %>" ><img src="Imagenes?formid=1&idImgen=<%= k %>&att=pedidos" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px  "></a>
 								  </figure>
 								</div>
 								<div class="media-content">
@@ -272,9 +276,9 @@
                                                     <%= usuario.getNombre() %>
 						</div>
 						<p class="subtitle"><strong>Correo Electrónico</strong></p>
-                                                    <div class="content">
-                                                        <%= usuario.getCorreo() %>
-                                                    </div>
+						<div class="content">
+							<%= usuario.getCorreo() %>
+						</div>
 						<p class="subtitle"><strong>Género</strong></p>
 						<div class="content">
 						  <%= usuario.getGenero() %>

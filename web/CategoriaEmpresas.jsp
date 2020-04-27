@@ -132,14 +132,14 @@
 							<article class="media">
 								<div class="media-left">
 									<figure class="image is-128x128">
-										<a href= "<%= ref %>" ><img src="Imagenes?formid=1&idImgen=<%= k %>&att=listaProductos" alt="Image" ></a>
+										<a href= "<%= ref %>" ><img src="Imagenes?formid=1&idImgen=<%= k %>&att=listaProductos" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px"></a>
 									</figure>
 								</div>
 								<div class="media-content">
 									<div class="content">
 										<a href= "<%= ref %>" ><strong><%= productoActual.getNombre() %></strong></a>
-										<p><br><%= productoActual.getDescripcion() %>
-										</p><br>
+										<br><a href="EmpresaMuro.jsp"> Nombre Empresa </a>
+										<br><p><%= productoActual.getDescripcion() %></p>
 									</div>
 								</div>
 							</article>

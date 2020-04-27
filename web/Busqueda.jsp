@@ -121,37 +121,37 @@
                             if (cantProd==0){
                                 
                             %>
-                            <div class="box">
-                                    <div class="media-content">
-                                        <div class="content">
-                                            <p><strong>No se encontraron resultados</strong> 
-                                            <br>Lo sentimos, no hemos encontrado nada que se parezca a tu búsqueda
-                                            </p><br>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
+						<div class="box">
+							<div class="media-content">
+								<div class="content">
+									<p><strong>No se encontraron resultados</strong> 
+									<br>Lo sentimos, no hemos encontrado nada que se parezca a tu búsqueda
+									</p><br>
+								</div>
+							</div>
+						</div>
                         <% } else {
                                 while(iteProducto.hasNext()){
                                     producto = iteProducto.next();
                         %>   
-                            <div class="box">
-                                <article class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-128x128">
-                                            <a href="MuroProducto.jsp"><img src="Imagenes?formid=1&idImgen=<%= k %>&att=listaProductos" alt="Image"></a>
-                                        </figure>
-                                    </div>
-                                    <div class="media-content">
-                                        <div class="content">
-                                            <p><strong><%= producto.getNombreEmpresa() %></strong>
-                                                <br>Nombre del producto: <%= producto.getNombre() %>
-                                                <br>Descripción: <%= producto.getDescripcion() %>
-                                            </p><br>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
+						<div class="box">
+							<article class="media">
+								<div class="media-left">
+									<figure class="image is-128x128">
+										<img src="Imagenes?formid=1&idImgen=<%= k %>&att=listaProductos" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px  ">
+									</figure>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p><strong><%= producto.getNombreEmpresa() %></strong>
+											<br>Nombre del producto: <%= producto.getNombre() %>
+											<br><a href="EmpresaMuro.jsp"> Nombre Empresa </a>
+											<br>Descripción: <%= producto.getDescripcion() %>
+										</p><br>
+									</div>
+								</div>
+							</article>
+						</div>
                         <%          
                                     k ++;
                                 }   
