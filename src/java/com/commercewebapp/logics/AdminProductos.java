@@ -74,6 +74,23 @@ public class AdminProductos extends Logic {
         return hasFailed;
     }
     
+    public boolean eliminardeseo (int idprod ,int idusu){
+        boolean hasFailed = true;
+        DatabaseZ localDatabase2 = getDatabase();
+        
+        int idproducto = 0;
+        idproducto = idprod;
+        int iduser = 0;
+        iduser = idusu;
+        System.out.println(String.valueOf(idproducto));
+        System.out.println(String.valueOf(iduser));
+        if(idproducto!=0){
+            hasFailed = localDatabase2.executeNonQueryBool("DELETE FROM comercebd.deseostb WHERE producto="+idproducto+" and cliente="+iduser+";");
+        }
+        
+        return hasFailed;
+    }
+    
     public List<Producto> getProductosPorNombre (String nombreBusqueda){
         
         ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb where upper(nombre) like Upper('%"+nombreBusqueda+"%');");
