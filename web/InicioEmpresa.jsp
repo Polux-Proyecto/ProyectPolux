@@ -213,11 +213,11 @@
                                                                                                                         <i class="fas fa-upload"></i>
                                                                                                                 </span>
                                                                                                                 <span class="file-label">
-                                                                                                                        Choose a file…
+                                                                                                                        Seleccione una imagen
                                                                                                                 </span>
                                                                                                         </span>
                                                                                                         <span class="file-name">
-                                                                                                                Screen Shot 2017-07-29 at 15.54.25.png
+                                                                                                                Seleccione una imagen
                                                                                                         </span>
                                                                                                 </label>
                                                                                         </div>
@@ -263,8 +263,8 @@
                                                                 </section>
                                                                 <footer class="modal-card-foot">
                                                                     <input type="hidden" id="formid" value="1">
-                                                                        <button class="button is-success" >Save changes</button>
-                                                                        <button class="button is-delete">Cancel</button>
+                                                                        <button class="button is-success" >Guardar cambios</button>
+                                                                        <button class="button is-delete">Cancelar</button>
                                                                 </footer>
                                                                 </form>                            
                                                         </div>

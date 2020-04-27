@@ -20,8 +20,6 @@
     if (usuario==null){
         response.sendRedirect("ErrorEnInicioSesion");
     }
-   
-    
     Producto producto = (Producto) request.getSession().getAttribute("producto");
     Empresa empresa = (Empresa) request.getSession().getAttribute("empresa");
     String  logo = (String)  request.getSession().getAttribute("logo");
@@ -123,7 +121,7 @@
 			<div class="col-container">
 				<div class="col" style="width: 50%">
 					<div>
-						<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+						<img src="Imagenes?formid=3&att=producto" alt="Image" alt="Image">
 						<h1>
 							Descripción:
 						</h1>
@@ -174,7 +172,6 @@
 							</div>
 							<input type="hidden" id="formid" name="formid" value="2" >
 							<input type="hidden" id="idCliente" name="idCliente" value ="<%= usuario.getIdUsuario() %>" >
-
 						</div>
 					</form>
 				</div>

@@ -32,9 +32,12 @@
            String ciudad = "";
            String direccion = "";
            String sexo = "";
-           String dia = "";
-           String mes = "";
-           String anno = "";
+           String sdia = "";
+           int dia= -1;
+           String smes = "";
+           int mes=-1;
+           String sanno = "";
+           int anno=-1;
            Part imagenperfil = null; 
            String mensajeerror = "";
            Arreglos arreglos =  new Arreglos();
@@ -46,15 +49,23 @@
                     ciudad = usuarioexistente.getCiudad();
                     direccion = usuarioexistente.getDireccion();
                     sexo = usuarioexistente.getSexo();
-                    dia = (String)request.getSession().getAttribute("day");
-                    mes = (String)request.getSession().getAttribute("month");
-                    anno = (String)request.getSession().getAttribute("year");
+                    sdia = (String)request.getSession().getAttribute("day");
+                    dia = Integer.parseInt(sdia);
+                    smes = (String)request.getSession().getAttribute("month");
+                    mes = Integer.parseInt(smes);
+                    sanno = (String)request.getSession().getAttribute("year");
+                    anno = Integer.parseInt(sanno);
                     imagenperfil = (Part)request.getSession().getAttribute("imagenfile");
                     
                     mensajeerror = "El nombre de usuario ya existe, intente con otro";
            
                 }
     %>
+    
+    <%
+int annos[] = arreglos.getAnnos();
+int canAnnos = arreglos.getCant();
+     %>
     
     <body>
             <section class="section has-background-light ">
@@ -126,10 +137,28 @@
                     <label>Sexo</label>
                     <div class="control">
                         <div class="select is-info">
-                            <select  id="StringNewSexo" name="StringNewSexo" value=<%=sexo%>>
-                                <option value="Femenino">Femenino</option>
+                            <select  id="StringNewSexo" name="StringNewSexo">
+                                <%
+                                    System.out.println(smes);
+                                    if(sexo.equals("Femenino")){%>
+                                <option value="Femenino" selected="">Femenino</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Indefinido">Prefiero no decirlo</option>
+                                
+                                <%}else if(sexo.equals("Masculino")){%>
+                                <option value="Femenino" >Femenino</option>
+                                <option value="Masculino" selected="">Masculino</option>
+                                <option value="Indefinido">Prefiero no decirlo</option>
+                                
+                                <%}else if(sexo.equals("Indefinido") ){%>
+                                <option value="Femenino" >Femenino</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Indefinido" selected="">Prefiero no decirlo</option>
+                                 <% }else{%>
+                                 <option value="Femenino" >Femenino</option>
+                                <option value="Masculino" selected="">Masculino</option>
+                                <option value="Indefinido">Prefiero no decirlo</option>
+                                 <%}%>
                             </select>
                         </div>
                     </div>
@@ -139,37 +168,51 @@
                     <div class="control">
                         <div class="select is-info">
                             <label class="label" style="font-weight: 100;">Día</label>
-                            <select  id="StringNewBornDay" name="StringNewBornDay" value=<%=dia%>>
+                            <select  id="StringNewBornDay" name="StringNewBornDay">
                                 <% 
                                     int dias[] = arreglos.getDias();
-                                    for (int j = 0; j < 31 ; j++){ %>
+                                    for (int j = 0; j < 31 ; j++){ 
+                                    if(dias[j]==dia){
+                                %>
+                                <option value="<%= dias[j] %>" selected=""><%= dias[j] %></option>
+                                <% }else{%>
                                 <option value="<%= dias[j] %>"><%= dias[j] %></option>
                                 
-                                <% } %>
+                                <% } 
+                                    }
+                                %>
                             </select>
                         </div>
                         <div class="select is-info">
                             <label class="label" style="font-weight: 100;">Mes</label>
-                            <select  id="StringNewBornMonth " name="StringNewBornMonth" value=<%=mes%>>
+                            <select  id="StringNewBornMonth " name="StringNewBornMonth">
                                 <% 
                                 String meses[] = arreglos.getMeses();
                                 for (int j=0 ; j < 12; j++){
+                                    if((j+1)== mes){
+                               
                                 %>
+                                <option value="<%= j + 1 %>" selected=""><%= meses[j] %></option>
+                                <% }else{ %>
                                 <option value="<%= j + 1 %>"><%= meses[j] %></option>
-                                <% } %>
+                                <%} }%>
                             </select>
                         </div>
                         <div class="select is-info">
                             <label class="label" style="font-weight: 100;">Año</label>
-                            <select name="StringNewUseryear" onchange="confirm('Año: '+this.value)" value=<%=anno%>>
+                            <select name="StringNewUseryear" id="StringNewUseryear">
                             
-                            <script>
-                            var myDate = new Date();
-                            var year = myDate.getFullYear();
-                            for(var i = 1900; i < year+1; i++){
-                            document.write('<option value="'+i+'">'+i+'</option>');
-                            }
-                            </script>
+                            <% 
+                                    for(int i = 0; i < canAnnos ; i++ ){
+
+                                    if(annos[i]+20 == anno){
+                                    %>
+                                 <option value="<%= annos[i] + 20 %>" selected="" > <%= annos[i] + 20 %> </option>
+                                <%
+                                    }else{
+                                %>
+                                <option value="<%= annos[i] + 20 %>" > <%= annos[i] + 20 %> </option>
+                                <%}}%>
                             </select>
                         </div>
                     </div>
@@ -179,14 +222,72 @@
                     <label>País</label>
                     <div class="control">
                         <div class="select is-info">
-                            <select  id="StringNewCountry" name="StringNewCountry" autofill=<%=pais%>>
-                                <option value="ElSalvador">El Salvador</option>
+                            <select  id="StringNewCountry" name="StringNewCountry">
+                                <%if(pais.equals("El Salvador")){%>
+                                <option value="ElSalvador" selected="">El Salvador</option>
                                 <option value="Guatemala">Guatemala</option>
                                 <option value="Belice">Belice</option>
                                 <option value="Nicaragua">Nicaragua</option>
                                 <option value="Honduras">Honduras</option>
                                 <option value="Panama">Panamá</option>
                                 <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("Guatemala")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" selected="">Guatemala</option>
+                                <option value="Belice">Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option> 
+                                <%}else if(pais.equals("Belice")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" selected="">Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("Nicaragua")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua" selected="">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("Honduras")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras" selected="">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("Panama")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama" selected="">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}else if(pais.equals("CostaRica")){%>
+                                   <option value="ElSalvador" >El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica" selected="">Costa Rica</option>
+                                <%}else{%>
+                                <option value="ElSalvador" selected="">El Salvador</option>
+                                <option value="Guatemala" >Guatemala</option>
+                                <option value="Belice" >Belice</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Panama">Panamá</option>
+                                <option value="CostaRica">Costa Rica</option>
+                                <%}%>
                             </select>
                         </div>
                     </div>

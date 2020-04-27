@@ -4,6 +4,8 @@
     Author     : Joanna Rivas
 --%>
 
+<%@page import="com.commercewebapp.objects.Precios"%>
+<%@page import="com.commercewebapp.objects.Producto"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.commercewebapp.objects.Tarjetas"%>
 <%@page import="java.util.List"%>
@@ -15,8 +17,10 @@
 <%
     String  logo = (String)  request.getSession().getAttribute("logo");
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    Producto producto = (Producto) request.getSession().getAttribute("producto");
     List<Tarjetas> tarjetas = (List<Tarjetas>) request.getSession().getAttribute("tarjetas");
 	Precios precios = (Precios) request.getSession().getAttribute("precios");
+        
     if (usuario==null){
         response.sendRedirect("ErrorEnInicioSesion");
     }
@@ -145,31 +149,99 @@
 
 						<%  
 	if (cantTarjetas > 0) {
+            int n;
 	while(iteTarjetas.hasNext()){
 	tarjeta = iteTarjetas.next();
+        n = tarjeta.getIdTarjeta();
 
 					   %>
 							<div class="box" style="border: lightgray 2px inset" >
 								<article class="media">
 									<div class="media-content">
 										<div class="content">      
-											<form>
-												<p><strong> Nombre del propietario: </strong> <%= tarjeta.getPropietario() %> </p>
-												<p><strong> Tipo de tarjeta de credito: </strong> <%= tarjeta.getTipo() %> </p>
-												<p><strong> Numero de tarjeta de credito: </strong> <%= tarjeta.getCodigoHidden()%> </p>
-												<p><strong> Codigo de seguridad: </strong> <%= tarjeta.getCodigoS()%> </p>
+											
+											<p><strong> Nombre del propietario: </strong> <%= tarjeta.getPropietario() %> </p>
+											<p><strong> Tipo de tarjeta de credito: </strong> <%= tarjeta.getTipo() %> </p>
+											<p><strong> Numero de tarjeta de credito: </strong> <%= tarjeta.getCodigoHidden()%> </p>
+											<p><strong> Codigo de seguridad: </strong> <%= tarjeta.getCodigoS()%> </p>
 
-												<div class="control" >
-														<button class="button is-link">Utilizar esta tarjeta de credito</button>
-												</div>
-											</form>
+											<div class="control" >
+												<input type="button" class="button modal-button" data-target="#Modal<%= n %>" aria-haspopup="true" style="background-color: chartreuse" value="Utilizar esta tarjeta"></input>
+											</div>
+											<div class="modal" id="Modal <%= n %> ">
+												<div class="modal-background"></div>
+												<form action="Finanzas" name="pago<%= tarjeta.getIdTarjeta() %>" id="pago<%=tarjeta.getIdTarjeta()%>">
+													<div class="modal-card">
+														<header class="modal-card-head">
+															<p class="modal-card-title">Confirmar Pago</p>
+															<button class="delete" aria-label="close"></button>
+														</header>
+														<section class="modal-card-body">
+															<p><strong>Datos del producto a facturar</strong></p>
+															<br>
+															<div class="field">
+																<label>Nombre del producto: <%= producto.getNombre() %> </label>
+															</div>
+															<br>
+															<div class="field">
+																<label>Cantidad: <%= precios.getCantidad() %> </label>
+															</div>
+															<br>
+															<div class="field">
+																<label>Total a pagar: <%= precios.getTotalPagar() %> </label>
+															</div>
+															<br>
+															<p><strong>Datos de la tarjeta</strong></p>
+															<br>
+															<div class="field">
+																<label>Tipo de tarjeta: <%= tarjeta.getTipo() %> </label>
+															</div>
+															<br>
+															<div class="field">
+																<label>Número de tarjeta: <%= tarjeta.getCodigoHidden()%> </label>
+															</div>
+															<br>
+															<div class="field">
+																<label>Propietario de tarjeta: <%= tarjeta.getPropietario()%> </label>
+															</div>
+															<br>
+															<p><strong>Datos de facturación:</strong></p>
+
+															<p>Presiona confirmar para adquirir este producto, además, recivirás un correo electrónico a la dirección: <%= usuario.getCorreo() %></p>
+
+															<footer>
+																<input type="hidden" id="formid" name="formid" value="4">
+																<input type="hidden" id="idTarjeta" name="idTarjeta" value="<%= tarjeta.getIdTarjeta() %>">
+																<button class="button is-success" >Comprar</button>
+																<button class="button is-delete">Cancelar</button>
+															</footer>
+														</section>
+													</div>
+												</form>  
+											</div>
 										</div>
 									</div>
 								</article>
 							</div>
 					   <% 
-	}
-	} else {
+	} %>
+							<script>
+									document.querySelectorAll('.modal-button').forEach(function(el) {
+									el.addEventListener('click', function() {
+									var target = document.querySelector(el.getAttribute('data-target'));
+
+									target.classList.add('is-active');
+
+									target.querySelector('.delete').addEventListener('click',   function() {
+									target.classList.remove('is-active');
+
+									});
+								});
+							});
+
+							</script>        
+	<%
+                                                                                                   } else {
 
 					   %>
 
@@ -220,7 +292,7 @@
 	<% 
 	for (int i = 0; i <12; i++){
 	%>
-										<option value="<%= i + 1 %>"><%= meses[i] %></option>
+                                                                            <option value="<%= i + 1 %>"><%= meses[i] %></option>
 	<%
 	}
 	%>
@@ -252,10 +324,11 @@
 						</section>
 					</div>
 				</div>
+                                
 				<div class="col" style="border: green 10px inset">
 					<form class="Pago" id="CalcularPrecios" method="get" action="Buscadores">
 						<div class="box" style="border: lightgray 2px inset">
-							<label class="label">Cargo por Envío:</label>
+							<label class="label">Unidades a facturar:</label>
 							<div class="control">
 									<p class="subtitle"><%= precios.getCantidad() %></p>
 							</div>
