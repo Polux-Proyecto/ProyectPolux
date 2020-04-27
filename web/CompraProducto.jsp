@@ -121,7 +121,7 @@
 			<div class="col-container">
 				<div class="col" style="width: 50%">
 					<div>
-						<img src="Imagenes?formid=3&att=producto" alt="Image" alt="Image">
+						<img src="Imagenes?formid=3&att=producto" alt="Image">
 						<h1>
 							Descripción:
 						</h1>

@@ -196,27 +196,28 @@
 						<div class="box" style="border: lightgray 2px inset">
 							<article class="media">
 								<div class="media-left">
-								  <figure class="image is-128x128">
-									  <a href="EmpresaMuro.jsp"><img src="Imagenes?formid=1&idImgen=<%= k %>&att=deseos" alt="Image" ></a>
-								  </figure>
+									<figure class="image is-128x128">
+										<img src="Imagenes?formid=1&idImgen=<%= k %>&att=deseos" alt="Image" >
+									</figure>
 								</div>
 								<div class="media-content">
-								  <div class="content">
-									<p><strong><%= deseoActual.getNombre() %></strong> 
-										<br><%= deseoActual.getDescripcion() %>
-									</p><br>
-								  </div>
-                                                                        <div class="buttons">
-                                                                        <a class="button " href="EliminaRegistros?formid=25&idprod=<%= deseoActual.getId() %>&idusu=<%= usuario.getIdUsuario() %>" style="background-color: #29b342">
-                                                                                Eliminar de deseos
-                                                                        </a>
-                                                                        <a class="button " href="Buscadores?formid=4&idProd=<%= deseoActual.getId() %>" style="background-color: #29b342">
-                                                                                Comprar
-                                                                        </a>
-                                                                    </div>
-								</div>
-                                                                        
+									<div class="content">
+										<p><strong><%= deseoActual.getNombre() %></strong><br>
+											<a href="EmpresaMuro.jsp"> Nombre Empresa </a>
+											<br><%= deseoActual.getDescripcion() %>
+										</p><br>
+									</div>
+									
+								</div>                                       
 							</article>
+							<div class="buttons">
+								<a class="button is-danger is-outlined" href="EliminaRegistros?formid=25&idprod=<%= deseoActual.getId() %>&idusu=<%= usuario.getIdUsuario() %>">
+									Eliminar de deseos
+								</a>
+								<a class="button is-outlined" href="Buscadores?formid=4&idProd=<%= deseoActual.getId() %>">
+									Comprar
+								</a>
+							</div>
 						</div>
 
 						<%    k++;  }    
@@ -242,13 +243,14 @@
 							<article class="media">
 								<div class="media-left">
 								  <figure class="image is-128x128">
-									  <a href="EmpresaMuro.jsp"><img src="Imagenes?formid=1&idImgen=<%= k %>&att=pedidos" alt="Image"></a>
+									  <img src="Imagenes?formid=1&idImgen=<%= k %>&att=pedidos" alt="Image">
 								  </figure>
 								</div>
 								<div class="media-content">
 								  <div class="content">
 									<p>
-										<strong><%= pedidoActual.getNombre() %></strong> 
+										<strong><%= pedidoActual.getNombre() %></strong>
+										<a href="EmpresaMuro.jsp"> Nombre Empresa </a>
 										<br><%= pedidoActual.getDescripcion() %>
 									</p><br>
 								  </div>
