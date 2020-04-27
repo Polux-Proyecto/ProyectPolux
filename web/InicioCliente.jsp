@@ -190,8 +190,9 @@
 								</div>
 							</article>
 							<div>
-								<button class="button is-outlined is-danger">Eliminar de deseos</button>
-								<button class="button is-outlined" >Comprar</button>
+								
+                                                            <a class="button is-outlined is-danger" href="EliminaRegistros?formid=25&idprod=<%= deseoActual.getId() %>&idusu=<%= usuario.getIdUsuario() %>" >Eliminar de deseos </a>
+                                                              <a class="button is-outlined" href="Buscadores?formid=4&idProd=<%= deseoActual.getId()%>" >Comprar</a>  
 							</div>
 						</div>
 
