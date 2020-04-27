@@ -50,7 +50,7 @@ public class EliminaRegistros extends HttpServlet {
 
                
                hasfailed = adminproducto.eliminardeseo(iddeseo,iduser);
-               
+               //no borrar
                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
                List<Producto> deseos = adminproducto.getDeseosPorUsuario(usuario.getIdUsuario());
                request.getSession().setAttribute("deseos", deseos);
