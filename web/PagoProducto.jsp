@@ -170,8 +170,7 @@
 												</div>
                                                                                                 <div class="modal" id="Modal<%= n %>">
                                                                                                     <div class="modal-background"></div>
-                                                                                                    <form action="Finanzas">
-
+                                                                                                    <form action="Finanzas" name="pago<%= tarjeta.getIdTarjeta() %>" id="pago<%= tarjeta.getIdTarjeta() %>">
                                                                                                     <div class="modal-card">
                                                                                                         
                                                                                                             <header class="modal-card-head">
@@ -214,14 +213,15 @@
                                                                                                             
                                                                                                             <footer>
 
-                                                                                                                    <input type="hidden" id="formid" value="1">
+                                                                                                                    <input type="hidden" id="formid" name="formid" value="4">
+                                                                                                                    <input type="hidden" id="idTarjeta" name="idTarjeta" value="<%= tarjeta.getIdTarjeta() %>">
                                                                                                                     <button class="button is-success" >Comprar</button>
                                                                                                                     <button class="button is-delete">Cancelar</button>
 
                                                                                                             </footer>
                                                                                                          </section>
                                                                                                         </div>
-                                                                                                            </form>  
+                                                                                                    </form>  
                                                                                                 </div>
                                                                                                 
                                                                                                 

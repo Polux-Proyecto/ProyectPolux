@@ -30,6 +30,18 @@ public class AdminFinanzas extends Logic {
         return tarjetas;
     }
     
+    public Tarjetas getTarjetaByIdTarjeta(int idTarjeta){
+        Tarjetas tarjeta = null;
+        ResultSet result = null;
+        
+        result = localDatabase.executeQuery("SELECT * FROM comercebd.tarjetas where idtargetas = '"+idTarjeta+"';");
+        Llenador llenador = new Llenador();
+        
+        tarjeta = llenador.llenarTarjeta(result);
+        
+        return tarjeta;
+    }
+    
     public boolean setNuevaTarjeta(Tarjetas tarjeta){
         boolean hasFailed = true;
         String pSql = "INSERT INTO comercebd.tarjetas (Dueño, CodigoSeguridad, NúmeroTargeta, MesExpira, AñoExpira, Cliente, tipo) "

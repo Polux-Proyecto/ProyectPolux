@@ -224,4 +224,35 @@ public class Llenador {
         
         return lista;
     }
+    
+    public Tarjetas llenarTarjeta (ResultSet result){
+        
+        Tarjetas tarjeta = null;
+        String propietario, tipo, numero, codigoS, anno, mes;
+        int idTarjeta, idCliente;
+        if (result!=null){
+            
+            try {
+                while (result.next()){
+                    propietario = result.getString("Dueño");
+                    tipo = result.getString("tipo");
+                    numero = result.getString("NúmeroTargeta");
+                    codigoS = result.getString("CodigoSeguridad");
+                    mes = result.getString("MesExpira");
+                    anno = result.getString("AñoExpira");
+                    idTarjeta = result.getInt("idtargetas");
+                    idCliente = result.getInt("Cliente");
+                    
+                    tarjeta = new Tarjetas (propietario, tipo, numero, codigoS, mes, anno, idTarjeta, idCliente);
+                    
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Llenador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+        return tarjeta;
+    }
 }

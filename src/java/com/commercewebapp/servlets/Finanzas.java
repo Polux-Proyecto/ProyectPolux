@@ -98,7 +98,13 @@ public class Finanzas extends HttpServlet {
             }
             case "4":{
                 // <editor-fold defaultstate="collapsed" desc="Pagar un producto">
+                String idTarj = request.getParameter("idTarjeta");
                 
+                
+                int idTarjeta = Integer.parseInt(idTarj);
+                AdminFinanzas finanzas = new AdminFinanzas();
+                
+                Tarjetas tarjeta = finanzas.getTarjetaByIdTarjeta(idTarjeta);
                 
                 
                 //</editor-fold>
