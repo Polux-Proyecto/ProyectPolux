@@ -138,7 +138,7 @@
 								<div class="media-content">
 									<div class="content">
 										<a href= "<%= ref %>" ><strong><%= productoActual.getNombre() %></strong></a>
-										<br><a href="EmpresaMuro.jsp"> Nombre Empresa </a>
+										<br><a href="Buscadores?formid=8&idEmpresa=<%= productoActual.getIdEmpresa() %>"> <%= productoActual.getNombreEmpresa()%> </a>
 										<br><p><%= productoActual.getDescripcion() %></p>
 									</div>
 								</div>

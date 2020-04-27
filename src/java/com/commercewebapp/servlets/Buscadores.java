@@ -126,7 +126,7 @@ import javax.servlet.http.HttpServletResponse;
             case "8":{
                 // <editor-fold defaultstate="collapsed" desc="Ir al muro de una empresa">
                 
-                
+                request.getRequestDispatcher("EmpresaMuro.jsp").forward(request, response);
                 // </editor-fold>
                 break;
             }

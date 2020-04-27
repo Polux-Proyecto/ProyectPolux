@@ -119,18 +119,18 @@
                     <div class="box" style="border: lightgray 2px inset">
                         <article class="media">
                             <div class="media-left">
-                              <figure class="image is-128x128">
-                                <img src="Imagenes?formid=3&att=producto" alt="Image">
-                              </figure>
+								<figure class="image is-128x128">
+									<img src="Imagenes?formid=3&att=producto" alt="Image">
+								</figure>
                             </div>
                             <div class="media-content">
-                              <div class="content">
-                                <p><strong><%= producto.getNombre() %></strong> 
-                                  <br>Precio: <%= producto.getPrecio() %>
-                                  <br>Descripción: <%= producto.getDescripcion()%>
-                                  <br>Empresa: <%= empresa.getNombre() %>
-                                </p><br>
-                              </div>
+								<div class="content">
+									<p><strong><%= producto.getNombre() %></strong> 
+										<br>Precio: <%= producto.getPrecio() %>
+										<br>Descripción: <%= producto.getDescripcion()%>
+										<br>Empresa: <a href="Buscadores?formid=8&idEmpresa=<%= producto.getIdEmpresa() %>"><%= empresa.getNombre() %></a>
+									</p><br>
+								</div>
                             </div>
                             <nav class="navbar" role="navigation" aria-label="main navigation">
                                 <div class="field is-grouped">
