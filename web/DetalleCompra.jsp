@@ -139,7 +139,52 @@
                             %>
                         <tr>
                             <td><%= i %></td>
-                            <td><%= producto.getNombre() %></td>
+                            <td><a class="modal-link" data-target="#Modal2"><%= producto.getNombre() %></a></td>
+                            <div class="modal" id="Modal2">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                            <p class="modal-card-title">Confirmación de Envío</p>
+                                            <button class="delete" aria-label="close"></button>
+                                    </header>
+                                    <section class="modal-card-body">
+                                        <div>
+                                            <p class="title-2">
+                                                ¿Desea confirmar que ya ha enviado este producto a <%= nombre %>?
+                                            </p>
+                                        </div>
+                                    </section>
+                                    <footer class="modal-card-foot">
+                                        <form name="FrmConfirmarEnv"action="Finanzas" method="post" id="FrmConfirmarEnv" enctype="multipart/form-data">
+                                            <input type="hidden" name="formid" id="formid" value="5">
+                                            <div class="control">
+                                                <button class="button is-success" >Confirmar</button>
+                                            </div>
+                                        </form>
+                                        <button class="button is-delete">Cancelar</button>
+                                    </footer>
+                                                                                            
+                                </div>
+                            </div>
+                            <script>
+                                document.querySelectorAll('.modal-link').forEach(function(el) {
+                                    el.addEventListener('click', function() {
+                                        var target = document.querySelector(el.getAttribute('data-target'));
+
+                                        target.classList.add('is-active');
+
+                                        target.querySelector('.delete').addEventListener('click',   function() {
+                                            target.classList.remove('is-active');
+
+                                        });
+                                        target.querySelector('.is-delete').addEventListener('click',   function() {
+                                            target.classList.remove('is-active');
+
+                                        });
+                                    });
+                                });
+
+                            </script>
                             <td><%= envio.getCantidad() %></td>
                             <td><%= envio.getFecha() %></td>
                             <td><%= envio.getCantidad()*producto.getPrecio() %></td>

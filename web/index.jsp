@@ -40,6 +40,9 @@
 		  max-width: 600px;
 		  margin: auto;
 		}
+                a {
+                    font-size: 17px;
+                }
 		</style>
     </head>
     <body>
@@ -90,8 +93,6 @@
                 </h2>
             </div>
         </section>
-        <!--
-        <a href="https://api.whatsapp.com/send?phone=50371268339&text=Hola,%20¿qué%20tal%20estás?">Mensaje</a>
-        -->
+        
     </body>
 </html>
