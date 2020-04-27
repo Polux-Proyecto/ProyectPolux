@@ -119,13 +119,12 @@ public class AdminProductos extends Logic {
     
     public List<Producto> getPedidosPorUsuario (int idUsuario){
         
-        ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb "
-                + "inner join comercebd.pedidostb "
-                + "where comercebd.pedidostb.producto = comercebd.prodtb.idprodtb "
-                + "and comercebd.pedidostb.cliente = '"+idUsuario+"' LIMIT 5;");
+        ResultSet result = localDatabase.executeQuery("SELECT prodtb.*, pedidostb.*, empresatb.Nombre as NombreEmpresa  "
+                + " FROM comercebd.prodtb inner join comercebd.pedidostb on comercebd.pedidostb.producto = comercebd.prodtb.idprodtb"
+                + " inner join comercebd.empresatb on empresatb.idempresatb = prodtb.empresa and comercebd.pedidostb.cliente = "+idUsuario+" LIMIT 5;");
         
         Llenador llenador = new Llenador();
-        List<Producto> listaProductos = llenador.llenarListaProductos(result);
+        List<Producto> listaProductos = llenador.llenarListaProductosConNombreEmpresa(result);
         
         return listaProductos;
     }
@@ -133,13 +132,12 @@ public class AdminProductos extends Logic {
     public List<Producto> getDeseosPorUsuario (int idUsuario){
         
         
-        ResultSet result = localDatabase.executeQuery("SELECT  * FROM comercebd.prodtb "
-                + "inner join comercebd.deseostb where "
-                + "comercebd.deseostb.producto = comercebd.prodtb.idprodtb "
-                + "and comercebd.deseostb.cliente = '"+idUsuario+"' LIMIT 5;");
+        ResultSet result = localDatabase.executeQuery("SELECT  prodtb.*, empresatb.Nombre as NombreEmpresa FROM comercebd.prodtb "
+                + "inner join comercebd.deseostb on comercebd.deseostb.producto = comercebd.prodtb.idprodtb "
+                + "inner join comercebd.empresatb on empresatb.idempresatb = prodtb.empresa and comercebd.deseostb.cliente = '"+idUsuario+"' LIMIT 5;");
         
         Llenador llenador = new Llenador();
-        List<Producto> listaProductos = llenador.llenarListaProductos(result);
+        List<Producto> listaProductos = llenador.llenarListaProductosConNombreEmpresa(result);
         
         return listaProductos;
     }
@@ -147,14 +145,14 @@ public class AdminProductos extends Logic {
     public List<Producto> getProductoPorPalabra (String palabra) {
         //Devuelve una lista de productos buscando la palabra ingresada en el nombre del producto, de la empresa o la descripción
            
-        ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb "
+        ResultSet result = localDatabase.executeQuery("SELECT *, empresatb.Nombre as NombreEmpresa FROM comercebd.prodtb "
                 + "inner join comercebd.empresatb on prodtb.empresa = empresatb.idempresatb "
                 + "where UPPER(prodtb.descripcion) like UPPER('%"+palabra+"%') "
                 + "or UPPER(prodtb.nombre) like UPPER('%"+palabra+"%') "
                 + "or UPPER(empresatb.Nombre) like UPPER('%"+palabra+"%');");
         
         Llenador llenador = new Llenador();
-        List<Producto> listaProductos = llenador.llenarListaProductos(result);
+        List<Producto> listaProductos = llenador.llenarListaProductosConNombreEmpresa(result);
         
         return listaProductos; 
     }
@@ -162,13 +160,13 @@ public class AdminProductos extends Logic {
     public List<Producto> getProductoPorCategoria (int categoria, boolean colocarEmpresario) {
         //Devuelve una lista de productos buscando la palabra ingresada en el nombre del producto, de la empresa o la descripción
         
-        ResultSet result = localDatabase.executeQuery("SELECT prodtb.*, empresatb.Nombre as NombreEmpresario "
+        ResultSet result = localDatabase.executeQuery("SELECT prodtb.*, empresatb.Nombre as NombreEmpresa "
                 + "FROM comercebd.prodtb inner join comercebd.empresatb "
                 + "on empresatb.idempresatb = prodtb.empresa "
                 + "where prodtb.categoria = '"+categoria+"' LIMIT 15;");
         
         Llenador llenador = new Llenador();
-        List<Producto> listaProductos = llenador.llenarListaProductos(result);
+        List<Producto> listaProductos = llenador.llenarListaProductosConNombreEmpresa(result);
         
         return listaProductos; 
     }

@@ -206,7 +206,7 @@
 								<div class="media-content">
 									<div class="content">
 										<p><strong><%= deseoActual.getNombre() %></strong><br>
-											<a href="EmpresaMuro.jsp"> Nombre Empresa </a>
+											<a href="Buscadores?formid=8&idEmpresa=<%= deseoActual.getIdEmpresa() %>"> <%= deseoActual.getNombreEmpresa()%> </a>
 											<br><%= deseoActual.getDescripcion() %>
 										</p><br>
 									</div>
@@ -254,7 +254,7 @@
 								  <div class="content">
 									<p>
 										<strong><%= pedidoActual.getNombre() %></strong>
-										<a href="EmpresaMuro.jsp"> Nombre Empresa </a>
+										<a href="Buscadores?formid=8&idEmpresa=<%= pedidoActual.getIdEmpresa() %>"> <%= pedidoActual.getNombreEmpresa() %> </a>
 										<br><%= pedidoActual.getDescripcion() %>
 									</p><br>
 								  </div>
