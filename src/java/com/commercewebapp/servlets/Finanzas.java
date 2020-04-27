@@ -7,7 +7,11 @@ package com.commercewebapp.servlets;
 
 import com.commercewebapp.logics.AdminFinanzas;
 import com.commercewebapp.logics.AdminPedidos;
+import com.commercewebapp.logics.AdminProductos;
+import com.commercewebapp.objects.Precios;
+import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Tarjetas;
+import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -99,13 +103,26 @@ public class Finanzas extends HttpServlet {
             case "4":{
                 // <editor-fold defaultstate="collapsed" desc="Pagar un producto">
                 String idTarj = request.getParameter("idTarjeta");
-                
-                
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                Producto producto = (Producto) request.getSession().getAttribute("producto");
+                Precios precios = (Precios) request.getSession().getAttribute("precios");
+                AdminProductos administrador = new AdminProductos();
                 int idTarjeta = Integer.parseInt(idTarj);
                 AdminFinanzas finanzas = new AdminFinanzas();
                 
                 Tarjetas tarjeta = finanzas.getTarjetaByIdTarjeta(idTarjeta);
                 
+                boolean hasFailed = finanzas.setVenta(usuario, producto, precios, tarjeta);
+                
+                if (hasFailed){
+                    request.getSession().setAttribute("valor", "1");
+                    request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
+                } else {
+                    List<Producto> pedidos = administrador.getPedidosPorUsuario(usuario.getIdUsuario());
+                    request.getSession().setAttribute("pedidos", pedidos);
+                    request.getSession().setAttribute("valor", "0");
+                    request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
+                }
                 
                 //</editor-fold>
             }

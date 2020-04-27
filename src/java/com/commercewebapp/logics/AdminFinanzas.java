@@ -7,8 +7,13 @@ package com.commercewebapp.logics;
 
 import com.commercewebapp.database.DatabaseZ;
 import com.commercewebapp.objects.Llenador;
+import com.commercewebapp.objects.Precios;
+import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Tarjetas;
+import com.commercewebapp.objects.Usuario;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -54,4 +59,16 @@ public class AdminFinanzas extends Logic {
         return hasFailed;
     }
     
+    public boolean setVenta(Usuario usuario, Producto producto, Precios precios, Tarjetas tarjeta){
+        boolean hasFailed = true;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.now();
+        String date = dtf.format(localDate);
+        System.out.println(dtf.format(localDate)); 
+        String pSql = "INSERT INTO comercebd.pedidostb ( cliente, producto, cantidad, entregado, precio, fechaPedido, Tarjeta) VALUES ( '"+usuario.getIdUsuario()+"', '"+producto.getId()+"', '"+precios.getCantidad()+"', '0', '"+precios.getTotalPagar()+"', '"+date+"', '"+tarjeta.getIdTarjeta()+"');";
+        System.out.println(pSql);
+        hasFailed = localDatabase.executeNonQueryBool(pSql);
+        return hasFailed;
+        
+    }
 }

@@ -170,7 +170,7 @@
 												</div>
                                                                                                 <div class="modal" id="Modal<%= n %>">
                                                                                                     <div class="modal-background"></div>
-                                                                                                    <form action="Finanzas" name="pago<%= tarjeta.getIdTarjeta() %>" id="pago<%= tarjeta.getIdTarjeta() %>">
+                                                                                                    
                                                                                                     <div class="modal-card">
                                                                                                         
                                                                                                             <header class="modal-card-head">
@@ -212,16 +212,18 @@
                                                                                                                 <p>Presiona confirmar para adquirir este producto, además, recivirás un correo electrónico a la dirección: <%= usuario.getCorreo() %></p>
                                                                                                             
                                                                                                             <footer>
-
+                                                                                                                <form action="Finanzas" name="pago<%= tarjeta.getIdTarjeta() %>" id="pago<%= tarjeta.getIdTarjeta() %>">
                                                                                                                     <input type="hidden" id="formid" name="formid" value="4">
                                                                                                                     <input type="hidden" id="idTarjeta" name="idTarjeta" value="<%= tarjeta.getIdTarjeta() %>">
                                                                                                                     <button class="button is-success" >Comprar</button>
+                                                                                                                    
+                                                                                                                </form>  
+                                                                                                                    <br>
                                                                                                                     <button class="button is-delete">Cancelar</button>
-
                                                                                                             </footer>
                                                                                                          </section>
                                                                                                         </div>
-                                                                                                    </form>  
+                                                                                                    
                                                                                                 </div>
                                                                                                 
                                                                                                 
