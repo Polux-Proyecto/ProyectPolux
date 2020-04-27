@@ -125,8 +125,19 @@ import javax.servlet.http.HttpServletResponse;
             }
             case "8":{
                 // <editor-fold defaultstate="collapsed" desc="Ir al muro de una empresa">
+                String idEmp = request.getParameter("idEmpresa");
+                int idEmpresa = Integer.parseInt(idEmp), mitad = 0;
+                AdminProductos buscador = new AdminProductos();
+                AdminCategorias admin  = new AdminCategorias();
+                List<Producto> lista = buscador.getProductosPorEmpresa(idEmpresa, 40);
+                if (lista!=null){
+                    mitad = admin.getMitadCategorias(idEmpresa);
+                }
                 
+                request.getSession().setAttribute("listaProductos", lista);
+                request.getSession().setAttribute("mitad", mitad);
                 request.getRequestDispatcher("EmpresaMuro.jsp").forward(request, response);
+                
                 // </editor-fold>
                 break;
             }

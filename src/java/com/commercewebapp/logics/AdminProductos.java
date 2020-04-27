@@ -221,6 +221,20 @@ public class AdminProductos extends Logic {
         return listaProductos;
     }
     
+    public List<Producto> getProductosPorEmpresa (int idEmpresa, int limite){
+         ResultSet result = null;
+          
+        result = localDatabase.executeQuery("SELECT * FROM comercebd.prodtb "
+            + "WHERE empresa = '"+idEmpresa+"' ORDER BY existencias asc LIMIT "+limite+";");
+        
+        
+        Llenador llenador = new Llenador();
+        List<Producto> listaProductos = llenador.llenarListaProductos(result);
+        
+        
+        return listaProductos;
+    }
+    
     public List<Producto> getProductosSinStock (int idEmpresa, int limite){
            
         
