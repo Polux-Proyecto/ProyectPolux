@@ -61,6 +61,45 @@ public class Llenador {
         return listaProductos;
         
     }
+    public List<Producto> llenarListaProductosConNombreEmpresa(ResultSet result){
+        List<Producto> listaProductos = null;
+        
+        if (result!=null){
+            int     id, existencias, idEmpresa;
+            String  nombre, descripcion, nombreEmpresa;
+            double  precio;
+            Blob blob = null;
+            Producto productoActual= null;
+            listaProductos = new ArrayList();
+            byte[] imagen = null;
+            try {
+                    while(result.next()){
+                        id = result.getInt("idprodtb");
+                        idEmpresa = result.getInt("empresa");
+                        nombre = result.getString("nombre");
+                        descripcion = result.getString("descripcion");
+                        precio = result.getDouble("precio");
+                        existencias = result.getInt("existencias");
+                        blob = result.getBlob("imagen");
+                        nombreEmpresa = result.getString("NombreEmpresa");
+                        if (blob != null){
+                            imagen = blob.getBytes(1,(int) blob.length());
+                        } else {
+                             imagen = null;
+                        }
+                        
+                        productoActual = new Producto (id, idEmpresa, nombre, descripcion, precio, 1, existencias, imagen);
+                        productoActual.setNombreEmpresa(nombreEmpresa);
+                        listaProductos.add(productoActual);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        
+        return listaProductos;
+        
+    }
     
     public List<Categoria> llenarListaCategoria (ResultSet result){
         List<Categoria> listaCategorias = null;
