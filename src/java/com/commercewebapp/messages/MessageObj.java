@@ -2,6 +2,8 @@
 package com.commercewebapp.messages;
 
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -11,12 +13,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MessageObj {
-    public boolean enviarCorreo(String p_nombre, String p_destinatario, String p_montoTotal ) throws AddressException, MessagingException{
+    public boolean enviarCorreo(String p_nombre, String correoDestinatario, String p_montoTotal ) {
     boolean enviado = false;
         
             String de = "pruebapolux@gmail.com"; 
             String clave = "mbbvr9788";
-            String para="p_destinatario";  
+            String para=correoDestinatario;  
             String host = "smtp.gmail.com";
 
             Properties prop = System.getProperties();
@@ -32,29 +34,39 @@ public class MessageObj {
 
             MimeMessage message = new MimeMessage(sesion);
 
-            message.setFrom(new InternetAddress(de));
-            
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
-
-            message.setSubject("BrocOnline");
-            message.setContent("<div style='border: green 10px inset;'><table>"
-                    + "<tr><th></td><td><div><h2 style=\"font-family: serif;\">"  +p_nombre+", su compra se ha realizado exitosamente!</h4></div></td></tr></table>"
-                    +"<table><tr><th><h4>Usted ha cancelado un total de $"+p_montoTotal+"</h4></tr>"
-                    +"<tr><img src=\"images/Footer.png\"></tr></table></div>"
-                , "text/html; charset=utf-8");
-
-            Transport transport = sesion.getTransport("smtp");
-
-            transport.connect(host,de,clave);
-
-            transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
-
-            transport.close();
-
-            enviado = true;
-
         
+            try {
+                message.setFrom(new InternetAddress(de));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
 
+                message.setSubject("BrocOnline");
+                message.setContent("<div style='border: green 10px inset;'><table>"
+                        + "<tr><th></td><td><div><h2 style=\"font-family: serif;\">"  +p_nombre+", su compra se ha realizado exitosamente!</h4></div></td></tr></table>"
+                        +"<table><tr><th><h4>Usted ha cancelado un total de $"+p_montoTotal+"</h4></tr>"
+                        +"<tr><img src=\"images/Footer.png\"></tr></table></div>"
+                        , "text/html; charset=utf-8");
+
+                Transport transport = sesion.getTransport("smtp");
+
+                transport.connect(host,de,clave);
+
+                transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+
+                transport.close();
+                
+                
+            } catch (MessagingException ex) {
+                Logger.getLogger(MessageObj.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MessageObj.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        
+            
+        
+            
+            enviado = true;
+            
     return enviado;
     }
 }

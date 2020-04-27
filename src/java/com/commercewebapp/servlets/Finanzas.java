@@ -8,6 +8,7 @@ package com.commercewebapp.servlets;
 import com.commercewebapp.logics.AdminFinanzas;
 import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.AdminProductos;
+import com.commercewebapp.messages.MessageObj;
 import com.commercewebapp.objects.Precios;
 import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Tarjetas;
@@ -123,6 +124,8 @@ public class Finanzas extends HttpServlet {
                     request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
                 } else {
                     List<Producto> pedidos = administrador.getPedidosPorUsuario(usuario.getIdUsuario());
+                    MessageObj mensaje = new MessageObj();
+                    mensaje.enviarCorreo(usuario.getNombre(), usuario.getCorreo(), precios.getTotalPagar());
                     request.getSession().setAttribute("pedidos", pedidos);
                     request.getSession().setAttribute("valor", "0");
                     request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
