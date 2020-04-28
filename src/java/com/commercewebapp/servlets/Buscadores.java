@@ -34,16 +34,16 @@ import javax.servlet.http.HttpServletResponse;
         response.setContentType("text/html;charset=UTF-8");
         
         String formid = request.getParameter("formid");
-        Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
-        if(abs==null){
-            request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
-        }
+        
         
         switch (formid) {
             case "1":{
                 // <editor-fold defaultstate="collapsed" desc="Para las barras de búsqueda">
                     //Es buscador de incioCliente
-                    
+                    Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
+                    if(abs==null){
+                        request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
+                    }
                     String palabra = request.getParameter("palabra");
                     AdminProductos buscador = new AdminProductos();
                     List<Producto> listaProductos = buscador.getProductoPorPalabra(palabra);
@@ -56,6 +56,10 @@ import javax.servlet.http.HttpServletResponse;
             }
             case "2":{
                 // <editor-fold defaultstate="collapsed" desc="Para las barras de opciones de InicioCliente">
+                Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
+                if(abs==null){
+                    request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
+                }
                     String idCat = request.getParameter("idCat");
                     int idCategoria = Integer.parseInt(idCat);
                     AdminProductos buscador = new AdminProductos();
@@ -69,6 +73,10 @@ import javax.servlet.http.HttpServletResponse;
             }
             case "3":{
                 // <editor-fold defaultstate="collapsed" desc="Para la opcion de todas las categorias">
+                    Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
+                    if(abs==null){
+                        request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
+                    }
                     AdminCategorias buscador = new AdminCategorias();
                     int mitad = 0;
                     List<Categoria> listaCategoria = buscador.getAllCategorias();
@@ -82,6 +90,10 @@ import javax.servlet.http.HttpServletResponse;
             }
             case "4":{
                 // <editor-fold defaultstate="collapsed" desc="Esta es para la selección de un producto">
+                Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
+                if(abs==null){
+                    request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
+                }
                 String idProd = request.getParameter("idProd");
                 int idProducto = Integer.parseInt(idProd);
                 Empresa empresa = null;
@@ -113,7 +125,7 @@ import javax.servlet.http.HttpServletResponse;
             case "6" :{
                 // <editor-fold defaultstate="collapsed" desc="Para cerrar sesión">
                     request.getSession().removeAttribute("usuario");
-                    request.getSession().invalidate();
+                    
                     response.setHeader("Cache-Control","no-cache"); 
                     response.setDateHeader("Expires", 0);
                     response.setHeader("Pragma","no-cache"); 
@@ -123,6 +135,10 @@ import javax.servlet.http.HttpServletResponse;
             }
             case "7":{
                 // <editor-fold defaultstate="collapsed" desc="Cargar precios de producto">
+                    Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
+                    if(abs==null){
+                        request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
+                    }   
                     String cant = request.getParameter("cantidad");
                     int cantidad =  Integer.parseInt(cant);
                     Producto producto = (Producto) request.getSession().getAttribute("producto");
@@ -135,6 +151,10 @@ import javax.servlet.http.HttpServletResponse;
             }
             case "8":{
                 // <editor-fold defaultstate="collapsed" desc="Ir al muro de una empresa">
+                Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
+                if(abs==null){
+                    request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
+                }
                 String idEmp = request.getParameter("idEmpresa");
                 int idEmpresa = Integer.parseInt(idEmp), mitad = 0;
                 AdminProductos buscador = new AdminProductos();
@@ -156,6 +176,10 @@ import javax.servlet.http.HttpServletResponse;
             }
             case "9":{
                 // <editor-fold defaultstate="collapsed" desc="Cargar precios de producto">
+                Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
+                if(abs==null){
+                    request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
+                }
                     String cant = request.getParameter("cantidad");
                     String idP = request.getParameter("idProd");
                     int idProd = Integer.parseInt(idP);
