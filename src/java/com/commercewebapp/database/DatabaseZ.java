@@ -55,7 +55,7 @@ public class DatabaseZ {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 localConnection= DriverManager.getConnection("jdbc:mysql://localhost/comercebd?"
-                    + "user=root&password=12345"
+                    + "user=root&password=12345678B"
                     + "&allowPublicKeyRetrieval=true"
                     + "&usUnicode=true&useJDBCCompliantTimeZoneShift=true"
                     + "&useLegacyDateTimeCode=false&serverTimezone=UTC"

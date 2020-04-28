@@ -276,6 +276,11 @@
 						<div class="content">
                                                     <%= usuario.getNombre() %>
 						</div>
+                                                <div class="media-left">
+									<figure class="image is-128x128">
+										<a><img src="Imagenes?formid=5&usuario=<%= usuario %> alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px"></a>
+									</figure>
+								</div>
 						<p class="subtitle"><strong>Correo Electrónico</strong></p>
 						<div class="content">
 							<%= usuario.getCorreo() %>

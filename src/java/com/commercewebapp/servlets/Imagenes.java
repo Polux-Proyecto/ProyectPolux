@@ -131,7 +131,25 @@ public class Imagenes extends HttpServlet {
                     out.close();
                 break;
             }
-            
+            case "5":{
+                // <editor-fold defaultstate="collapsed" desc="Para desplegar imagenes de perfil">
+                Usuario usuario  = (Usuario) request.getSession().getAttribute("usuario");
+                
+                byte[] img = null;
+                OutputStream out = null;
+                
+                img =  usuario.getImagen();
+                if (img == null){
+                    DefaulImage defImage = (DefaulImage) request.getSession().getAttribute("imgD");
+                    img = defImage.getImg();
+                }
+                response.setContentType("image/gif");
+                    out = response.getOutputStream();
+                    out.write(img);
+                    out.flush();
+                    out.close();
+                // </editor-fold>
+            }
         }
         
     }
