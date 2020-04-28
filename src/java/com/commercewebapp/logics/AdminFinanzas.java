@@ -66,7 +66,7 @@ public class AdminFinanzas extends Logic {
         int existencia = admin.getExistenciasByIdProd(producto.getId());
         
         if (existencia >= precios.getCantidad()){
-           LocalDate localDate = LocalDate.now();
+            LocalDate localDate = LocalDate.now();
             String date = dtf.format(localDate);
             System.out.println(dtf.format(localDate));
 

@@ -125,8 +125,10 @@ public class Finanzas extends HttpServlet {
                 Tarjetas tarjeta = finanzas.getTarjetaByIdTarjeta(idTarjeta);
                 
                 boolean hasFailed = finanzas.setVenta(usuario, producto, precios, tarjeta);
-                hasFailed = administrador.reduceStock(producto.getId(), precios.getCantidad());
                 
+                if (!hasFailed){
+                    hasFailed = administrador.reduceStock(producto.getId(), precios.getCantidad());
+                }
                 if (hasFailed){
                     request.getSession().setAttribute("valor", "1");
                     request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
