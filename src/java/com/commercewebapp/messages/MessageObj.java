@@ -44,9 +44,14 @@ public class MessageObj {
 
                 message.setSubject("BrocOnline");
                 message.setContent("<div style='border: green 10px inset;'><table>"
-                        + "<tr><th></td><td><div><h2 style=\"font-family: serif;\">"  +p_nombre+", su compra se ha realizado exitosamente!</h4></div></td></tr></table>"
-                        +"<table><tr><th><h4>Usted ha cancelado un total de $"+p_montoTotal+"</h4></tr>"
-                        +"<tr><img src=\"images/Footer.png\"></tr></table></div>"
+                        + "<tr><th></td><td><div><h2 style=\"font-family: serif; text-align: center; \">¡"+p_nombre+", su compra se ha realizado exitosamente!</h4></div></td></tr></table>"
+                        +"<table><tr><th><h4 style=\"font-family: serif; text-align: center; \">Usted ha adquirido "+precios.getCantidad()+" del producto "+producto.getNombre()+"</h4></tr>"
+                        +"<table><tr><th><h4 style=\"font-family: serif; text-align: center; \">Cancelando un total de $ "+precios.getTotalPagar()+"</h4></tr>"
+                        +"<table><tr><th><h4 style=\"font-family: serif; text-align: center; \">El pago se realizó con la tarjeta "+tarjeta.getCodigoHidden()+"</h4></tr>"
+                        +"<table><tr><th><h4 style=\"font-family: serif; text-align: center; \">¡Gracias por utilizar BrocOnline!</h4></tr>"
+                        +"<table><tr><th><h4 style=\"font-family: serif; text-align: center; \">Atentamente, </h4></tr>"
+                        +"<table><tr><th><h4 style=\"font-family: serif; text-align: center; \">Fidel Sorto </h4></tr>"
+                        +"<table><tr><th><h4 style=\"font-family: serif; text-align: center; \">Gerente de ventas de Grupo Pólux </h4></tr>"
                         , "text/html; charset=utf-8");
 
                 Transport transport = sesion.getTransport("smtp");

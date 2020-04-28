@@ -50,7 +50,7 @@ public class Empresarios extends HttpServlet {
                 Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
                 String nombreproducto=request.getParameter("nameProd");
                 String strprecioproducto=request.getParameter("precProd");
-                int precioproducto= Integer.parseInt(strprecioproducto);
+                double precioproducto= Double.parseDouble(strprecioproducto);
                 String descripcionproducto=request.getParameter("descProd");
                 int empresaproducto = usuario.getIdUsuario();
                 String strcategoriaproducto = request.getParameter("StrCategoria");
@@ -68,7 +68,7 @@ public class Empresarios extends HttpServlet {
                 hasfailed = productos.crearProducto(productoingresado);
                 
                 
-                if(hasfailed==true)
+                if(hasfailed==false)
                 {
                     String productoexitoso="25";
                     

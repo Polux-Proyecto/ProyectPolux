@@ -36,7 +36,7 @@ public class AdminProductos extends Logic {
         {
             try {
                 String bdnombre = producto.getNombreproducto();
-                int bdprecioproducto = producto.getPrecioproducto();
+                double bdprecioproducto = producto.getPrecioproducto();
                 String bddescripcionproducto= producto.getDescripcionproducto();
                 int bdempresaproducto = producto.getEmpresaproducto();
                 int bdcategoriaproducto = producto.getCategoriaproducto();
@@ -50,7 +50,7 @@ public class AdminProductos extends Logic {
                         + "VALUES(?,?,?,?,?,?,?,?)");
                 
                 statement.setString(1, bdnombre);
-                statement.setInt(2, bdprecioproducto);
+                statement.setDouble(2, bdprecioproducto);
                 statement.setString(3, bddescripcionproducto);
                 statement.setInt(4, bdempresaproducto);
                 statement.setInt(5, bdcategoriaproducto);
@@ -61,7 +61,7 @@ public class AdminProductos extends Logic {
                 int si = statement.executeUpdate();
               
               if (si>0){
-                  hasFailed = true;
+                  hasFailed = false;
               
                 System.out.println("Se insertaron los datos de nuevo producto correctamente");
               }

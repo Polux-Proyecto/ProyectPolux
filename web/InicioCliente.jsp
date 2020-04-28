@@ -45,7 +45,7 @@
             request.getSession().removeAttribute("valor");
             %>
             <script>
-                alert('¡Gracias por tu compra, se realizó con éxito, en unos momentos recivirás un correo de confirmación!');
+                alert('¡Gracias por tu compra, se realizó con éxito, en unos momentos recibirás un correo de confirmación!');
             </script>
             <%
         }

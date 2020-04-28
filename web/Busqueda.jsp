@@ -144,8 +144,8 @@
 								<div class="media-content">
 									<div class="content">
 										<p><strong><%= producto.getNombreEmpresa() %></strong>
-											<br>Nombre del producto: <%= producto.getNombre() %>
-											<br><a href="EmpresaMuro.jsp"> Nombre Empresa </a>
+                                                                                    <br><a href="Buscadores?formid=4&idProd=<%= producto.getId() %>">Nombre del producto: <%= producto.getNombre() %></a>
+											
 											<br>Descripción: <%= producto.getDescripcion() %>
 										</p><br>
 									</div>

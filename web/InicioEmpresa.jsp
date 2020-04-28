@@ -259,10 +259,9 @@
                                                                                 <div class="field">
                                                                                         <label>Precio Unitario:</label>
                                                                                         <div class="control">
-                                                                                                <input class="input" type="number" name="precProd" id="precProd" min="1" required>
+                                                                                                <input class="input" type="text" name="precProd" id="precProd" min="1"  required placeholder="Only numbers">
                                                                                         </div>
                                                                                 </div>
-
                                                                                 <div class="field">
                                                                                         <label>Descripción:</label>
                                                                                         <div class="control">

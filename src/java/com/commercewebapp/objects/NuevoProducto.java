@@ -4,15 +4,12 @@ package com.commercewebapp.objects;
 public class NuevoProducto
 {
         String nombreproducto;
-        int precioproducto;
+        double precioproducto;
         String descripcionproducto;
-        int empresaproducto;
-        int categoriaproducto;
-        int busquedasproducto;
-        int existenciasproducto;
+        int empresaproducto, categoriaproducto,  busquedasproducto, existenciasproducto;
         byte[] imagenproducto;
 
-    public NuevoProducto(String nombreprodc , int precioprodc , String descripcionprodc , int empresac , int categoriac, int busquedac , int existenciasc , byte[] imagenc) 
+    public NuevoProducto(String nombreprodc , double precioprodc , String descripcionprodc , int empresac , int categoriac, int busquedac , int existenciasc , byte[] imagenc) 
     {
         this.setNombreproducto(nombreprodc);
         this.setPrecioproducto(precioprodc);
@@ -34,11 +31,11 @@ public class NuevoProducto
         this.nombreproducto = pnombreproducto;
     }
 
-    public int getPrecioproducto() {
+    public double getPrecioproducto() {
         return precioproducto;
     }
 
-    private void setPrecioproducto(int pprecioproducto) {
+    private void setPrecioproducto(double pprecioproducto) {
         this.precioproducto = pprecioproducto;
     }
 
