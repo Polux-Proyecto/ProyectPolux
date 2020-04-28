@@ -72,6 +72,9 @@
 				flex-flow: row wrap;
 				align-items: center;
 			}
+			.border {
+				border-width: 2px; border-color:black ; border-style: solid; 
+			}
 		</style>
         <title>BrocOnline</title>
     </head>
@@ -113,9 +116,7 @@
 							</a>
 						</div>
 					</div>
-
 					<div class="navbar-end">
-                  
 						<div class="navbar-item">
 							<form action="Buscadores" method="get" name="buscador" class="form-inline">
 								<p class="control">
@@ -126,8 +127,7 @@
 										Buscar
 									</button>
 									<input type="hidden" id="formid" name="formid" value="1">
-								</p>
-                                                                
+								</p>                   
 							</form>
 							<div class="buttons">
                                 <a class="button color2" href="Buscadores?formid=6">
@@ -247,18 +247,18 @@
 						<div class="box" style="border: lightgray 2px inset">
 							<article class="media">
 								<div class="media-left">
-								  <figure class="image is-128x128">
-									  <a href= "<%= ref %>" ><img src="Imagenes?formid=1&idImgen=<%= k %>&att=pedidos" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px  "></a>
-								  </figure>
+									<figure class="image is-128x128">
+										<a href= "<%= ref %>" ><img src="Imagenes?formid=1&idImgen=<%= k %>&att=pedidos" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px  "></a>
+									</figure>
 								</div>
 								<div class="media-content">
-								  <div class="content">
-									<p>
-										<strong><%= pedidoActual.getNombre() %></strong>
-										<a href="Buscadores?formid=8&idEmpresa=<%= pedidoActual.getIdEmpresa() %>"> <%= pedidoActual.getNombreEmpresa() %> </a>
-										<br><%= pedidoActual.getDescripcion() %>
-									</p><br>
-								  </div>
+									<div class="content">
+										<p>
+											<strong><%= pedidoActual.getNombre() %></strong>
+											<a href="Buscadores?formid=8&idEmpresa=<%= pedidoActual.getIdEmpresa() %>"> <%= pedidoActual.getNombreEmpresa() %> </a>
+											<br><%= pedidoActual.getDescripcion() %>
+										</p><br>
+									</div>
 								</div>
 							</article>
 						</div>
@@ -270,32 +270,33 @@
 				</div>
 				<div class="tile is-parent" >
 					<article class="tile is-child box" style="border: green 10px inset;">
+						<div class="media-left form-inline" style="float:right">
+							<figure class="image">
+								<a><img src="Imagenes?formid=5&usuario=<%= usuario %>" class="border" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px"></a>
+							</figure>
+						</div>
 						<p class="title">Mi cuenta</p>
-
+						<br>
 						<p class="subtitle"><strong>Nombre de Contacto</strong></p>
 						<div class="content">
-                                                    <%= usuario.getNombre() %>
+                        <%= usuario.getNombre() %>
 						</div>
-                                                <div class="media-left">
-									<figure class="image is-128x128">
-										<a><img src="Imagenes?formid=5&usuario=<%= usuario %> alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px"></a>
-									</figure>
-								</div>
+						
 						<p class="subtitle"><strong>Correo Electrónico</strong></p>
 						<div class="content">
 							<%= usuario.getCorreo() %>
 						</div>
 						<p class="subtitle"><strong>Género</strong></p>
 						<div class="content">
-						  <%= usuario.getGenero() %>
+							<%= usuario.getGenero() %>
 						</div>
 						<p class="subtitle"><strong>Fecha de Nacimiento</strong></p>
 						<div class="content">
-						  <%= usuario.getFechaN() %>
+							<%= usuario.getFechaN() %>
 						</div>
 						<p class="subtitle"><strong>Dirección de Entrega</strong></p>
 						<div class="content">
-						  <%= usuario.getDireccion() %>
+							<%= usuario.getDireccion() %>
 						</div>
 					</article>
 				</div>
