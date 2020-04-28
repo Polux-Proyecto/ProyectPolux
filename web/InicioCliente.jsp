@@ -143,7 +143,7 @@
 			<div class="hero-body">
 				<div id="carousel-demo" class="hero-carousel" data-autoplay="true" data-navigation-keys="false" data-autoplay-speed="5000" data-effect="fade" data-duration="1000">
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="images/QuedateEnCasa.jpeg">
+						<img class="is-background" style="overflow:hidden; width:2000px; height:200px;" src="images/QuedateEnCasa.jpeg">
 						<div class="box" >
 							<div class="EnlaceCarousel">
 								<h1><strong><a href="Buscadores?formid=2&idCat=1">#QuedateEnCasa y disfruta de la mejor música para tu alma</a> </strong></h1>
@@ -151,7 +151,7 @@
 						</div>
 					</div>
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="images/ContenidoExclusivo.jpeg">
+						<img class="is-background" style="overflow:hidden; width:2000px; height:200px;" src="images/ContenidoExclusivo.jpeg">
 						<div class="box" >
 							<div class="EnlaceCarousel">
 								<a href="Buscadores?formid=3"><h1><strong>Visita nuestras categorías</strong></h1></a>
@@ -159,11 +159,11 @@
 						</div>
 					</div>
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="images/LetrasNegras.png">
+						<img class="is-background" style="overflow:hidden; width:2000px; height:200px;" src="images/LetrasNegras.png">
 						<div class="box" >
 							<div class="EnlaceCarousel">
-                                                            <h1><strong><a href="Buscadores?formid=2&idCat=3">#QuedateEnCasa, y distruta de los pruductos para el hogar</a></strong></h1>
-							 </div>
+								<h1><strong><a href="Buscadores?formid=2&idCat=3">#QuedateEnCasa, y distruta de los pruductos para el hogar</a></strong></h1>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -254,7 +254,7 @@
 									<div class="content">
 										<p>
 											<strong><%= pedidoActual.getNombre() %></strong>
-											<a href="Buscadores?formid=8&idEmpresa=<%= pedidoActual.getIdEmpresa() %>"> <%= pedidoActual.getNombreEmpresa() %> </a>
+											<br><a href="Buscadores?formid=8&idEmpresa=<%= pedidoActual.getIdEmpresa() %>"> <%= pedidoActual.getNombreEmpresa() %> </a>
 											<br><%= pedidoActual.getDescripcion() %>
 										</p><br>
 									</div>

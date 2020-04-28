@@ -213,51 +213,49 @@
                                                         if(n<mitad){
                                                 %>
                                                 
-						 <div class="box" style="border: lightgray 2px inset" id ="derecha">
+						<div class="box" style="border: lightgray 2px inset" id ="izquierda">
 							<article class="media">
 								<div class="media-left">
 									<figure class="image is-128x128">
-										<img src="Imagenes?formid=1&idImgen=<%= n  %>&att=listaProductos" alt="Image">
+										<img src="Imagenes?formid=1&idImgen=<%= n  %>&att=listaProductos" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px">
 									</figure>
 								</div>
 								<div class="media-content">
 									<div class="content">
 										<p><strong><%= productoActual.getNombre() %></strong> 
 											<br>Precio: <%= productoActual.getPrecio() %> 
-                                                                                        <br>Descripción: <%= productoActual.getDescripcion() %>
-										</p><br>
+                                            <br>Descripción: <%= productoActual.getDescripcion() %>
+										</p>
 									</div>
 								</div>
-								<nav class="navbar" role="navigation" aria-label="main navigation">
-									<div class="field is-grouped">
-										<a class="navbar-item" href="Finanzas?formid=5&idProd=<%= productoActual.getId() %>&idCliente=<%= usuario.getIdUsuario() %>">
-											<div class="control">
-												<button class="button is-outlined is-danger">Lista de deseos</button>
-											</div>
-										</a>
-										<a class="navbar-item" href="Buscadores?formid=9&cantidad=1&idProd=<%= productoActual.getId() %>">
-											<div class="control">
-												<button class="button is-outlined ">Comprar</button>
-											</div>
-										</a>
-									</div>
-								</nav>
 							</article>
+							<div class="field is-grouped">
+								<a class="navbar-item" href="Finanzas?formid=5&idProd=<%= productoActual.getId() %>&idCliente=<%= usuario.getIdUsuario() %>">
+									<div class="control">
+										<button class="button is-outlined is-danger">Lista de deseos</button>
+									</div>
+								</a>
+								<a class="navbar-item" href="Buscadores?formid=9&cantidad=1&idProd=<%= productoActual.getId() %>">
+									<div class="control">
+										<button class="button is-outlined ">Comprar</button>
+									</div>
+								</a>
+							</div>
 						</div>
 						<%          } else {    %>
-                                                <div class="box" style="border: lightgray 2px inset" id ="izquierda">
+						<div class="box" style="border: lightgray 2px inset" id ="derecha">
 							<article class="media">
 								<div class="media-left">
 									<figure class="image is-128x128">
-										<img src="Imagenes?formid=1&idImgen=<%= n %>&att=listaProductos" alt="Image">
+										<img src="Imagenes?formid=1&idImgen=<%= n %>&att=listaProductos" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px">
 									</figure>
 								</div>
 								<div class="media-content">
 									<div class="content">
 										<p><strong><%= productoActual.getNombre() %></strong> 
 											<br>Precio: <%= productoActual.getPrecio() %> 
-                                                                                        <br>Descripción: <%= productoActual.getDescripcion() %>
-										</p><br>
+											<br>Descripción: <%= productoActual.getDescripcion() %>
+										</p>
 									</div>
 								</div>
 								<nav class="navbar" role="navigation" aria-label="main navigation">
@@ -284,9 +282,9 @@
                                                         }
                                                     } else { %>
 
-                                                    <div class="box" style="border: lightgray 2px inset">
-                                                     <p class="title">No hay Categorías para mostrar :(</p>
-                                                </div> 
+						<div class="box" style="border: lightgray 2px inset">
+							 <p class="title">No hay Categorías para mostrar :(</p>
+						</div> 
                                                     <% } %>
 					
 						

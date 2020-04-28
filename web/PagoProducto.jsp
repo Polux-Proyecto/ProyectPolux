@@ -61,7 +61,7 @@
 				flex-flow: row wrap;
 				align-items: center;
 			}
-                        .col {
+			.col {
 				display: table-cell;
 				padding: 16px;
 			}
