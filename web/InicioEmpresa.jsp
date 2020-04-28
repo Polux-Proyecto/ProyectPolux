@@ -88,7 +88,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <script src="https://kit.fontawesome.com/709f0bb893.js" crossorigin="anonymous"></script>
-        <title>InicioEmpresa</title>
+        <title><%= usuario.getNombre() %></title>
 		<style>
 			.color1{
 				background-color: #93d250

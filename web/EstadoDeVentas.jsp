@@ -49,7 +49,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-        <title>JSP Page</title>
+        <title>Ventas: <%= usuario.getNombre() %></title>
     </head>
     <body>
         <section>
@@ -161,85 +161,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tile is-parent is-vertical"> 
-                    <div class="tile is-child box">
-                        <div class="title is-centered">Top 5 productos más vendidos</div><br>
-                            <table id="q-graph">
-                            <thead>
-                            </thead>
-                            <tbody>
-                               
-                            <tr class="qtr" id="q1">
-                            <th scope="row" style='font-size: small;'>Producto 1</th>
-                            <td class="paid bar" style="height: 99px;"><p>$16,500.00</p></td>
-                            </tr>
-                            <tr class="qtr" id="q2">
-                            <th scope="row" style='font-size: small;'>Producto 2</th>
-                            <td class="paid bar" style="height: 194px;"><p>$32,340.72</p></td>
-                            </tr>
-                            <tr class="qtr" id="q3">
-                            <th scope="row" style='font-size: small;'>Producto 3</th>
-                            <td class="paid bar" style="height: 193px;"><p>$32,225.52</p></td>
-                            </tr>
-                            <tr class="qtr" id="q4">
-                            <th scope="row" style='font-size: small;'>Producto 4</th>
-                            <td class="paid bar" style="height: 195px;"><p>$32,425.00</p></td>
-                            </tr>
-                            <tr class="qtr" id="q5">
-                            <th scope="row" style='font-size: small;'>Producto 5</th>
-                            <td class="paid bar" style="height: 195px;"><p>$32,425.00</p></td>
-                            </tr>
-                            </tbody>
-                            </table>
-
-                            <div id="ticks">
-                            <div class="tick" style="height: 59px;"><p>$50,000</p></div>
-                            <div class="tick" style="height: 59px;"><p>$40,000</p></div>
-                            <div class="tick" style="height: 59px;"><p>$30,000</p></div>
-                            <div class="tick" style="height: 59px;"><p>$20,000</p></div>
-                            <div class="tick" style="height: 59px;"><p>$10,000</p></div>
-                            </div>
-                    </div>    
-                    <div class="tile is-child box">
-                        <br><br>
-                        <div class="title">Top 5 categorías más vendidas</div><br>
-                    <table id="q-graph">
-
-                    <thead>
-                    </thead>
-                    <tbody>
-                    <tr class="qtr" id="q1">
-                    <th scope="row" style='font-size: small;'>Categoría 1</th>
-                    <td class="sent bar" style="height: 111px;"><p>$18,450.00</p></td>
-                    </tr>
-                    <tr class="qtr" id="q2">
-                    <th scope="row" style='font-size: small;'>Categoría 2</th>
-                    <td class="sent bar" style="height: 206px;"><p>$34,340.72</p></td>
-                    </tr>
-                    <tr class="qtr" id="q3">
-                    <th scope="row" style='font-size: small;'>Categoría 3</th>
-                    <td class="sent bar" style="height: 259px;"><p>$43,145.52</p></td>
-                    </tr>
-                    <tr class="qtr" id="q4">
-                    <th scope="row" style='font-size: small;'>Categoría 4</th>
-                    <td class="sent bar" style="height: 110px;"><p>$18,415.96</p></td>
-                    </tr>
-                    <tr class="qtr" id="q5">
-                    <th scope="row" style='font-size: small;'>Categoría 5</th>
-                    <td class="sent bar" style="height: 110px;"><p>$18,415.96</p></td>
-                    </tr>
-                    </tbody>
-                    </table>
-
-                    <div id="ticks">
-                    <div class="tick" style="height: 59px;"><p>$50,000</p></div>
-                    <div class="tick" style="height: 59px;"><p>$40,000</p></div>
-                    <div class="tick" style="height: 59px;"><p>$30,000</p></div>
-                    <div class="tick" style="height: 59px;"><p>$20,000</p></div>
-                    <div class="tick" style="height: 59px;"><p>$10,000</p></div>
-                    </div>
-                    </div>
-                </div>                    
+               
             </div>
         </section>
     </body>
