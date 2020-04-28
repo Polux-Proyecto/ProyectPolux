@@ -121,7 +121,7 @@ public class AdminProductos extends Logic {
         
         ResultSet result = localDatabase.executeQuery("SELECT prodtb.*, pedidostb.*, empresatb.Nombre as NombreEmpresa  "
                 + " FROM comercebd.prodtb inner join comercebd.pedidostb on comercebd.pedidostb.producto = comercebd.prodtb.idprodtb"
-                + " inner join comercebd.empresatb on empresatb.idempresatb = prodtb.empresa and comercebd.pedidostb.cliente = "+idUsuario+" where pedidostb.entregado = 0 LIMIT 5;");
+                + " inner join comercebd.empresatb on empresatb.idempresatb = prodtb.empresa and comercebd.pedidostb.cliente = "+idUsuario+" where pedidostb.entregado = 0 LIMIT 15;");
         
         Llenador llenador = new Llenador();
         List<Producto> listaProductos = llenador.llenarListaProductosConNombreEmpresa(result);
@@ -134,7 +134,7 @@ public class AdminProductos extends Logic {
         
         ResultSet result = localDatabase.executeQuery("SELECT  prodtb.*, empresatb.Nombre as NombreEmpresa FROM comercebd.prodtb "
                 + "inner join comercebd.deseostb on comercebd.deseostb.producto = comercebd.prodtb.idprodtb "
-                + "inner join comercebd.empresatb on empresatb.idempresatb = prodtb.empresa and comercebd.deseostb.cliente = '"+idUsuario+"' LIMIT 5;");
+                + "inner join comercebd.empresatb on empresatb.idempresatb = prodtb.empresa and comercebd.deseostb.cliente = '"+idUsuario+"' LIMIT 15;");
         
         Llenador llenador = new Llenador();
         List<Producto> listaProductos = llenador.llenarListaProductosConNombreEmpresa(result);

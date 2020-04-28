@@ -219,7 +219,7 @@
                                                                                                                     
                                                                                                                 </form>  
                                                                                                                     <br>
-                                                                                                                    <button class="button is-delete">Cancelar</button>
+                                                                                                                    <button class="button is-delete" >Cancelar</button>
                                                                                                             </footer>
                                                                                                          </section>
                                                                                                         </div>
@@ -239,16 +239,21 @@
                                                         <script>
                                                             document.querySelectorAll('.modal-button').forEach(function(el) {
                                                             el.addEventListener('click', function() {
-                                                              var target = document.querySelector(el.getAttribute('data-target'));
+                                                                var target = document.querySelector(el.getAttribute('data-target'));
 
-                                                              target.classList.add('is-active');
+                                                                target.classList.add('is-active');
 
-                                                              target.querySelector('.delete').addEventListener('click',   function() {
-                                                                      target.classList.remove('is-active');
+                                                                target.querySelector('.delete').addEventListener('click',   function() {
+                                                                    target.classList.remove('is-active');
 
-                                                                               });
-                                                                            });
-                                                                      });
+                                                                    });
+                                                                
+                                                                target.querySelector('.is-delete').addEventListener('click',   function() {
+                                                                    target.classList.remove('is-active');
+
+                                                                    });
+                                                                });
+                                                            });
 
                                                             </script>                                                                                                          
                                                         
@@ -277,12 +282,12 @@
 								<form method="get" action="Finanzas">
 
 										<label for="owner">Dueño de la tarjeta de crédito</label>
-										<input type="text" class="form-control" id="Dueno" name="Dueno" placeholder="<%= usuario.getNombre()%>">
+										<input type="text" class="form-control" id="Dueno" name="Dueno" placeholder="<%= usuario.getNombre()%>" required>
 										<br><br>
 										<label for="Tipo">Tipo de tarjeta de crédito</label>
 
 									<div class="select is-info">
-										<select  id="Tipo" name="Tipo">
+                                                                            <select  id="Tipo" name="Tipo" required>
 											<option value="Visa">Visa</option>
 											<option value="American Express">American Express</option>
 											<option value="Mastercard">Mastercard</option>
@@ -292,15 +297,15 @@
 									<br><br>
 
 									<label for="numero">Número de la tarjeta de crédito</label>
-									<input type="text" class="form-control" id="numero" name="numero" pattern=".{16,16}" placeholder="0000000000000000">
+									<input type="text" class="form-control" id="numero" name="numero" pattern=".{16,16}" placeholder="0000000000000000" required>
 									<br><br>
 
 									<label for="código">Código de la tarjeta de crédito</label>
-									<input type="text" class="form-control" id="codigo" name="codigo" pattern=".{4,4}" placeholder="0000">
+									<input type="text" class="form-control" id="codigo" name="codigo" pattern=".{4,4}" placeholder="0000" required>
 									<br><br>
 
 									<label for="mes">Mes de vencimieto</label>
-									<select name="mes" id="mes">
+									<select name="mes" id="mes" required>
 	<% 
 	for (int i = 0; i <12; i++){
 	%>
@@ -313,13 +318,15 @@
 
 									<label for="anno">Año de vencimieto</label>
 
-									<select name="anno" id="anno">
+									<select name="anno" id="anno" required>
 										<% 
 		for(int i = 0; i < canAnnos ; i++ ){
+                    if(annos[i]  > 1999 ){
 		%>
 										<option value="<%= annos[i] + 20 %>"> <%= annos[i] + 20 %> </option>
 	<%
-		}
+                    }
+                }
 	%>  
 									</select>
 									<br><br>
@@ -328,10 +335,10 @@
 									<div>
 										<button  type="submit" class="button is-link">Ingresar tarjeta de crédito</button>
 									</div>
-									<div>
-										<button class="button is-link is-light">Cancelar</button>
-									</div>
 								</form>
+                                                                <div>
+                                                                    <a href="Buscadores?formid=7&cantidad=1"><button class="button is-link is-light">Cancelar</button></a>
+                                                                </div>
 							</div>
 						</section>
 					</div>

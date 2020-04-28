@@ -144,7 +144,7 @@
 			<div class="hero-body">
 				<div id="carousel-demo" class="hero-carousel" data-autoplay="true" data-navigation-keys="false" data-autoplay-speed="5000" data-effect="fade" data-duration="1000">
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/merry-christmas.jpg">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/LetrasNegras.png">
 						<div class="box" >
 							<div class="EnlaceCarousel">
 								<a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>

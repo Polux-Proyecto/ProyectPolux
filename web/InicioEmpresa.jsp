@@ -190,16 +190,17 @@
                                                                 <p class="modal-card-title">Nuevo Producto</p>
                                                                 <button class="delete" aria-label="close"></button>
                                                         </header>
-                                                        <section class="modal-card-body">
-                                                                <form name="FrmNuevoProd" action="Empresarios" method="post" id="FrmNuevoProd" enctype="multipart/form-data">
-                                                                    <input type="hidden" name="formid" id="formid" value="1">
+                                                        
+                                                            <form name="FrmNuevoProd" action="Empresarios" method="post" id="FrmNuevoProd" enctype="multipart/form-data">
+                                                                <section class="modal-card-body">
+                                                                    <input type="hidden" name="formid" id="formid" value="1" required>
                                                                         <p class="subtitle has-text-danger"><%= avisoE %></p>
                                                                         <p class="subtitle has-text-success"><%= avisoM %></p>
 
                                                                         <div class="field">
                                                                                 <label>Nombre del producto:</label>
                                                                                 <div class="control">
-                                                                                  <input class="input" type="text" name="nameProd" id="nameProd"/>
+                                                                                  <input class="input" type="text" name="nameProd" id="nameProd" required>
                                                                                 </div>
                                                                         </div>
                                                                         <div class="field">
@@ -207,7 +208,7 @@
                                                                                 <div class="control">
                                                                                         <div class="file has-name is-right">
                                                                                                 <label class="file-label">
-                                                                                                        <input class="file-input" type="file" name="resume">
+                                                                                                        <input class="file-input" type="file" name="resume" required>
                                                                                                         <span class="file-cta">
                                                                                                                 <span class="file-icon">
                                                                                                                         <i class="fas fa-upload"></i>
@@ -226,7 +227,7 @@
                                                                         <div class="field">
                                                                                 <label>Cantidad:</label>
                                                                                 <div class="control">
-                                                                                        <input class="input" type="number" name="cantProd" id="cantProd" min="1"/>
+                                                                                        <input class="input" type="number" name="cantProd" id="cantProd" min="1" required>
                                                                                 </div>
                                                                         </div>
 
@@ -234,7 +235,7 @@
                                                                                         <label>Categoría</label>
                                                                                          <div class="control">
                                                                                         <div class="select is-info">
-                                                                                            <select  id="StrCategoria" name="StrCategoria">
+                                                                                            <select  id="StrCategoria" name="StrCategoria" required>
                                                                                                 <% if(categorias!=null){
                                                                                                         while(iteCategoria.hasNext()){
                                                                                                             categoriaActual = iteCategoria.next();
@@ -249,40 +250,43 @@
                                                                                 <div class="field">
                                                                                         <label>Precio Unitario:</label>
                                                                                         <div class="control">
-                                                                                                <input class="input" type="number" name="precProd" id="precProd" min="1"/>
+                                                                                                <input class="input" type="number" name="precProd" id="precProd" min="1" required>
                                                                                         </div>
                                                                                 </div>
 
                                                                                 <div class="field">
                                                                                         <label>Descripción:</label>
                                                                                         <div class="control">
-                                                                                                <input class="input" type="text" name="descProd" id="descProd"/>
+                                                                                                <input class="input" type="text" name="descProd" id="descProd" required>
                                                                                         </div>
                                                                                 </div>
+                                                                        </section>
                                                                         
-                                                                </section>
-                                                                <footer class="modal-card-foot">
-                                                                    <input type="hidden" id="formid" value="1">
-                                                                        <button class="button is-success" >Guardar cambios</button>
-                                                                        <button class="button is-delete">Cancelar</button>
-                                                                </footer>
-                                                                </form>                            
+                                                                        <footer class="modal-card-foot">
+                                                                            <input type="hidden" id="formid" value="1">
+                                                                            <button class="button is-success" >Guardar cambios</button>
+                                                                            <button class="button is-delete" aria-label="close">Cancelar</button>
+                                                                        </footer>
+                                                                    </form>              
                                                         </div>
                                                 </div>
                                                 <script>
                                                         document.querySelectorAll('.modal-button').forEach(function(el) {
-                                                                el.addEventListener('click', function() {
-                                                                  var target = document.querySelector(el.getAttribute('data-target'));
+                                                            el.addEventListener('click', function() {
+                                                                var target = document.querySelector(el.getAttribute('data-target'));
 
-                                                                  target.classList.add('is-active');
+                                                                target.classList.add('is-active');
 
-                                                                  target.querySelector('.delete').addEventListener('click',   function() {
-                                                                          target.classList.remove('is-active');
-
-										   });
-										});
-									  });
-                              
+                                                                target.querySelector('.delete').addEventListener('click',   function() {
+                                                                    target.classList.remove('is-active');
+                                                                
+                                                                });
+                                                                
+                                                                target.querySelector('.is-delete').addEventListener('click',   function() {
+                                                                    target.classList.remove('is-active');
+                                                                });
+                                                            });
+                                                        });
 								</script>
 							</article>
 							<article class="tile is-child box" style="border: green 10px inset;">
