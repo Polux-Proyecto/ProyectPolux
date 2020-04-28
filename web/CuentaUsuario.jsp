@@ -68,46 +68,40 @@ int canAnnos = arreglos.getCant();
      %>
     
     <body>
-            <section class="section has-background-light ">
-        <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post" enctype="multipart/form-data">
-                 <section class="hero is-primary is-bold has-text-centered has-background-grey-light">
-  <div class="hero-body">
-    <div class="container ">
-      <h1 class="title  is-size-1 is-family-sans-serif ">
-        BrocOnline Store 
-      </h1>
-      <h2 class="subtitle">
-        "CREA UNA CUENTA DE USUARIO"
-      </h2>
-    </div>
-  </div>
-</section>
-            <br><br> 
-               
+        <section class="section has-background-light ">
+            <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post" enctype="multipart/form-data">
+                <section class="hero is-primary is-bold has-text-centered has-background-grey-light">
+                    <div class="hero-body">
+                      <div class="container ">
+                        <h1 class="title  is-size-1 is-family-sans-serif "> BrocOnline Store  </h1>
+                        <h2 class="subtitle"> "CREA UNA CUENTA DE USUARIO" </h2>
+                      </div>
+                    </div>
+                </section>
+                <br><br> 
                 <div class="field">
                     <label>Imagen de Perfil</label>
                     <div class="control">
                         <div class="file has-name is-right">
                             <label class="file-label">
-                              <input class="file-input" type="file" name="resume" value=<%=imagenperfil%>>
-                              <span class="file-cta">
-                                <span class="file-icon">
-                                  <i class="fas fa-upload"></i>
+                                <input class="file-input" type="file" name="resume" value=<%=imagenperfil%>>
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Agrega una foto de perfil... 
+                                    </span>
                                 </span>
-                                <span class="file-label">
-                                  Agrega una foto de perfil... 
+                                <span class="file-name">
+                                    Agregar una imagen
                                 </span>
-                              </span>
-                              <span class="file-name">
-                                Screen Shot 2017-07-29 at 15.54.25.png
-                              </span>
                             </label>
-                          </div>
+                        </div>
                     </div>
                 </div>
-                              <br><br> 
-                               <div class="field">
-                    
+                <br><br> 
+                <div class="field">
                     <label >Nombre</label>
                     <div class="control">
                         <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input" value=<%=nombre%>>
@@ -118,14 +112,14 @@ int canAnnos = arreglos.getCant();
                     <div class="control">
                         <div style="color:red"><%= mensajeerror%>
                         <input id="strNewUsername" name="strNewUsername" class="input" type="text" placeholder="Text input" >
+                        </div>
                     </div>
                 </div>
-
                 <div class="field">
-                  <label>Email</label>
-                  <div class="control">
-                    <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value=<%=email%>>
-                  </div>
+                    <label>Email</label>
+                    <div class="control">
+                      <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value=<%=email%>>
+                    </div>
                 </div>
                 <div class="field">
                     <label>Contraseña</label>
@@ -139,26 +133,10 @@ int canAnnos = arreglos.getCant();
                         <div class="select is-info">
                             <select  id="StringNewSexo" name="StringNewSexo">
                                 <%
-                                    System.out.println(smes);
-                                    if(sexo.equals("Femenino")){%>
-                                <option value="Femenino" selected="">Femenino</option>
-                                <option value="Masculino">Masculino</option>
-                                <option value="Indefinido">Prefiero no decirlo</option>
-                                
-                                <%}else if(sexo.equals("Masculino")){%>
-                                <option value="Femenino" >Femenino</option>
-                                <option value="Masculino" selected="">Masculino</option>
-                                <option value="Indefinido">Prefiero no decirlo</option>
-                                
-                                <%}else if(sexo.equals("Indefinido") ){%>
-                                <option value="Femenino" >Femenino</option>
-                                <option value="Masculino">Masculino</option>
-                                <option value="Indefinido" selected="">Prefiero no decirlo</option>
-                                 <% }else{%>
-                                 <option value="Femenino" >Femenino</option>
-                                <option value="Masculino" selected="">Masculino</option>
-                                <option value="Indefinido">Prefiero no decirlo</option>
-                                 <%}%>
+                                    System.out.println(smes); %>
+                                <option value="Femenino" <% if(sexo.equals("Femenino")){%> selected <% } %> >Femenino</option>
+                                <option value="Masculino" <% if(sexo.equals("Masculino")){%> selected <% } %>>Masculino</option>
+                                <option value="Indefinido" <% if(sexo.equals("Prefiero no decirlo")){%> selected <% } %> > Prefiero no decirlo</option>
                             </select>
                         </div>
                     </div>
@@ -207,7 +185,7 @@ int canAnnos = arreglos.getCant();
 
                                     if(annos[i]+20 == anno){
                                     %>
-                                 <option value="<%= annos[i] + 20 %>" selected="" > <%= annos[i] + 20 %> </option>
+                                <option value="<%= annos[i] + 20 %>" selected="" > <%= annos[i] + 20 %> </option>
                                 <%
                                     }else{
                                 %>
@@ -223,71 +201,16 @@ int canAnnos = arreglos.getCant();
                     <div class="control">
                         <div class="select is-info">
                             <select  id="StringNewCountry" name="StringNewCountry">
-                                <%if(pais.equals("El Salvador")){%>
-                                <option value="ElSalvador" selected="">El Salvador</option>
-                                <option value="Guatemala">Guatemala</option>
-                                <option value="Belice">Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Guatemala")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" selected="">Guatemala</option>
-                                <option value="Belice">Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option> 
-                                <%}else if(pais.equals("Belice")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" selected="">Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Nicaragua")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua" selected="">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Honduras")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras" selected="">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Panama")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama" selected="">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("CostaRica")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica" selected="">Costa Rica</option>
-                                <%}else{%>
-                                <option value="ElSalvador" selected="">El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}%>
+                                
+                                
+                                <option value="ElSalvador" <%if(pais.equals("El Salvador")){%>selected<% } %>>El Salvador</option>
+                                <option value="Guatemala" <%  if(pais.equals("Guatemala")){%>selected<% } %>>Guatemala</option>
+                                <option value="Belice" <% if(pais.equals("Belice")){%>selected<% } %>>Belice</option>
+                                <option value="Nicaragua" <%  if(pais.equals("Nicaragua")){%>selected<% } %>>Nicaragua</option>
+                                <option value="Honduras" <%  if(pais.equals("Honduras")){%>selected<% } %>>Honduras</option>
+                                <option value="Panama" <%  if(pais.equals("Panamá")){%>selected<% } %>>Panamá</option>
+                                <option value="CostaRica" <%  if(pais.equals("Costa Rica")){%>selected<% } %>>Costa Rica</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -308,12 +231,15 @@ int canAnnos = arreglos.getCant();
                     <div class="control">
                         <button class="button is-link">Submit</button>
                     </div>
-                    <div class="control">
-                        <button class="button is-link is-light">Cancel</button>
-                    </div>
+                    
                 </div>
-            </section>
-            <input type="hidden" name="formid" value="1" />
-        </form>
+            
+                <input type="hidden" name="formid" value="1" />
+            </form>
+                    <div class="control">
+                        <a  href="index.jsp"><button class="button is-link is-light">Cancel</button></a>
+                    </div>
+                    
+        </section>
     </body>
 </html>

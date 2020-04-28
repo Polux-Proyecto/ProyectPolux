@@ -43,7 +43,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
-        <title>JSP Page</title>
+        <title>Inventario: <%= usuario.getNombre() %></title>
     </head>
     <body>
         <section>

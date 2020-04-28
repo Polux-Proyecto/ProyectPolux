@@ -143,7 +143,7 @@
 							<article class="media">
                                 <div class="media-left">
 									<figure class="image is-128x128">
-										<a href="EmpresaMuro.jsp"><img src="Imagenes?formid=2&idImgen=<%= k %>&att=listaCategoria" alt="Image"></a>
+										<a href="<%= ref %>"><img src="Imagenes?formid=2&idImgen=<%= k %>&att=listaCategoria" alt="Image"></a>
 									</figure>
                                 </div>
                                 <div class="media-content">

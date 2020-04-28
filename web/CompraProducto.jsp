@@ -167,13 +167,15 @@
 							<div class="control">
 									<button class="button is-link">Continuar</button>
 							</div>
-							<div class="control">
-									<button class="button is-link is-light">Cancelar</button>
-							</div>
+							
 							<input type="hidden" id="formid" name="formid" value="2" >
 							<input type="hidden" id="idCliente" name="idCliente" value ="<%= usuario.getIdUsuario() %>" >
 						</div>
-					</form>
+                                        </form><br>
+                                        <div class="control">
+                                            <a href="Buscadores?formid=4&idProd=<%= producto.getId() %>"><button class="button is-link is-light">Cancelar</button></a>
+                                        </div>
+                                                
 				</div>
 			</div>
 		</section>

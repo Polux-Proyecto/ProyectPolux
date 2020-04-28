@@ -35,14 +35,14 @@
 	<head>
 	<%if (valor != null){
         if(valor.equals("1")){
-            
+            request.getSession().removeAttribute("valor");
             %>
             <script>
-                alert('¡Lo sentimos, no se puedo realizar la compra, inténtelo de nuevo más tarde!');
+                alert('¡Lo sentimos, no se puedo realizar la compra, inténtelo de nuevo más tarde! Es posible que ya no haya sufiente producto en el almacen para la cantidad que deseas comprar. ');
             </script>
             <%
         } else {
-            request.getSession().setAttribute("valor", null);
+            request.getSession().removeAttribute("valor");
             %>
             <script>
                 alert('¡Gracias por tu compra, se realizó con éxito, en unos momentos recivirás un correo de confirmación!');
@@ -89,7 +89,6 @@
 						  <span aria-hidden="true"></span>
 						</a>
 					</div>
-
 					<div id="navbarBasicExample" class="navbar-menu">
                 <!--  
                 Los Ids de las categorías más importantes son:
@@ -144,26 +143,26 @@
 			<div class="hero-body">
 				<div id="carousel-demo" class="hero-carousel" data-autoplay="true" data-navigation-keys="false" data-autoplay-speed="5000" data-effect="fade" data-duration="1000">
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/merry-christmas.jpg">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/QuedateEnCasa.jpeg">
 						<div class="box" >
 							<div class="EnlaceCarousel">
-								<a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>
+								<h1><strong><a href="Buscadores?formid=2&idCat=1">#QuedateEnCasa y disfruta de la mejor música para tu alma</a> </strong></h1>
 							</div>
 						</div>
 					</div>
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/singer.jpg">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/ContenidoExclusivo.jpeg">
 						<div class="box" >
 							<div class="EnlaceCarousel">
-								<a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>
+								<a href="Buscadores?formid=3"><h1><strong>Visita nuestras categorías</strong></h1></a>
 							 </div>
 						</div>
 					</div>
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/sushi.jpg">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/LetrasNegras.png">
 						<div class="box" >
 							<div class="EnlaceCarousel">
-								<a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>
+                                                            <h1><strong><a href="Buscadores?formid=2&idCat=3">#QuedateEnCasa, y distruta de los pruductos para el hogar</a></strong></h1>
 							 </div>
 						</div>
 					</div>

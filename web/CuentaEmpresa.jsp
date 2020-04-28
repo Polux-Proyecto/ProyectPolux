@@ -54,37 +54,36 @@
                 }
     %>
     <body>
-        
- 
-        <form id="Nuevamicroempresaform" name="Nuevamicroempresaform" action="LogicRegistroNuevoUsuarioServlet" method="post" method="post" enctype="multipart/form-data">
-        
         <section class="section has-background-light ">
-        <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post" enctype="multipart/form-data">
-                 <section class="hero is-primary is-bold has-text-centered has-background-grey-light">
-  <div class="hero-body">
-    <div class="container ">
-      <h1 class="title  is-size-1 is-family-sans-serif ">
-        BrocOnline Store 
-      </h1>
-      <h2 class="subtitle">
-        "CREA UNA CUENTA EMPRESARIAL"
-      </h2>
-    </div>
-  </div>
-</section>
-            <br><br> 
+            <form id="Nuevousuarioform" name="Nuevousuarioform" action="LogicRegistroNuevoUsuarioServlet" method="post" enctype="multipart/form-data">
+                <section class="hero is-primary is-bold has-text-centered has-background-grey-light">
+                    <div class="hero-body">
+                        <div class="container ">
+                            <h1 class="title  is-size-1 is-family-sans-serif ">
+                                BrocOnline Store 
+                            </h1>
+                            <h2 class="subtitle">
+                                "CREA UNA CUENTA EMPRESARIAL"
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+                <br><br> 
                 <div class="field">
-                    
                     <div class="control">
                         <div class="file has-name is-right">
                             <label class="file-label">
-                              <input class="file-input" type="file" name="resume">
-                              <span class="file-cta">
-                                <span class="file-icon">
-                                  <i class="fas fa-upload"></i>
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                  <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                  </span>
+                                  <span class="file-label is-primary ">
+                                     Logo Empresarial... 
+                                  </span>
                                 </span>
-                                <span class="file-label is-primary ">
-                                  Logo Empresarial... 
+                                <span class="file-name">
+                                  Screen Shot 2017-07-29 at 15.54.25.png
                                 </span>
                               </span>
                               <span class="file-name">
@@ -100,11 +99,10 @@
                         <input class="input" type="text" name="nombreEmp" id="nombreEmp" placeholder="Text input" value =<%=name%>>
                     </div>
                 </div>
-
                 <div class="field">
                     <label>Username</label>
                     <div class="control">
-                        <div style="color:red"><%= mensajeerror%>
+                        <div style="color:red"><%= mensajeerror%></div>
                         <input class="input" type="text" name="userEmp" id="userEmp" idplaceholder="Text input">
                     </div>
                 </div>
@@ -120,7 +118,6 @@
                         <input class="input" type="text" name="nit" id="nit" placeholder="Text input" value =<%=nit%>>
                     </div>
                 </div>
-
                 <div class="field">
                     <label>Contraseña</label>
                     <div class="control">
@@ -132,71 +129,13 @@
                     <div class="control">
                         <div class="select is-info">
                             <select  id="StringNewCountryEmp" name="StringNewCountryEmp">
-                                                                <%if(pais.equals("El Salvador")){%>
-                                <option value="ElSalvador" selected="">El Salvador</option>
-                                <option value="Guatemala">Guatemala</option>
-                                <option value="Belice">Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Guatemala")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" selected="">Guatemala</option>
-                                <option value="Belice">Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option> 
-                                <%}else if(pais.equals("Belice")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" selected="">Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Nicaragua")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua" selected="">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Honduras")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras" selected="">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Panama")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama" selected="">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("CostaRica")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica" selected="">Costa Rica</option>
-                                <%}else{%>
-                                <option value="ElSalvador" selected="">El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}%>
+                                <option value="ElSalvador" <%if(pais.equals("El Salvador")){%>selected<% } %>>El Salvador</option>
+                                <option value="Guatemala" <%  if(pais.equals("Guatemala")){%>selected<% } %>>Guatemala</option>
+                                <option value="Belice" <% if(pais.equals("Belice")){%>selected<% } %>>Belice</option>
+                                <option value="Nicaragua" <%  if(pais.equals("Nicaragua")){%>selected<% } %>>Nicaragua</option>
+                                <option value="Honduras" <%  if(pais.equals("Honduras")){%>selected<% } %>>Honduras</option>
+                                <option value="Panama" <%  if(pais.equals("Panamá")){%>selected<% } %>>Panamá</option>
+                                <option value="CostaRica" <%  if(pais.equals("Costa Rica")){%>selected<% } %>>Costa Rica</option>
                             </select>
                         </div>
                     </div>
@@ -207,7 +146,7 @@
                         <input id="strnewCiudadEmp" name="strnewCiudadEmp" class="input" type="text" placeholder="Text input" value =<%=ciudad%>>
                     </div>
                 </div>
-                 <div class="field">
+                <div class="field">
                     <label>Categoría</label>
                     <div class="control">
                         <div class="select is-info">
@@ -219,7 +158,7 @@
                                 %>
                                 <option selected="" value=<%= categoriaActual.getIdCat() %> > <%= categoriaActual.getNombre() %> </option>
                                 <%      }else{%>
-                                    <option value=<%= categoriaActual.getIdCat() %>><%= categoriaActual.getNombre() %> </option>
+                                <option value=<%= categoriaActual.getIdCat() %>><%= categoriaActual.getNombre() %> </option>
                                     <%}}}%>
                             </select>
                         </div>
@@ -231,17 +170,16 @@
                         <textarea class="textarea" type="text" name="descEmp" id="descEmp" placeholder="200 words or less"> <%=descripcion%> </textarea>
                     </div>
                 </div>
-                 
                 <div class="field is-grouped">
                     <div class="control">
                         <button class="button is-link is-primary">Submit</button>
                     </div>
-                    <div class="control">
-                        <button class="button is-link is-light">Cancel</button>
-                    </div>
                 </div>
-           </section>
-            <input type="hidden" name="formid" value="2" /> 
-        </form>
+                <input type="hidden" name="formid" value="2" > 
+            </form>
+            <div class="control">
+                <a href="index.jsp"><button class="button is-link is-light">Cancel</button></a>
+            </div>
+        </section>
     </body>
 </html>
