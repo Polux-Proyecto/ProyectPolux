@@ -146,16 +146,18 @@ public class Llenador {
             Producto producto;
             String username , fecha;
             Envio envio;
-            int idProd, cantidad;
+            int idProd, cantidad, idPedido;
             try {
                 while(result.next()){
                     username = result.getString("Username");
                     idProd = result.getInt("idprodtb");
                     cantidad = result.getInt("cantidad");
                     fecha =  result.getString("fechaPedido");
+                    idPedido = result.getInt("idPedidos");
                     usuario = buscarUsuario.getUsersConCiudadYPais(username);
                     producto = adminProd.getProductoPorId(idProd);
                     envio = new Envio(usuario, producto, cantidad, fecha);
+                    envio.setIdEnvio(idPedido);
                     
                     lista.add(envio);
                 }
@@ -199,6 +201,7 @@ public class Llenador {
         List<Usuario> lista = null;
         String pass, nombre, correo ="", genero = "", fechaN = "", direccion = "", username = "", pais = "", ciudad = "";
         int id;
+        byte[] imagen = null;
         Usuario usuario = null;
         if(result!=null){
             lista = new ArrayList();
@@ -216,8 +219,12 @@ public class Llenador {
                          direccion = result.getString("Dirección");
                          ciudad = result.getString("Ciudad");
                          pais = result.getString("Pais");
-                        
-                         usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion);
+                         Blob blob = result.getBlob("ImagenPerfil");
+                         if (blob != null){
+                         
+                         imagen = blob.getBytes(1, (int) blob.length());
+                         }
+                         usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion, imagen);
                          usuario.setCiudad(ciudad);
                          usuario.setPais(pais);
                          

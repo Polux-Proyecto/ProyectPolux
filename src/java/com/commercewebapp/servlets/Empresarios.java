@@ -116,14 +116,19 @@ public class Empresarios extends HttpServlet {
                 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Opción para ir al detalle de compra.">
                 Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
                 String cliente = request.getParameter("idCliente");
+                
+                
                 int idCliente = Integer.parseInt(cliente);
+                
                 AdminEmpresas buscador = new AdminEmpresas();
-                BuscarUsuario buscadorNombre = new BuscarUsuario();
+                BuscarUsuario buscadorCliente = new BuscarUsuario();
+                
                 List<Envio> lstEnvio = buscador.getEnviosPorIdEmpYCliente(usuario.getIdUsuario(), idCliente);
-                String nombre = buscadorNombre.getNombreClientePorId(idCliente);
+                Usuario clienteU = buscadorCliente.getClienteById(idCliente);
+                
                 request.getSession().setAttribute("lstEnvioPorCliente", lstEnvio);
-                request.getSession().setAttribute("nombre", nombre);
-                response.sendRedirect("DetalleCompra.jsp");
+                request.getSession().setAttribute("clienteU", clienteU);
+                request.getRequestDispatcher("DetalleCompra.jsp").forward(request, response); 
                 // </editor-fold>
                 break;
             }
@@ -155,6 +160,7 @@ public class Empresarios extends HttpServlet {
                 request.getSession().setAttribute("ciudades", ciudades);
                 request.getSession().setAttribute("genero", genero);
                 request.getSession().setAttribute("top10Clientes", top10Clientes);
+                
                 response.sendRedirect("ClientesFrecuentes.jsp");
                 
                 // </editor-fold>

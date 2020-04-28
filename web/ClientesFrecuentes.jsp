@@ -13,14 +13,14 @@
 <%  
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
     String  logo = (String)  request.getSession().getAttribute("logo");
     List<Usuario> top10 = (List<Usuario>) request.getSession().getAttribute("top10Clientes");
     List<InformacionCliente> paises = (List<InformacionCliente>) request.getSession().getAttribute("paises");
     List<InformacionCliente> ciudades = (List<InformacionCliente>) request.getSession().getAttribute("ciudades");
     InformacionCliente genero = (InformacionCliente) request.getSession().getAttribute("genero");
-    
+    int a = 0;
     int cantTop10 = 0;
     int cantPaises = 0;
     int cantCiudades = 0;
@@ -50,48 +50,48 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="style/bulma/bulma.css" rel="stylesheet" type="text/css"/>
-        <title>JSP Page</title>
+        <title>Clientes Frecuentes</title>
     </head>
     <body>
         <section>
 			<div>
 				<nav class="navbar is-light" role="navigation" aria-label="main navigation" >
-					<div class="navbar-brand">
-						<img src="<%=logo%>" width="197" height="60">    
-							<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-							  <span aria-hidden="true"></span>
-							  <span aria-hidden="true"></span>
-							  <span aria-hidden="true"></span>
-							</a>
-					</div>
-					<div id="navbarBasicExample" class="navbar-menu">
-						<div class="navbar-start">
-								<a class="navbar-item" href="InicioEmpresa.jsp">
-									Inicio
-								</a>
-								<a class="navbar-item" href="Empresarios?formid=2">
-									Ventas
-								</a>
-								<a class="navbar-item" href="Empresarios?formid=3">
-									 Envíos
-								</a>
-								<a class="navbar-item" href="Empresarios?formid=7">
-									Clientes 
-								</a>
-								<a class="navbar-item" href="Empresarios?formid=6">
-									Inventario
-								</a>
-						</div>
-					</div>
-					<div class="navbar-end">
-						<div class="navbar-item">
-							<div class="buttons">
-								<a class="button" style="background-color: #29b342">
-									Cerrar sesión
-								</a>
-							</div>
-						</div>
-					</div>
+                                    <div class="navbar-brand">
+                                        <img src="<%=logo%>" width="197" height="60">    
+                                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                                          <span aria-hidden="true"></span>
+                                          <span aria-hidden="true"></span>
+                                          <span aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                <div id="navbarBasicExample" class="navbar-menu">
+                                        <div class="navbar-start">
+                                            <a class="navbar-item" href="InicioEmpresa.jsp">
+                                                    Inicio
+                                            </a>
+                                            <a class="navbar-item" href="Empresarios?formid=2">
+                                                    Ventas
+                                            </a>
+                                            <a class="navbar-item" href="Empresarios?formid=3">
+                                                     Envíos
+                                            </a>
+                                            <a class="navbar-item" href="Empresarios?formid=7">
+                                                    Clientes 
+                                            </a>
+                                            <a class="navbar-item" href="Empresarios?formid=6">
+                                                    Inventario
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="navbar-end">
+                                        <div class="navbar-item">
+                                            <div class="buttons">
+                                                <a class="button" style="background-color: #29b342">
+                                                        Cerrar sesión
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
 				</nav>
 			</div>
         </section>
@@ -152,6 +152,7 @@
                     <p class="title">Top 10 Clientes Frecuentes</p>
                     <% 
                     if(cantTop10 == 0){
+                        
                     %>
                     <p>No se encontraron datos</p>
                     <%
@@ -163,19 +164,23 @@
                             <article class="media">
                                 <div class="media-left">
                                     <figure class="image is-128x128">
-                                        <a href=""><img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></a>
+                                        <a href=""><img src="Imagenes?formid=4&idImgen=<%= a %>&att=top10Clientes" alt="Image"></a>
                                     </figure>
                                 </div>
                                 <div class="media-content">
                                     <div class="content">
                                         <p><strong><%= user.getNombre() %></strong> 
-                                            <br>País:<%= user.getPais() %><br>Ciudad: <%= user.getCiudad() %><br>Género: <%= usuario.getGenero() %><br>Dirección: <%= usuario.getDireccion() %>
+                                            <br><strong>País:</strong> <%= user.getPais() %>
+                                            <br><strong>Ciudad:</strong> <%= user.getCiudad() %>
+                                            <br><strong>Género:</strong> <%= user.getGenero() %>
+                                            <br><strong>Dirección:</strong> <%= user.getDireccion() %>
                                         </p><br>
                                     </div>
                                 </div>
                             </article>
                         </div>
-                        <% 
+                        <%      
+                            a++;
                             }
                         }
                         %>

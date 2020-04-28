@@ -16,8 +16,9 @@ public class Usuario {
     private boolean usuario;
     private int idUsuario;
     private String nombre, contra, username, correo, genero, fechaN, direccion, ciudad, pais;
+    private byte[] imagen;
     
-    public Usuario(boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC, String contraC, String usernameC, String correoC, String generoC, String fechaNC, String direccionC ) {
+    public Usuario(boolean microEmpresarioC, boolean usuarioC, String nombreC, int idUsuarioC, String contraC, String usernameC, String correoC, String generoC, String fechaNC, String direccionC,  byte[] imagenC) {
         this.setMicroEmpresario(microEmpresarioC);
         this.setUsuario(usuarioC);
         this.setNombre(nombreC);
@@ -28,8 +29,20 @@ public class Usuario {
         this.setGenero(generoC);
         this.setFechaN(fechaNC);
         this.setDireccion(direccionC);
+        this.setImagen(imagenC);
+        
     }
 
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    private void setImagen(byte[] imagen) {
+        this.imagen = imagen;
+    }
+    
+    
+    
     public String getCiudad() {
         return ciudad;
     }

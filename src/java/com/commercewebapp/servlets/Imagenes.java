@@ -8,6 +8,7 @@ package com.commercewebapp.servlets;
 import com.commercewebapp.objects.Categoria;
 import com.commercewebapp.objects.DefaulImage;
 import com.commercewebapp.objects.Producto;
+import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
@@ -106,6 +107,29 @@ public class Imagenes extends HttpServlet {
                     out.flush();
                     out.close();
                 // </editor-fold>
+                break;
+            }
+            case "4":{
+                String k = request.getParameter("idImgen");
+                String att = request.getParameter("att");
+                int i = Integer.parseInt(k);
+                List<Usuario> lista = (List<Usuario>) request.getSession().getAttribute(att);
+                
+                byte[] img = null;
+                OutputStream out = null;
+                
+
+                img =  lista.get(i).getImagen();
+                if (img == null){
+                    DefaulImage defImage = (DefaulImage) request.getSession().getAttribute("imgD");
+                    img = defImage.getImg();
+                }
+                response.setContentType("image/gif");
+                    out = response.getOutputStream();
+                    out.write(img);
+                    out.flush();
+                    out.close();
+                break;
             }
             
         }

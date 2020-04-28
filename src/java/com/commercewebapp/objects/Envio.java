@@ -12,7 +12,7 @@ package com.commercewebapp.objects;
 public class Envio {
     private Usuario usuario;
     private Producto producto;
-    private int cantidad;
+    private int cantidad, idEnvio;
     private String fecha;
 
     public Envio(Usuario usuarioC, Producto productoC, int cantidadC, String fechaC) {
@@ -22,6 +22,14 @@ public class Envio {
         this.setFecha(fechaC);
     }
 
+    public int getIdEnvio() {
+        return idEnvio;
+    }
+
+    public void setIdEnvio(int idEnvio) {
+        this.idEnvio = idEnvio;
+    }
+    
     public String getFecha() {
         return fecha;
     }

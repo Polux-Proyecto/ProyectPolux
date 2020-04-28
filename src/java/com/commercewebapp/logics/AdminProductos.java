@@ -121,7 +121,7 @@ public class AdminProductos extends Logic {
         
         ResultSet result = localDatabase.executeQuery("SELECT prodtb.*, pedidostb.*, empresatb.Nombre as NombreEmpresa  "
                 + " FROM comercebd.prodtb inner join comercebd.pedidostb on comercebd.pedidostb.producto = comercebd.prodtb.idprodtb"
-                + " inner join comercebd.empresatb on empresatb.idempresatb = prodtb.empresa and comercebd.pedidostb.cliente = "+idUsuario+" LIMIT 5;");
+                + " inner join comercebd.empresatb on empresatb.idempresatb = prodtb.empresa and comercebd.pedidostb.cliente = "+idUsuario+" where pedidostb.entregado = 0 LIMIT 5;");
         
         Llenador llenador = new Llenador();
         List<Producto> listaProductos = llenador.llenarListaProductosConNombreEmpresa(result);
@@ -191,12 +191,14 @@ public class AdminProductos extends Logic {
     
     public List<Producto> getArticulosMasVendidos(int idEmpresa, int limite){
         
-        ResultSet result = localDatabase.executeQuery("SELECT sum(cantidad) as ventas, pedidostb.producto as idprodtb, empresatb.nombre as nombreEmpresa,  prodtb.nombre, prodtb.descripcion, prodtb.precio, prodtb.existencias "
-                + "FROM comercebd.pedidostb  INNER JOIN comercebd.prodtb  ON prodtb.idprodtb = pedidostb.producto "
-                + "INNER JOIN comercebd.empresatb ON empresatb.idempresatb = prodtb.idprodtb  "
-                + "WHERE empresatb.idempresatb = '"+idEmpresa+"'  "
-                + "GROUP BY pedidostb.producto, empresatb.nombre,  prodtb.nombre, prodtb.descripcion, prodtb.precio, prodtb.existencias "
-                + "ORDER BY ventas desc LIMIT '"+limite+"';");
+        ResultSet result = localDatabase.executeQuery("SELECT sum(cantidad) as ventas, "
+                + "pedidostb.producto as idprodtb, empresatb.nombre as nombreEmpresa,  "
+                + "prodtb.nombre, prodtb.descripcion, prodtb.precio, prodtb.existencias, prodtb.imagen, prodtb.empresa "
+                + "FROM comercebd.pedidostb  INNER JOIN comercebd.prodtb  "
+                + "ON prodtb.idprodtb = pedidostb.producto INNER JOIN comercebd.empresatb "
+                + "ON empresatb.idempresatb = prodtb.empresa  WHERE empresatb.idempresatb = '"+idEmpresa+"'  "
+                + "GROUP BY pedidostb.producto, empresatb.nombre,  prodtb.nombre, "
+                + "prodtb.descripcion, prodtb.precio, prodtb.existencias ORDER BY ventas desc LIMIT "+limite+";");
         Llenador llenador = new Llenador();
         List<Producto> listaProductos = llenador.llenarListaProductos(result);
         
@@ -278,4 +280,23 @@ public class AdminProductos extends Logic {
        return img;
    }
     
+   public boolean reduceStock(int idProd, int cantidad){
+       boolean hasFailed = true;
+       int stock;
+       ResultSet result = localDatabase.executeQuery("SELECT existencias FROM comercebd.prodtb where idprodtb = "+idProd+" Limit 1;");
+       
+       if(result!=null){
+           try {
+               while(result.next()){
+                   stock = result.getInt("existencias");
+                   stock = stock - cantidad;
+                   hasFailed = localDatabase.executeNonQueryBool("UPDATE comercebd.prodtb SET existencias = '"+stock+"' WHERE idprodtb = '"+idProd+"';");
+               }
+           } catch (SQLException ex) {
+               Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
+       
+       return hasFailed;
+   }
 }

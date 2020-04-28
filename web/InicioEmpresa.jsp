@@ -290,7 +290,7 @@
 								<p class="subtitle">Tienes <%= cantidadProducto %> envíos pendientes</p>
 								<div class="container" style="margin-left: 20px">
 									<span class="icon is-large">
-										<a href="EnviosPend.jsp"><i class="fas fa-box-open" style="font-size: 5em; color: chartreuse"></i></a>
+										<a href="Empresarios?formid=3"><i class="fas fa-box-open" style="font-size: 5em; color: chartreuse"></i></a>
 									</span>
 								</div>
 							</article>
@@ -348,17 +348,19 @@
 								<br>
                         
 								<div class="field is-grouped">
-                                                                    <form method="get" action="EstadoDeVentas.jsp">
-										<button class="button" style="background-color: #29b342">
-											Ir a ventas  
-										</button>
-									</form>
+                                                                    <form method="get" action="Empresarios">
+                                                                        <input type="hidden" name="formid" id="formid" value="2">
+                                                                        <button class="button" style="background-color: #29b342">
+                                                                            Ir a ventas  
+                                                                        </button>
+                                                                    </form>
 
-                                                                    <form method="get" action="Inventario.jsp">
-										<button class="button" style="background-color: chartreuse">
-											Ir a inventario
-										</button>
-									</form>
+                                                                    <form method="get" action="Empresarios">
+                                                                        <input type="hidden" name="formid" id="formid" value="6">
+                                                                        <button class="button" style="background-color: chartreuse">
+                                                                            Ir a inventario
+                                                                        </button>
+                                                                    </form>
 								</div>
                     
 							</article>

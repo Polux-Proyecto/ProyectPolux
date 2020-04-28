@@ -71,4 +71,15 @@ public class AdminFinanzas extends Logic {
         return hasFailed;
         
     }
+
+    public boolean deleteEnvio(int idEnvio) {
+        boolean hasFailed = true;
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.now();
+        String date = dtf.format(localDate);
+        hasFailed = localDatabase.executeNonQueryBool("UPDATE comercebd.pedidostb SET entregado = 1, fechaEntrega = '"+date+"' WHERE idPedidos = "+idEnvio+";");
+        System.out.println(date);
+        return hasFailed;
+    }
 }

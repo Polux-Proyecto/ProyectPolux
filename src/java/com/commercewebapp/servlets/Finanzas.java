@@ -5,10 +5,12 @@
  */
 package com.commercewebapp.servlets;
 
+import com.commercewebapp.logics.AdminEmpresas;
 import com.commercewebapp.logics.AdminFinanzas;
 import com.commercewebapp.logics.AdminPedidos;
 import com.commercewebapp.logics.AdminProductos;
 import com.commercewebapp.messages.MessageObj;
+import com.commercewebapp.objects.Envio;
 import com.commercewebapp.objects.Precios;
 import com.commercewebapp.objects.Producto;
 import com.commercewebapp.objects.Tarjetas;
@@ -119,11 +121,12 @@ public class Finanzas extends HttpServlet {
                 Tarjetas tarjeta = finanzas.getTarjetaByIdTarjeta(idTarjeta);
                 
                 boolean hasFailed = finanzas.setVenta(usuario, producto, precios, tarjeta);
-                
+                hasFailed = administrador.reduceStock(producto.getId(), precios.getCantidad());
                 if (hasFailed){
                     request.getSession().setAttribute("valor", "1");
                     request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
                 } else {
+                    
                     List<Producto> pedidos = administrador.getPedidosPorUsuario(usuario.getIdUsuario());
                     MessageObj mensaje = new MessageObj();
                     mensaje.enviarCorreo(usuario.getNombre(), usuario.getCorreo(), precios.getTotalPagar());
@@ -158,6 +161,32 @@ public class Finanzas extends HttpServlet {
                     request.setAttribute("h", h);
                     request.getRequestDispatcher("EmpresaMuro.jsp").forward(request, response);
                 }
+                //</editor-fold>
+                break;
+            }
+            case "6":{
+                // <editor-fold defaultstate="collapsed" desc="Establecer un producto como entregado">
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                String idEnv = request.getParameter("idEnvio");
+                int idEnvio = Integer.parseInt(idEnv);
+                
+                AdminFinanzas administrador = new AdminFinanzas();
+                AdminEmpresas adminEmpresa = new AdminEmpresas();
+                String exito = "0";
+                Envio envio = adminEmpresa.getEnvio(idEnvio);
+                boolean hasFailed = administrador.deleteEnvio(idEnvio);
+                
+                
+                if (hasFailed){
+                    exito = "0";
+                    request.getSession().setAttribute("exito", exito);
+                    request.getRequestDispatcher("Empresarios?formid=5&idCliente="+usuario.getIdUsuario()).forward(request, response);
+                } else {
+                    exito = "1";
+                    request.getSession().setAttribute("exito", exito);
+                    request.getRequestDispatcher("Empresarios?formid=5&idCliente="+usuario.getIdUsuario()).forward(request, response);
+                }
+                
                 //</editor-fold>
                 break;
             }

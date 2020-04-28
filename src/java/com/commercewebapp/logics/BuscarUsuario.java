@@ -1,6 +1,7 @@
 package com.commercewebapp.logics;
 
 import com.commercewebapp.database.DatabaseZ;
+import com.commercewebapp.objects.Llenador;
 import com.commercewebapp.objects.NuevoMicroEmpresario;
 import com.commercewebapp.objects.NuevoUsuarioParticular;
 import com.commercewebapp.objects.Usuario;
@@ -9,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.rowset.serial.SerialBlob;
@@ -44,7 +47,7 @@ public class BuscarUsuario extends Logic {
                      fechaN = result.getString("FechaNacimiento");
                      direccion = result.getString("Dirección");
                      i++;
-                     usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion);
+                     usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion, null);
                      System.out.println(nombre+" "+pass+" "+id);
                  }
                  System.out.println("Ya terminó la tabla de clientes");
@@ -62,7 +65,7 @@ public class BuscarUsuario extends Logic {
                             pass = result.getString("Password");
                             id = result.getInt("idempresatb");
                             correo = result.getString("Email");
-                            usuario = new Usuario (true, false, nombre, id, pass, username, correo, genero, fechaN, direccion);
+                            usuario = new Usuario (true, false, nombre, id, pass, username, correo, genero, fechaN, direccion, null);
                             System.out.println(nombre+" "+pass+" "+id);
                             i++;
                         }
@@ -71,13 +74,29 @@ public class BuscarUsuario extends Logic {
                     System.out.println("Llego");
                     if (i==0){
                     System.out.println("El usuario no existe");
-                    usuario = new Usuario (false, false, "", 0, "", "", "", "", "", "");
+                    usuario = new Usuario (false, false, "", 0, "", "", "", "", "", "", null);
                      }
                  }
              }
             
         } catch (SQLException ex) {
             Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return usuario;
+    }
+    public Usuario getClienteById (int idCliente)  {
+        
+        DatabaseZ localDatabase = getDatabase();
+        List<Usuario> usuarios = null;
+        Usuario usuario = null;
+        System.out.println("Select * from comercebd.clientetb where idCliente = '"+idCliente+"' LIMIT 1;");
+        ResultSet result = localDatabase.executeQuery("Select * from comercebd.clientetb where idCliente = '"+idCliente+"' LIMIT 1;"); 
+        Llenador llenador = new Llenador();
+        usuarios = llenador.llenarUsuario(result);
+        if (usuarios!=null){
+            Iterator<Usuario> iteUser = usuarios.iterator();
+            usuario = iteUser.next();
         }
         
         return usuario;
@@ -106,7 +125,7 @@ public class BuscarUsuario extends Logic {
                     ciudad = result.getString("Ciudad");
                     pais = result.getString("Pais");
                     i++;
-                    usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion);
+                    usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion, null);
                     System.out.println(nombre+" "+pass+" "+id);
                     usuario.setCiudad(ciudad);
                     usuario.setPais(pais);
@@ -126,7 +145,7 @@ public class BuscarUsuario extends Logic {
                             pass = result.getString("Password");
                             id = result.getInt("idempresatb");
                             correo = result.getString("Email");
-                            usuario = new Usuario (true, false, nombre, id, pass, username, correo, genero, fechaN, direccion);
+                            usuario = new Usuario (true, false, nombre, id, pass, username, correo, genero, fechaN, direccion, null);
                             System.out.println(nombre+" "+pass+" "+id);
                             i++;
                         }
@@ -135,7 +154,7 @@ public class BuscarUsuario extends Logic {
                     System.out.println("Llego");
                     if (i==0){
                     System.out.println("El usuario no existe");
-                    usuario = new Usuario (false, false, "", 0, "", "", "", "", "", "");
+                    usuario = new Usuario (false, false, "", 0, "", "", "", "", "", "", null);
                      }
                  }
              }

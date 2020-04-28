@@ -17,11 +17,10 @@
         response.sendRedirect("ErrorEnInicioSesion");
     }
     List<Envio> lstEnvioPorCliente = (List<Envio>) request.getSession().getAttribute("lstEnvioPorCliente");
-    String nombre = (String) request.getSession().getAttribute("nombre");
+    Usuario cliente = (Usuario) request.getSession().getAttribute("clienteU");
     Iterator<Envio> iteEnvioPC = null;
     int cantEnviosPC = 0, i = 0;
     Producto producto;
-    Usuario cliente;
     Envio envio;
     if (lstEnvioPorCliente!=null){
         iteEnvioPC = lstEnvioPorCliente.iterator();
@@ -101,7 +100,7 @@
                         <strong>Detalle de Compras</strong>
                     </h1>
                     <h2 class="subtitle" style="color:black">
-                        Información de las compras de <%= nombre %> 
+                        Información de las compras de <%= cliente.getNombre() %> 
                     </h2>
                 </div>
             </div>
@@ -150,13 +149,14 @@
                                     <section class="modal-card-body">
                                         <div>
                                             <p class="title-2">
-                                                ¿Desea confirmar que ya ha enviado este producto a <%= nombre %>?
+                                                ¿Desea confirmar que ya ha enviado este producto a <%= cliente.getNombre() %>?
                                             </p>
                                         </div>
                                     </section>
                                     <footer class="modal-card-foot">
-                                        <form name="FrmConfirmarEnv"action="Finanzas" method="post" id="FrmConfirmarEnv" enctype="multipart/form-data">
-                                            <input type="hidden" name="formid" id="formid" value="5">
+                                        <form name="FrmConfirmarEnv" action="Finanzas" method="post" id="FrmConfirmarEnv" >
+                                            <input type="hidden" name="formid" id="formid" value="6">
+                                            <input type="hidden" name="idEnvio" id="idEnvio" value="<%= envio.getIdEnvio() %>">
                                             <div class="control">
                                                 <button class="button is-success" >Confirmar</button>
                                             </div>
@@ -166,7 +166,17 @@
                                                                                             
                                 </div>
                             </div>
-                            <script>
+                            
+                            <td><%= envio.getCantidad() %></td>
+                            <td><%= envio.getFecha() %></td>
+                            <td><%= envio.getCantidad()*producto.getPrecio() %></td>
+                        </tr>
+                        <% 
+                            }
+                        }   
+                        %>
+                        
+                        <script>
                                 document.querySelectorAll('.modal-link').forEach(function(el) {
                                     el.addEventListener('click', function() {
                                         var target = document.querySelector(el.getAttribute('data-target'));
@@ -185,14 +195,6 @@
                                 });
 
                             </script>
-                            <td><%= envio.getCantidad() %></td>
-                            <td><%= envio.getFecha() %></td>
-                            <td><%= envio.getCantidad()*producto.getPrecio() %></td>
-                        </tr>
-                        <% 
-                            }
-                        }   
-                        %>
                     </tbody>
                 </table>
             </div>    

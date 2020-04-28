@@ -166,7 +166,7 @@ public class AdminEmpresas extends Logic {
 
     public InformacionCliente getTopGenero(int idEmpresa) {
         InformacionCliente genero = null;
-        ResultSet result = localDatabase.executeQuery("SELECT count( clientetb.Ciudad ) as cantidad, clientetb.Ciudad "
+        ResultSet result = localDatabase.executeQuery("SELECT count( clientetb.Ciudad ) as cantidad, clientetb.Sexo "
                 + "FROM comercebd.pedidostb INNER JOIN clientetb on clientetb.idCliente = pedidostb.cliente "
                 + "INNER JOIN prodtb on prodtb.idprodtb = pedidostb.producto where prodtb.empresa = '"+idEmpresa+"' "
                 + "group by clientetb.Ciudad order by cantidad desc limit 1;");
@@ -176,7 +176,7 @@ public class AdminEmpresas extends Logic {
             try {
                     
                 while (result.next()){
-                    sexo = result.getString("Ciudad");
+                    sexo = result.getString("Sexo");
                     
                     genero = new InformacionCliente("", "", sexo);
                     
@@ -188,5 +188,20 @@ public class AdminEmpresas extends Logic {
         }
         
         return genero;
+    }
+
+    public Envio getEnvio(int idEnvio) {
+        List<Envio> lista = null;
+        
+        ResultSet result = localDatabase.executeQuery("SELECT * FROM comercebd.pedidostb "
+                + "INNER JOIN prodtb on prodtb.idprodtb = pedidostb.producto "
+                + "INNER JOIN clientetb on clientetb.idCliente = pedidostb.cliente "
+                + "where pedidostb.idPedidos = '"+idEnvio+"' ");
+        
+        Llenador llenador = new Llenador();
+        lista = llenador.llenarEnvios(result);
+        Envio envio = lista.get(0);
+        
+        return envio;
     }
 }
