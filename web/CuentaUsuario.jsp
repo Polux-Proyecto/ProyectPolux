@@ -223,71 +223,16 @@ int canAnnos = arreglos.getCant();
                     <div class="control">
                         <div class="select is-info">
                             <select  id="StringNewCountry" name="StringNewCountry">
-                                <%if(pais.equals("El Salvador")){%>
-                                <option value="ElSalvador" selected="">El Salvador</option>
-                                <option value="Guatemala">Guatemala</option>
-                                <option value="Belice">Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Guatemala")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" selected="">Guatemala</option>
-                                <option value="Belice">Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option> 
-                                <%}else if(pais.equals("Belice")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" selected="">Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Nicaragua")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua" selected="">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Honduras")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras" selected="">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("Panama")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama" selected="">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}else if(pais.equals("CostaRica")){%>
-                                   <option value="ElSalvador" >El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica" selected="">Costa Rica</option>
-                                <%}else{%>
-                                <option value="ElSalvador" selected="">El Salvador</option>
-                                <option value="Guatemala" >Guatemala</option>
-                                <option value="Belice" >Belice</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="CostaRica">Costa Rica</option>
-                                <%}%>
+                                
+                                
+                                <option value="ElSalvador" <%if(pais.equals("El Salvador")){%>selected<% } %>>El Salvador</option>
+                                <option value="Guatemala" <% else if(pais.equals("Guatemala")){%>selected<% } %>>Guatemala</option>
+                                <option value="Belice" <%else if(pais.equals("Belice")){%>selected<% } %>>Belice</option>
+                                <option value="Nicaragua" <% else if(pais.equals("Nicaragua")){%>selected<% } %>>Nicaragua</option>
+                                <option value="Honduras" <% else if(pais.equals("Honduras")){%>selected<% } %>>Honduras</option>
+                                <option value="Panama" <% else if(pais.equals("Panamá")){%>selected<% } %>>Panamá</option>
+                                <option value="CostaRica" <% else if(pais.equals("Costa Rica")){%>selected<% } %>>Costa Rica</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -309,7 +254,7 @@ int canAnnos = arreglos.getCant();
                         <button class="button is-link">Submit</button>
                     </div>
                     <div class="control">
-                        <button class="button is-link is-light">Cancel</button>
+                        <button class="button is-link is-light" href="">Cancel</button>
                     </div>
                 </div>
             </section>

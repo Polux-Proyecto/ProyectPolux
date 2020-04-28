@@ -35,14 +35,14 @@
 	<head>
 	<%if (valor != null){
         if(valor.equals("1")){
-            
+            request.getSession().removeAttribute("valor");
             %>
             <script>
                 alert('¡Lo sentimos, no se puedo realizar la compra, inténtelo de nuevo más tarde!');
             </script>
             <%
         } else {
-            request.getSession().setAttribute("valor", null);
+            request.getSession().removeAttribute("valor");
             %>
             <script>
                 alert('¡Gracias por tu compra, se realizó con éxito, en unos momentos recivirás un correo de confirmación!');
