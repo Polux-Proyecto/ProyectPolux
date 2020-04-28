@@ -22,7 +22,7 @@
 	Precios precios = (Precios) request.getSession().getAttribute("precios");
         
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
 
     Iterator<Tarjetas> iteTarjetas = null;

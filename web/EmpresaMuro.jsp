@@ -14,6 +14,9 @@
 <%
     String          logo = (String)  request.getSession().getAttribute("logo");
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSeseion.jsp");
+    }
     Empresa         empresa = (Empresa)         request.getSession().getAttribute("empresa");
     List<Producto>  producto = (List<Producto>)         request.getSession().getAttribute("listaProductos");
     Producto  productoActual = null;

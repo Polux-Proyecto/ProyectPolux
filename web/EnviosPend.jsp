@@ -14,7 +14,7 @@
 <%  
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
     List<Envio> lstEnvio = (List<Envio>) request.getSession().getAttribute("lstEnvio");
     int cantEnvios = 0;

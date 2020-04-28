@@ -13,7 +13,7 @@
 <%  
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
     List<Estadistico> listaEstadisticos = (List<Estadistico>) request.getSession().getAttribute("listaEstadisticos");
     List<Estadistico> listaTop5Prod = (List<Estadistico>) request.getSession().getAttribute("listaTop5Prod");

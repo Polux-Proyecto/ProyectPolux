@@ -18,7 +18,7 @@
     
     
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
     Producto producto = (Producto) request.getSession().getAttribute("producto");
     Empresa empresa = (Empresa) request.getSession().getAttribute("empresa");

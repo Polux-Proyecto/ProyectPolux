@@ -12,7 +12,7 @@
 <%  
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
     List<Stock> inventario = (List<Stock>) request.getSession().getAttribute("listaStock");
     int cantInventario = 0;

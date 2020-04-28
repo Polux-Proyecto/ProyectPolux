@@ -13,7 +13,7 @@
 <%  
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
     String  logo = (String)  request.getSession().getAttribute("logo");
     String  palabra = (String)  request.getSession().getAttribute("palabra");
