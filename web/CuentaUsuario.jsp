@@ -104,34 +104,34 @@ int canAnnos = arreglos.getCant();
                 <div class="field">
                     <label >Nombre</label>
                     <div class="control">
-                        <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input" value=<%=nombre%>>
+                        <input id="strnewNombreUsuario" name="strnewNombreUsuario" class="input" type="text" placeholder="Text input" required value=<%=nombre%>>
                     </div>
                 </div>
                 <div class="field">
                     <label>Username</label>
                     <div class="control">
                         <div style="color:red"><%= mensajeerror%>
-                        <input id="strNewUsername" name="strNewUsername" class="input" type="text" placeholder="Text input" >
+                        <input id="strNewUsername" name="strNewUsername" class="input" type="text" required placeholder="Text input" >
                         </div>
                     </div>
                 </div>
                 <div class="field">
                     <label>Email</label>
                     <div class="control">
-                      <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value=<%=email%>>
+                      <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" required placeholder="Email input" value=<%=email%>>
                     </div>
                 </div>
                 <div class="field">
                     <label>Contraseña</label>
                     <div class="control">
-                        <input name="newpassword" id="newpassword" class="input is-danger" type="password" placeholder="Text input">
+                        <input name="newpassword" id="newpassword" class="input is-danger" type="password" required placeholder="Text input">
                     </div>
                 </div>
                 <div class="field">
                     <label>Sexo</label>
                     <div class="control">
                         <div class="select is-info">
-                            <select  id="StringNewSexo" name="StringNewSexo">
+                            <select  id="StringNewSexo" name="StringNewSexo" required>
                                 <%
                                     System.out.println(smes); %>
                                 <option value="Femenino" <% if(sexo.equals("Femenino")){%> selected <% } %> >Femenino</option>
@@ -146,7 +146,7 @@ int canAnnos = arreglos.getCant();
                     <div class="control">
                         <div class="select is-info">
                             <label class="label" style="font-weight: 100;">Día</label>
-                            <select  id="StringNewBornDay" name="StringNewBornDay">
+                            <select  id="StringNewBornDay" name="StringNewBornDay" required>
                                 <% 
                                     int dias[] = arreglos.getDias();
                                     for (int j = 0; j < 31 ; j++){ 
@@ -162,7 +162,7 @@ int canAnnos = arreglos.getCant();
                             </select>
                         </div>
                         <div class="select is-info">
-                            <label class="label" style="font-weight: 100;">Mes</label>
+                            <label class="label" style="font-weight: 100;" required>Mes</label>
                             <select  id="StringNewBornMonth " name="StringNewBornMonth">
                                 <% 
                                 String meses[] = arreglos.getMeses();
@@ -177,7 +177,7 @@ int canAnnos = arreglos.getCant();
                             </select>
                         </div>
                         <div class="select is-info">
-                            <label class="label" style="font-weight: 100;">Año</label>
+                            <label class="label" style="font-weight: 100;" required>Año</label>
                             <select name="StringNewUseryear" id="StringNewUseryear">
                             
                             <% 
@@ -200,7 +200,7 @@ int canAnnos = arreglos.getCant();
                     <label>País</label>
                     <div class="control">
                         <div class="select is-info">
-                            <select  id="StringNewCountry" name="StringNewCountry">
+                            <select  id="StringNewCountry" name="StringNewCountry" required>
                                 
                                 
                                 <option value="ElSalvador" <%if(pais.equals("El Salvador")){%>selected<% } %>>El Salvador</option>
@@ -218,13 +218,13 @@ int canAnnos = arreglos.getCant();
                 <div class="field">
                     <label>Ciudad</label>
                     <div class="control">
-                        <input id="strnewCiudadUsuario" name="strnewCiudadUsuario"  class="input" type="text" placeholder="Text input" value=<%=ciudad%>>
+                        <input id="strnewCiudadUsuario" name="strnewCiudadUsuario" required class="input" type="text" placeholder="Text input" value=<%=ciudad%>>
                     </div>
                 </div>
                 <div class="field">
                     <label>Dirección</label>
                     <div class="control">
-                        <input id="strnewDireccionUsuario" name="strnewDireccionUsuario"  class="input" type="text" placeholder="Text input" value=<%=direccion%>>
+                        <input id="strnewDireccionUsuario" name="strnewDireccionUsuario" required  class="input" type="text" placeholder="Text input" value=<%=direccion%>>
                     </div>
                 </div>          
                 <div class="field is-grouped">

@@ -43,7 +43,7 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                 String strdia = request.getParameter("StringNewBornDay");
                 String strmes = request.getParameter("StringNewBornMonth");
                 String stranno = request.getParameter("StringNewUseryear");
-                String strFechaNacimiento = strdia + "/" + strmes + "/" + stranno;
+                String strFechaNacimiento = strdia + "-" + strmes + "-" + stranno;
                 String strpais = request.getParameter("StringNewCountry");
                 String strciudad = request.getParameter("strnewCiudadUsuario");
                 String strdireccion = request.getParameter("strnewDireccionUsuario");
@@ -59,6 +59,9 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                     //el usuario no existe
                     NuevoUsuarioParticular nuevouser = new NuevoUsuarioParticular(strname, struser, stremail, strpassword, strpais, strciudad, strdireccion,strsexo,strFechaNacimiento,imagenperfil);
                     hasfailed = buscador.createnewuser(nuevouser,null);
+                    if (hasfailed){
+                        response.sendRedirect("CuentaUsuario.jsp");
+                    }
                     String codigo = "27";
                     request.getSession().setAttribute("nuevouser", struser);
                     request.getSession().setAttribute("codigo", codigo);
@@ -105,6 +108,9 @@ public class LogicRegistroNuevoUsuarioServlet extends HttpServlet {
                     //usuario no existe               
                     NuevoMicroEmpresario nuevoempresario = new NuevoMicroEmpresario(strname,struser,strnit,strpassword,strdescripcion,stremail,strpais,strciudad,intcategoria,imagenlogo);
                     hasfailed = buscador.createnewuser(null, nuevoempresario);
+                    if(hasfailed){
+                        response.sendRedirect("CuentaEmpresa.jsp");
+                    }
                     String codigo = "27";
                     request.getSession().setAttribute("nuevouser", struser);
                     request.getSession().setAttribute("codigo", codigo);

@@ -213,7 +213,7 @@ public class BuscarUsuario extends Logic {
               
               System.out.println("no valio");
               if (si>0){
-                  hasfailed = true;
+                  hasfailed = false;
               
                System.out.println("Se insertaron los datos de usuario particular correctamente");
               }
@@ -239,9 +239,6 @@ public class BuscarUsuario extends Logic {
             System.out.println("antes de insertar si salio");
            try {
                Blob imagenblob = new SerialBlob(bdlogo); 
-//            pSQL = "INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"
-//                    + "VALUES('"+bdname+"','"+bdnit+"','"+bdpassword+"','"+bduser+"','"+bddescripcion+"','"+bdemail+"','"+bdpais+"','"  + bdciudad +"','"+bdcategoria+"','"+Arrays.toString(bdlogo)+"')";
-//            hasfailed = localDatabase.executeNonQueryBool(pSQL);
                 statement = conn.prepareStatement("INSERT INTO comercebd.empresatb(Nombre,Nit,Password,Username,Descripcion,Email,Pais,Ciudad,categoria,Logo)"
                 + "VALUES(?,?,?,?,?,?,?,?,?,?)");
                 
@@ -260,17 +257,18 @@ public class BuscarUsuario extends Logic {
               
               
               if (si>0){
-                  hasfailed = true;
+                  hasfailed = false;
               
-               System.out.println("Se insertaron los datos de microempresario correctamente");
-              }
+                System.out.println("Se insertaron los datos de microempresario correctamente");
+                }
               
-           } catch (SQLException ex) {
+            } catch (SQLException ex) {
                Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-           }
+            }
             
-       }
-        
+        }
+       
+       
         return hasfailed;
     }
     

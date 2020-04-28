@@ -138,7 +138,7 @@
 						categoriaActual = iteCategorias.next();
 						String ref = "Buscadores?formid=2&idCat="+categoriaActual.getIdCat();
 
-						if (i<=mitad) {%>
+						%>
 						<div class="box" style="border: lightgray 2px inset" id="izquierda">
 							<article class="media">
                                 <div class="media-left">
@@ -154,22 +154,8 @@
                                 </div>
                             </article>
                         </div>
-						<%      } else { %>
-						<div class="box" style="border: lightgray 2px inset" id="derecha"><article class="media">
-                                <div class="media-left">
-									<figure class="image is-128x128">
-										<a href="EmpresaMuro.jsp"><img src="Imagenes?formid=2&idImgen=<%= k %>&att=listaCategoria" alt="Image"></a>
-									</figure>
-                                </div>
-                                <div class="media-content">
-									<div class="content">
-										<a href= "<%= ref %>" ><strong><%= categoriaActual.getNombre() %></strong> </a>
-										<br>
-									</div>
-                                </div>
-                            </article>
-                        </div>
-                            <%         } 
+						
+                            <%          
                                     k++;
                             }
                         }

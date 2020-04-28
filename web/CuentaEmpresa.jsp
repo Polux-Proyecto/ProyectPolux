@@ -73,7 +73,7 @@
                     <div class="control">
                         <div class="file has-name is-right">
                             <label class="file-label">
-                                <input class="file-input" type="file" name="resume">
+                                <input class="file-input" type="file" name="resume" required>
                                 <span class="file-cta">
                                   <span class="file-icon">
                                     <i class="fas fa-upload"></i>
@@ -96,39 +96,39 @@
                 <div class="field">
                     <label>Nombre</label>
                     <div class="control">
-                        <input class="input" type="text" name="nombreEmp" id="nombreEmp" placeholder="Text input" value =<%=name%>>
+                        <input class="input" type="text" name="nombreEmp" id="nombreEmp" placeholder="Text input" required value =<%=name%> >
                     </div>
                 </div>
                 <div class="field">
                     <label>Username</label>
                     <div class="control">
                         <div style="color:red"><%= mensajeerror%></div>
-                        <input class="input" type="text" name="userEmp" id="userEmp" idplaceholder="Text input">
+                        <input class="input" type="text" name="userEmp" id="userEmp" idplaceholder="Text input" required>
                     </div>
                 </div>
                 <div class="field">
                     <label>Email</label>
                     <div class="control">
-                        <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value =<%=email%>>
+                        <input id="strNewEmail" name="strNewEmail" class="input is-danger" type="email" placeholder="Email input" value =<%=email%> required>
                     </div>
                 </div>
                 <div class="field">
                     <label>NIT</label>
                     <div class="control">
-                        <input class="input" type="text" name="nit" id="nit" placeholder="Text input" value =<%=nit%>>
+                        <input class="input" type="text" name="nit" id="nit" placeholder="Text input" required value =<%=nit%>>
                     </div>
                 </div>
                 <div class="field">
                     <label>Contraseña</label>
                     <div class="control">
-                        <input class="input" type="password" name="passEmp" id="passEmp" placeholder="Text input">
+                        <input class="input" type="password" name="passEmp" id="passEmp" placeholder="Text input" required>
                     </div>
                 </div>    
                 <div class="field">
                     <label>País</label>
                     <div class="control">
                         <div class="select is-info">
-                            <select  id="StringNewCountryEmp" name="StringNewCountryEmp">
+                            <select  id="StringNewCountryEmp" name="StringNewCountryEmp" required>
                                 <option value="ElSalvador" <%if(pais.equals("El Salvador")){%>selected<% } %>>El Salvador</option>
                                 <option value="Guatemala" <%  if(pais.equals("Guatemala")){%>selected<% } %>>Guatemala</option>
                                 <option value="Belice" <% if(pais.equals("Belice")){%>selected<% } %>>Belice</option>
@@ -143,14 +143,14 @@
                 <div class="field">
                     <label>Ciudad</label>
                     <div class="control">
-                        <input id="strnewCiudadEmp" name="strnewCiudadEmp" class="input" type="text" placeholder="Text input" value =<%=ciudad%>>
+                        <input id="strnewCiudadEmp" name="strnewCiudadEmp" class="input" type="text" placeholder="Text input" required value =<%=ciudad%>>
                     </div>
                 </div>
                 <div class="field">
                     <label>Categoría</label>
                     <div class="control">
                         <div class="select is-info">
-                            <select  id="StrCategoria" name="StrCategoria">
+                            <select  id="StrCategoria" name="StrCategoria" required>
                                 <% if(categorias!=null){
                                         while(iteCategoria.hasNext()){
                                             categoriaActual = iteCategoria.next();
