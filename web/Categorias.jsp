@@ -16,11 +16,8 @@
         response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
     List<Categoria> listaCategoria = (List<Categoria>) request.getSession().getAttribute("listaCategoria");
-    int mitad = (Integer) request.getSession().getAttribute("mitad");
-    mitad ++;
     Iterator<Categoria> iteCategorias = listaCategoria.iterator();
     int cantidadCategorias = listaCategoria.size();
-    int i=0;
     int k = 0;
     String  logo = (String)  request.getSession().getAttribute("logo");
 %>
@@ -34,11 +31,8 @@
         <Style>
             #izquierda{
                 float:left;
-                width:50%;
-            }
-            #derecha{
-                float:right;
-                width:50%;
+                width:47.5%;
+				
             }
 			.color1{
 				background-color: #93d250
@@ -137,13 +131,12 @@
 						while (iteCategorias.hasNext()){
 						categoriaActual = iteCategorias.next();
 						String ref = "Buscadores?formid=2&idCat="+categoriaActual.getIdCat();
-
-						if (i<=mitad) {%>
-						<div class="box" style="border: lightgray 2px inset" id="izquierda">
+						%>
+						<div class="box" style="border: lightgray 2px inset;margin-right: 2.5%" id="izquierda">
 							<article class="media">
                                 <div class="media-left">
 									<figure class="image is-128x128">
-										<a href="<%= ref %>"><img src="Imagenes?formid=2&idImgen=<%= k %>&att=listaCategoria" alt="Image"></a>
+										<a href="<%= ref %>"><img src="Imagenes?formid=2&idImgen=<%= k %>&att=listaCategoria" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px"></a>
 									</figure>
                                 </div>
                                 <div class="media-content">
@@ -154,23 +147,8 @@
                                 </div>
                             </article>
                         </div>
-						<%      } else { %>
-						<div class="box" style="border: lightgray 2px inset" id="derecha"><article class="media">
-                                <div class="media-left">
-									<figure class="image is-128x128">
-										<a href="EmpresaMuro.jsp"><img src="Imagenes?formid=2&idImgen=<%= k %>&att=listaCategoria" alt="Image"></a>
-									</figure>
-                                </div>
-                                <div class="media-content">
-									<div class="content">
-										<a href= "<%= ref %>" ><strong><%= categoriaActual.getNombre() %></strong> </a>
-										<br>
-									</div>
-                                </div>
-                            </article>
-                        </div>
-                            <%         } 
-                                    k++;
+						<%
+								k++;
                             }
                         }
                         %>

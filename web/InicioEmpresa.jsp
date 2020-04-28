@@ -184,118 +184,117 @@
         <section class="section" >
             <div class="tile is-ancestor">
                 <div class="tile is-vertical">
-                        <div class="tile">
-                                <div class="tile is-parent is-vertical">
-                                        <article class="tile is-child box" style="border: green 10px inset;">
+					<div class="tile">
+						<div class="tile is-parent is-vertical">
+								<article class="tile is-child box" style="border: green 10px inset;">
 
-                                        <p class="title">Añadir Producto</p>
-                                        <p class="subtitle">Agrega nuevos productos a tu inventario</p>
-                                        <button class="button modal-button" data-target="#Modal1" aria-haspopup="true" style="background-color: chartreuse">Nuevo Producto</button>
+								<p class="title">Añadir Producto</p>
+								<p class="subtitle">Agrega nuevos productos a tu inventario</p>
+								<button class="button modal-button" data-target="#Modal1" aria-haspopup="true" style="background-color: chartreuse">Nuevo Producto</button>
 
-                                        <div class="modal" id="Modal1">
-                                                <div class="modal-background"></div>
-                                                <div class="modal-card">
-                                                        <header class="modal-card-head">
-                                                                <p class="modal-card-title">Nuevo Producto</p>
-                                                                <button class="delete" aria-label="close"></button>
-                                                        </header>
-                                                        
-                                                            <form name="FrmNuevoProd" action="Empresarios" method="post" id="FrmNuevoProd" enctype="multipart/form-data">
-                                                                <section class="modal-card-body">
-                                                                    <input type="hidden" name="formid" id="formid" value="1" required>
-                                                                        <p class="subtitle has-text-danger"><%= avisoE %></p>
-                                                                        <p class="subtitle has-text-success"><%= avisoM %></p>
+								<div class="modal" id="Modal1">
+									<div class="modal-background"></div>
+									<div class="modal-card">
+										<header class="modal-card-head">
+											<p class="modal-card-title">Nuevo Producto</p>
+											<button class="delete" aria-label="close"></button>
+										</header>
 
-                                                                        <div class="field">
-                                                                                <label>Nombre del producto:</label>
-                                                                                <div class="control">
-                                                                                  <input class="input" type="text" name="nameProd" id="nameProd" required>
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="field">
-                                                                                <label>Imagen de Producto</label>
-                                                                                <div class="control">
-                                                                                        <div class="file has-name is-right">
-                                                                                                <label class="file-label">
-                                                                                                        <input class="file-input" type="file" name="resume" required>
-                                                                                                        <span class="file-cta">
-                                                                                                                <span class="file-icon">
-                                                                                                                        <i class="fas fa-upload"></i>
-                                                                                                                </span>
-                                                                                                                <span class="file-label">
-                                                                                                                        Seleccione una imagen
-                                                                                                                </span>
-                                                                                                        </span>
-                                                                                                        <span class="file-name">
-                                                                                                                Seleccione una imagen
-                                                                                                        </span>
-                                                                                                </label>
-                                                                                        </div>
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="field">
-                                                                                <label>Cantidad:</label>
-                                                                                <div class="control">
-                                                                                        <input class="input" type="number" name="cantProd" id="cantProd" min="1" required>
-                                                                                </div>
-                                                                        </div>
+										<form name="FrmNuevoProd" action="Empresarios" method="post" id="FrmNuevoProd" enctype="multipart/form-data">
+											<section class="modal-card-body">
+												<!--<input type="hidden" name="formid" id="formid" value="1" required>-->
+												<p class="subtitle has-text-danger"><%= avisoE %></p>
+												<p class="subtitle has-text-success"><%= avisoM %></p>
 
-                                                                                <div class="field">
-                                                                                        <label>Categoría</label>
-                                                                                         <div class="control">
-                                                                                        <div class="select is-info">
-                                                                                            <select  id="StrCategoria" name="StrCategoria" required>
-                                                                                                <% if(categorias!=null){
-                                                                                                        while(iteCategoria.hasNext()){
-                                                                                                            categoriaActual = iteCategoria.next();
-                                                                                                %>
-                                                                                                <option value=<%= categoriaActual.getIdCat() %>><%= categoriaActual.getNombre() %> </option>
-                                                                                                <%      }
-                                                                                                    }%>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="field">
-                                                                                        <label>Precio Unitario:</label>
-                                                                                        <div class="control">
-                                                                                                <input class="input" type="number" name="precProd" id="precProd" min="1" required>
-                                                                                        </div>
-                                                                                </div>
+												<div class="field">
+													<label>Nombre del producto:</label>
+													<div class="control">
+														<input class="input" type="text" name="nameProd" id="nameProd" required>
+													</div>
+												</div>
+												<div class="field">
+													<label>Imagen de Producto</label>
+													<div class="control">
+														<div class="file has-name is-right">
+															<label class="file-label">
+																<input class="file-input" type="file" name="resume" required>
+																<span class="file-cta">
+																		<span class="file-icon">
+																			<i class="fas fa-upload"></i>
+																		</span>
+																		<span class="file-label">
+																				Seleccione una imagen
+																		</span>
+																</span>
+																<span class="file-name">
+																		Seleccione una imagen
+																</span>
+															</label>
+														</div>
+													</div>
+												</div>
+												<div class="field">
+													<label>Cantidad:</label>
+													<div class="control">
+														<input class="input" type="number" name="cantProd" id="cantProd" min="1" required>
+													</div>
+												</div>
+												<div class="field">
+													<label>Categoría</label>
+													<div class="control">
+														<div class="select is-info">
+															<select  id="StrCategoria" name="StrCategoria" required>
+																<% if(categorias!=null){
+																		while(iteCategoria.hasNext()){
+																			categoriaActual = iteCategoria.next();
+																%>
+																<option value=<%= categoriaActual.getIdCat() %>><%= categoriaActual.getNombre() %> </option>
+																<%      }
+																	}%>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="field">
+														<label>Precio Unitario:</label>
+														<div class="control">
+															<input class="input" type="number" name="precProd" id="precProd" min="1" required>
+														</div>
+												</div>
 
-                                                                                <div class="field">
-                                                                                        <label>Descripción:</label>
-                                                                                        <div class="control">
-                                                                                                <input class="input" type="text" name="descProd" id="descProd" required>
-                                                                                        </div>
-                                                                                </div>
-                                                                        </section>
-                                                                        
-                                                                        <footer class="modal-card-foot">
-                                                                            <input type="hidden" id="formid" value="1">
-                                                                            <button class="button is-success" >Guardar cambios</button>
-                                                                            <button class="button is-delete" aria-label="close">Cancelar</button>
-                                                                        </footer>
-                                                                    </form>              
-                                                        </div>
-                                                </div>
-                                                <script>
-                                                        document.querySelectorAll('.modal-button').forEach(function(el) {
-                                                            el.addEventListener('click', function() {
-                                                                var target = document.querySelector(el.getAttribute('data-target'));
+												<div class="field">
+													<label>Descripción:</label>
+													<div class="control">
+														<input class="input" type="text" name="descProd" id="descProd" required>
+													</div>
+												</div>
+											</section>
 
-                                                                target.classList.add('is-active');
+											<footer class="modal-card-foot">
+												<input type="hidden" id="formid" value="1">
+												<button class="button is-success" >Guardar cambios</button>
+												<button class="button is-delete" aria-label="close">Cancelar</button>
+											</footer>
+										</form>              
+									</div>
+								</div>
+								<script>
+									document.querySelectorAll('.modal-button').forEach(function(el) {
+										el.addEventListener('click', function() {
+											var target = document.querySelector(el.getAttribute('data-target'));
 
-                                                                target.querySelector('.delete').addEventListener('click',   function() {
-                                                                    target.classList.remove('is-active');
-                                                                
-                                                                });
-                                                                
-                                                                target.querySelector('.is-delete').addEventListener('click',   function() {
-                                                                    target.classList.remove('is-active');
-                                                                });
-                                                            });
-                                                        });
+											target.classList.add('is-active');
+
+											target.querySelector('.delete').addEventListener('click',   function() {
+												target.classList.remove('is-active');
+
+											});
+
+											target.querySelector('.is-delete').addEventListener('click',   function() {
+												target.classList.remove('is-active');
+											});
+										});
+									});
 								</script>
 							</article>
 							<article class="tile is-child box" style="border: green 10px inset;">
@@ -361,21 +360,20 @@
 								<br>
                         
 								<div class="field is-grouped">
-                                                                    <form method="get" action="Empresarios">
-                                                                        <input type="hidden" name="formid" id="formid" value="2">
-                                                                        <button class="button" style="background-color: #29b342">
-                                                                            Ir a ventas  
-                                                                        </button>
-                                                                    </form>
+									<form method="get" action="Empresarios">
+										<input type="hidden" name="formid" id="formid" value="2">
+										<button class="button" style="background-color: #29b342">
+											Ir a ventas  
+										</button>
+									</form>
 
-                                                                    <form method="get" action="Empresarios">
-                                                                        <input type="hidden" name="formid" id="formid" value="6">
-                                                                        <button class="button" style="background-color: chartreuse">
-                                                                            Ir a inventario
-                                                                        </button>
-                                                                    </form>
+									<form method="get" action="Empresarios">
+										<input type="hidden" name="formid" id="formid" value="6">
+										<button class="button" style="background-color: chartreuse">
+											Ir a inventario
+										</button>
+									</form>
 								</div>
-                    
 							</article>
 						</div>
 					</div>
