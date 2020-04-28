@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Hubo un error en el inicio de la sesión</h1>
-        <a herf="index.jsp">Inicie su seción aquí</a>
+        <a href="index.jsp">Inicie su seción aquí</a>
     </body>
 </html>
