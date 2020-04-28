@@ -92,7 +92,7 @@
 					<div class="navbar-end">
 						<div class="navbar-item">
 							<div class="buttons">
-								<a class="button " href="index.jsp" style="background-color: #29b342">
+								<a class="button " href="Buscadores?formid=6" style="background-color: #29b342">
 									Cerrar sesión
 								</a>
 							</div>

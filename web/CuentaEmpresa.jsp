@@ -88,7 +88,7 @@
                                 </span>
                               </span>
                               <span class="file-name">
-                                Screen Shot 2017-07-29 at 15.54.25.png
+                                Ingrese su imagen
                               </span>
                             </label>
                           </div>
