@@ -62,12 +62,19 @@ public class AdminFinanzas extends Logic {
     public boolean setVenta(Usuario usuario, Producto producto, Precios precios, Tarjetas tarjeta){
         boolean hasFailed = true;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.now();
-        String date = dtf.format(localDate);
-        System.out.println(dtf.format(localDate)); 
-        String pSql = "INSERT INTO comercebd.pedidostb ( cliente, producto, cantidad, entregado, precio, fechaPedido, Tarjeta) VALUES ( '"+usuario.getIdUsuario()+"', '"+producto.getId()+"', '"+precios.getCantidad()+"', '0', '"+precios.getTotalPagar()+"', '"+date+"', '"+tarjeta.getIdTarjeta()+"');";
-        System.out.println(pSql);
-        hasFailed = localDatabase.executeNonQueryBool(pSql);
+        AdminProductos admin = new AdminProductos();
+        int existencia = admin.getExistenciasByIdProd(producto.getId());
+        
+        if (existencia >= precios.getCantidad()){
+           LocalDate localDate = LocalDate.now();
+            String date = dtf.format(localDate);
+            System.out.println(dtf.format(localDate));
+
+            String pSql = "INSERT INTO comercebd.pedidostb ( cliente, producto, cantidad, entregado, precio, fechaPedido, Tarjeta) VALUES ( '"+usuario.getIdUsuario()+"', '"+producto.getId()+"', '"+precios.getCantidad()+"', '0', '"+precios.getTotalPagar()+"', '"+date+"', '"+tarjeta.getIdTarjeta()+"');";
+            System.out.println(pSql);
+            hasFailed = localDatabase.executeNonQueryBool(pSql); 
+        }
+        
         return hasFailed;
         
     }

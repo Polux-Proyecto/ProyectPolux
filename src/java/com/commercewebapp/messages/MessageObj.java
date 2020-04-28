@@ -1,6 +1,10 @@
 
 package com.commercewebapp.messages;
 
+import com.commercewebapp.objects.Precios;
+import com.commercewebapp.objects.Producto;
+import com.commercewebapp.objects.Tarjetas;
+import com.commercewebapp.objects.Usuario;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,9 +17,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MessageObj {
-    public boolean enviarCorreo(String p_nombre, String correoDestinatario, String p_montoTotal ) {
+    public boolean enviarCorreo(Usuario usuario, Producto producto,Precios precios, Tarjetas tarjeta ) {
     boolean enviado = false;
-        
+            String p_nombre  = usuario.getNombre(),  correoDestinatario  =usuario.getCorreo(),  p_montoTotal = precios.getTotalPagar();
             String de = "pruebapolux@gmail.com"; 
             String clave = "mbbvr9788";
             String para=correoDestinatario;  

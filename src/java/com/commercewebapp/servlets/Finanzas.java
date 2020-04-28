@@ -126,6 +126,7 @@ public class Finanzas extends HttpServlet {
                 
                 boolean hasFailed = finanzas.setVenta(usuario, producto, precios, tarjeta);
                 hasFailed = administrador.reduceStock(producto.getId(), precios.getCantidad());
+                
                 if (hasFailed){
                     request.getSession().setAttribute("valor", "1");
                     request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
@@ -133,7 +134,7 @@ public class Finanzas extends HttpServlet {
                     
                     List<Producto> pedidos = administrador.getPedidosPorUsuario(usuario.getIdUsuario());
                     MessageObj mensaje = new MessageObj();
-                    mensaje.enviarCorreo(usuario.getNombre(), usuario.getCorreo(), precios.getTotalPagar());
+                    mensaje.enviarCorreo(usuario, producto, precios, tarjeta);
                     request.getSession().setAttribute("pedidos", pedidos);
                     request.getSession().setAttribute("valor", "0");
                     request.getRequestDispatcher("InicioCliente.jsp").forward(request, response);
@@ -179,16 +180,16 @@ public class Finanzas extends HttpServlet {
                 String exito = "0";
                 Envio envio = adminEmpresa.getEnvio(idEnvio);
                 boolean hasFailed = administrador.deleteEnvio(idEnvio);
-                
+                Usuario cliente = (Usuario) request.getSession().getAttribute("clienteU");
                 
                 if (hasFailed){
                     exito = "0";
                     request.getSession().setAttribute("exito", exito);
-                    request.getRequestDispatcher("Empresarios?formid=5&idCliente="+usuario.getIdUsuario()).forward(request, response);
+                    request.getRequestDispatcher("Empresarios?formid=5&idCliente="+cliente.getIdUsuario()).forward(request, response);
                 } else {
                     exito = "1";
                     request.getSession().setAttribute("exito", exito);
-                    request.getRequestDispatcher("Empresarios?formid=5&idCliente="+usuario.getIdUsuario()).forward(request, response);
+                    request.getRequestDispatcher("Empresarios?formid=5&idCliente="+cliente.getIdUsuario()).forward(request, response);
                 }
                 
                 //</editor-fold>

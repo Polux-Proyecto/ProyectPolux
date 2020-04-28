@@ -161,38 +161,38 @@
             </div>
         </section>
         <section class="hero is-medium has-carousel">
-                    <div class="hero-head"></div>
-                    <div class="hero-body">
-                        <div id="carousel-demo" class="hero-carousel" data-autoplay="true" data-navigation-keys="false" data-autoplay-speed="5000" data-effect="fade" data-duration="1000">
-                            <div class="carousel-item has-text-centered has-background">
-                                <img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/merry-christmas.jpg">
-                                <div class="box" >
-                                    <div class="EnlaceCarousel">
-                                        <a href="MuroProducto.jsp"><h1><strong>Nombre de Producto</strong></h1></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item has-text-centered has-background">
-                                <img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/singer.jpg">
-                                <div class="box" >
-                                    <div class="EnlaceCarousel">
-                                        <a href="MuroProducto.jsp"><h1><strong>Nombre de Producto</strong></h1></a>
-                                     </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item has-text-centered has-background">
-                                <img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/sushi.jpg">
-                                <div class="box" >
-                                    <div class="EnlaceCarousel">
-                                        <a href="MuroProducto.jsp"><h1><strong>Nombre de Producto</strong></h1></a>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-foot"></div>
-                </section>
-		<!-- End Hero Carousel -->
+			<div class="hero-head"></div>
+			<div class="hero-body">
+				<div id="carousel-demo" class="hero-carousel" data-autoplay="true" data-navigation-keys="false" data-autoplay-speed="5000" data-effect="fade" data-duration="1000">
+					<div class="carousel-item has-text-centered has-background">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/proyectoPolux.jpeg">
+						<div class="box" >
+							<div class="EnlaceCarousel">
+								<h1><strong><a href="Buscadores?formid=2&idCat=1">#QuedateEnCasa y disfruta de la mejor música para tu alma</a></strong></h1>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item has-text-centered has-background">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/grupoPolux.jpeg">
+						<div class="box" >
+							<div class="EnlaceCarousel">
+								<a href="Buscadores?formid=3"><h1><strong>Visita nuestras categorías</strong></h1></a>
+							 </div>
+						</div>
+					</div>
+					<div class="carousel-item has-text-centered has-background">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/brocoWars.jpeg">
+						<div class="box" >
+							<div class="EnlaceCarousel">
+                                                            <h1><strong><a href="Buscadores?formid=2&idCat=3">#QuedateEnCasa, y distruta de los pruductos para el hogar</a></strong></h1>
+							 </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hero-foot"></div>
+		</section>
+		
 
 		<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
 		<script>

@@ -38,7 +38,7 @@
             request.getSession().removeAttribute("valor");
             %>
             <script>
-                alert('¡Lo sentimos, no se puedo realizar la compra, inténtelo de nuevo más tarde!');
+                alert('¡Lo sentimos, no se puedo realizar la compra, inténtelo de nuevo más tarde! Es posible que ya no haya sufiente producto en el almacen para la cantidad que deseas comprar. ');
             </script>
             <%
         } else {
@@ -143,10 +143,10 @@
 			<div class="hero-body">
 				<div id="carousel-demo" class="hero-carousel" data-autoplay="true" data-navigation-keys="false" data-autoplay-speed="5000" data-effect="fade" data-duration="1000">
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="images/LetrasNegras.png">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/QuedateEnCasa.jpeg">
 						<div class="box" >
 							<div class="EnlaceCarousel">
-								<h1><strong>#QuedateEnCasa</strong></h1>
+								<h1><strong><a href="Buscadores?formid=2&idCat=1">#QuedateEnCasa y disfruta de la mejor música para tu alma</a> </strong></h1>
 							</div>
 						</div>
 					</div>
@@ -159,10 +159,10 @@
 						</div>
 					</div>
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="images/QuedateEnCasa.jpeg">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/LetrasNegras.png">
 						<div class="box" >
 							<div class="EnlaceCarousel">
-                                                            <h1><strong>#QuedateEnCasa, y distruta de los pruductos para el <a href="Buscadores?formid=2&idCat=3">hogar</a></strong></h1>
+                                                            <h1><strong><a href="Buscadores?formid=2&idCat=3">#QuedateEnCasa, y distruta de los pruductos para el hogar</a></strong></h1>
 							 </div>
 						</div>
 					</div>
