@@ -34,24 +34,30 @@ public class BuscarUsuario extends Logic {
         String pass, nombre, correo ="", genero = "", fechaN = "", direccion = "";
         int id;
         int i = 0;
+        Blob blobimagenperfil;
+        byte[] imagenperfil = null;
         
         try {
-             if (result != null){
-                 while (result.next()){
-                     System.out.println("Hay algo en la tabla de clientes");
-                     nombre = result.getString("Nombre");
-                     pass = result.getString("Password");
-                     id = result.getInt("idCliente");
-                     correo = result.getString("Correo");
-                     genero = result.getString("Sexo");
-                     fechaN = result.getString("FechaNacimiento");
-                     direccion = result.getString("Dirección");
+            if (result != null){
+                while (result.next()){
+                    System.out.println("Hay algo en la tabla de clientes");
+                    nombre = result.getString("Nombre");
+                    pass = result.getString("Password");
+                    id = result.getInt("idCliente");
+                    correo = result.getString("Correo");
+                    genero = result.getString("Sexo");
+                    fechaN = result.getString("FechaNacimiento");
+                    direccion = result.getString("Dirección");
+                    blobimagenperfil = result.getBlob("ImagenPerfil");
+                    if ( blobimagenperfil!= null){
+                        imagenperfil = blobimagenperfil.getBytes(1, (int) blobimagenperfil.length() );
+                    }
                      i++;
-                     usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion, null);
+                     usuario = new Usuario (false, true, nombre, id, pass, username, correo, genero, fechaN, direccion, imagenperfil);
                      System.out.println(nombre+" "+pass+" "+id);
-                 }
-                 System.out.println("Ya terminó la tabla de clientes");
-                 if (i==0){
+                }
+                System.out.println("Ya terminó la tabla de clientes");
+                if (i==0){
                      System.out.println("No se encontró nada en la tabla de clientes");
                      System.out.println("SELECT * FROM comercebd.empresatb where Username = '"+username+"';");
                      result = null;
@@ -65,7 +71,11 @@ public class BuscarUsuario extends Logic {
                             pass = result.getString("Password");
                             id = result.getInt("idempresatb");
                             correo = result.getString("Email");
-                            usuario = new Usuario (true, false, nombre, id, pass, username, correo, genero, fechaN, direccion, null);
+                            blobimagenperfil = result.getBlob("Logo");
+                            if ( blobimagenperfil!= null){
+                                imagenperfil = blobimagenperfil.getBytes(1, (int) blobimagenperfil.length() );
+                            }
+                            usuario = new Usuario (true, false, nombre, id, pass, username, correo, genero, fechaN, direccion, imagenperfil);
                             System.out.println(nombre+" "+pass+" "+id);
                             i++;
                         }

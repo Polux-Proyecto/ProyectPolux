@@ -16,7 +16,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MessageObj {
-    public boolean enviarCorreo(Usuario usuario, Producto producto,Precios precios, Tarjetas tarjeta ) {
+    public boolean enviarCorreo(Usuario usuario, Producto producto, Precios precios, Tarjetas tarjeta ) {
     boolean enviado = false;
             String p_nombre  = usuario.getNombre(),  correoDestinatario  =usuario.getCorreo(),  p_montoTotal = precios.getTotalPagar();
             String de = "pruebapolux@gmail.com"; 

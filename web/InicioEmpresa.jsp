@@ -104,6 +104,9 @@
 				flex-flow: row wrap;
 				align-items: center;
 			}
+			.border {
+				border-width: 2px; border-color:black ; border-style: solid; 
+			}
 		</style>
     </head>
     <body>
@@ -152,9 +155,15 @@
         <section class="hero is-success"  style="background-color: hsl(120,60%,70%);">
             <div class="hero-body">
                 <div class="container">
+					<div class="media-right">
+							<figure class="image form-inline border" style="float:right">
+									<a><img src="Imagenes?formid=5&usuario=<%= usuario %>" alt="Image" style="overflow:hidden ;max-height: 128px; max-width:128px"></a>
+							</figure>
+					</div>
                     <h1 class="title" style="color:black">
                         <strong>¡Bienvenido, <%=usuario.getNombre() %>!</strong>
                     </h1>
+                    
                     <h2 class="subtitle" style="color:black">
                         Tus clientes esperan
                     </h2>
