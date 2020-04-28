@@ -44,6 +44,10 @@ public class Finanzas extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String formid = request.getParameter("formid");
+        Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
+        if(abs==null){
+            request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
+        }
         
         switch (formid){
             case "1":{

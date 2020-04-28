@@ -89,7 +89,6 @@
 						  <span aria-hidden="true"></span>
 						</a>
 					</div>
-
 					<div id="navbarBasicExample" class="navbar-menu">
                 <!--  
                 Los Ids de las categorías más importantes son:
@@ -147,23 +146,23 @@
 						<img class="is-background" style="width:2000px; height:200px;" src="images/LetrasNegras.png">
 						<div class="box" >
 							<div class="EnlaceCarousel">
-								<a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>
+								<h1><strong>#QuedateEnCasa</strong></h1>
 							</div>
 						</div>
 					</div>
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/singer.jpg">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/ContenidoExclusivo.jpeg">
 						<div class="box" >
 							<div class="EnlaceCarousel">
-								<a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>
+								<a href="Buscadores?formid=3"><h1><strong>Visita nuestras categorías</strong></h1></a>
 							 </div>
 						</div>
 					</div>
 					<div class="carousel-item has-text-centered has-background">
-						<img class="is-background" style="width:2000px; height:200px;" src="https://wikiki.github.io/images/sushi.jpg">
+						<img class="is-background" style="width:2000px; height:200px;" src="images/QuedateEnCasa.jpeg">
 						<div class="box" >
 							<div class="EnlaceCarousel">
-								<a href="EmpresaMuro.jsp"><h1><strong>Nombre de La Empresa</strong></h1></a>
+                                                            <h1><strong>#QuedateEnCasa, y distruta de los pruductos para el <a href="Buscadores?formid=2&idCat=3">hogar</a></strong></h1>
 							 </div>
 						</div>
 					</div>
