@@ -37,6 +37,7 @@ public class EliminaRegistros extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        
        String formid = request.getParameter("formid");
        switch(formid){
            case "25":{

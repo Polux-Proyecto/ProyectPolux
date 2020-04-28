@@ -299,4 +299,21 @@ public class AdminProductos extends Logic {
        
        return hasFailed;
    }
+
+    public int getExistenciasByIdProd(int idProd) {
+        int stock = 0;
+        ResultSet result = localDatabase.executeQuery("SELECT existencias FROM comercebd.prodtb where idprodtb = "+idProd+" Limit 1;");
+        
+        if(result!=null){
+           try {
+               while(result.next()){
+                   stock = result.getInt("existencias");
+               }
+           } catch (SQLException ex) {
+               Logger.getLogger(AdminProductos.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
+        
+        return stock;
+    }
 }

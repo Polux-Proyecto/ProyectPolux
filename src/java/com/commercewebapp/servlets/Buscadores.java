@@ -12,6 +12,7 @@ import com.commercewebapp.objects.Categoria;
 import com.commercewebapp.objects.Empresa;
 import com.commercewebapp.objects.Precios;
 import com.commercewebapp.objects.Producto; 
+import com.commercewebapp.objects.Usuario;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -33,6 +34,10 @@ import javax.servlet.http.HttpServletResponse;
         response.setContentType("text/html;charset=UTF-8");
         
         String formid = request.getParameter("formid");
+        Usuario abs = (Usuario) request.getSession().getAttribute("usuario");
+        if(abs==null){
+            request.getRequestDispatcher("ErrorEnInicioSesion.jsp").forward(request, response);
+        }
         
         switch (formid) {
             case "1":{
