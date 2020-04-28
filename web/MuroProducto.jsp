@@ -13,7 +13,7 @@
 <% 
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
     String hasFailed = (String) request.getSession().getAttribute("h");
     if (hasFailed == null){
@@ -104,7 +104,7 @@
 								</p>
 							</form>
 							<div class="buttons">
-                                <a class="button color2" href="index.jsp">
+                                <a class="button color2" href="Buscadores?formid=6">
 									Cerrar sesión
 								</a>
 							</div>

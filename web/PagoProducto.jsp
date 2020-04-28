@@ -22,7 +22,7 @@
 	Precios precios = (Precios) request.getSession().getAttribute("precios");
         
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
 
     Iterator<Tarjetas> iteTarjetas = null;
@@ -125,7 +125,7 @@
 								</p>
 							</form>
 							<div class="buttons">
-                                <a class="button color2" href="index.jsp">
+                                <a class="button color2" href="Buscadores?formid=6">
 									Cerrar sesión
 								</a>
 							</div>

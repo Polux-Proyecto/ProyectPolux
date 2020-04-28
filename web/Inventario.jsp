@@ -12,7 +12,7 @@
 <%  
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
     if (usuario==null){
-        response.sendRedirect("ErrorEnInicioSesion");
+        response.sendRedirect("ErrorEnInicioSesion.jsp");
     }
     List<Stock> inventario = (List<Stock>) request.getSession().getAttribute("listaStock");
     int cantInventario = 0;
@@ -79,7 +79,7 @@
 					<div class="navbar-end">
 						<div class="navbar-item">
 							<div class="buttons">
-								<a class="button" style="background-color: #29b342">
+								<a class="button" style="background-color: #29b342" href="Buscadores?formid=6">
 									Cerrar sesión
 								</a>
 							</div>

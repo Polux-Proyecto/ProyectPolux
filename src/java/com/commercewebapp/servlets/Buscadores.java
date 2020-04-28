@@ -107,9 +107,14 @@ import javax.servlet.http.HttpServletResponse;
             }
             case "6" :{
                 // <editor-fold defaultstate="collapsed" desc="Para cerrar sesión">
-                    request.getSession().setAttribute("usuario", null);
+                    request.getSession().removeAttribute("usuario");
+                    request.getSession().invalidate();
+                    response.setHeader("Cache-Control","no-cache"); 
+                    response.setDateHeader("Expires", 0);
+                    response.setHeader("Pragma","no-cache"); 
                     response.sendRedirect("index.jsp");
-                // </editor-fold>
+                    // </editor-fold>
+                break;
             }
             case "7":{
                 // <editor-fold defaultstate="collapsed" desc="Cargar precios de producto">

@@ -14,6 +14,9 @@
 <%
     String          logo = (String)  request.getSession().getAttribute("logo");
     Usuario         usuario = (Usuario)         request.getSession().getAttribute("usuario");
+    if (usuario==null){
+        response.sendRedirect("ErrorEnInicioSeseion.jsp");
+    }
     Empresa         empresa = (Empresa)         request.getSession().getAttribute("empresa");
     List<Producto>  producto = (List<Producto>)         request.getSession().getAttribute("listaProductos");
     Producto  productoActual = null;
@@ -136,7 +139,7 @@
 								</p>
 							</form>
 							<div class="buttons">
-                                <a class="button color2" href="index.jsp">
+                                <a class="button color2" href="Buscadores?formid=6">
 									Cerrar sesión
 								</a>
 							</div>
